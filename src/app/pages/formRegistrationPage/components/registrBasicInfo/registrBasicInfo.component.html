@@ -1,0 +1,109 @@
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+        <h2>Создание страницы исполнителя</h2>
+
+
+
+        <div class="columns">
+            <div class="left-column">
+
+                <div class="input-file">
+                    <p>Аватар</p>
+                    <input type="file" formControlName="avatar">
+                </div>
+
+                <div class="input-file">
+                    <p>Фон</p>
+                    <input type="file" formControlName="background">
+                </div>
+
+
+                <div class="name-of-page">
+                    <p>Наименование страницы</p>
+                    <input type="text" formControlName="nameOfPage">
+                </div>
+
+                <div class="about-myself">
+                    <p>О себе / О компании:</p>
+                    <textarea name="aboutMyself" formControlName="aboutMyself"></textarea>
+                </div>
+
+
+                <div class="contact-data" formGroupName="contactData">
+                    <p>Контактные данные:</p>
+                    <input type="text" placeholder="email" formControlName="contactDataEmail">
+                    <input type="tel" placeholder="Номер телефона" formControlName="contactDataTel">
+
+                    <p>Контактное лицо</p>
+                    <input type="text" placeholder="Имя" formControlName="contactFaceName">
+                    <input type="text" placeholder="email" formControlName="contactFaceEmail">
+                    <input type="tel" placeholder="Номер телефона" formControlName="contactFaceTel">
+                </div>
+
+            </div>
+
+            <div class="right-column">
+                <div class="kind-of-profile" formGroupName="kindOfProfile">
+                    <p class="profile-header">Вид профиля</p>
+
+                    <select name="face" formArrayName="face">
+                        <option>Выбрать лицо</option>
+                        <option value="физическое лицо">Физическое лицо</option>
+                    </select>
+
+                    <select name="activityEconomy" formArrayName="activityEconomy">
+                        <option>Выбрать сферы деятельности</option>
+                        <option value="строительство">Строительство</option>
+                    </select>
+
+                    <select name="activityStandard" formArrayName="activityStandard">
+                        <option>Выбрать сферы деятельности</option>
+                        <option value="водопровод">Водопровод</option>
+                    </select>
+
+                    <select name="activityPremium" formArrayName="activityPremium">
+                        <option>Выбрать сферы деятельности</option>
+                        <option value="электрика">Электрика</option>
+                    </select>
+                </div>
+
+                <div class="region">
+                    <p>Регион:</p>
+                    <select name="region" formArrayName="region">
+                        <option value="SaintPeterburg">Санкт-Петербург</option>
+                        <option value="Moscow">Москва</option>
+                    </select>
+                </div>
+
+                <div class="city">
+                    <p>Город:</p>
+                    <select name="city" formArrayName="city">
+                        <option value="SaintPeterburg">Санкт-Петербург</option>
+                        <option value="Moscow">Москва</option>
+                    </select>
+                </div>
+
+                <div class="street">
+                    <p>Улица:</p>
+                    <input type="text" formControlName="street">
+                </div>
+
+                <div class="district">
+                    <p>Район:</p>
+                    <input type="text" formControlName="district">
+                </div>
+
+                <div class="metro">
+                    <p>Метро:</p>
+                    <input type="text" formControlName="metro">
+                </div>
+
+                <button type="submit" class="submit" [disabled]='form.invalid'>Сохранить</button>
+            </div>
+        </div>
+
+
+
+    </form>
+</div>

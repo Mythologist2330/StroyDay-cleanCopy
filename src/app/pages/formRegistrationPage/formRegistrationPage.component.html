@@ -1,0 +1,26 @@
+<div class="container">
+
+
+    <div class="radio-sections">
+
+        <p class="radio-section" [routerLink]="['/formRegistrationPage', 'registrBasicInfo']" routerLinkActive="active">Основная информация</p>
+
+        <p class="radio-section" [routerLink]="['/formRegistrationPage', 'registrRequisites']" routerLinkActive="active">Реквизиты</p>
+
+        <p class="radio-section" [routerLink]="['/formRegistrationPage']">Сотрудники</p>
+
+        <p class="radio-section" [routerLink]="['/formRegistrationPage']">Портфолио</p>
+
+        <p class="radio-section" [routerLink]="['/formRegistrationPage']">Документы</p>
+
+        <p class="radio-section" [routerLink]="['/formRegistrationPage']">Фото на сайте</p>
+
+    </div>
+
+
+
+
+
+    <router-outlet></router-outlet>
+
+</div>

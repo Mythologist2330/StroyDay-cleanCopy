@@ -1,0 +1,80 @@
+<div class="container">
+
+    <div class="p-and-btn">
+        <p>Новые заявки (47880)</p>
+
+        <button>Все заявки</button>
+    </div>
+
+    <div class="radio-btns">
+        <label>
+            <input type="radio" name="requests-cathegory" class="radio-btn-input" value="Поклеить обои">
+            <div class="radio-btn">Поклеить обои</div>
+        </label>
+
+        <label>
+            <input type="radio" name="requests-cathegory" class="radio-btn-input" value="Ремонт квартир">
+            <div class="radio-btn">Ремонт квартир</div>
+        </label>
+
+        <label>
+            <input type="radio" name="requests-cathegory" class="radio-btn-input" value="Дизайн интерьера">
+            <div class="radio-btn">Дизайн интерьера</div>
+        </label>
+
+        <label>
+            <input type="radio" name="requests-cathegory" class="radio-btn-input" value="Муж на час">
+            <div class="radio-btn">Муж на час</div>
+        </label>
+    </div>
+
+    <div class="applications">
+
+        <div *ngFor="let elem of arr" class="applications-card">
+            <div class="applications-card-header">
+                <p>{{elem.title}}</p>
+
+                <div class="applications-card-header-btns">
+                    <div class="applications-card-header-btns-elems">{{elem.price}}</div>
+
+                    <div class="applications-card-header-btns-elems">
+                        <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.5 14L6.45 12.9348C2.55 9.43478 0 7.07609 0 4.18478C0 1.82609 1.8 0 4.125 0C5.4 0 6.675 0.608695 7.5 1.59783C8.325 0.608695 9.6 0 10.875 0C13.2 0 15 1.82609 15 4.18478C15 7.07609 12.45 9.43478 8.55 12.9348L7.5 14Z" fill="#90A0B7"/>
+                        </svg>
+                    </div>
+
+                    <div class="applications-card-header-btns-elems">
+                        <svg width="11" height="15" viewBox="0 0 11 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 0H1C0.447715 0 0 0.447715 0 1V15L5.64865 9.33333L11 15V1C11 0.447715 10.5523 0 10 0Z" fill="#90A0B7"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="applications-card-description">{{elem.description}}</div>
+
+            <div class="applications-card-footer">
+                <div>{{elem.date}}</div>
+
+                <div class="applications-card-footer-elems">
+                    <div class="applications-card-footer-elem">
+                        <svg enable-background="new 0 0 32 32" id="Glyph" version="1.1" viewBox="0 0 32 32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M29.946,15.675C27.954,9.888,22.35,6,16,6S4.046,9.888,2.054,15.675c-0.072,0.21-0.072,0.44,0,0.65  C4.046,22.112,9.65,26,16,26s11.954-3.888,13.946-9.675C30.018,16.115,30.018,15.885,29.946,15.675z M16,22c-3.309,0-6-2.691-6-6  s2.691-6,6-6s6,2.691,6,6S19.309,22,16,22z" id="XMLID_320_"/>
+                        </svg>
+    
+                        <div>{{elem.views}}</div>
+                    </div>
+    
+                    <div class="applications-card-footer-elem">
+                        <svg id="Layer_1" style="enable-background:new 0 0 64 64;" version="1.1" viewBox="0 0 64 64" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style type="text/css">.st0{fill:#134563;}
+                        </style><g><g id="Icon-Comment" transform="translate(328.000000, 480.000000)"><path class="st0" d="M-310-425.6h-2.5l1.5-2.1c1.1-1.6,1.9-3.5,2.3-6c-7.1-3.2-10.9-9.2-10.9-17.1     c0-12.1,9.1-19.6,23.8-19.6c14.7,0,23.8,7.5,23.8,19.6c0,12.2-8.9,19.6-23.8,19.6c-0.3,0-0.7,0-1,0     C-299.2-428.6-303.2-425.6-310-425.6L-310-425.6z M-296-467.8c-13.3,0-21.2,6.3-21.2,17c0,9.1,5.6,13.2,10.2,15.1l0.9,0.4l-0.1,1     c-0.3,2.3-0.8,4.3-1.6,6c4.8-0.6,7.6-3,9.1-5l0.4-0.5l0.9,0c0.4,0,0.9,0,1.3,0c19.1,0,21.2-11.9,21.2-17     C-274.8-461.4-282.7-467.8-296-467.8L-296-467.8z" id="Fill-59"/></g></g>
+                        </svg>
+                        
+                        <div>{{elem.comments}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

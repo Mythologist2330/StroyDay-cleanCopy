@@ -1,0 +1,118 @@
+.container{
+    width: 1180px;
+    margin: auto;
+
+    .p-and-btn{
+        font-size: 1.4rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button{
+            width: 100px;
+            height: 50px;
+            background-color: #2F80ED;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+
+            &:focus{
+                outline: none;
+            }
+
+            &:active{
+                opacity: .8;
+            }
+        }
+    }
+
+    .radio-btns{
+        width: 550px;
+        height: 30px;
+        margin: 10px 0 40px 0;
+        display: flex;
+        justify-content: space-between;
+
+        .radio-btn-input{
+            display: none;
+        }
+
+        .radio-btn{
+            height: 100%;
+            padding: 0 10px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            border: 1px solid #DFE6F0;
+            border-radius: 12px;
+            color: #90A0B7;
+            transition: all .2s;
+            cursor: pointer;
+
+            &:hover{
+                border-color: #0D6FE3;
+                background-color: #0D6FE3;
+                color: #fff;
+            }
+        }
+    }
+
+    .applications{
+        height: 340px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .applications-card{
+            height: 120px;
+            flex: 0 0 48%;
+
+            .applications-card-header{
+                margin-bottom: 24px;
+                display: flex;
+                justify-content: space-between;
+                color: #334D6E;
+
+                .applications-card-header-btns{
+                    display: flex;
+
+                    .applications-card-header-btns-elems{
+                        margin-left: 20px;
+                    }
+                }
+            }
+
+            .applications-card-description{
+                margin-bottom: 22px;
+                font-size: .9rem;
+                color: #4D5259;
+            }
+
+            .applications-card-footer{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: .9rem;
+                color: #90A0B7;
+
+                .applications-card-footer-elems{
+                    display: flex;
+                    justify-content: space-between;
+                    
+                    .applications-card-footer-elem{
+                        margin-left: 40px;
+                        display: flex;
+                        align-items: center;
+                        
+                        svg{
+                            width: 26px;
+                            height: 20px;
+                            margin-right: 6px;
+                            opacity: .3;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
