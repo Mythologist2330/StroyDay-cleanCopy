@@ -13,6 +13,7 @@ import { ApplicationsComponent } from './pages/mainPage/components/applications/
 import { FormRegistrationPageComponent } from './pages/formRegistrationPage/formRegistrationPage.component';
 import { RegistrBasicInfoComponent } from './pages/formRegistrationPage/components/registrBasicInfo/registrBasicInfo.component';
 import { RegistrRequisitesComponent } from './pages/formRegistrationPage/components/registrRequisites/registrRequisites.component';
+import { PerformersPageComponent } from './pages/performersPage/performersPage.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,9 @@ import { RegistrRequisitesComponent } from './pages/formRegistrationPage/compone
 
     FormRegistrationPageComponent,
     RegistrBasicInfoComponent,
-    RegistrRequisitesComponent
+    RegistrRequisitesComponent,
+
+    PerformersPageComponent
   ],
   imports: [
     BrowserModule,

@@ -4,13 +4,17 @@ import { RegistrBasicInfoComponent } from './pages/formRegistrationPage/componen
 import { RegistrRequisitesComponent } from './pages/formRegistrationPage/components/registrRequisites/registrRequisites.component';
 import { FormRegistrationPageComponent } from './pages/formRegistrationPage/formRegistrationPage.component';
 import { MainPageComponent } from './pages/mainPage/mainPage.component';
+import { PerformersPageComponent } from './pages/performersPage/performersPage.component';
 
 const routes: Routes = [
   {path: '', component: MainPageComponent},
+
   {path: 'formRegistrationPage', component: FormRegistrationPageComponent, children: [
     {path: 'registrBasicInfo', component: RegistrBasicInfoComponent},
     {path: 'registrRequisites', component: RegistrRequisitesComponent}
-  ]}
+  ]},
+
+  {path: 'performersPage', component: PerformersPageComponent}
 ]
 
 @NgModule({
