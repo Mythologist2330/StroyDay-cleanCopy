@@ -1,11 +1,6 @@
-import { Component } from '@angular/core';
-
-export interface IPerformersCard{
-    gallery: Array<string>
-    logo: string
-    description: object
-    statistics: object
-}
+import { Component, OnInit } from '@angular/core';
+import { IPerformersCard } from 'src/app/interfaces/IPerformersCard';
+import { PerformersCardService } from 'src/app/services/performers-card.service';
 
 @Component({
     selector: 'app-performersPage',
@@ -13,75 +8,48 @@ export interface IPerformersCard{
     styleUrls: ['./performersPage.component.scss']
 })
 
-export class PerformersPageComponent{
+export class PerformersPageComponent implements OnInit{
 
-    performersCards: IPerformersCard[] = [
-        {
-            gallery: [
-                '../../../assets/images/living-room.performersPage.jpg',
-                '../../../assets/images/living-room.performersPage.jpg',
-                '../../../assets/images/living-room.performersPage.jpg',
-                '../../../assets/images/living-room.performersPage.jpg'
-            ],
+    performersCards: IPerformersCard[]
 
-            logo: '../../../assets/images/logo.performersPage.png',
 
-            description: {
-                header: 'Архитектурное бюро ZROBYM Architects',
-                rating: '5.0',
-                location: 'Москва, СВАО, ул. Тверская, д. 16, оф. 8',
-                metro: 'Щелковская',
-                activity: 'Оформление и дизайн',
-                contract: 'Работает по договору',
-                face: 'Юридичекое лицо',
-                info: 'Архитектурное бюро MS Architects специализируется на градостроительных концепциях, архитектурном...'
-            },
+    constructor (private performersCardService: PerformersCardService) {}
 
-            statistics: {
-                amountCompletedOrders: 356,
-                prices: 'Премиум',
-                rating: {
-                    likes: 211,
-                    dislikes: 4
-                },
-                ordersInProgress: 3,
-                online: 'Был в сети два дня назад'
+
+    next(elem, idx) {
+
+    }
+
+
+    ngOnInit() {
+        this.performersCardService.getAllPerformersCard().subscribe(
+            data => {
+                console.log(data)
+                this.performersCards = data
             }
-        },
+        )
+    }
 
-        {
-            gallery: [
-                '../../../assets/images/living-room.performersPage.jpg',
-                '../../../assets/images/living-room.performersPage.jpg',
-                '../../../assets/images/living-room.performersPage.jpg',
-                '../../../assets/images/living-room.performersPage.jpg'
-            ],
 
-            logo: '../../../assets/images/logo.performersPage.png',
 
-            description: {
-                header: 'Архитектурное бюро ZROBYM Architects',
-                rating: '5.0',
-                location: 'Москва, СВАО, ул. Тверская, д. 16, оф. 8',
-                metro: 'Щелковская',
-                activity: 'Оформление и дизайн',
-                contract: 'Работает по договору',
-                face: 'Юридичекое лицо',
-                info: 'Архитектурное бюро MS Architects специализируется на градостроительных концепциях, архитектурном...'
-            },
 
-            statistics: {
-                amountCompletedOrders: 356,
-                prices: 'Премиум',
-                rating: {
-                    likes: 211,
-                    dislikes: 4
-                },
-                ordersInProgress: 3,
-                online: 'Был в сети два дня назад'
-            }
-        }
-    ]
+
+
+
+
+
+    
+
+
+
+
+
+    openCloseMap = false
+
+
+
+
+
 
 
 
@@ -127,7 +95,6 @@ export class PerformersPageComponent{
     }
 
     openCloseCheckboxes(event) {
-        console.log(event)
 
         event.path.filter((checkboxesList) => {
             
@@ -145,5 +112,48 @@ export class PerformersPageComponent{
 
         })
     }
+
+
+
+    closeContainerFilters(event) {
+
+        event.path.filter((filters) => {
+
+            if (filters.className === 'filters') {
+                filters.style.left = '-110%'
+
+                for (let filtersButtons of filters.children) {
+                    if (filtersButtons.className === 'filters-buttons-reset-apply') {
+                        filtersButtons.style.display = 'none'
+
+                        console.log(event)
+                    }
+                }
+            }
+
+            if (filters.className === 'container') {
+
+                for (let overlay of filters.children) {
+
+                    if (overlay.className === 'overlay') {
+                        overlay.style.display = 'none'
+                    }
+
+                }
+
+            }
+
+            if (filters.localName === 'body') {
+                filters.style.overflow = 'auto'
+            }
+
+            if (filters.localName === 'html') {
+                filters.style.overflow = 'auto'
+            }
+
+        })
+    }
+
+
 
 }

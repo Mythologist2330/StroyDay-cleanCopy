@@ -14,6 +14,7 @@ import { FormRegistrationPageComponent } from './pages/formRegistrationPage/form
 import { RegistrBasicInfoComponent } from './pages/formRegistrationPage/components/registrBasicInfo/registrBasicInfo.component';
 import { RegistrRequisitesComponent } from './pages/formRegistrationPage/components/registrRequisites/registrRequisites.component';
 import { PerformersPageComponent } from './pages/performersPage/performersPage.component';
+import { HeaderFiltersAndSortingComponent } from './pages/performersPage/components/headerFiltersAndSorting/headerFiltersAndSorting.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PerformersPageComponent } from './pages/performersPage/performersPage.c
     RegistrBasicInfoComponent,
     RegistrRequisitesComponent,
 
-    PerformersPageComponent
+    PerformersPageComponent,
+    HeaderFiltersAndSortingComponent
   ],
   imports: [
     BrowserModule,
