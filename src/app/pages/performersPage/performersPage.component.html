@@ -1,4 +1,13 @@
-<app-headerFiltersAndSorting></app-headerFiltersAndSorting>
+<div class="container-header-filters-and-sorting">
+    <app-headerFiltersAndSorting [ngStyle]="{
+    position: shrinkHeader ? 'fixed' : 'static',
+    left: shrinkHeader ? '0' : 'auto',
+    right: shrinkHeader ? '0' : 'auto',
+    top: shrinkHeader ? '0' : 'auto',
+    'z-index': shrinkHeader ? '1110' : '0'
+}"></app-headerFiltersAndSorting>
+</div>
+
 
 <div class="container">
 
@@ -70,7 +79,7 @@
             <div class="field-click" (click)="openCloseFilter($event)"></div>
 
             <div class="filter-title">
-                <p>Категория</p>
+                <p>Услуги</p>
                 <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1.42 0.590087L6 5.17009L10.59 0.590088L12 2.00009L6 8.00009L-6.16331e-08 2.00009L1.42 0.590087Z" fill="#90A0B7"/>
                 </svg>
@@ -672,6 +681,37 @@
 
         <p class="selected-categories">Все категории исполнителей</p>
 
+        <div class="tags-search">
+            <div class="tag-search">
+                <p>Оформление и дизайн</p>
+
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle opacity="0.2" cx="12" cy="12" r="12" fill="#0D6FE3"/>
+                    <path d="M17 8.26213L15.7379 7L12 10.7379L8.26213 7L7 8.26213L10.7379 12L7 15.7379L8.26213 17L12 13.2621L15.7379 17L17 15.7379L13.2621 12L17 8.26213Z" fill="#334D6E"/>
+                </svg>
+            </div>
+
+            <div class="tag-search">
+                <p>Вентиляция</p>
+
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle opacity="0.2" cx="12" cy="12" r="12" fill="#0D6FE3"/>
+                    <path d="M17 8.26213L15.7379 7L12 10.7379L8.26213 7L7 8.26213L10.7379 12L7 15.7379L8.26213 17L12 13.2621L15.7379 17L17 15.7379L13.2621 12L17 8.26213Z" fill="#334D6E"/>
+                </svg>
+            </div>
+
+            <div class="tag-search">
+                <p>2.0 и выше</p>
+
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle opacity="0.2" cx="12" cy="12" r="12" fill="#0D6FE3"/>
+                    <path d="M17 8.26213L15.7379 7L12 10.7379L8.26213 7L7 8.26213L10.7379 12L7 15.7379L8.26213 17L12 13.2621L15.7379 17L17 15.7379L13.2621 12L17 8.26213Z" fill="#334D6E"/>
+                </svg>
+            </div>
+
+            <p class="reset-all-tags-search">Сбросить все фильтры</p>
+        </div>
+
         <div class="map">
             <div class="map-field-click" (click)="openCloseMap = !openCloseMap"></div>
 
@@ -700,7 +740,7 @@
         </div>
 
 
-        <!-- <div *ngFor="let performersCard of performersCards" class="performers-card">
+        <div *ngFor="let performersCard of performersCards" class="performers-card">
             <div class="gallery">
                 <div class="big-image">
                     <img [src]="performersCard.gallery[0]">
@@ -763,7 +803,7 @@
                         </div>
                     </div>
     
-                    <div class="description-elem description-location">
+                    <div class="description-elem description-location" (click)="moduleWindowMapLocation = true">
                         <svg width="16" height="18" viewBox="0 0 12 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M5.99996 8.58342C5.44743 8.58342 4.91752 8.36392 4.52682 7.97322C4.13612 7.58252 3.91663 7.05262 3.91663 6.50008C3.91663 5.94755 4.13612 5.41764 4.52682 5.02694C4.91752 4.63624 5.44743 4.41675 5.99996 4.41675C6.55249 4.41675 7.0824 4.63624 7.4731 5.02694C7.8638 5.41764 8.08329 5.94755 8.08329 6.50008C8.08329 6.77367 8.02941 7.04458 7.92471 7.29734C7.82001 7.5501 7.66655 7.77977 7.4731 7.97322C7.27964 8.16668 7.04998 8.32013 6.79722 8.42483C6.54446 8.52953 6.27355 8.58342 5.99996 8.58342ZM5.99996 0.666748C4.45286 0.666748 2.96913 1.28133 1.87517 2.37529C0.781208 3.46925 0.166626 4.95299 0.166626 6.50008C0.166626 10.8751 5.99996 17.3334 5.99996 17.3334C5.99996 17.3334 11.8333 10.8751 11.8333 6.50008C11.8333 4.95299 11.2187 3.46925 10.1248 2.37529C9.03079 1.28133 7.54706 0.666748 5.99996 0.666748Z" fill="#90A0B7"/>
                         </svg>
@@ -852,7 +892,7 @@
                     <hr>
     
                     <div class="statistic">
-                        <p>Заказов на работе</p>
+                        <p>Заказов в работе</p>
                         <p class="value">{{ performersCard.statistics.ordersInProgress }}</p>
                     </div>
     
@@ -874,7 +914,17 @@
                     <p class="online">{{ performersCard.statistics.online }}</p>
                 </div>
             </div>
-        </div> -->
+        </div>
+
+
+        <div class="performers-not-found">
+            <svg width="134" height="94" viewBox="0 0 134 94" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M97.0002 47C99.1889 47 101.356 46.569 103.378 45.7314C105.4 44.8938 107.238 43.6661 108.785 42.1185C110.333 40.5709 111.561 38.7335 112.398 36.7114C113.236 34.6893 113.667 32.5221 113.667 30.3334C113.667 25.9131 111.911 21.6739 108.785 18.5483C105.66 15.4227 101.42 13.6667 97.0002 13.6667C92.5799 13.6667 88.3407 15.4227 85.2151 18.5483C82.0894 21.6739 80.3335 25.9131 80.3335 30.3334C80.3335 32.5221 80.7646 34.6893 81.6022 36.7114C82.4398 38.7335 83.6674 40.5709 85.2151 42.1185C88.3407 45.2441 92.5799 47 97.0002 47ZM47.0002 40.3334C52.3045 40.3334 57.3916 38.2262 61.1423 34.4755C64.893 30.7248 67.0002 25.6377 67.0002 20.3334C67.0002 15.029 64.893 9.94197 61.1423 6.19124C57.3916 2.44051 52.3045 0.333374 47.0002 0.333374C41.6958 0.333374 36.6088 2.44051 32.858 6.19124C29.1073 9.94197 27.0002 15.029 27.0002 20.3334C27.0002 25.6377 29.1073 30.7248 32.858 34.4755C36.6088 38.2262 41.6958 40.3334 47.0002 40.3334ZM97.0002 60.3334C84.8002 60.3334 60.3335 66.4667 60.3335 78.6667V93.6667H133.667V78.6667C133.667 66.4667 109.2 60.3334 97.0002 60.3334ZM47.0002 53.6667C31.4668 53.6667 0.333496 61.4667 0.333496 77.0001V93.6667H47.0002V78.6667C47.0002 73 49.2002 63.0667 62.8002 55.5334C57.0002 54.3334 51.4002 53.6667 47.0002 53.6667Z" fill="#8594A8"/>
+            </svg>
+
+            <p class="performers-not-found-p">Исполнители не найдены</p>
+            <p class="try-adjust-filter">Попробуйте скорректировать фильтр</p>
+        </div>
 
 
         <div class="pager">
@@ -902,7 +952,19 @@
 
 
 
-    <div class="overlay"></div>
+
+    <div class="module-window-map-location" [ngStyle]="{display: moduleWindowMapLocation ? 'block' : 'none'}">
+        <p>Организация на карте</p>
+
+        <div class="module-window-map-location-map"></div>
+
+        <svg (click)="moduleWindowMapLocation = false" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 1.26213L8.73787 0L5 3.73787L1.26213 0L0 1.26213L3.73787 5L0 8.73787L1.26213 10L5 6.26213L8.73787 10L10 8.73787L6.26213 5L10 1.26213Z" fill="#8594A8"/>
+        </svg>
+    </div>
+
+
+    <div class="overlay" [ngStyle]="{display: moduleWindowMapLocation ? 'block' : 'none'}"></div>
 
 
 </div>

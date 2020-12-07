@@ -25,7 +25,12 @@ export class HeaderFiltersAndSortingComponent{
 
                         for (let filtersButtons of containerFilters.children) {
                             if (filtersButtons.className === 'filters-buttons-reset-apply') {
-                                filtersButtons.style.display = 'flex'
+
+                                if (event.view.innerWidth <= 767) {
+                                    filtersButtons.style.display = 'flex'
+                                    console.log(event.view.innerWidth)
+                                }
+
                             }
                         }
                         
@@ -45,11 +50,6 @@ export class HeaderFiltersAndSortingComponent{
 
                 }
 
-            }
-
-
-            if (filters.localName === 'app-headerfiltersandsorting') {
-                console.log(filters)
             }
 
 

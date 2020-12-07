@@ -4,19 +4,17 @@
         <div class="navbar-block">
             <div class="navbar">
                 <div class="nav-columns">
+
                     <div class="nav-column">
-                        <div class="burger">
-                            <div class="burger-lines"></div>
-                        </div>
+                        <img src="../../../assets/images/burger-lines.png">
                         <p>Товары</p>
                     </div>
                     
                     <div class="nav-column">
-                        <div class="burger">
-                            <div class="burger-lines"></div>
-                        </div>
+                        <img src="../../../assets/images/burger-lines.png">
                         <p>Услуги</p>
                     </div>
+
                 </div>
     
                 <div class="menu">
@@ -25,8 +23,12 @@
                     <p class="menu-list" routerLink="/performersPage">Исполнители</p>
                     <p class="menu-list">Калькуляторы</p>
                     <p class="menu-list">Документы</p>
-                    <p class="menu-list">фото</p>
-                    <p class="menu-list">База знаний</p>
+                    <p class="menu-list">
+                        Ещё
+                        <svg width="9" height="7" viewBox="0 0 9 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.52003 0.64312L0 2.09839L2.96685 5.26957L2.95453 5.28113L4.08865 6.46862L4.26104 6.65289L4.26292 6.65109L4.2644 6.65264L8.96423 2.24315L7.65436 0.871635L4.5014 3.82982L1.52003 0.64312Z" fill="#90A0B7"/>
+                        </svg>
+                    </p>
                 </div>
     
                 <button class="btn-are-you-performer" routerLink="/formRegistrationPage">Вы исполнитель?</button>
@@ -36,7 +38,7 @@
 
     <div class="nav-links">
 
-        <div class="column">
+        <div class="column column-customer">
             <h3>Заказчику</h3>
 
             <p>Регистрация</p>
@@ -46,7 +48,7 @@
             <p>Документация по заказу</p>
         </div>
 
-        <div class="column">
+        <div class="column column-performer">
             <h3>Исполнителю</h3>
 
             <p>Регистрация</p>
@@ -57,7 +59,7 @@
             <p>Найти сотрудника</p>
         </div>
 
-        <div class="column">
+        <div class="column column-categories">
             <h3>Категории</h3>
 
             <p>Проектирование</p>
@@ -72,7 +74,7 @@
             <p>Стройматериалы</p>
         </div>
 
-        <div class="column">
+        <div class="column column-service">
             <h3>Сервис</h3>
 
             <p>О компании</p>
@@ -87,7 +89,7 @@
             <p>Контакты</p>
         </div>
 
-        <div class="column">
+        <div class="column column-knowledge-base">
             <h3>База знаний</h3>
 
             <p>Регламенты</p>
@@ -99,15 +101,16 @@
             <p>Полезные ссылки</p>
         </div>
 
-        <div class="column">
+        <div class="column column-contact">
             <h3>Связаться</h3>
 
-            <p>
+            <p class="column-contact-tel">
                 <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.5 0C3.35729 0 0 3.35729 0 7.5C0 11.6427 3.35729 15 7.5 15C11.6427 15 15 11.6427 15 7.5C15 3.35729 11.6427 0 7.5 0ZM8.62423 11.1345C5.37474 9.53285 4.52772 6.65298 4.40452 5.60575C4.28131 4.55852 6.09856 3.6345 6.09856 3.6345L7.23819 5.57495C7.23819 5.57495 6.00616 6.23717 6.17557 6.59138C7.08419 8.50103 8.25462 9.20945 8.25462 9.20945C8.63963 9.34805 9.48665 8.40862 9.48665 8.40862L11.1191 9.94867C11.1345 9.94867 9.76386 11.6889 8.62423 11.1345Z" fill="#334D6E"/>
                 </svg> +7 (495) 000-00-00
             </p>
-            <p>info@mail.ru <br> по всем вопросам</p>
+
+            <p class="column-contact-email">info@mail.ru <br> по всем вопросам</p>
 
             <div class="contact-us">
                 <p>Следи за нами:</p>
@@ -131,19 +134,12 @@
 
     <div class="black-block">
         <div class="content">
-            <p>Конфиденциальность</p>
+            <p class="confidentiality">Конфиденциальность</p>
+            <p class="your-city">Ваш город:</p>
+            <p class="city">Москва</p>
+            <p class="follow-news">Будь в курсе наших новостей!</p>
 
-            <div class="select-city">
-                <p>Ваш город:</p>
-                <select name="city">
-                    <option value="Moscow">Москва</option>
-                    <option value="SaintPeterburg">Санкт-Петербург</option>
-                </select>
-            </div>
-
-            <p>Будь в курсе наших новостей!</p>
-
-            <input type="text" placeholder="Введите ваш e-mail">
+            <input type="text" placeholder="Укажите ваш e-mail">
 
             <button class="btn-subscribe">Подписаться</button>
         </div>

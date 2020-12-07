@@ -10,44 +10,87 @@ import { PerformersCardService } from 'src/app/services/performers-card.service'
 
 export class PerformersPageComponent implements OnInit{
 
-    performersCards: IPerformersCard[]
-
-
-    constructor (private performersCardService: PerformersCardService) {}
-
-
-    next(elem, idx) {
-
-    }
-
-
-    ngOnInit() {
-        this.performersCardService.getAllPerformersCard().subscribe(
-            data => {
-                console.log(data)
-                this.performersCards = data
-            }
-        )
-    }
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
     openCloseMap = false
 
+    moduleWindowMapLocation: boolean = false
+
+    shrinkHeader: boolean = false;
+
+    decreaseFieldClick: boolean = false
 
 
+
+
+
+    performersCards: IPerformersCard[] = [
+        {
+            gallery: [
+                '../../../assets/images/living-room.performersPage.jpg',
+                '../../../assets/images/living-room.performersPage.jpg',
+                '../../../assets/images/living-room.performersPage.jpg',
+                '../../../assets/images/living-room.performersPage.jpg'
+            ],
+
+            logo: '../../../assets/images/logo.performersPage.png',
+
+            description: {
+                header: 'Архитектурное бюро ZROBYM Architects',
+                rating: '5.0',
+                location: 'Москва, СВАО, ул. Тверская, д. 16, оф. 8',
+                metro: 'Щелковская',
+                activity: 'Оформление и дизайн',
+                contract: 'Работает по договору',
+                face: 'Юридическое лицо',
+                info: 'Архитектурное бюро MS Architects специализируется на градостроительных концепциях, архитектурном...'
+            },
+
+            statistics: {
+                amountCompletedOrders: 356,
+                prices: 'Премиум',
+                rating: {
+                    likes: 211,
+                    dislikes: 4
+                },
+                ordersInProgress: 3,
+                online: 'Был на сайте два дня назад'
+            }
+        },
+
+        {
+            gallery: [
+                '../../../assets/images/living-room.performersPage.jpg',
+                '../../../assets/images/living-room.performersPage.jpg',
+                '../../../assets/images/living-room.performersPage.jpg',
+                '../../../assets/images/living-room.performersPage.jpg'
+            ],
+
+            logo: '../../../assets/images/logo.performersPage.png',
+
+            description: {
+                header: 'Москранстрой сервис — почасовая аренда спецтехники',
+                rating: '4.0',
+                location: 'Москва, СВАО, ул. Тверская, д. 16, оф. 8',
+                metro: 'Щелковская',
+                activity: 'Спецтехника',
+                contract: 'Работает по договору',
+                face: 'Юридичекое лицо',
+                info: 'Аренда строительной и дорожной спецтехники JCB, Komatsu, Caterpillar в компании Транскар на выгодных условиях'
+            },
+
+            statistics: {
+                amountCompletedOrders: 356,
+                prices: 'Премиум',
+                rating: {
+                    likes: 211,
+                    dislikes: 4
+                },
+                ordersInProgress: 3,
+                online: 'Был на сайте два дня назад'
+            }
+        }
+    ]
+
+    
 
 
 
@@ -67,8 +110,21 @@ export class PerformersPageComponent implements OnInit{
 
                         if (child.style.display === 'block') {
                             child.style.display = 'none'
+
+                            for (let fieldClick of filter.children) {
+                                if (fieldClick.className === 'field-click') {
+                                    fieldClick.style.height = '56px'
+                                }
+                            }
+
                         } else {
                             child.style.display = 'block'
+
+                            for (let fieldClick of filter.children) {
+                                if (fieldClick.className === 'field-click') {
+                                    fieldClick.style.height = '52px'
+                                }
+                            }
                         }
                     }
 
@@ -120,13 +176,11 @@ export class PerformersPageComponent implements OnInit{
         event.path.filter((filters) => {
 
             if (filters.className === 'filters') {
-                filters.style.left = '-110%'
+                filters.style.left = '-100%'
 
                 for (let filtersButtons of filters.children) {
                     if (filtersButtons.className === 'filters-buttons-reset-apply') {
                         filtersButtons.style.display = 'none'
-
-                        console.log(event)
                     }
                 }
             }
@@ -154,6 +208,28 @@ export class PerformersPageComponent implements OnInit{
         })
     }
 
+
+
+
+
+
+
+
+
+
+    ngOnInit() {
+        this.animateHeader();
+    }
+   
+    animateHeader() {
+        window.onscroll = () => {
+        if (window.pageYOffset > 100) {
+            this.shrinkHeader  = true;
+        } else {
+            this.shrinkHeader  = false;
+        }
+        }
+    }
 
 
 }
