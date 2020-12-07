@@ -185,7 +185,7 @@ export class PerformersPageComponent implements OnInit{
                 }
             }
 
-            if (filters.className === 'container') {
+            if (filters.className === 'container container-performers-page') {
 
                 for (let overlay of filters.children) {
 
@@ -223,11 +223,11 @@ export class PerformersPageComponent implements OnInit{
    
     animateHeader() {
         window.onscroll = () => {
-        if (window.pageYOffset > 100) {
-            this.shrinkHeader  = true;
-        } else {
-            this.shrinkHeader  = false;
-        }
+            if (window.pageYOffset > 100) {
+                this.shrinkHeader  = true;
+            } else {
+                this.shrinkHeader  = false;
+            }
         }
     }
 

@@ -28,7 +28,6 @@ export class HeaderFiltersAndSortingComponent{
 
                                 if (event.view.innerWidth <= 767) {
                                     filtersButtons.style.display = 'flex'
-                                    console.log(event.view.innerWidth)
                                 }
 
                             }
