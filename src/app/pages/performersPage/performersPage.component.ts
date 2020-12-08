@@ -1,3 +1,4 @@
+import { IcuPlaceholder } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
 import { IPerformersCard } from 'src/app/interfaces/IPerformersCard';
 import { PerformersCardService } from 'src/app/services/performers-card.service';
@@ -10,177 +11,81 @@ import { PerformersCardService } from 'src/app/services/performers-card.service'
 
 export class PerformersPageComponent implements OnInit{
 
-    openCloseMap = false
+    constructor(private cardSrv: PerformersCardService) {}
 
-    moduleWindowMapLocation: boolean = false
+    openCloseMap = false;
+    moduleWindowMapLocation = false;
+    shrinkHeader = false;
+    decreaseFieldClick = false;
+    performersCards: IPerformersCard[] = [];
 
-    shrinkHeader: boolean = false;
-
-    decreaseFieldClick: boolean = false
-
-
-
-
-
-    performersCards: IPerformersCard[] = [
-        {
-            gallery: [
-                '../../../assets/images/living-room.performersPage.jpg',
-                '../../../assets/images/living-room.performersPage.jpg',
-                '../../../assets/images/living-room.performersPage.jpg',
-                '../../../assets/images/living-room.performersPage.jpg'
-            ],
-
-            logo: '../../../assets/images/logo.performersPage.png',
-
-            description: {
-                header: 'Архитектурное бюро ZROBYM Architects',
-                rating: '5.0',
-                location: 'Москва, СВАО, ул. Тверская, д. 16, оф. 8',
-                metro: 'Щелковская',
-                activity: 'Оформление и дизайн',
-                contract: 'Работает по договору',
-                face: 'Юридическое лицо',
-                info: 'Архитектурное бюро MS Architects специализируется на градостроительных концепциях, архитектурном...'
-            },
-
-            statistics: {
-                amountCompletedOrders: 356,
-                prices: 'Премиум',
-                rating: {
-                    likes: 211,
-                    dislikes: 4
-                },
-                ordersInProgress: 3,
-                online: 'Был на сайте два дня назад'
-            }
-        },
-
-        {
-            gallery: [
-                '../../../assets/images/living-room.performersPage.jpg',
-                '../../../assets/images/living-room.performersPage.jpg',
-                '../../../assets/images/living-room.performersPage.jpg',
-                '../../../assets/images/living-room.performersPage.jpg'
-            ],
-
-            logo: '../../../assets/images/logo.performersPage.png',
-
-            description: {
-                header: 'Москранстрой сервис — почасовая аренда спецтехники',
-                rating: '4.0',
-                location: 'Москва, СВАО, ул. Тверская, д. 16, оф. 8',
-                metro: 'Щелковская',
-                activity: 'Спецтехника',
-                contract: 'Работает по договору',
-                face: 'Юридичекое лицо',
-                info: 'Аренда строительной и дорожной спецтехники JCB, Komatsu, Caterpillar в компании Транскар на выгодных условиях'
-            },
-
-            statistics: {
-                amountCompletedOrders: 356,
-                prices: 'Премиум',
-                rating: {
-                    likes: 211,
-                    dislikes: 4
-                },
-                ordersInProgress: 3,
-                online: 'Был на сайте два дня назад'
-            }
-        }
-    ]
-
-    
-
-
-
-
-
-    openCloseFilter(event) {
+    openCloseFilter(event): void {
 
         event.path.filter((filter) => {
-
             if (filter.className === 'filter') {
-
-
-
                 for (let child of filter.children) {
-
                     if (child.className === 'filter-inner') {
 
                         if (child.style.display === 'block') {
-                            child.style.display = 'none'
+                            child.style.display = 'none';
 
                             for (let fieldClick of filter.children) {
                                 if (fieldClick.className === 'field-click') {
-                                    fieldClick.style.height = '56px'
+                                    fieldClick.style.height = '56px';
                                 }
                             }
 
                         } else {
-                            child.style.display = 'block'
+                            child.style.display = 'block';
 
                             for (let fieldClick of filter.children) {
                                 if (fieldClick.className === 'field-click') {
-                                    fieldClick.style.height = '52px'
+                                    fieldClick.style.height = '52px';
                                 }
                             }
                         }
                     }
-
                 }
-
-
 
                 for (let arrow of filter.children) {
-                                
                     if (arrow.className === 'filter-title') {
                         if (arrow.children[1].style.transform === 'rotate(-180deg)') {
-                            arrow.children[1].style.transform = 'none'
+                            arrow.children[1].style.transform = 'none';
                         } else {
-                            arrow.children[1].style.transform = 'rotate(-180deg)'
+                            arrow.children[1].style.transform = 'rotate(-180deg)';
                         }
                     }
                 }
-
-
-
             }
-
-        })
+        });
     }
 
-    openCloseCheckboxes(event) {
+    openCloseCheckboxes(event): void {
 
         event.path.filter((checkboxesList) => {
-            
             if (checkboxesList.className === 'checkboxes-list') {
-                
+
                 if (checkboxesList.children[1].style.display === 'block') {
-                    checkboxesList.children[1].style.display = 'none'
-                    checkboxesList.children[0].children[0].style.transform = 'rotate(-90deg)'
+                    checkboxesList.children[1].style.display = 'none';
+                    checkboxesList.children[0].children[0].style.transform = 'rotate(-90deg)';
                 } else {
-                    checkboxesList.children[1].style.display = 'block'
-                    checkboxesList.children[0].children[0].style.transform = 'none'
+                    checkboxesList.children[1].style.display = 'block';
+                    checkboxesList.children[0].children[0].style.transform = 'none';
                 }
-
             }
-
-        })
+        });
     }
 
-
-
-    closeContainerFilters(event) {
+    closeContainerFilters(event): void {
 
         event.path.filter((filters) => {
 
             if (filters.className === 'filters') {
-                filters.style.left = '-100%'
+                filters.style.left = '-100%';
 
                 for (let filtersButtons of filters.children) {
                     if (filtersButtons.className === 'filters-buttons-reset-apply') {
-                        filtersButtons.style.display = 'none'
+                        filtersButtons.style.display = 'none';
                     }
                 }
             }
@@ -190,46 +95,38 @@ export class PerformersPageComponent implements OnInit{
                 for (let overlay of filters.children) {
 
                     if (overlay.className === 'overlay') {
-                        overlay.style.display = 'none'
+                        overlay.style.display = 'none';
                     }
-
                 }
-
             }
 
             if (filters.localName === 'body') {
-                filters.style.overflow = 'auto'
+                filters.style.overflow = 'auto';
             }
 
             if (filters.localName === 'html') {
-                filters.style.overflow = 'auto'
+                filters.style.overflow = 'auto';
             }
-
-        })
+        });
     }
 
-
-
-
-
-
-
-
-
-
-    ngOnInit() {
-        this.animateHeader();
-    }
-   
-    animateHeader() {
+    animateHeader(): void {
         window.onscroll = () => {
             if (window.pageYOffset > 100) {
                 this.shrinkHeader  = true;
             } else {
                 this.shrinkHeader  = false;
             }
-        }
+        };
     }
 
-
+    ngOnInit(): void {
+        this.cardSrv.getAllPerformersCard()
+            .subscribe((cards) => {
+                this.performersCards = cards;
+                console.log('Данные вывелись из БД! Заебись!');
+                console.log(cards);
+            });
+        this.animateHeader();
+    }
 }
