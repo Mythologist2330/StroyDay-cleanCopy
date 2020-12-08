@@ -7,7 +7,7 @@ import { MainPageComponent } from './pages/mainPage/mainPage.component';
 import { PerformersPageComponent } from './pages/performersPage/performersPage.component';
 
 const routes: Routes = [
-  {path: '', component: MainPageComponent},
+  {path: '', component: PerformersPageComponent},
 
   {path: 'formRegistrationPage', component: FormRegistrationPageComponent, children: [
     {path: 'registrBasicInfo', component: RegistrBasicInfoComponent},
