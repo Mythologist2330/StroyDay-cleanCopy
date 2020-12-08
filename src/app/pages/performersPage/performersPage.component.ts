@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { IPerformersCard } from 'src/app/interfaces/IPerformersCard';
-import { PerformersCardService } from 'src/app/services/performers-card.service';
 
 @Component({
     selector: 'app-performersPage',
@@ -10,13 +9,11 @@ import { PerformersCardService } from 'src/app/services/performers-card.service'
 
 export class PerformersPageComponent implements OnInit{
 
-    openCloseMap = false
+    openCloseMap: boolean = false
 
     moduleWindowMapLocation: boolean = false
 
     shrinkHeader: boolean = false;
-
-    decreaseFieldClick: boolean = false
 
 
 
@@ -36,6 +33,12 @@ export class PerformersPageComponent implements OnInit{
             description: {
                 header: 'Архитектурное бюро ZROBYM Architects',
                 rating: '5.0',
+                discount: '-15%',
+                serviceClass: [
+                    {name: 'эконом', color: '#F8601F'},
+                    {name: 'стандарт', color: '#0D6FE3'},
+                    {name: 'премиум', color: '#9F8C66'}
+                ],
                 location: 'Москва, СВАО, ул. Тверская, д. 16, оф. 8',
                 metro: 'Щелковская',
                 activity: 'Оформление и дизайн',
@@ -67,8 +70,11 @@ export class PerformersPageComponent implements OnInit{
             logo: '../../../assets/images/logo.performersPage.png',
 
             description: {
-                header: 'Москранстрой сервис — почасовая аренда спецтехники',
-                rating: '4.0',
+                header: 'Архитектурное бюро ZROBYM Architects',
+                rating: '5.0',
+                serviceClass: [
+                    {name: 'эконом', color: '#F8601F'}
+                ],
                 location: 'Москва, СВАО, ул. Тверская, д. 16, оф. 8',
                 metro: 'Щелковская',
                 activity: 'Спецтехника',
@@ -91,10 +97,6 @@ export class PerformersPageComponent implements OnInit{
     ]
 
     
-
-
-
-
 
     openCloseFilter(event) {
 
@@ -209,11 +211,31 @@ export class PerformersPageComponent implements OnInit{
     }
 
 
+    addToFavorites(event) {
+        event.path.filter((buttonContainer) => {
 
+            if (buttonContainer.className === 'add-to-favorites') {
+                for (let button of buttonContainer.children) {
+                    if (button.classList[0] === 'button-removed-from-favorites') {
+                        if (button.style.display === 'none') {
+                            button.style.display = 'block'
+                        } else {
+                            button.style.display = 'none'
+                        }
+                    }
+        
+                    if (button.classList[0] === 'button-added-to-favorites') {
+                        if (button.style.display === 'block') {
+                            button.style.display = 'none'
+                        } else {
+                            button.style.display = 'block'
+                        }
+                    }
+                }
+            }
 
-
-
-
+        })
+    }
 
 
 

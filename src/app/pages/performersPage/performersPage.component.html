@@ -802,6 +802,16 @@
                             </svg>
                         </div>
                     </div>
+
+                    <div class="description-discount">{{ performersCard.description.discount }}</div>
+
+                    <div class="description-service-class">
+                        <div *ngFor="let serviceClass of performersCard.description.serviceClass">
+                            <p
+                                [style]="{color: serviceClass.color}"
+                            >{{ serviceClass.name }}</p>
+                        </div>
+                    </div>
     
                     <div class="description-elem description-location" (click)="moduleWindowMapLocation = true">
                         <svg width="16" height="18" viewBox="0 0 12 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -904,9 +914,14 @@
                             </svg>
                             Написать
                         </button>
-                        <button class="add-to-favorites">
-                            <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <button class="add-to-favorites" (click)="addToFavorites($event)">
+                            <svg class="button-removed-from-favorites" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 0C12.5304 0 13.0391 0.210714 13.4142 0.585786C13.7893 0.960859 14 1.46957 14 2V18L7 15L0 18V2C0 0.89 0.9 0 2 0H12Z" fill="#90A0B7"/>
+                            </svg>
+
+                            <svg class="button-added-to-favorites" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 3H7C5.9 3 5 3.9 5 5V21L12 18L19 21V5C19 3.9 18.1 3 17 3Z" fill="#46AA32"/>
+                                <path d="M8.06055 11.0701L9.47055 9.65015L11.0005 11.1801L14.7805 7.40015L16.1905 8.82015L11.0005 14.0001L8.06055 11.0701Z" fill="white"/>
                             </svg>
                         </button>
                     </div>
