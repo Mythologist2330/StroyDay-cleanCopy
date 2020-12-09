@@ -19,6 +19,26 @@ export class PerformersPageComponent implements OnInit{
     performersCards: IPerformersCard[] = [];
 
 
+    openLocationMap(event) {
+        
+        event.path.filter((htmlAndBody) => {
+            if (htmlAndBody.localName === 'html') {
+                if (htmlAndBody.style.overflow === 'hidden') {
+                    htmlAndBody.style.overflow = 'auto'
+                } else {
+                    htmlAndBody.style.overflow = 'hidden'
+                }
+            }
+
+            if (htmlAndBody.localName === 'body') {
+                if (htmlAndBody.style.overflow === 'hidden') {
+                    htmlAndBody.style.overflow = 'auto'
+                } else {
+                    htmlAndBody.style.overflow = 'hidden'
+                }
+            }
+        })
+    }
 
 
     openCloseFilter(event): void {
@@ -113,7 +133,7 @@ export class PerformersPageComponent implements OnInit{
         });
     }
 
-    addToFavorites(event) {
+    addToFavorites(event): void {
         event.path.filter((buttonContainer) => {
 
             if (buttonContainer.className === 'add-to-favorites') {
@@ -155,7 +175,6 @@ export class PerformersPageComponent implements OnInit{
         this.cardSrv.getAllPerformersCard()
             .subscribe((cards) => {
                 this.performersCards = cards;
-                console.log('Данные вывелись из БД! Заебись!');
                 console.log(cards);
             });
         this.animateHeader();

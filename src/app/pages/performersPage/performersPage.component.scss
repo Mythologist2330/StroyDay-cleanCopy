@@ -954,6 +954,10 @@
                             flex: 0 0 24%;
                             background-color: #F7F9FB;
                             border: 1px solid #C3CBD6;
+
+                            .button-added-to-favorites{
+                                display: none;
+                            }
                         }
                     }
 
@@ -1244,6 +1248,15 @@
                 }
             }
         }
+
+        .module-window-map-location{
+            max-width: 738px;
+            top: 40%;
+
+            .module-window-map-location-map{
+                width: 690px;
+            }
+        }
     }
 
 }
@@ -1473,10 +1486,6 @@
                                 margin: 0;
                                 border: none;
                                 background-color: #fff;
-
-                                .button-added-to-favorites{
-                                    display: none;
-                                }
                             }
                         }
 

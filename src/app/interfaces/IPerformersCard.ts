@@ -5,6 +5,11 @@ export interface IPerformersCard{
     description: {
         header: string;
         rating: string;
+        discount: string;
+        serviceClass: [{
+            name: string;
+            color: string;
+        }];
         location: string;
         metro: string;
         activity: string;
