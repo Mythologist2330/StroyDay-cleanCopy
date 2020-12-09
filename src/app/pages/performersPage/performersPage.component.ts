@@ -1,6 +1,6 @@
-import { IcuPlaceholder } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
 import { IPerformersCard } from 'src/app/interfaces/IPerformersCard';
+import { PerformersCardService } from 'src/app/services/performers-card.service';
 
 @Component({
     selector: 'app-performersPage',
@@ -10,109 +10,18 @@ import { IPerformersCard } from 'src/app/interfaces/IPerformersCard';
 
 export class PerformersPageComponent implements OnInit{
 
-<<<<<<< HEAD
-    openCloseMap: boolean = false
-=======
     constructor(private cardSrv: PerformersCardService) {}
->>>>>>> origin/firestart
 
-    openCloseMap = false;
-    moduleWindowMapLocation = false;
-    shrinkHeader = false;
-    decreaseFieldClick = false;
+    openCloseMap: boolean = false;
+    moduleWindowMapLocation: boolean = false;
+    shrinkHeader: boolean = false;
+    decreaseFieldClick: boolean = false;
     performersCards: IPerformersCard[] = [];
 
-<<<<<<< HEAD
-    shrinkHeader: boolean = false;
 
 
 
-
-
-    performersCards: IPerformersCard[] = [
-        {
-            gallery: [
-                '../../../assets/images/living-room.performersPage.jpg',
-                '../../../assets/images/living-room.performersPage.jpg',
-                '../../../assets/images/living-room.performersPage.jpg',
-                '../../../assets/images/living-room.performersPage.jpg'
-            ],
-
-            logo: '../../../assets/images/logo.performersPage.png',
-
-            description: {
-                header: 'Архитектурное бюро ZROBYM Architects',
-                rating: '5.0',
-                discount: '-15%',
-                serviceClass: [
-                    {name: 'эконом', color: '#F8601F'},
-                    {name: 'стандарт', color: '#0D6FE3'},
-                    {name: 'премиум', color: '#9F8C66'}
-                ],
-                location: 'Москва, СВАО, ул. Тверская, д. 16, оф. 8',
-                metro: 'Щелковская',
-                activity: 'Оформление и дизайн',
-                contract: 'Работает по договору',
-                face: 'Юридическое лицо',
-                info: 'Архитектурное бюро MS Architects специализируется на градостроительных концепциях, архитектурном...'
-            },
-
-            statistics: {
-                amountCompletedOrders: 356,
-                prices: 'Премиум',
-                rating: {
-                    likes: 211,
-                    dislikes: 4
-                },
-                ordersInProgress: 3,
-                online: 'Был на сайте два дня назад'
-            }
-        },
-
-        {
-            gallery: [
-                '../../../assets/images/living-room.performersPage.jpg',
-                '../../../assets/images/living-room.performersPage.jpg',
-                '../../../assets/images/living-room.performersPage.jpg',
-                '../../../assets/images/living-room.performersPage.jpg'
-            ],
-
-            logo: '../../../assets/images/logo.performersPage.png',
-
-            description: {
-                header: 'Архитектурное бюро ZROBYM Architects',
-                rating: '5.0',
-                serviceClass: [
-                    {name: 'эконом', color: '#F8601F'}
-                ],
-                location: 'Москва, СВАО, ул. Тверская, д. 16, оф. 8',
-                metro: 'Щелковская',
-                activity: 'Спецтехника',
-                contract: 'Работает по договору',
-                face: 'Юридичекое лицо',
-                info: 'Аренда строительной и дорожной спецтехники JCB, Komatsu, Caterpillar в компании Транскар на выгодных условиях'
-            },
-
-            statistics: {
-                amountCompletedOrders: 356,
-                prices: 'Премиум',
-                rating: {
-                    likes: 211,
-                    dislikes: 4
-                },
-                ordersInProgress: 3,
-                online: 'Был на сайте два дня назад'
-            }
-        }
-    ]
-
-    
-
-    openCloseFilter(event) {
-=======
     openCloseFilter(event): void {
->>>>>>> origin/firestart
-
         event.path.filter((filter) => {
             if (filter.className === 'filter') {
                 for (let child of filter.children) {
@@ -152,6 +61,7 @@ export class PerformersPageComponent implements OnInit{
         });
     }
 
+
     openCloseCheckboxes(event): void {
 
         event.path.filter((checkboxesList) => {
@@ -167,6 +77,7 @@ export class PerformersPageComponent implements OnInit{
             }
         });
     }
+
 
     closeContainerFilters(event): void {
 
@@ -202,8 +113,6 @@ export class PerformersPageComponent implements OnInit{
         });
     }
 
-<<<<<<< HEAD
-
     addToFavorites(event) {
         event.path.filter((buttonContainer) => {
 
@@ -232,14 +141,7 @@ export class PerformersPageComponent implements OnInit{
 
 
 
-    ngOnInit() {
-        this.animateHeader();
-    }
-   
-    animateHeader() {
-=======
     animateHeader(): void {
->>>>>>> origin/firestart
         window.onscroll = () => {
             if (window.pageYOffset > 100) {
                 this.shrinkHeader  = true;
