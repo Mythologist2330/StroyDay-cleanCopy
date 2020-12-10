@@ -10,6 +10,12 @@
       "description":{
         "header":"Архитектурное бюро ZROBYM Architects",
         "rating":"5.0",
+        "discount": "-15%",
+        "serviceClass": [
+            {"name": "эконом", "color": "#F8601F"},
+            {"name": "стандарт", "color": "#0D6FE3"},
+            {"name": "премиум", "color": "#9F8C66"}
+        ],
         "location":"Москва, СВАО, ул. Тверская, д. 16, оф. 8",
         "metro":"Щелковская",
         "activity":"Оформление и дизайн",
@@ -37,6 +43,9 @@
       "description":{
         "header":"Архитектурное бюро ZROBYM Architects",
         "rating":"5.0",
+        "serviceClass": [
+            {"name": "эконом", "color": "#F8601F"}
+        ],
         "location":"Москва, СВАО, ул. Тверская, д. 16, оф. 8",
         "metro":"Щелковская",
         "activity":"Оформление и дизайн",

@@ -802,8 +802,18 @@
                             </svg>
                         </div>
                     </div>
+
+                    <div class="description-discount">{{ performersCard.description.discount }}</div>
+
+                    <div class="description-service-class">
+                        <div *ngFor="let serviceClass of performersCard.description.serviceClass">
+                            <p
+                                [style]="{color: serviceClass.color}"
+                            >{{ serviceClass.name }}</p>
+                        </div>
+                    </div>
     
-                    <div class="description-elem description-location" (click)="moduleWindowMapLocation = true">
+                    <div class="description-elem description-location" (click)="moduleWindowMapLocation = true; openLocationMap($event)">
                         <svg width="16" height="18" viewBox="0 0 12 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M5.99996 8.58342C5.44743 8.58342 4.91752 8.36392 4.52682 7.97322C4.13612 7.58252 3.91663 7.05262 3.91663 6.50008C3.91663 5.94755 4.13612 5.41764 4.52682 5.02694C4.91752 4.63624 5.44743 4.41675 5.99996 4.41675C6.55249 4.41675 7.0824 4.63624 7.4731 5.02694C7.8638 5.41764 8.08329 5.94755 8.08329 6.50008C8.08329 6.77367 8.02941 7.04458 7.92471 7.29734C7.82001 7.5501 7.66655 7.77977 7.4731 7.97322C7.27964 8.16668 7.04998 8.32013 6.79722 8.42483C6.54446 8.52953 6.27355 8.58342 5.99996 8.58342ZM5.99996 0.666748C4.45286 0.666748 2.96913 1.28133 1.87517 2.37529C0.781208 3.46925 0.166626 4.95299 0.166626 6.50008C0.166626 10.8751 5.99996 17.3334 5.99996 17.3334C5.99996 17.3334 11.8333 10.8751 11.8333 6.50008C11.8333 4.95299 11.2187 3.46925 10.1248 2.37529C9.03079 1.28133 7.54706 0.666748 5.99996 0.666748Z" fill="#90A0B7"/>
                         </svg>
@@ -904,9 +914,14 @@
                             </svg>
                             Написать
                         </button>
-                        <button class="add-to-favorites">
-                            <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <button class="add-to-favorites" (click)="addToFavorites($event)">
+                            <svg class="button-removed-from-favorites" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 0C12.5304 0 13.0391 0.210714 13.4142 0.585786C13.7893 0.960859 14 1.46957 14 2V18L7 15L0 18V2C0 0.89 0.9 0 2 0H12Z" fill="#90A0B7"/>
+                            </svg>
+
+                            <svg class="button-added-to-favorites" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 3H7C5.9 3 5 3.9 5 5V21L12 18L19 21V5C19 3.9 18.1 3 17 3Z" fill="#46AA32"/>
+                                <path d="M8.06055 11.0701L9.47055 9.65015L11.0005 11.1801L14.7805 7.40015L16.1905 8.82015L11.0005 14.0001L8.06055 11.0701Z" fill="white"/>
                             </svg>
                         </button>
                     </div>
@@ -958,7 +973,7 @@
 
         <div class="module-window-map-location-map"></div>
 
-        <svg (click)="moduleWindowMapLocation = false" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg (click)="moduleWindowMapLocation = false; openLocationMap($event)" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M10 1.26213L8.73787 0L5 3.73787L1.26213 0L0 1.26213L3.73787 5L0 8.73787L1.26213 10L5 6.26213L8.73787 10L10 8.73787L6.26213 5L10 1.26213Z" fill="#8594A8"/>
         </svg>
     </div>

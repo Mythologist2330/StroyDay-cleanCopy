@@ -1,4 +1,3 @@
-import { IcuPlaceholder } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
 import { IPerformersCard } from 'src/app/interfaces/IPerformersCard';
 import { PerformersCardService } from 'src/app/services/performers-card.service';
@@ -13,14 +12,36 @@ export class PerformersPageComponent implements OnInit{
 
     constructor(private cardSrv: PerformersCardService) {}
 
-    openCloseMap = false;
-    moduleWindowMapLocation = false;
-    shrinkHeader = false;
-    decreaseFieldClick = false;
+    openCloseMap: boolean = false;
+    moduleWindowMapLocation: boolean = false;
+    shrinkHeader: boolean = false;
+    decreaseFieldClick: boolean = false;
     performersCards: IPerformersCard[] = [];
 
-    openCloseFilter(event): void {
 
+    openLocationMap(event) {
+        
+        event.path.filter((htmlAndBody) => {
+            if (htmlAndBody.localName === 'html') {
+                if (htmlAndBody.style.overflow === 'hidden') {
+                    htmlAndBody.style.overflow = 'auto'
+                } else {
+                    htmlAndBody.style.overflow = 'hidden'
+                }
+            }
+
+            if (htmlAndBody.localName === 'body') {
+                if (htmlAndBody.style.overflow === 'hidden') {
+                    htmlAndBody.style.overflow = 'auto'
+                } else {
+                    htmlAndBody.style.overflow = 'hidden'
+                }
+            }
+        })
+    }
+
+
+    openCloseFilter(event): void {
         event.path.filter((filter) => {
             if (filter.className === 'filter') {
                 for (let child of filter.children) {
@@ -60,6 +81,7 @@ export class PerformersPageComponent implements OnInit{
         });
     }
 
+
     openCloseCheckboxes(event): void {
 
         event.path.filter((checkboxesList) => {
@@ -75,6 +97,7 @@ export class PerformersPageComponent implements OnInit{
             }
         });
     }
+
 
     closeContainerFilters(event): void {
 
@@ -110,6 +133,34 @@ export class PerformersPageComponent implements OnInit{
         });
     }
 
+    addToFavorites(event): void {
+        event.path.filter((buttonContainer) => {
+
+            if (buttonContainer.className === 'add-to-favorites') {
+                for (let button of buttonContainer.children) {
+                    if (button.classList[0] === 'button-removed-from-favorites') {
+                        if (button.style.display === 'none') {
+                            button.style.display = 'block'
+                        } else {
+                            button.style.display = 'none'
+                        }
+                    }
+        
+                    if (button.classList[0] === 'button-added-to-favorites') {
+                        if (button.style.display === 'block') {
+                            button.style.display = 'none'
+                        } else {
+                            button.style.display = 'block'
+                        }
+                    }
+                }
+            }
+
+        })
+    }
+
+
+
     animateHeader(): void {
         window.onscroll = () => {
             if (window.pageYOffset > 100) {
@@ -124,7 +175,6 @@ export class PerformersPageComponent implements OnInit{
         this.cardSrv.getAllPerformersCard()
             .subscribe((cards) => {
                 this.performersCards = cards;
-                console.log('Данные вывелись из БД! Заебись!');
                 console.log(cards);
             });
         this.animateHeader();
