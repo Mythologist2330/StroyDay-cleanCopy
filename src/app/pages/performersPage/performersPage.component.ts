@@ -18,6 +18,13 @@ export class PerformersPageComponent implements OnInit{
     decreaseFieldClick: boolean = false;
     performersCards: IPerformersCard[] = [];
 
+    readonly ratingFilter = [
+        'Не выбран', '1.0 и больше', '2.0 и больше', '3.0 и больше', '4.0 и больше', '5.0'
+    ];
+
+    readonly priceFilter = ['Эконом', 'Стандарт', 'Премиум'];
+    
+
 
     openLocationMap(event) {
         
@@ -89,10 +96,10 @@ export class PerformersPageComponent implements OnInit{
 
                 if (checkboxesList.children[1].style.display === 'block') {
                     checkboxesList.children[1].style.display = 'none';
-                    checkboxesList.children[0].children[0].style.transform = 'rotate(-90deg)';
+                    checkboxesList.children[0].children[0].style.transform = 'rotate(0deg)';
                 } else {
                     checkboxesList.children[1].style.display = 'block';
-                    checkboxesList.children[0].children[0].style.transform = 'none';
+                    checkboxesList.children[0].children[0].style.transform = 'rotate(90deg)';
                 }
             }
         });

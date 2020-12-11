@@ -22,6 +22,8 @@ import { RegistrRequisitesComponent } from './pages/formRegistrationPage/compone
 import { PerformersPageComponent } from './pages/performersPage/performersPage.component';
 import { HeaderFiltersAndSortingComponent } from './pages/performersPage/components/headerFiltersAndSorting/headerFiltersAndSorting.component';
 
+import { MaterialModule } from "./shared/material.module";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +41,7 @@ import { HeaderFiltersAndSortingComponent } from './pages/performersPage/compone
     RegistrRequisitesComponent,
 
     PerformersPageComponent,
-    HeaderFiltersAndSortingComponent
+    HeaderFiltersAndSortingComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +49,7 @@ import { HeaderFiltersAndSortingComponent } from './pages/performersPage/compone
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MaterialModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule
   ],
