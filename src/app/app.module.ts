@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AngularFireModule } from '@angular/fire';
@@ -19,10 +19,11 @@ import { ApplicationsComponent } from './pages/mainPage/components/applications/
 import { FormRegistrationPageComponent } from './pages/formRegistrationPage/formRegistrationPage.component';
 import { RegistrBasicInfoComponent } from './pages/formRegistrationPage/components/registrBasicInfo/registrBasicInfo.component';
 import { RegistrRequisitesComponent } from './pages/formRegistrationPage/components/registrRequisites/registrRequisites.component';
-import { PerformersPageComponent } from './pages/performersPage/performersPage.component';
-import { HeaderFiltersAndSortingComponent } from './pages/performersPage/components/headerFiltersAndSorting/headerFiltersAndSorting.component';
+import { PerformersListComponent } from './pages/performersPage/performers-list.component';
+import { HeaderFiltersComponent } from './pages/performersPage/components/header-filters/header-filters.component';
 
 import { MaterialModule } from "./shared/material.module";
+import { FilterRadioComponent } from './pages/performersPage/components/filter-radio/filter-radio.component';
 
 @NgModule({
   declarations: [
@@ -40,8 +41,9 @@ import { MaterialModule } from "./shared/material.module";
     RegistrBasicInfoComponent,
     RegistrRequisitesComponent,
 
-    PerformersPageComponent,
-    HeaderFiltersAndSortingComponent,
+    PerformersListComponent,
+    HeaderFiltersComponent,
+    FilterRadioComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +56,7 @@ import { MaterialModule } from "./shared/material.module";
     AngularFireDatabaseModule
   ],
   providers: [AngularFirestore],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

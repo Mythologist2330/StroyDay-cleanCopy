@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-headerFiltersAndSorting',
-    templateUrl: './headerFiltersAndSorting.component.html',
-    styleUrls: ['./headerFiltersAndSorting.component.scss']
+    selector: 'app-header-filters',
+    templateUrl: './header-filters.component.html',
+    styleUrls: ['./header-filters.component.scss']
 })
 
-export class HeaderFiltersAndSortingComponent{
+export class HeaderFiltersComponent{
 
 
 

@@ -1,0 +1,23 @@
+<div class="filter">
+    <div class="field-click" (click)="openCloseFilter($event)"></div>
+
+    <div class="filter-title">
+        <p>Рейтинг исполнителя</p>
+        <mat-icon>keyboard_arrow_down</mat-icon>
+    </div>
+
+    <div class="filter-inner">
+        <div class="filter-inner-rating">
+            <ng-container *ngFor='let rating of ratingFilter'>
+                <label>
+                    <input type="radio" name="ratingPerformer">
+                    <div class="circle">
+                        <div class="circle-inner"></div>
+                    </div>
+                    <p>{{rating}}</p>
+                </label>
+            </ng-container>
+            <p class="reset">Сбросить</p>
+        </div>
+    </div>
+</div>

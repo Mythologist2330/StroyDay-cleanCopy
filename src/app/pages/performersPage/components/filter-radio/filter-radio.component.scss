@@ -1,0 +1,103 @@
+.filter{
+    width: 100%;
+    padding: 15px 32px 16px 32px;
+    border-bottom: 1px solid #C3CBD6;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+
+    .field-click{
+        width: 100%;
+        height: 56px;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    .filter-title{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        p {
+            color: #334D6E;
+            font-weight: 700;
+            line-height: 24px;
+        }
+
+        .mat-icon {
+            color: rgb(133, 148, 168);
+            transition: all 200ms linear;
+            transform: rotate(0);
+        }
+
+        .filter-inner {
+            label {
+                display: flex;
+                align-items: center;
+                margin-top: 12px;
+                font-size: 14px;
+                color: #334D6E;
+
+                &:hover{
+                    cursor: pointer;
+                }
+
+                input{
+                    display: none;
+                }
+
+                input:checked + .circle .circle-inner{
+                    background-color: #0D6FE3;
+                }
+
+                .circle{
+                    width: 20px;
+                    height: 20px;
+                    margin-right: 8px;
+                    border: 1px solid #C3CBD6;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .circle-inner{
+                        width: 12px;
+                        height: 12px;
+                        border-radius: 50%;
+                    }
+                }
+
+                p {
+                    position: relative;
+                    top: 1px;
+                }
+            }
+
+            .reset{
+                width: 63px;
+                margin-top: 12px;
+                font-size: 14px;
+                font-weight: 600;
+                line-height: 24px;
+                color: #0D6FE3;
+                border-bottom: 1px dashed #0D6FE3;
+
+                &:hover{
+                    cursor: pointer;
+                }
+
+                &:active{
+                    opacity: .8;
+                }
+            }
+        }
+    }
+}
+

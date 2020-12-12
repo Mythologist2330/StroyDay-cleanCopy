@@ -4,27 +4,38 @@ import { PerformersCardService } from 'src/app/services/performers-card.service'
 
 @Component({
     selector: 'app-performersPage',
-    templateUrl: './performersPage.component.html',
-    styleUrls: ['./performersPage.component.scss']
+    templateUrl: './performers-list.component.html',
+    styleUrls: ['./performers-list.component.scss']
 })
 
-export class PerformersPageComponent implements OnInit{
+export class PerformersListComponent implements OnInit{
 
     constructor(private cardSrv: PerformersCardService) {}
 
-    openCloseMap: boolean = false;
-    moduleWindowMapLocation: boolean = false;
-    shrinkHeader: boolean = false;
-    decreaseFieldClick: boolean = false;
+    openCloseMap = false;
+    moduleWindowMapLocation = false;
+    shrinkHeader = false;
+    decreaseFieldClick = false;
     performersCards: IPerformersCard[] = [];
 
-    readonly ratingFilter = [
-        'Не выбран', '1.0 и больше', '2.0 и больше', '3.0 и больше', '4.0 и больше', '5.0'
+    readonly categoriesFilter = [
+        'Архитектура и проектирование',
+        'Инженерные системы',
+        'Ремонт и отделка',
+        'Строительство',
+        'Банковские гарантии',
+        'Бухгалтерия',
+        'Строительная техника',
+        'Инженерные системы',
     ];
-
+    readonly ratingFilter = ['Не выбран', '1.0 и больше', '2.0 и больше', '3.0 и больше', '4.0 и больше', '5.0'];
+    readonly reviewFilter = ['Не выбрано', 'Не менее 5', 'Не менее 10', 'Не менее 15', 'Не менее 20'];
+    readonly discountFilter = ['Не имеет значения', 'Да', 'Нет'];
+    readonly contractFilter = ['Не имеет значения', 'Да', 'Нет'];
+    readonly typeOfProfileFilter = ['Юридическое лицо', 'Индивид. предприниматель', 'Физическое лицо'];
     readonly priceFilter = ['Эконом', 'Стандарт', 'Премиум'];
-    
-
+    readonly inProgressFilter = ['Не выбрано', 'Не более 3', 'Не более 60', 'Не более 10', 'Не более 15'];
+    readonly activityFilter = ['Не выбрано', 'Каждый час', 'Раз в день', 'Раз в неделю', 'Очень редко'];
 
     openLocationMap(event) {
         
