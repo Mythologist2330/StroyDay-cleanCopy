@@ -6,20 +6,22 @@
 
     <div class="filter-inner">
         <div class="filter-inner-rating">
-            <ng-container *ngFor='let point of filter.selector'>
-                <ng-container *ngIf="filter.type === 'radio'; else checkbox">
+            <ng-container *ngIf="filter.type === 'radio'; else checkbox">
+                <ng-container *ngFor='let point of filter.selector'>
                     <label>
-                        <input type="radio" [name]='point.title'>
+                        <input type="radio" [name]='filter.title'>
                         <div class="circle"><div class="circle-inner"></div></div>
                         <p>{{point}}</p>
                     </label>
                 </ng-container> 
             </ng-container>
-            <ng-template #checkbox>                
-                <label>
-                    <input type="checkbox">
-                    <p>{{point}}</p>
-                </label>
+            <ng-template #checkbox>      
+                <ng-container *ngFor='let point of filter.selector'>          
+                    <label>
+                        <input type="checkbox">
+                        <p>{{point}}</p>
+                    </label>
+                </ng-container>
             </ng-template>
             <p class="reset" (click)='resetFilter()'>Сбросить</p>
         </div>

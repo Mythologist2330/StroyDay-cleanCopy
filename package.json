@@ -1,6 +1,6 @@
 {
-  "name": "stroy-day-clean-copy",
-  "version": "0.0.0",
+  "name": "stroy-day",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

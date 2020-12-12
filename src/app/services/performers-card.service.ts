@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IPerformersCard } from '../interfaces/IPerformersCard';
+import { IPerformersCard } from '@interfaces/IPerformersCard';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({

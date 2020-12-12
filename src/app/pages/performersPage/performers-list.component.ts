@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IPerformersCard } from 'src/app/interfaces/IPerformersCard';
-import { PerformersCardService } from 'src/app/services/performers-card.service';
-import { FilterService } from 'src/app/services/filter.service';
-import { IFilter } from 'src/app/interfaces/IFilter';
+import { IPerformersCard } from '@interfaces/IPerformersCard';
+import { PerformersCardService } from '@services/performers-card.service';
+import { FilterService } from '@services/filter.service';
+import { IFilter } from '@interfaces/IFilter';
 
 @Component({
     selector: 'app-performersPage',
