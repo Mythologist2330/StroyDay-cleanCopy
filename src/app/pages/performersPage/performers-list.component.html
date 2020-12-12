@@ -6,7 +6,6 @@
     <div class="filters">
         <div class="filter filter-header">
             <p>Фильтр</p>
-
             <div class="filter-header-close-filter" (click)="closeContainerFilters($event)">
                 <mat-icon class='close'>close</mat-icon>
             </div>
@@ -101,168 +100,14 @@
                         </div>
                         <p class="checkboxes-reset">Сбросить</p>
                     </div>
-
                 </div>
             </div>
         </div>
 
-        <app-filter-radio [filter]='ratingFilter'></app-filter-radio>
-
-        <div class="filter">
-            <div class="field-click" (click)="openCloseFilter($event)"></div>
-
-            <div class="filter-title">
-                <p>Уровень цен</p>
-                <mat-icon>keyboard_arrow_down</mat-icon>
-            </div>
-
-            <div class="filter-inner">
-                <div class="filter-inner-price">
-                    <ng-container *ngFor='let price of priceFilter'>
-                        <label>
-                            <input type="checkbox" name="price">
-                            <p>{{price}}</p>
-                        </label>
-                    </ng-container>
-                </div>
-            </div>
-        </div>
-
-        <div class="filter">
-            <div class="field-click" (click)="openCloseFilter($event)"></div>
-
-            <div class="filter-title">
-                <p>Скидка</p>
-                <mat-icon>keyboard_arrow_down</mat-icon>
-            </div>
-
-            <div class="filter-inner">
-                <div class="filter-inner-discount">
-                    <ng-container *ngFor='let discount of discountFilter'>
-                        <label>
-                            <input type="radio" name="discount">
-                            <div class="discount-circle">
-                                <div class="discount-circle-inner"></div>
-                            </div>
-                            <p>{{discount}}</p>
-                        </label>
-                    </ng-container>
-                </div>
-            </div>
-        </div>
-
-        <div class="filter">
-            <div class="field-click" (click)="openCloseFilter($event)"></div>
-
-            <div class="filter-title">
-                <p>Положительные отзывы</p>
-                <mat-icon>keyboard_arrow_down</mat-icon>
-            </div>
-
-            <div class="filter-inner">
-                <div class="filter-inner-positive-reviews">
-                    <ng-container *ngFor='let review of reviewFilter'>
-                        <label>
-                            <input type="radio" name="positiveReviews" checked>
-                            <div class="positive-reviews-circle">
-                                <div class="positive-reviews-circle-inner"></div>
-                            </div>
-                            <p>{{review}}</p>
-                        </label>
-                    </ng-container>
-                </div>
-            </div>
-        </div>
-
-        <div class="filter">
-            <div class="field-click" (click)="openCloseFilter($event)"></div>
-
-            <div class="filter-title">
-                <p>Договор</p>
-                <mat-icon>keyboard_arrow_down</mat-icon>
-            </div>
-
-            <div class="filter-inner">
-                <div class="filter-inner-contract">
-                    <ng-container *ngFor='let contract of contractFilter'>
-                       <label>
-                            <input type="radio" name="contract" checked>
-                            <div class="contract-circle">
-                                <div class="contract-circle-inner"></div>
-                            </div>
-                            <p>{{contract}}</p>
-                        </label> 
-                    </ng-container>
-                </div>
-            </div>
-        </div>
-
-        <div class="filter">
-            <div class="field-click" (click)="openCloseFilter($event)"></div>
-
-            <div class="filter-title">
-                <p>Тип профиля</p>
-                <mat-icon>keyboard_arrow_down</mat-icon>
-            </div>
-
-            <div class="filter-inner">
-                <div class="filter-inner-type-of-profile">
-                    <ng-container *ngFor='let typeOfProfile of typeOfProfileFilter'>
-                        <label>
-                            <input type="checkbox" name="typeOfProfile">
-                            <p>{{typeOfProfile}}</p>
-                        </label>
-                    </ng-container>
-                </div>
-            </div>
-        </div>
-
-        <div class="filter">
-            <div class="field-click" (click)="openCloseFilter($event)"></div>
-
-            <div class="filter-title">
-                <p>Заказов в работе</p>
-                <mat-icon>keyboard_arrow_down</mat-icon>
-            </div>
-            
-            <div class="filter-inner">
-                <div class="filter-inner-order-in-progress">
-                    <ng-container *ngFor='let inProgress of inProgressFilter'>
-                        <label>
-                            <input type="radio" name="orderInProgress">
-                            <div class="order-in-progress-circle">
-                                <div class="order-in-progress-circle-inner"></div>
-                            </div>
-                            <p>{{inProgress}}</p>
-                        </label>
-                    </ng-container>
-                </div>
-            </div>
-        </div>
-
-        <div class="filter">
-            <div class="field-click" (click)="openCloseFilter($event)"></div>
-
-            <div class="filter-title">
-                <p>Активность исполнителя</p>
-                <mat-icon>keyboard_arrow_down</mat-icon>
-            </div>
-            
-            <div class="filter-inner">
-                <div class="filter-inner-activity-online">
-                    <ng-container *ngFor='let activity of activityFilter'>
-                        <label>
-                            <input type="radio" name="activity-online">
-                            <div class="activity-online-circle">
-                                <div class="activity-online-circle-inner"></div>
-                            </div>
-                            <p>{{activity}}</p>
-                        </label>
-                    </ng-container>
-                </div>
-            </div>
-        </div>
-
+        <ng-container *ngFor='let filter of filters'>
+            <app-filter [filter]='filter'></app-filter>
+        </ng-container>        
+        
         <div class="filters-buttons-reset-apply">
             <button class="filters-buttons-reset">Сбросить</button>
             <button class="filters-buttons-apply">Применить</button>

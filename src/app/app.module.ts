@@ -23,7 +23,7 @@ import { PerformersListComponent } from './pages/performersPage/performers-list.
 import { HeaderFiltersComponent } from './pages/performersPage/components/header-filters/header-filters.component';
 
 import { MaterialModule } from "./shared/material.module";
-import { FilterRadioComponent } from './pages/performersPage/components/filter-radio/filter-radio.component';
+import { FilterComponent } from './pages/performersPage/components/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,7 @@ import { FilterRadioComponent } from './pages/performersPage/components/filter-r
 
     PerformersListComponent,
     HeaderFiltersComponent,
-    FilterRadioComponent,
+    FilterComponent,
   ],
   imports: [
     BrowserModule,

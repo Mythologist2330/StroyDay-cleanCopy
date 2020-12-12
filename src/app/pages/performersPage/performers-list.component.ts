@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IPerformersCard } from 'src/app/interfaces/IPerformersCard';
 import { PerformersCardService } from 'src/app/services/performers-card.service';
+import { FilterService } from 'src/app/services/filter.service';
+import { IFilter } from 'src/app/interfaces/IFilter';
 
 @Component({
     selector: 'app-performersPage',
@@ -10,8 +12,11 @@ import { PerformersCardService } from 'src/app/services/performers-card.service'
 
 export class PerformersListComponent implements OnInit{
 
-    constructor(private cardSrv: PerformersCardService) {}
+    constructor(
+        private cardSrv: PerformersCardService,
+        private filterSrv: FilterService) {}
 
+    public filters: IFilter[];
     openCloseMap = false;
     moduleWindowMapLocation = false;
     shrinkHeader = false;
@@ -28,14 +33,6 @@ export class PerformersListComponent implements OnInit{
         'Строительная техника',
         'Инженерные системы',
     ];
-    readonly ratingFilter = ['Не выбран', '1.0 и больше', '2.0 и больше', '3.0 и больше', '4.0 и больше', '5.0'];
-    readonly reviewFilter = ['Не выбрано', 'Не менее 5', 'Не менее 10', 'Не менее 15', 'Не менее 20'];
-    readonly discountFilter = ['Не имеет значения', 'Да', 'Нет'];
-    readonly contractFilter = ['Не имеет значения', 'Да', 'Нет'];
-    readonly typeOfProfileFilter = ['Юридическое лицо', 'Индивид. предприниматель', 'Физическое лицо'];
-    readonly priceFilter = ['Эконом', 'Стандарт', 'Премиум'];
-    readonly inProgressFilter = ['Не выбрано', 'Не более 3', 'Не более 60', 'Не более 10', 'Не более 15'];
-    readonly activityFilter = ['Не выбрано', 'Каждый час', 'Раз в день', 'Раз в неделю', 'Очень редко'];
 
     openLocationMap(event) {
         
@@ -196,5 +193,6 @@ export class PerformersListComponent implements OnInit{
                 console.log(cards);
             });
         this.animateHeader();
+        this.filters = this.filterSrv.filters;
     }
 }
