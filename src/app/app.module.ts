@@ -20,9 +20,10 @@ import { ApplicationsComponent } from './pages/mainPage/components/applications/
 import { FormRegistrationPageComponent } from './pages/formRegistrationPage/formRegistrationPage.component';
 import { RegistrBasicInfoComponent } from './pages/formRegistrationPage/components/registrBasicInfo/registrBasicInfo.component';
 import { RegistrRequisitesComponent } from './pages/formRegistrationPage/components/registrRequisites/registrRequisites.component';
-
 import { PerformersModule } from './pages/performersPage/performers.module';
 import { SharedModule } from "./shared/shared.module";
+import { MaterialModule } from "./shared/material.module";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -50,8 +51,9 @@ import { SharedModule } from "./shared/shared.module";
     SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    
     PerformersModule,
+    MaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent],

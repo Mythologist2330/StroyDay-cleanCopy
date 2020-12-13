@@ -1,66 +1,52 @@
-<div class="header" [ngStyle]="{
-    height: toggleBurger === false ? '91px' : '443px'
-}">
+<div class="container">
 
-    <div class="city-and-phone">
-        <p>Ваш город: <span>Москва</span></p>
-        <p>+7 (495) 000-00-00</p>
-    </div>
-
-
-    <div class="navbar-block" [ngStyle]="{
-        height: toggleBurger === false ? '61px' : '93%'
-    }">
-        <div class="navbar">
-            <div class="navbar-logo">
-                <img src="../../../assets/images/navbar-logo.png">
-            </div>
-
-            <div class="nav-columns">
-                <div class="nav-column">
-                    <img src="../../../assets/images/burger-lines.png">
-                    <p>Товары</p>
-                </div>
-                
-                <div class="nav-column">
-                    <img src="../../../assets/images/burger-lines.png">
-                    <p>Услуги</p>
-                </div>
-            </div>
-
-            <div class="menu">
-                <p class="menu-list" routerLink="/">Главная</p>
-                <p class="menu-list">Заявки</p>
-                <p class="menu-list" routerLink="/performersPage">Исполнители</p>
-                <p class="menu-list">Галерея работ</p>
-                <p class="menu-list">Калькуляторы</p>
-                <p class="menu-list">Документы</p>
-                <p class="menu-list">База знаний</p>
-            </div>
-
-            <div class="sign-in">
-                <img src="../../../assets/images/profile.png">
-
-                <p class="sing-in-text">Профиль</p>
-
-                <button class="btn-are-you-performer" routerLink="/formRegistrationPage">Вы исполнитель?</button>
-            </div>
-            
-            <div class="toggle-burger" (click)="toggleNavbarBurger()">
-                <div class="toggle-burger-lines"></div>
-            </div>
+    <div class="city-and-phone-and-button">
+        <div class="city">
+            <mat-icon aria-hidden="false">place</mat-icon>
+            <p>Санкт-Петербург</p>
         </div>
 
-        <div class="burger-menu" [ngStyle]="{
-            transform: toggleBurger === true ? 'none' : 'translateY(-100%)'
-        }">
-            <p class="burger-menu-list">Главная</p>
-            <p class="burger-menu-list">Заявки</p>
-            <p class="burger-menu-list">Исполнители</p>
-            <p class="burger-menu-list">Калькуляторы</p>
-            <p class="burger-menu-list">Документы</p>
-            <p class="burger-menu-list">фото</p>
-            <p class="burger-menu-list">База знаний</p>
+        <div class="phone-and-button">
+            <p class="phone">+7 (495) 000-00-00</p>
+            <button>Стать Исполнителем</button>
+        </div>
+    </div>
+
+    <div class="header">
+        <div class="header-devide-top">
+            <img class="main-logo" src="../../../assets/images/main-logo.png">
+    
+            <button class="button-services" (click)="openCloseBurgerMenu($event)">
+                <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0H18V2H0V0ZM0 5H18V7H0V5ZM0 10H18V12H0V10Z" fill="white"/>
+                </svg>
+                <span>Услуги</span>
+            </button>
+    
+            <div class="menu">
+                <div class="menu-list-title">
+                    <span>Меню</span>
+                    <mat-icon (click)="openCloseBurgerMenu($event)">clear</mat-icon>
+                </div>
+
+                <div class="menu-list-services">
+                    <span>Услуги</span>
+                    <mat-icon>navigate_next</mat-icon>
+                </div>
+
+                <div class="menu-link menu-link-without-border">Главная</div>
+                <div class="menu-link">Заявки</div>
+                <div class="menu-link">Исполнители</div>
+                <div class="menu-link">Галерея работ</div>
+                <div class="menu-link">Калькулятор</div>
+                <div class="menu-link">Документы</div>
+                <div class="menu-link">База знаний</div>
+            </div>
+
+            <button class="button-sign-in">
+                <span>Войти</span>
+                <mat-icon>input</mat-icon>
+            </button>
         </div>
     </div>
 
