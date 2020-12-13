@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LatLng, Map } from 'leaflet';
 import { MapService } from '../../services/map.service';
 
 @Component({
@@ -9,11 +10,15 @@ import { MapService } from '../../services/map.service';
 export class MapComponent implements OnInit {
 
   public toggle = false;
+  map: Map;
 
   constructor(public mapSrv: MapService) { }
 
   ngOnInit(): void {
-    this.mapSrv.initializeMapOptions()
+    this.mapSrv.initializeMapOptions();    
   }
 
+
+
+  
 }

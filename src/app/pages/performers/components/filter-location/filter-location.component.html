@@ -28,17 +28,19 @@
                 <legend>Метро</legend>
 
                 <select name="">
-                    <option value="">Москва</option>
-                    <option value="">Питер</option>
+                    <ng-container *ngFor="let station of stations">
+                        <option value="">{{station}}</option>
+                    </ng-container>
                 </select>
             </fieldset>
 
             <fieldset>
                 <legend>Радиус поиска</legend>
-
                 <select name="">
-                    <option value="">Москва</option>
-                    <option value="">Питер</option>
+                    <option value="">1км</option>
+                    <option value="">5км</option>
+                    <option value="">10км</option>
+                    <option value="">20км</option>
                 </select>
             </fieldset>
         </div>

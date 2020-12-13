@@ -13,10 +13,8 @@ import { tileLayer, latLng } from 'leaflet';
 
 export class PerformersListComponent implements OnInit{
 
-    constructor(
-        private cardSrv: PerformersCardService,
-        private filterSrv: FilterService) {}
 
+    public stations: string[] = [];
     public filters: IFilter[];
     public tags = ['Оформление и дизайн', 'Вентиляция', '2.0 и выше'];
 
@@ -25,15 +23,6 @@ export class PerformersListComponent implements OnInit{
     shrinkHeader = false;
     decreaseFieldClick = false;
     performersCards: IPerformersCard[] = [];
-
-    public options = {
-        layers: [
-            tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' })
-        ],
-        zoom: 5,
-        center: latLng(46.879966, -121.726909)
-    };
-
     readonly categories = [
         'Архитектура и проектирование',
         'Инженерные системы',
@@ -44,6 +33,18 @@ export class PerformersListComponent implements OnInit{
         'Строительная техника',
         'Инженерные системы',
     ];
+
+    constructor(
+        private cardSrv: PerformersCardService,
+        private filterSrv: FilterService) {}
+
+    getStations() {
+        this.filterSrv.metroSpb.map(line => {
+          line.station.map(station => {
+            this.stations.push(station.title)
+          })
+        })
+      }
 
     openLocationMap(event) {
         
@@ -204,6 +205,7 @@ export class PerformersListComponent implements OnInit{
                 console.log(cards);
             });
         this.animateHeader();
-        this.filters = this.filterSrv.filters;
+        this.filters = this.filterSrv.filters;        
+        this.getStations();
     }
 }

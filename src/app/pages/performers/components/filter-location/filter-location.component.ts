@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-filter-location',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter-location.component.scss']
 })
 export class FilterLocationComponent implements OnInit {
+
+  @Input() stations: string[];
 
   public toggle = false;
   constructor() { }

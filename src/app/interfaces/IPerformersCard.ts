@@ -27,4 +27,8 @@ export interface IPerformersCard{
         ordersInProgress: number;
         online: string;
     };
+    latLng: {
+        lat: 59.94469496963479
+        lng: 30.365695953369144
+    }
 }

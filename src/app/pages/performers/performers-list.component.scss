@@ -11,7 +11,7 @@
         left: 0;
         right: 0;
         top: 0;
-        z-index: 899;
+        z-index: 1001;
     }
 }
 
@@ -35,17 +35,19 @@
 }
 
     .filters{
-        width: 300px;
+        min-width: 300px;
         border-right: 1px solid #C3CBD6;
         background-color: #fff;
         transition: all .2s;
 
         .filter-header{
+            padding: 15px 32px 16px 32px;
+            border-bottom: 1px solid #C3CBD6;
             &:hover{
                 cursor: auto;
             }
 
-            p{
+            p {
                 color: #8594A8;
                 font-weight: 700;
                 line-height: 24px;
@@ -172,56 +174,42 @@
                     }
                 }
 
-                .arrow-left-block{
+                .arrow-block{
                     width: 80px;
                     height: 81%;
-                    margin: -1px 0 0px -1px;
+                    margin: -1px 0 0 -1px;
                     position: absolute;
                     top: 0;
-                    left: 0;
-
+                    &.right {
+                        right: 0;
+                    }
+                    &.left {
+                        left: 0;
+                    }
                     &:hover{
                         cursor: pointer;
                     }
 
-                    .arrow-left{
+                    .arrow {
                         width: 32px;
                         height: 32px;
                         position: absolute;
                         top: 104px;
-                        left: 16px;
                         background-color: #0D6FE3;
                         border-radius: 50%;
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                    }
-                }
-
-                .arrow-right-block{
-                    width: 80px;
-                    height: 81%;
-                    margin: -1px 1px 0px 0px;
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-
-                    &:hover{
-                        cursor: pointer;
-                    }
-
-                    .arrow-right{
-                        width: 32px;
-                        height: 32px;
-                        position: absolute;
-                        top: 104px;
-                        right: 16px;
-                        background-color: #0D6FE3;
-                        border-radius: 50%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                    }
+                        .mat-icon {
+                            color: #fff;
+                        }
+                        &.arrow-left {
+                            left: 16px;
+                        }
+                        &.arrow-right {
+                            right: 16px;
+                        }
+                    }                    
                 }
             }
 
@@ -246,6 +234,10 @@
                     color: #334D6E;
                     font-size: 14px;
                     padding-top: 3px;
+                    .mat-icon {
+                        font-size: 16px;
+                        height: 16px;
+                    }
 
                     .description-header{
                         font-size: 16px;
@@ -477,7 +469,7 @@
         bottom: 0;
         left: 0;
         right: 0;
-        z-index: 997;
+        z-index: 1000;
         background-color: #1B2F54;
         opacity: 0.6;
         display: none;
@@ -584,12 +576,6 @@
                 display: flex;
             }
 
-            .map{
-                width: 720px;
-                height: 360px;
-                margin: 24px 0 28px 0;
-            }
-
             .sort-by{
                 display: none;
             }
@@ -627,23 +613,21 @@
                         }
                     }
                         
-                    .arrow-left-block{
-                        display: none;
-                        
+                    .arrow-block.left{
                         .arrow-left{
                             top: 64px;
-                            left: 0;
+                            left: 24px;
                         }
                     }
 
-                    .arrow-right-block{
+                    .arrow-block.right{
                         width: 128px;
                         height: 100%;
                         margin: 0;
 
                         .arrow-right{
                             top: 64px;
-                            right: 0;
+                            right: 24px;
                         }
                     }
                 }
