@@ -1,0 +1,42 @@
+<div class="filter" [ngClass]="toggle ? 'show' : ''">
+
+    <div class="filter-title" (click)="toggle = !toggle">
+        <p>Услуги</p>
+        <mat-icon>keyboard_arrow_down</mat-icon>
+    </div>
+
+    <div class="filter-inner">
+        <div class="filter-inner-category">
+
+            <div class="search-by-categories">
+                <input type="search" placeholder="Поиск по категориям">
+
+                <button>
+                    <mat-icon>search</mat-icon>
+                </button>
+            </div>
+
+            <div class="checkboxes-lists">
+                <div class="checkboxes-list" *ngFor='let category of categories'>
+                    <div class="checkboxes-list-header" (click)="openCloseCheckboxes($event)">
+                        <mat-icon>keyboard_arrow_right</mat-icon>
+                        <p>{{category}}</p>
+                    </div>
+
+                    <div class="checkboxes">
+                        <label>
+                            <input type="checkbox" name="">
+                            <p>Ремонт и отделка</p>
+                        </label>
+                        
+                        <label>
+                            <input type="checkbox" name="">
+                            <p>Оформление и дизайн</p>
+                        </label>
+                    </div>
+                </div>
+                <p class="checkboxes-reset">Сбросить</p>
+            </div>
+        </div>
+    </div>
+</div>

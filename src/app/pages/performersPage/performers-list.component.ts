@@ -17,13 +17,15 @@ export class PerformersListComponent implements OnInit{
         private filterSrv: FilterService) {}
 
     public filters: IFilter[];
+    public tags = ['Оформление и дизайн', 'Вентиляция', '2.0 и выше'];
+
     openCloseMap = false;
     moduleWindowMapLocation = false;
     shrinkHeader = false;
     decreaseFieldClick = false;
     performersCards: IPerformersCard[] = [];
 
-    readonly categoriesFilter = [
+    readonly categories = [
         'Архитектура и проектирование',
         'Инженерные системы',
         'Ремонт и отделка',

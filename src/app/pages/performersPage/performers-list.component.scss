@@ -34,196 +34,11 @@
     
 }
 
-
     .filters{
         width: 300px;
         border-right: 1px solid #C3CBD6;
         background-color: #fff;
         transition: all .2s;
-        
-        .filter{
-            width: 100%;
-            padding: 15px 32px 16px 32px;
-            border-bottom: 1px solid #C3CBD6;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            position: relative;
-
-            .field-click{
-                width: 100%;
-                height: 56px;
-                position: absolute;
-                top: 0;
-                left: 0;
-
-                &:hover{
-                    cursor: pointer;
-                }
-            }
-
-            .filter-title{
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-
-                p{
-                    color: #334D6E;
-                    font-weight: 700;
-                    line-height: 24px;
-                }
-
-                svg{
-                    margin-right: 6px;
-                    transition: all 0.2s;
-                }
-            }
-
-            .filter-inner{
-                display: none;
-
-                .filter-inner-location{
-                    margin-left: -2px;
-                    fieldset{
-                        width: 100%;
-                        height: 52px;
-                        margin-top: 12px;
-                        border: 1px solid #C3CBD6;
-                        border-radius: 4px;
-    
-                        legend{
-                            margin-left: 8px;
-                            padding: 0 4px;
-                            font-size: 12px;
-                            line-height: 18px;
-                            color: #8594A8;
-                        }
-    
-                        select{
-                            width: 100%;
-                            height: 26px;
-                            font-size: 14px;
-                            line-height: 20px;
-                            border: none;
-                            position: relative;
-                            padding: 0 12px;
-                            background-image: url(../../../assets/images/select-arrow.performersPage.png);
-                            background-repeat: no-repeat;
-                            background-position: right;
-                            background-position-x: calc(100% - 18px);
-                        
-                            -webkit-appearance: none;
-                            -moz-appearance: none;
-                            appearance: none;
-    
-                            &:focus{
-                                outline: none;
-                            }
-                        }
-                    }
-                }
-
-                .filter-inner-category{
-                    .search-by-categories{
-                        width: 100%;
-                        height: 44px;
-                        margin-top: 12px;
-                        display: flex;
-                        justify-content: space-between;
-                        border: 1px solid #C3CBD6;
-                        border-radius: 4px;
-
-                        input{
-                            width: 100%;
-                            height: 100%;
-                            border: none;
-                            border-radius: 5px;
-                            padding: 0 12px;
-                            font-size: 14px;
-                        }
-
-                        button{
-                            min-width: 44px;
-                            height: 100%;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            background-color: #fff;
-                            border-radius: 5px;
-                        }
-                    }
-
-                    .checkboxes-lists{
-
-                        .checkboxes-list{
-                            color: #334D6E;
-                            margin-top: 16px;
-
-                            .checkboxes-list-header{
-                                width: 100%;
-                                display: flex;
-                                align-items: center;
-
-                                &:hover{
-                                    cursor: pointer;
-                                }
-
-                                svg{
-                                    margin: 0 10px 0 6px;
-                                    transition: all .2s;
-                                }
-
-                                p{
-                                    font-weight: 600;
-                                    font-size: 14px;
-                                }
-                            }
-
-                            .checkboxes{
-                                display: none;
-
-                                label{
-                                    display: flex;
-                                    align-items: center;
-                                    margin: 12px 0 0 28px;
-
-                                    input{
-                                        width: 20px;
-                                        height: 20px;
-                                        margin-right: 8px;
-                                        border: 1px solid #C3CBD6;
-                                        border-radius: 2px;
-                                    }
-
-                                    p{
-                                        font-size: 14px;
-                                    }
-                                }
-                            }
-                        }
-
-                        .checkboxes-reset{
-                            width: 63px;
-                            margin-top: 12px;
-                            font-size: 14px;
-                            font-weight: 600;
-                            line-height: 24px;
-                            color: #0D6FE3;
-                            border-bottom: 1px dashed #0D6FE3;
-
-                            &:hover{
-                                cursor: pointer;
-                            }
-
-                            &:active{
-                                opacity: .8;
-                            }
-                        }
-                    }
-                }
-            }
-        }
 
         .filter-header{
             &:hover{
@@ -257,28 +72,10 @@
     }
 
 
-    .performers{
+    .performers {
         padding: 34px 116px 24px 32px;
         margin: auto;
         max-width: 1140px;
-        
-        .path{
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-
-            a{
-                color: #334D6E;
-            }
-
-            svg{
-                margin: 0 8px;
-            }
-
-            span{
-                color: #8594A8;
-            }
-        }
         
         .number-of-found{
             margin: 16px 0 9px 0;
@@ -300,41 +97,6 @@
             display: none;
             align-items: center;
             font-weight: 600;
-
-            .tag-search{
-                margin-right: 12px;
-                padding: 7px 6px 6px 7px;
-                display: flex;
-                align-items: center;
-                background-color: rgba(13, 111, 227, 0.1);
-                border: 2px solid #0D6FE3;
-                border-radius: 4px;
-
-                p{
-                    font-size: 14px;
-                    margin-right: 8px;
-                    color: #334D6E;
-                }
-
-                svg{
-
-                    &:hover{
-                        cursor: pointer;
-                    }
-                }
-            }
-
-            .reset-all-tags-search{
-                font-size: 14px;
-                line-height: 23px;
-                color: #0D6FE3;
-                border-bottom: 1px dashed #0D6FE3;
-                margin: 0px 0 0px 13px;
-
-                &:hover{
-                    cursor: pointer;
-                }
-            }
         }
 
         .map{
@@ -511,23 +273,6 @@
                         line-height: 24px;
                         font-weight: 600;
                         letter-spacing: 0.004em;
-                    }
-
-                    .description-rating{
-                        color: #8594A8;
-                        font-size: 14px;
-                        margin: 5px 0 16px 0;
-                        display: flex;
-
-                        p{
-                            margin-right: 5px;
-                        }
-
-                        .stars{
-                            svg{
-                                margin-right: 2px;
-                            }
-                        }
                     }
 
                     .description-location{

@@ -22,7 +22,7 @@ import { RegistrBasicInfoComponent } from './pages/formRegistrationPage/componen
 import { RegistrRequisitesComponent } from './pages/formRegistrationPage/components/registrRequisites/registrRequisites.component';
 
 import { PerformersModule } from './pages/performersPage/performers.module';
-import { MaterialModule } from "./shared/material.module";
+import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -47,7 +47,7 @@ import { MaterialModule } from "./shared/material.module";
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MaterialModule,
+    SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     

@@ -1,0 +1,22 @@
+.path {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+
+    a {
+        color: #334D6E;
+    }
+
+    svg {
+        margin: 0 8px;
+    }
+
+    span {
+        color: #8594A8;
+    }
+}
+
+.mat-icon {
+    color: rgb(133, 148, 168);
+    transition: all 200ms linear;
+}

@@ -3,17 +3,21 @@ import { CommonModule } from '@angular/common';
 import { PerformersListComponent } from './performers-list.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { HeaderFiltersComponent } from './components/header-filters/header-filters.component';
-import { MaterialModule } from "../../shared/material.module";
+import { SharedModule } from "../../shared/shared.module";
+import { FilterLocationComponent } from './components/filter-location/filter-location.component';
+import { FilterCategoriesComponent } from './components/filter-categories/filter-categories.component';
 
 @NgModule({
     declarations: [        
         PerformersListComponent,
         FilterComponent,
         HeaderFiltersComponent,
+        FilterLocationComponent,
+        FilterCategoriesComponent,
     ],
     imports: [
         CommonModule,
-        MaterialModule
+        SharedModule,
     ],
 })
 export class PerformersModule { }

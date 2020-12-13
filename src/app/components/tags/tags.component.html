@@ -1,0 +1,8 @@
+<ng-container *ngFor='let tag of tags'>
+    <div class="tag-search">
+        <p>{{tag}}</p>
+        <mat-icon>close</mat-icon>
+    </div>
+</ng-container>
+
+<p class="reset-all-tags-search" (click)='resetTags()'>Сбросить все фильтры</p>

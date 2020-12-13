@@ -1,0 +1,46 @@
+<div class="filter" [ngClass]="toggle ? 'show' : ''">
+    <div class="filter-title" (click)='toggle = !toggle'>
+        <p>Местоположение</p>
+        <mat-icon>keyboard_arrow_down</mat-icon>
+    </div>
+
+    <div class="filter-inner">
+        <div class="filter-inner-location">
+            <fieldset>
+                <legend>Населённый пункт</legend>
+
+                <select name="">
+                    <option value="">Москва</option>
+                    <option value="">Питер</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend>Район</legend>
+
+                <select name="">
+                    <option value="">Москва</option>
+                    <option value="">Питер</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend>Метро</legend>
+
+                <select name="">
+                    <option value="">Москва</option>
+                    <option value="">Питер</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend>Радиус поиска</legend>
+
+                <select name="">
+                    <option value="">Москва</option>
+                    <option value="">Питер</option>
+                </select>
+            </fieldset>
+        </div>
+    </div>
+</div>

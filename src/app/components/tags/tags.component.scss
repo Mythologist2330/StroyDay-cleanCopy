@@ -1,0 +1,36 @@
+.tag-search {
+    margin-right: 12px;
+    padding: 7px 6px 6px 7px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(13, 111, 227, 0.1);
+    border: 2px solid #0D6FE3;
+    border-radius: 4px;
+    .mat-icon {
+        background: #0D6FE330;
+        border-radius: 50%;
+        font-size: 16px;
+        font-weight: 800;
+        padding: 4px;
+        color: rgb(51, 77, 110);
+        cursor: pointer;
+    }
+
+    p {
+        font-size: 14px;
+        margin-right: 8px;
+        color: #334D6E;
+    }
+}
+
+.reset-all-tags-search{
+    font-size: 14px;
+    line-height: 23px;
+    color: #0D6FE3;
+    border-bottom: 1px dashed #0D6FE3;
+    margin: 0px 0 0px 13px;
+
+    &:hover{
+        cursor: pointer;
+    }
+}

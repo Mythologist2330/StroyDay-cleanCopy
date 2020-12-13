@@ -11,98 +11,8 @@
             </div>
         </div>
 
-        <div class="filter">
-            <div class="field-click" (click)="openCloseFilter($event)"></div>
-
-            <div class="filter-title">
-                <p>Местоположение</p>
-                <mat-icon>keyboard_arrow_down</mat-icon>
-            </div>
-
-            <div class="filter-inner">
-                <div class="filter-inner-location">
-                    <fieldset>
-                        <legend>Населённый пункт</legend>
-    
-                        <select name="">
-                            <option value="">Москва</option>
-                            <option value="">Питер</option>
-                        </select>
-                    </fieldset>
-    
-                    <fieldset>
-                        <legend>Район</legend>
-    
-                        <select name="">
-                            <option value="">Москва</option>
-                            <option value="">Питер</option>
-                        </select>
-                    </fieldset>
-    
-                    <fieldset>
-                        <legend>Метро</legend>
-    
-                        <select name="">
-                            <option value="">Москва</option>
-                            <option value="">Питер</option>
-                        </select>
-                    </fieldset>
-    
-                    <fieldset>
-                        <legend>Радиус поиска</legend>
-    
-                        <select name="">
-                            <option value="">Москва</option>
-                            <option value="">Питер</option>
-                        </select>
-                    </fieldset>
-                </div>
-            </div>
-        </div>
-
-        <div class="filter">
-            <div class="field-click" (click)="openCloseFilter($event)"></div>
-
-            <div class="filter-title">
-                <p>Услуги</p>
-                <mat-icon>keyboard_arrow_down</mat-icon>
-            </div>
-
-            <div class="filter-inner">
-                <div class="filter-inner-category">
-
-                    <div class="search-by-categories">
-                        <input type="search" placeholder="Поиск по категориям">
-
-                        <button>
-                            <mat-icon>search</mat-icon>
-                        </button>
-                    </div>
-
-                    <div class="checkboxes-lists">
-                        <div class="checkboxes-list" *ngFor='let category of categoriesFilter'>
-                            <div class="checkboxes-list-header" (click)="openCloseCheckboxes($event)">
-                                <mat-icon>keyboard_arrow_right</mat-icon>
-                                <p>{{category}}</p>
-                            </div>
-
-                            <div class="checkboxes">
-                                <label>
-                                    <input type="checkbox" name="">
-                                    <p>Ремонт и отделка</p>
-                                </label>
-                                
-                                <label>
-                                    <input type="checkbox" name="">
-                                    <p>Оформление и дизайн</p>
-                                </label>
-                            </div>
-                        </div>
-                        <p class="checkboxes-reset">Сбросить</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <app-filter-location></app-filter-location>
+        <app-filter-categories [categories]='categories'></app-filter-categories>
 
         <ng-container *ngFor='let filter of filters'>
             <app-filter [filter]='filter'></app-filter>
@@ -114,62 +24,20 @@
         </div>
     </div>
 
-
-
     <div class="performers">
-        <p class="path">
-            <a routerLink="/">Главная</a>
-
-            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0.589966 10.58L5.16997 6L0.589966 1.41L1.99997 0L7.99997 6L1.99997 12L0.589966 10.58Z" fill="#90A0B7"/>
-            </svg>
-
-            <span>Исполнители</span>
-        </p>
+        <app-breadcrumbs></app-breadcrumbs>
 
         <p class="number-of-found">Найдено 180 исполнителей</p>
-
         <p class="selected-categories">Все категории исполнителей</p>
 
-        <div class="tags-search">
-            <div class="tag-search">
-                <p>Оформление и дизайн</p>
-
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle opacity="0.2" cx="12" cy="12" r="12" fill="#0D6FE3"/>
-                    <path d="M17 8.26213L15.7379 7L12 10.7379L8.26213 7L7 8.26213L10.7379 12L7 15.7379L8.26213 17L12 13.2621L15.7379 17L17 15.7379L13.2621 12L17 8.26213Z" fill="#334D6E"/>
-                </svg>
-            </div>
-
-            <div class="tag-search">
-                <p>Вентиляция</p>
-
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle opacity="0.2" cx="12" cy="12" r="12" fill="#0D6FE3"/>
-                    <path d="M17 8.26213L15.7379 7L12 10.7379L8.26213 7L7 8.26213L10.7379 12L7 15.7379L8.26213 17L12 13.2621L15.7379 17L17 15.7379L13.2621 12L17 8.26213Z" fill="#334D6E"/>
-                </svg>
-            </div>
-
-            <div class="tag-search">
-                <p>2.0 и выше</p>
-
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle opacity="0.2" cx="12" cy="12" r="12" fill="#0D6FE3"/>
-                    <path d="M17 8.26213L15.7379 7L12 10.7379L8.26213 7L7 8.26213L10.7379 12L7 15.7379L8.26213 17L12 13.2621L15.7379 17L17 15.7379L13.2621 12L17 8.26213Z" fill="#334D6E"/>
-                </svg>
-            </div>
-
-            <p class="reset-all-tags-search">Сбросить все фильтры</p>
-        </div>
+        <app-tags [tags]='tags' class="tags-search"></app-tags>
 
         <div class="map">
             <div class="map-field-click" (click)="openCloseMap = !openCloseMap"></div>
 
             <div class="map-title">
                 <p>Исполнители на карте</p>
-                <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.42 0.590088L6 5.17009L10.59 0.590088L12 2.00009L6 8.00009L1.68141e-08 2.00009L1.42 0.590088Z" fill="#90A0B7"/>
-                </svg>
+                <mat-icon>keyboard_arrow_down</mat-icon>
             </div>
 
             <div class="map-img" [ngStyle]="{display: openCloseMap ? 'block' : 'none'}"></div>
@@ -190,16 +58,16 @@
         </div>
 
 
-        <div *ngFor="let performersCard of performersCards" class="performers-card">
+        <div *ngFor="let card of performersCards" class="performers-card">
             <div class="gallery">
                 <div class="big-image">
-                    <img [src]="performersCard.gallery[0]">
+                    <img [src]="card.gallery[0]">
                 </div>
 
                 <div class="small-images">
-                    <img [src]="performersCard.gallery[1]">
-                    <img [src]="performersCard.gallery[2]">
-                    <img [src]="performersCard.gallery[3]">
+                    <img [src]="card.gallery[1]">
+                    <img [src]="card.gallery[2]">
+                    <img [src]="card.gallery[3]">
                 </div>
 
                 <div class="arrow-left-block">
@@ -221,42 +89,18 @@
 
             <div class="logo-description-statistics-block">
                 <div class="logo">
-                    <img [src]="performersCard.logo">
+                    <img [src]="card.logo">
                 </div>
     
                 <div class="description">
-                    <p class="description-header">{{ performersCard.description.header }}</p>
+                    <p class="description-header">{{ card.description.header }}</p>
     
-                    <div class="description-rating">
-                        <p>{{ performersCard.description.rating }}</p>
-    
-                        <div class="stars">
-                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 7.635L8.09 9.5L7.27 5.985L10 3.62L6.405 3.31L5 0L3.595 3.31L0 3.62L2.725 5.985L1.91 9.5L5 7.635Z" fill="#FFB438"/>
-                            </svg>
-        
-                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 7.635L8.09 9.5L7.27 5.985L10 3.62L6.405 3.31L5 0L3.595 3.31L0 3.62L2.725 5.985L1.91 9.5L5 7.635Z" fill="#FFB438"/>
-                            </svg>
-        
-                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 7.635L8.09 9.5L7.27 5.985L10 3.62L6.405 3.31L5 0L3.595 3.31L0 3.62L2.725 5.985L1.91 9.5L5 7.635Z" fill="#FFB438"/>
-                            </svg>
-        
-                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 7.635L8.09 9.5L7.27 5.985L10 3.62L6.405 3.31L5 0L3.595 3.31L0 3.62L2.725 5.985L1.91 9.5L5 7.635Z" fill="#FFB438"/>
-                            </svg>
-        
-                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 7.635L8.09 9.5L7.27 5.985L10 3.62L6.405 3.31L5 0L3.595 3.31L0 3.62L2.725 5.985L1.91 9.5L5 7.635Z" fill="#FFB438"/>
-                            </svg>
-                        </div>
-                    </div>
+                    <app-rating-stars></app-rating-stars>
 
-                    <div class="description-discount">{{ performersCard.description.discount }}</div>
+                    <div class="description-discount">{{ card.description.discount }}</div>
 
                     <div class="description-service-class">
-                        <div *ngFor="let serviceClass of performersCard.description.serviceClass">
+                        <div *ngFor="let serviceClass of card.description.serviceClass">
                             <p
                                 [style]="{color: serviceClass.color}"
                             >{{ serviceClass.name }}</p>
@@ -268,7 +112,7 @@
                             <path d="M5.99996 8.58342C5.44743 8.58342 4.91752 8.36392 4.52682 7.97322C4.13612 7.58252 3.91663 7.05262 3.91663 6.50008C3.91663 5.94755 4.13612 5.41764 4.52682 5.02694C4.91752 4.63624 5.44743 4.41675 5.99996 4.41675C6.55249 4.41675 7.0824 4.63624 7.4731 5.02694C7.8638 5.41764 8.08329 5.94755 8.08329 6.50008C8.08329 6.77367 8.02941 7.04458 7.92471 7.29734C7.82001 7.5501 7.66655 7.77977 7.4731 7.97322C7.27964 8.16668 7.04998 8.32013 6.79722 8.42483C6.54446 8.52953 6.27355 8.58342 5.99996 8.58342ZM5.99996 0.666748C4.45286 0.666748 2.96913 1.28133 1.87517 2.37529C0.781208 3.46925 0.166626 4.95299 0.166626 6.50008C0.166626 10.8751 5.99996 17.3334 5.99996 17.3334C5.99996 17.3334 11.8333 10.8751 11.8333 6.50008C11.8333 4.95299 11.2187 3.46925 10.1248 2.37529C9.03079 1.28133 7.54706 0.666748 5.99996 0.666748Z" fill="#90A0B7"/>
                         </svg>
     
-                        <p>{{ performersCard.description.location }}</p>
+                        <p>{{ card.description.location }}</p>
                     </div>
     
                     <div class="description-elem description-metro">
@@ -276,7 +120,7 @@
                             <path d="M11.0632 0.0479476L10.9286 0.0477237L8.06842 5.63634L5.10534 0L1.04844 10.1822H0V11H5.7437V10.1822H4.60404L5.7437 6.99994L8.06842 11L10.3021 6.99994L11.4416 10.1822H10.3021V11H16V10.1822H15.0129L11.0632 0.0479476Z" fill="#90A0B7"/>
                         </svg>
     
-                        <p>{{ performersCard.description.metro }}</p>
+                        <p>{{ card.description.metro }}</p>
                     </div>
     
                     <div class="description-elem description-activity">
@@ -287,7 +131,7 @@
                             <rect x="11" y="11" width="6" height="6" rx="1" fill="#90A0B7"/>
                         </svg>
     
-                        <p>{{ performersCard.description.activity }}</p>
+                        <p>{{ card.description.activity }}</p>
                     </div>
     
                     <div class="description-elem description-contract">
@@ -295,7 +139,7 @@
                             <path d="M9.66667 12.1667H3.83333V10.5H9.66667V12.1667ZM12.1667 8.83333H3.83333V7.16667H12.1667V8.83333ZM12.1667 5.5H3.83333V3.83333H12.1667V5.5ZM13.8333 0.5H2.16667C1.24167 0.5 0.5 1.24167 0.5 2.16667V13.8333C0.5 14.2754 0.675595 14.6993 0.988155 15.0118C1.30072 15.3244 1.72464 15.5 2.16667 15.5H13.8333C14.2754 15.5 14.6993 15.3244 15.0118 15.0118C15.3244 14.6993 15.5 14.2754 15.5 13.8333V2.16667C15.5 1.24167 14.75 0.5 13.8333 0.5Z" fill="#90A0B7"/>
                         </svg>
     
-                        <p>{{ performersCard.description.contract }}</p>
+                        <p>{{ card.description.contract }}</p>
                     </div>
     
                     <div class="description-elem description-face">
@@ -303,7 +147,7 @@
                             <path d="M8.99996 0.666748C4.39163 0.666748 0.666626 4.41675 0.666626 9.00008C0.666626 11.2102 1.5446 13.3298 3.1074 14.8926C3.88122 15.6665 4.79988 16.2803 5.81093 16.6991C6.82198 17.1179 7.90561 17.3334 8.99996 17.3334C11.2101 17.3334 13.3297 16.4554 14.8925 14.8926C16.4553 13.3298 17.3333 11.2102 17.3333 9.00008C17.3333 7.90573 17.1177 6.8221 16.699 5.81105C16.2802 4.80001 15.6663 3.88135 14.8925 3.10752C14.1187 2.3337 13.2 1.71987 12.189 1.30109C11.1779 0.882296 10.0943 0.666748 8.99996 0.666748ZM12 5.95008C12.8916 5.95008 13.6083 6.66675 13.6083 7.55842C13.6083 8.45008 12.8916 9.16675 12 9.16675C11.5734 9.16675 11.1643 8.9973 10.8627 8.69568C10.5611 8.39406 10.3916 7.98497 10.3916 7.55842C10.3833 6.66675 11.1083 5.95008 12 5.95008ZM6.99996 4.63341C8.08329 4.63341 8.96663 5.51675 8.96663 6.60008C8.96663 7.68341 8.08329 8.58342 6.99996 8.58342C5.91663 8.58342 5.03329 7.68341 5.03329 6.60008C5.03329 5.50841 5.90829 4.63341 6.99996 4.63341ZM6.99996 12.2417V15.3667C4.99996 14.7417 3.41663 13.2001 2.71663 11.2334C3.58329 10.3001 5.77496 9.83342 6.99996 9.83342C7.44163 9.83342 7.99996 9.89175 8.58329 10.0084C7.21663 10.7334 6.99996 11.6917 6.99996 12.2417ZM8.99996 15.6667C8.76663 15.6667 8.54996 15.6667 8.33329 15.6334V12.2417C8.33329 11.0584 10.7833 10.4667 12 10.4667C12.8916 10.4667 14.4166 10.7917 15.2 11.4251C14.225 13.9001 11.8166 15.6667 8.99996 15.6667Z" fill="#90A0B7"/>
                         </svg>
     
-                        <p>{{ performersCard.description.face }}</p>
+                        <p>{{ card.description.face }}</p>
                     </div>
     
                     <div class="description-info">
@@ -311,21 +155,21 @@
                             <path d="M7.7 4.9H6.3V3.5H7.7V4.9ZM7.7 10.5H6.3V6.3H7.7V10.5ZM7 0C6.08075 0 5.17049 0.18106 4.32122 0.532843C3.47194 0.884626 2.70026 1.40024 2.05025 2.05025C0.737498 3.36301 0 5.14348 0 7C0 8.85651 0.737498 10.637 2.05025 11.9497C2.70026 12.5998 3.47194 13.1154 4.32122 13.4672C5.17049 13.8189 6.08075 14 7 14C8.85651 14 10.637 13.2625 11.9497 11.9497C13.2625 10.637 14 8.85651 14 7C14 6.08075 13.8189 5.17049 13.4672 4.32122C13.1154 3.47194 12.5998 2.70026 11.9497 2.05025C11.2997 1.40024 10.5281 0.884626 9.67878 0.532843C8.8295 0.18106 7.91925 0 7 0Z" fill="#90A0B7"/>
                         </svg>
     
-                        <p>{{ performersCard.description.info }}</p>
+                        <p>{{ card.description.info }}</p>
                     </div>
                 </div>
     
                 <div class="statistics">
                     <div class="statistic">
                         <p>Выполнено заказов</p>
-                        <p class="value">{{ performersCard.statistics.amountCompletedOrders }}</p>
+                        <p class="value">{{ card.statistics.amountCompletedOrders }}</p>
                     </div>
     
                     <hr>
     
                     <div class="statistic">
                         <p>Цены</p>
-                        <p class="value">{{ performersCard.statistics.prices }}</p>
+                        <p class="value">{{ card.statistics.prices }}</p>
                     </div>
     
                     <hr>
@@ -338,13 +182,13 @@
                                 <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M15.3334 6.66675C15.3334 5.92675 14.7334 5.33341 14.0001 5.33341H9.78675L10.4267 2.28675C10.4401 2.22008 10.4467 2.14675 10.4467 2.07341C10.4467 1.80008 10.3334 1.54675 10.1534 1.36675L9.44675 0.666748L5.06008 5.05341C4.81341 5.30008 4.66675 5.63341 4.66675 6.00008V12.6667C4.66675 13.0204 4.80722 13.3595 5.05727 13.6096C5.30732 13.8596 5.64646 14.0001 6.00008 14.0001H12.0001C12.5534 14.0001 13.0267 13.6667 13.2267 13.1867L15.2401 8.48675C15.3001 8.33341 15.3334 8.17341 15.3334 8.00008V6.66675ZM0.666748 14.0001H3.33341V6.00008H0.666748V14.0001Z" fill="#46AA32"/>
                                 </svg>
-                                <p class="value">{{ performersCard.statistics.rating.likes }}</p>
+                                <p class="value">{{ card.statistics.rating.likes }}</p>
                             </div>
                             <div class="dislikes">
                                 <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M15.3334 7.33325C15.3334 8.07325 14.7334 8.66659 14.0001 8.66659H9.78675L10.4267 11.7133C10.4401 11.7799 10.4467 11.8533 10.4467 11.9266C10.4467 12.1999 10.3334 12.4533 10.1534 12.6333L9.44675 13.3333L5.06008 8.94659C4.81341 8.69992 4.66675 8.36659 4.66675 7.99992V1.33325C4.66675 0.97963 4.80722 0.640492 5.05727 0.390444C5.30732 0.140395 5.64646 -8.01086e-05 6.00008 -8.01086e-05H12.0001C12.5534 -8.01086e-05 13.0267 0.333252 13.2267 0.813252L15.2401 5.51325C15.3001 5.66659 15.3334 5.82659 15.3334 5.99992V7.33325ZM0.666748 -8.01086e-05H3.33341V7.99992H0.666748V-8.01086e-05Z" fill="#EA4545"/>
                                 </svg>
-                                <p class="value">{{ performersCard.statistics.rating.dislikes }}</p>
+                                <p class="value">{{ card.statistics.rating.dislikes }}</p>
                             </div>
                         </div>
                     </div>
@@ -353,7 +197,7 @@
     
                     <div class="statistic">
                         <p>Заказов в работе</p>
-                        <p class="value">{{ performersCard.statistics.ordersInProgress }}</p>
+                        <p class="value">{{ card.statistics.ordersInProgress }}</p>
                     </div>
     
     
@@ -376,7 +220,7 @@
                         </button>
                     </div>
     
-                    <p class="online">{{ performersCard.statistics.online }}</p>
+                    <p class="online">{{ card.statistics.online }}</p>
                 </div>
             </div>
         </div>
