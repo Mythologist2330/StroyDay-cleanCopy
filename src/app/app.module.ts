@@ -13,15 +13,15 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { MainPageComponent } from './pages/mainPage/mainPage.component';
-import { SearcherComponent } from './pages/mainPage/components/searcher/searcher.component';
-import { CategoriesComponent } from './pages/mainPage/components/categories/categories.component';
-import { ApplicationsComponent } from './pages/mainPage/components/applications/applications.component';
+import { MainComponent } from './pages/main/main.component';
+import { SearcherComponent } from './pages/main/components/searcher/searcher.component';
+import { CategoriesComponent } from './pages/main/components/categories/categories.component';
+import { ApplicationsComponent } from './pages/main/components/applications/applications.component';
 import { FormRegistrationPageComponent } from './pages/formRegistrationPage/formRegistrationPage.component';
 import { RegistrBasicInfoComponent } from './pages/formRegistrationPage/components/registrBasicInfo/registrBasicInfo.component';
 import { RegistrRequisitesComponent } from './pages/formRegistrationPage/components/registrRequisites/registrRequisites.component';
 
-import { PerformersModule } from './pages/performersPage/performers.module';
+import { PerformersModule } from './pages/performers/performers.module';
 import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
@@ -31,7 +31,7 @@ import { SharedModule } from "./shared/shared.module";
     HeaderComponent,
     FooterComponent,
 
-    MainPageComponent,
+    MainComponent,
     SearcherComponent,
     CategoriesComponent,
     ApplicationsComponent,

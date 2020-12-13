@@ -4,6 +4,7 @@ import { PerformersListComponent } from './performers-list.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { HeaderFiltersComponent } from './components/header-filters/header-filters.component';
 import { SharedModule } from "../../shared/shared.module";
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { FilterLocationComponent } from './components/filter-location/filter-location.component';
 import { FilterCategoriesComponent } from './components/filter-categories/filter-categories.component';
 
@@ -18,6 +19,7 @@ import { FilterCategoriesComponent } from './components/filter-categories/filter
     imports: [
         CommonModule,
         SharedModule,
+        LeafletModule
     ],
 })
 export class PerformersModule { }

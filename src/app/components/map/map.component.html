@@ -1,1 +1,13 @@
-<p>map works!</p>
+<div class="wrap">
+    <div class="map-title" (click)="toggle = !toggle">
+        <p>Исполнители на карте</p>
+        <mat-icon>keyboard_arrow_down</mat-icon>
+    </div>
+    <div class="map" [ngClass]="toggle ? 'show' : ''"
+        leaflet 
+        [leafletOptions]="this.mapSrv.mapOptions"
+        [leafletLayersControl]="this.mapSrv.layersControl"
+        (leafletMapReady)="this.mapSrv.onMapReady($event)" >
+    </div>
+</div>
+    

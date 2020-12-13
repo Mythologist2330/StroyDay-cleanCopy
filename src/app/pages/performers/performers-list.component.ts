@@ -3,6 +3,7 @@ import { IPerformersCard } from '../../interfaces/IPerformersCard';
 import { PerformersCardService } from '../../services/performers-card.service';
 import { FilterService } from '../../services/filter.service';
 import { IFilter } from '../../interfaces/IFilter';
+import { tileLayer, latLng } from 'leaflet';
 
 @Component({
     selector: 'app-performersPage',
@@ -24,6 +25,14 @@ export class PerformersListComponent implements OnInit{
     shrinkHeader = false;
     decreaseFieldClick = false;
     performersCards: IPerformersCard[] = [];
+
+    public options = {
+        layers: [
+            tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' })
+        ],
+        zoom: 5,
+        center: latLng(46.879966, -121.726909)
+    };
 
     readonly categories = [
         'Архитектура и проектирование',

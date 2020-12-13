@@ -31,21 +31,10 @@
         <p class="selected-categories">Все категории исполнителей</p>
 
         <app-tags [tags]='tags' class="tags-search"></app-tags>
-
-        <div class="map">
-            <div class="map-field-click" (click)="openCloseMap = !openCloseMap"></div>
-
-            <div class="map-title">
-                <p>Исполнители на карте</p>
-                <mat-icon>keyboard_arrow_down</mat-icon>
-            </div>
-
-            <div class="map-img" [ngStyle]="{display: openCloseMap ? 'block' : 'none'}"></div>
-        </div>
+        <app-map></app-map>
             
         <div class="sort-by">
             <p class="sort-by-p">Сортировать по:</p>
-
             <label>
                 <input type="radio" name="sortBy" checked>
                 <p>алфавиту</p>
