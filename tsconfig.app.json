@@ -4,12 +4,13 @@
   "compilerOptions": {
     "outDir": "./out-tsc/app",
     "types": [],
+    "baseUrl": "src",
     "paths": {
-      "@services/*": ["src/app/services/*"],
-      "@models/*": ["src/app/models/*"],
-      "@components/*": ["src/app/components/*"],
-      "@pages/*": ["src/app/pages/*"],
-      "@interfaces/*": ["src/app/interfaces/*"]
+      "@services/*": ["app/services/*"],
+      "@models/*": ["app/models/*"],
+      "@components/*": ["app/components/*"],
+      "@pages/*": ["app/pages/*"],
+      "@interfaces/*": ["app/interfaces/*"]
     }
   },
   "files": [

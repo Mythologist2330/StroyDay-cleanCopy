@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -19,11 +20,9 @@ import { ApplicationsComponent } from './pages/mainPage/components/applications/
 import { FormRegistrationPageComponent } from './pages/formRegistrationPage/formRegistrationPage.component';
 import { RegistrBasicInfoComponent } from './pages/formRegistrationPage/components/registrBasicInfo/registrBasicInfo.component';
 import { RegistrRequisitesComponent } from './pages/formRegistrationPage/components/registrRequisites/registrRequisites.component';
-import { PerformersListComponent } from './pages/performersPage/performers-list.component';
-import { HeaderFiltersComponent } from './pages/performersPage/components/header-filters/header-filters.component';
 
+import { PerformersModule } from './pages/performersPage/performers.module';
 import { MaterialModule } from "./shared/material.module";
-import { FilterComponent } from './pages/performersPage/components/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -40,12 +39,9 @@ import { FilterComponent } from './pages/performersPage/components/filter/filter
     FormRegistrationPageComponent,
     RegistrBasicInfoComponent,
     RegistrRequisitesComponent,
-
-    PerformersListComponent,
-    HeaderFiltersComponent,
-    FilterComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -53,7 +49,9 @@ import { FilterComponent } from './pages/performersPage/components/filter/filter
     HttpClientModule,
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    
+    PerformersModule,
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent],
