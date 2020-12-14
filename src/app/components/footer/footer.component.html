@@ -1,148 +1,149 @@
 <div class="container">
 
-    <div class="header">
-        <div class="navbar-block">
-            <div class="navbar">
-                <div class="nav-columns">
+    <div class="navigation">
+        <div class="navigation-top">
+            <div class="navigation-top-columns column-customers">
+                <p class="navigation-top-column-title">Заказчику/покупателю</p>
 
-                    <div class="nav-column">
-                        <img src="../../../assets/images/burger-lines.png">
-                        <p>Товары</p>
+                <div class="navigation-top-column-container">
+                    <div class="navigation-top-column">
+                        <p class="navigation-top-column-list">Зарегистрироваться</p>
+                        <p class="navigation-top-column-list">Создать заявку</p>
+                        <p class="navigation-top-column-list">Подобрать исполнителя</p>
+                        <p class="navigation-top-column-list">Найти консультанта</p>
+                        <p class="navigation-top-column-list">Документация по заказу</p>
                     </div>
-                    
-                    <div class="nav-column">
-                        <img src="../../../assets/images/burger-lines.png">
-                        <p>Услуги</p>
+    
+                    <div class="navigation-top-column">
+                        <p class="navigation-top-column-list">Сравнить стоимость</p>
+                        <p class="navigation-top-column-list">Создать документы</p>
+                        <p class="navigation-top-column-list">Каталог товаров/услуг</p>
+                        <p class="navigation-top-column-list">Изменить тариф</p>
+                        <p class="navigation-top-column-list">Продвижение заявки</p>
                     </div>
-
                 </div>
-    
-                <div class="menu">
-                    <p class="menu-list" routerLink="/">Главная</p>
-                    <p class="menu-list">Заявки</p>
-                    <p class="menu-list" routerLink="/performersPage">Исполнители</p>
-                    <p class="menu-list">Калькуляторы</p>
-                    <p class="menu-list">Документы</p>
-                    <p class="menu-list">
-                        Ещё
-                        <svg width="9" height="7" viewBox="0 0 9 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.52003 0.64312L0 2.09839L2.96685 5.26957L2.95453 5.28113L4.08865 6.46862L4.26104 6.65289L4.26292 6.65109L4.2644 6.65264L8.96423 2.24315L7.65436 0.871635L4.5014 3.82982L1.52003 0.64312Z" fill="#90A0B7"/>
-                        </svg>
-                    </p>
-                </div>
-    
-                <button class="btn-are-you-performer" routerLink="/formRegistrationPage">Вы исполнитель?</button>
             </div>
-        </div>
-    </div>
 
-    <div class="nav-links">
+            <div class="navigation-top-columns column-performers">
+                <p class="navigation-top-column-title">Исполнителю/поставщику</p>
 
-        <div class="column column-customer">
-            <h3>Заказчику</h3>
+                <div class="navigation-top-column-container">
+                    <div class="navigation-top-column">
+                        <p class="navigation-top-column-list">Зарегистрировать профиль</p>
+                        <p class="navigation-top-column-list">Создать услугу</p>
+                        <p class="navigation-top-column-list">Создать товар</p>
+                        <p class="navigation-top-column-list">Подобрать исполнителя</p>
+                        <p class="navigation-top-column-list">Найти сотрудника</p>
+                    </div>
+    
+                    <div class="navigation-top-column">
+                        <p class="navigation-top-column-list">Подобрать заявку</p>
+                        <p class="navigation-top-column-list">Услуги для бизнеса</p>
+                        <p class="navigation-top-column-list">Создать документы</p>
+                        <p class="navigation-top-column-list">Изменить тариф</p>
+                        <p class="navigation-top-column-list">Продвижение профиля</p>
+                    </div>
+                </div>
+            </div>
 
-            <p>Регистрация</p>
-            <p>Создать заявку</p>
-            <p>Подобрать мастера</p>
-            <p>Найти консультанта</p>
-            <p>Документация по заказу</p>
-        </div>
+            <div class="navigation-top-columns column-services">
+                <p class="navigation-top-column-title">Услуги</p>
 
-        <div class="column column-performer">
-            <h3>Исполнителю</h3>
-
-            <p>Регистрация</p>
-            <p>Создать услугу</p>
-            <p>Проекты</p>
-            <p>Вакансии</p>
-            <p>Заявки</p>
-            <p>Найти сотрудника</p>
-        </div>
-
-        <div class="column column-categories">
-            <h3>Категории</h3>
-
-            <p>Проектирование</p>
-            <p>Строительство</p>
-            <p>Ремонт и отделка</p>
-            <p>Инженерные сети</p>
-            <p>Загородное строительство</p>
-            <p>Банковские гарантии</p>
-            <p>Юридические услуги</p>
-            <p>Бухгалтерские услуги</p>
-            <p>Строительная техника</p>
-            <p>Стройматериалы</p>
-        </div>
-
-        <div class="column column-service">
-            <h3>Сервис</h3>
-
-            <p>О компании</p>
-            <p>Как пользоваться</p>
-            <p>Новости</p>
-            <p>События</p>
-            <p>Реклама на сайте</p>
-            <p>API</p>
-            <p>Отзывы</p>
-            <p>Тарифы и цены</p>
-            <p>Служба поддержки</p>
-            <p>Контакты</p>
-        </div>
-
-        <div class="column column-knowledge-base">
-            <h3>База знаний</h3>
-
-            <p>Регламенты</p>
-            <p>Документы</p>
-            <p>Готовые договоры</p>
-            <p>Калькуляторы стоимости</p>
-            <p>Статьи</p>
-            <p>Вопрос-ответ</p>
-            <p>Полезные ссылки</p>
-        </div>
-
-        <div class="column column-contact">
-            <h3>Связаться</h3>
-
-            <p class="column-contact-tel">
-                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.5 0C3.35729 0 0 3.35729 0 7.5C0 11.6427 3.35729 15 7.5 15C11.6427 15 15 11.6427 15 7.5C15 3.35729 11.6427 0 7.5 0ZM8.62423 11.1345C5.37474 9.53285 4.52772 6.65298 4.40452 5.60575C4.28131 4.55852 6.09856 3.6345 6.09856 3.6345L7.23819 5.57495C7.23819 5.57495 6.00616 6.23717 6.17557 6.59138C7.08419 8.50103 8.25462 9.20945 8.25462 9.20945C8.63963 9.34805 9.48665 8.40862 9.48665 8.40862L11.1191 9.94867C11.1345 9.94867 9.76386 11.6889 8.62423 11.1345Z" fill="#334D6E"/>
-                </svg> +7 (495) 000-00-00
-            </p>
-
-            <p class="column-contact-email">info@mail.ru <br> по всем вопросам</p>
-
-            <div class="contact-us">
-                <p>Следи за нами:</p>
-                <div>
-                    <svg width="19" height="10" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M18.5641 0.677105C18.6962 0.286842 18.5641 0 17.9354 0H15.8568C15.3283 0 15.0846 0.247763 14.9525 0.520921C14.9525 0.520921 13.8955 2.80434 12.398 4.2875C11.9136 4.71684 11.6934 4.85355 11.4289 4.85355C11.2969 4.85355 11.1057 4.71684 11.1057 4.32658V0.677105C11.1057 0.208684 10.9522 0 10.5118 0H7.24544C6.91524 0 6.71658 0.217368 6.71658 0.423421C6.71658 0.8675 7.46518 0.969868 7.54239 2.21882V4.93145C7.54239 5.52632 7.42123 5.63408 7.15695 5.63408C6.4523 5.63408 4.73819 3.34066 3.7216 0.716184C3.52235 0.206053 3.32251 0 2.79128 0H0.712666C0.118778 0 0 0.247763 0 0.520921C0 1.00882 0.704649 3.42882 3.28109 6.62947C4.99876 8.81513 7.41886 10 9.621 10C10.9423 10 11.1057 9.73684 11.1057 9.28355V7.63158C11.1057 7.10526 11.2309 7.00026 11.6493 7.00026C11.9575 7.00026 12.4861 7.13684 13.7193 8.19066C15.1286 9.43961 15.3611 10 16.1538 10H18.2324C18.8263 10 19.1232 9.73684 18.9519 9.2175C18.7645 8.69987 18.0915 7.94895 17.1987 7.05868C16.7143 6.55132 15.9875 6.005 15.7673 5.73171C15.4589 5.38053 15.5471 5.22421 15.7673 4.91197C15.7673 4.91197 18.2998 1.75053 18.5641 0.677105Z" fill="#90A0B7"/>
-                    </svg>
-
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M5 0C2.23858 0 0 2.23857 0 5V10.2569C0 13.0183 2.23857 15.2569 5 15.2569H10.2569C13.0183 15.2569 15.2569 13.0183 15.2569 10.2569V5C15.2569 2.23858 13.0183 0 10.2569 0H5ZM11.6834 2.40918C11.3986 2.40918 11.1188 2.52448 10.9177 2.72651C10.7156 2.92755 10.5994 3.20743 10.5994 3.49322C10.5994 3.77813 10.7157 4.05791 10.9177 4.25993C11.1187 4.46097 11.3986 4.57726 11.6834 4.57726C11.9692 4.57726 12.2481 4.46097 12.4501 4.25993C12.6521 4.05791 12.7674 3.77803 12.7674 3.49322C12.7674 3.20743 12.6521 2.92755 12.4501 2.72651C12.2491 2.52448 11.9692 2.40918 11.6834 2.40918ZM4.81836 7.46824C4.81836 5.8742 6.11514 4.57739 7.70914 4.57739C9.30314 4.57739 10.5999 5.8742 10.5999 7.46824C10.5999 9.06221 9.30314 10.3589 7.70914 10.3589C6.11514 10.3589 4.81836 9.06221 4.81836 7.46824Z" fill="#90A0B7"/>
-                    </svg>
-
-                    <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.4908 18V9.7894H9.43919L9.8806 6.58953H6.4908V4.54655C6.4908 3.62011 6.76599 2.9888 8.18727 2.9888L10 2.988V0.126072C9.68641 0.0871465 8.61041 0 7.35858 0C4.74505 0 2.95586 1.49118 2.95586 4.22974V6.58953H0V9.7894H2.95586V18H6.4908Z" fill="#90A0B7"/>
-                    </svg>                       
+                <div class="navigation-top-column-container">
+                    <div class="navigation-top-column">
+                        <p class="navigation-top-column-list">Проектирование</p>
+                        <p class="navigation-top-column-list">Строительство</p>
+                        <p class="navigation-top-column-list">Ремонт и отделка</p>
+                        <p class="navigation-top-column-list">Инженерные сети</p>
+                        <p class="navigation-top-column-list">Загородное строительство</p>
+                    </div>
+    
+                    <div class="navigation-top-column column-services-relative">
+                        <p class="navigation-top-column-list">Банковские гарантии</p>
+                        <p class="navigation-top-column-list">Юридические услуги</p>
+                        <p class="navigation-top-column-list">Бухгалтерские услуги</p>
+                        <p class="navigation-top-column-list">Строительная техника</p>
+                        <p class="navigation-top-column-list">Строительные материалы</p>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <div class="navigation-bottom">
+            <div class="navigation-bottom-columns column-about-service">
+                <p class="navigation-bottom-column-title">О сервисе</p>
+
+                <div class="navigation-bottom-column-container">
+                    <div class="navigation-bottom-column">
+                        <p class="navigation-bottom-column-list">О нас</p>
+                        <p class="navigation-bottom-column-list">Как пользоваться</p>
+                        <p class="navigation-bottom-column-list">Новости</p>
+                        <p class="navigation-bottom-column-list">События</p>
+                        <p class="navigation-bottom-column-list">Реклама на сайте</p>
+                    </div>
+    
+                    <div class="navigation-bottom-column">
+                        <p class="navigation-bottom-column-list">API</p>
+                        <p class="navigation-bottom-column-list">Отзывы</p>
+                        <p class="navigation-bottom-column-list">Тарифы и цены</p>
+                        <p class="navigation-bottom-column-list">Служба поддержки</p>
+                        <p class="navigation-bottom-column-list">Контакты</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-bottom-columns column-knowledge-base">
+                <p class="navigation-bottom-column-title">База знаний</p>
+
+                <div class="navigation-bottom-column-container">
+                    <div class="navigation-bottom-column">
+                        <p class="navigation-bottom-column-list">Регламенты</p>
+                        <p class="navigation-bottom-column-list">Документы</p>
+                        <p class="navigation-bottom-column-list">Готовые договоры</p>
+                        <p class="navigation-bottom-column-list">Калькулятор стоимости</p>
+                        <p class="navigation-bottom-column-list">Статьи</p>
+                    </div>
+    
+                    <div class="navigation-bottom-column">
+                        <p class="navigation-bottom-column-list">Вопрос-ответ</p>
+                        <p class="navigation-bottom-column-list">Советы специалистов</p>
+                        <p class="navigation-bottom-column-list">Форум</p>
+                        <p class="navigation-bottom-column-list">Полезные ссылки</p>
+                        <p class="navigation-bottom-column-list">Калькулятор потребности</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-bottom-column-subscribe">
+                <p class="navigation-bottom-column-subscribe-title">Будь в курсе наших новостей</p>
+
+                <div class="email-and-subscribe">
+                    <input type="email" placeholder="Ваш e-mail">
+                    <button>Подписаться</button>
+                </div>
+
+                <label class="agreement-personal-data">
+                    <input type="checkbox">
+                    <p>Согласен на обработку <span>персональных данных</span></p>
+                </label>
+            </div>
+        </div>
     </div>
 
-    <div class="black-block">
-        <div class="content">
-            <p class="confidentiality">Конфиденциальность</p>
-            <p class="your-city">Ваш город:</p>
-            <p class="city">Москва</p>
-            <p class="follow-news">Будь в курсе наших новостей!</p>
+    <div class="footer">
+        <p class="all-rights-reserved">© 2020 ООО «СтройкаГид». <br> Все права защищены.</p>
 
-            <input type="text" placeholder="Укажите ваш e-mail">
-
-            <button class="btn-subscribe">Подписаться</button>
+        <div class="web-links">
+            <img src="../../../assets/images/link-vk.png">
+            <img src="../../../assets/images/link-facebook.png">
+            <img src="../../../assets/images/link-telegram.png">
+            <img src="../../../assets/images/link-twitter.png">
+            <img src="../../../assets/images/link-youtube.png">
         </div>
+
+        <button>Блог</button>
+
+        <p class="privacy-policy">Политика конфиденциальности</p>
     </div>
 
 </div>
