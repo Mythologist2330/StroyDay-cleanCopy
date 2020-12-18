@@ -5,6 +5,10 @@ import { RegistrRequisitesComponent } from './pages/formRegistrationPage/compone
 import { FormRegistrationPageComponent } from './pages/formRegistrationPage/formRegistrationPage.component';
 import { MainPageComponent } from './pages/mainPage/mainPage.component';
 import { PerformersListComponent } from './pages/performersPage/performers-list.component';
+import { ServiceSpecificComponent } from './pages/servicesPage/components/service/service.component';
+import { ServiceCatalogComponent } from './pages/servicesPage/components/serviceCatalog/serviceСatalog.component';
+import { ServicesComponent } from './pages/servicesPage/components/services/services.component';
+import { ServicesPageComponent } from './pages/servicesPage/servicesPage.component';
 
 const routes: Routes = [
   {path: '', component: PerformersListComponent},
@@ -14,7 +18,14 @@ const routes: Routes = [
     {path: 'registrRequisites', component: RegistrRequisitesComponent}
   ]},
 
-  {path: 'performersPage', component: PerformersListComponent}
+  {path: 'performersPage', component: PerformersListComponent},
+
+  {path: 'servicesPage', component: ServicesPageComponent, children: [
+    {path: '', component: ServicesComponent},
+    {path: 'serviceСatalog', component: ServiceCatalogComponent}
+  ]},
+
+  {path: 'serviceSpecific', component: ServiceSpecificComponent}
 ]
 
 @NgModule({

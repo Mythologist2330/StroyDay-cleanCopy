@@ -1,0 +1,65 @@
+.container{
+    max-width: 1140px;
+    height: 100%;
+    background-color: #F7F9FB;
+
+    .service-catalog-header{
+        margin: 14px 0 25px 0;
+        font-weight: bold;
+        font-size: 32px;
+        line-height: 40px;
+        letter-spacing: 0.002em;
+        color: #334D6E;
+    }
+
+    .service-catalog-cards{
+        width: 876px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .service-catalog-card{
+            width: 276px;
+            height: 124px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0px 4px 40px rgba(71, 84, 101, 0.05);
+            border-radius: 4px;
+            background-color: #fff;
+            position: relative;
+            transition: all 0.2s;
+
+            &:hover{
+                cursor: pointer;
+                box-shadow: 10px 10px 40px rgba(194, 205, 220, 0.6);
+                transform: translateY(-8px);
+
+                mat-icon{
+                    right: 16px;
+                }
+            }
+
+            .title{
+                max-width: 186px;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 24px;
+                color: #334D6E;
+                margin-bottom: 9px;
+            }
+
+            .amount-of-performers{
+                font-size: 14px;
+                color: #8594A8;
+            }
+
+            mat-icon{
+                color: #334D6E;
+                position: absolute;
+                top: 24px;
+                right: 24px;
+                transition: all 0.2s;
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+<div class="container">
+    <h1 class="service-catalog-header">Архитектура и проектирование</h1>
+
+    <div class="service-catalog-cards">
+
+        <div *ngFor="let catalog of serviceCatalog" routerLink="/serviceSpecific" class="service-catalog-card">
+
+            <p class="title">{{ catalog.title }}</p>
+            <p class="amount-of-performers">{{ catalog.amountOfPerformers }} исполнителей</p>
+            <mat-icon>arrow_forward</mat-icon>
+
+        </div>
+
+    </div>
+</div>

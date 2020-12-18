@@ -24,6 +24,8 @@ import { PerformersModule } from './pages/performersPage/performers.module';
 import { SharedModule } from "./shared/shared.module";
 import { MaterialModule } from "./shared/material.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServicesPageModule } from './pages/servicesPage/servicesPage.module';
+import { ServiceSpecificComponent } from './pages/servicesPage/components/service/service.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormRegistrationPageComponent,
     RegistrBasicInfoComponent,
     RegistrRequisitesComponent,
+
+    ServiceSpecificComponent
   ],
   imports: [
     CommonModule,
@@ -53,7 +57,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AngularFireDatabaseModule,
     PerformersModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ServicesPageModule
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent],

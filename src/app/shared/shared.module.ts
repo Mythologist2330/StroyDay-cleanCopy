@@ -5,6 +5,7 @@ import { MapComponent } from '../components/map/map.component';
 import { BreadcrumbsComponent } from '../components/breadcrumbs/breadcrumbs.component';
 import { TagsComponent } from '../components/tags/tags.component';
 import { RatingStarsComponent } from '../components/rating-stars/rating-stars.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [            
@@ -16,6 +17,7 @@ import { RatingStarsComponent } from '../components/rating-stars/rating-stars.co
   imports: [
         CommonModule,
         MaterialModule,
+        RouterModule
     ],
   exports: [
         MaterialModule,
@@ -23,6 +25,7 @@ import { RatingStarsComponent } from '../components/rating-stars/rating-stars.co
         BreadcrumbsComponent,
         TagsComponent,
         RatingStarsComponent,
+        RouterModule
     ],
 })
 export class SharedModule { }

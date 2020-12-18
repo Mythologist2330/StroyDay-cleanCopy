@@ -8,7 +8,7 @@ import { FilterLocationComponent } from './components/filter-location/filter-loc
 import { FilterCategoriesComponent } from './components/filter-categories/filter-categories.component';
 
 @NgModule({
-    declarations: [        
+    declarations: [
         PerformersListComponent,
         FilterComponent,
         HeaderFiltersComponent,
