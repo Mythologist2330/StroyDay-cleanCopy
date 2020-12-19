@@ -63,9 +63,12 @@
         width: 100%;
         padding: 0 16px;
         display: flex;
+        justify-content: center;
 
         .header-devide-top{
             width: 100%;
+            max-width: 1440px;
+            position: relative;
             height: 64px;
             display: flex;
             align-items: center;
@@ -140,13 +143,15 @@
             }
     
             .button-sign-in{
+                display: none;
+
                 width: 130px;
                 height: 48px;
                 margin: 0 15px 0 114px;
                 font-weight: 500;
                 font-size: 14px;
                 line-height: 18px;
-                display: flex;
+                //display: flex;
                 align-items: center;
                 justify-content: center;
                 color: #334D6E;
@@ -156,6 +161,154 @@
 
                 mat-icon{
                     display: none;
+                }
+            }
+
+            .profile{
+                min-width: 202px;
+                height: 100%;
+                margin: 0 0 0 58px;
+                overflow-x: hidden;
+                display: flex;
+                align-items: center;
+
+                mat-icon{
+                    margin: -4px 28px 0 0;
+                    font-size: 27px;
+                    color: #334D6E;
+                }
+
+                .profile-avatar{
+                    margin: 0 0 0 -2px;
+                    border-radius: 50%;
+                    border: 1px solid #C3CBD6;
+                    z-index: 6;
+
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+
+                .profile-module-window{
+                    width: 256px;
+                    height: 238px;
+                    padding: 24px;
+                    position: absolute;
+                    top: 63px;
+                    right: 0;
+                    background-color: #FFFFFF;
+                    box-shadow: 0px 0px 15px rgba(22, 47, 78, 0.1);
+                    border-radius: 4px;
+                    z-index: 600;
+
+                    .triangle{
+                        position: absolute;
+                        top: -10px;
+                        right: 20px;
+                    }
+
+                    .profile-name{
+                        padding-bottom: 16px;
+                        margin-bottom: 16px;
+                        border-bottom: 1px solid #C3CBD6;
+
+                        .name{
+                            display: flex;
+                            align-items: center;
+                        }
+
+                        &:hover{
+                            cursor: pointer;
+                        }
+
+                        img{
+                            width: 40px;
+                            height: 40px;
+                            margin-left: 0;
+                            border-radius: 50%;
+                            border: 1px solid #C3CBD6;
+                        }
+
+                        div{
+
+                            p{
+                                margin: 1px 0 0 12px;
+                                font-weight: 500;
+                                font-size: 14px;
+                                color: #334D6E;
+                            }
+
+                            a{
+                                margin-left: 12px;
+                                font-size: 12px;
+                                color: #8594A8;
+                            }
+                        }
+                        
+                        .nav{
+                            display: none;
+                        }
+                    }
+
+                    .compony{
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 12px;
+
+                        &:hover{
+                            cursor: pointer;
+                        }
+
+                        img{
+                            width: 32px;
+                            height: 32px;
+                            border-radius: 50%;
+                            border: 1px solid #C3CBD6;
+                        }
+
+                        p{
+                            margin-left: 12px;
+                            font-weight: 500;
+                            font-size: 14px;
+                            color: #334D6E;
+                        }
+                    }
+                    
+                    .logout-from-all-accounts{
+                        display: flex;
+                        align-items: center;
+                        margin: 17px 0 0 3px;
+
+                        &:hover{
+                            cursor: pointer;
+                        }
+
+                        p{
+                            margin: 0 0 -1px 15px;
+                            font-weight: 500;
+                            font-size: 14px;
+                            color: #EA4545;
+                        }
+                    }
+
+                    .profile-title{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (min-width: 1441px) {
+    .container{
+        .header{
+            .header-devide-top{
+                .profile{
+                    .profile-module-window{
+                        right: 1.6%;
+                    }
                 }
             }
         }
@@ -181,8 +334,10 @@
         .header{
             position: relative;
             padding: 0 24px;
+            justify-content: center;
 
             .header-devide-top{
+                max-width: 720px;
                 position: relative;
                 border-bottom: 1px solid #C3CBD6;
 
@@ -205,6 +360,24 @@
 
                 .button-sign-in{
                     margin: 0 0 0 197px;
+                }
+
+                .profile{
+                    margin: 0 0 0 125px;
+                    padding-top: 2px;
+
+                    mat-icon{
+                        position: relative;
+                        left: 15px;
+                    }
+
+                    .profile-avatar{
+                        margin: 0 0px 1px 13px;
+                    }
+
+                    .profile-module-window{
+                        right: -16px;
+                    }
                 }
             }
         }
@@ -346,6 +519,146 @@
                     mat-icon{
                         display: block;
                         color: #90A0B7;
+                    }
+                }
+
+                .profile{
+                    min-width: auto;
+                    order: 2;
+                    margin: 0;
+
+                    mat-icon{
+                        display: none;
+                    }
+
+                    .profile-avatar{
+                        margin: 0 0 2px 12px;
+                    }
+
+                    .profile-module-window{
+                        width: 100vw;
+                        height: 100vh;
+                        position: fixed;
+                        left: 0;
+                        top: 0;
+                        border-radius: 0;
+                        padding: 0;
+                        transition: all .2s;
+
+                        .profile-title{
+                            width: 100%;
+                            height: 60px;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            padding: 0 16px;
+
+                            &:hover{
+                                cursor: pointer;
+                            }
+
+                            p{
+                                font-weight: bold;
+                                font-size: 20px;
+                                line-height: 28px;
+                                color: #334D6E;
+                            }
+
+                            mat-icon{
+                                display: block;
+                                position: relative;
+                                top: 0;
+                                left: 0;
+                                color: #8594A8;
+                                font-size: 16px;
+                                margin: 8px -4px 0 0;
+                            }
+                        }
+
+                        .profile-name{
+                            border-top: 1px solid #C3CBD6;
+                            width: 100%;
+                            height: 241px;
+                            margin: 0;
+                            padding: 0 16px;
+
+                            .name{
+                                padding: 15px 0 9px 0;
+
+                                img{
+                                    width: 48px;
+                                    height: 48px;
+                                }
+
+                                div{
+
+                                    p{
+                                        margin: 1px 0 0 18px;
+                                    }
+
+                                    a{
+                                        margin-left: 18px;
+                                    }
+                                }
+                            }
+
+                            .nav{
+                                width: 100%;
+                                display: block;
+
+                                p{
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: space-between;
+                                    height: 56px;
+                                    margin: 0;
+                                    border-bottom: 1px solid #C3CBD6;
+                                    font-weight: 500;
+                                    font-size: 16px;
+                                    line-height: 24px;
+                                    color: #334D6E;
+
+                                    span{
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        width: 41px;
+                                        height: 24px;
+                                        font-weight: bold;
+                                        font-size: 14px;
+                                        line-height: 20px;
+                                        color: #FFFFFF;
+                                        background-color: #EA4545;
+                                        border-radius: 20px;
+                                    }
+                                }
+                            }
+                        }
+
+                        .compony{
+                            width: 100%;
+                            height: 64px;
+                            margin: 0;
+                            padding: 0 17px;
+                            border-bottom: 1px solid #C3CBD6;
+
+                            p{
+                                font-size: 16px;
+                                line-height: 24px;
+                            }
+                        }
+
+                        .logout-from-all-accounts{
+                            width: 100%;
+                            height: 54px;
+                            padding: 0 19px;
+                            margin: 0;
+                            
+                            p{
+                                font-size: 16px;
+                                line-height: 24px;
+                            }
+                        }
                     }
                 }
             }

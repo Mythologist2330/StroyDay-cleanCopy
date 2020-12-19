@@ -8,6 +8,10 @@ import { Component } from '@angular/core';
 
 export class HeaderComponent {
 
+  profileToogle: boolean = false
+
+
+
 
   openCloseBurgerMenu(event) {
     if (event.view.innerWidth <= 767) {

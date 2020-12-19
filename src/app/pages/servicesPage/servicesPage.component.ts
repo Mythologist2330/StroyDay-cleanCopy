@@ -12,7 +12,6 @@ export class ServicesPageComponent implements OnInit{
     shrinkHeader: boolean = false;
     filterLocationToggle: boolean = false;
     showButtonsResetApply: boolean = false;
-    moduleFilterLocation;
 
 
 
