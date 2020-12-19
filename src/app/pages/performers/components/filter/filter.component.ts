@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IFilter } from '../../../../interfaces/IFilter';
+
 
 @Component({
   selector: 'app-filter',
@@ -7,14 +9,18 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class FilterComponent implements OnInit {
 
-  @Input() filter: {title: string, selector: string[], type: string};
+  @Input() filter: IFilter;
+  @Output() sendFilter = new EventEmitter();
+  public toggle = false; 
 
-  public toggle = false;
-
-  constructor() { 
+  constructor() {
   }
 
   ngOnInit(): void {
+  }
+  
+  sendData(e): void {
+    this.sendFilter.emit({field: this.filter.field, value: e.value});
   }
 
   resetFilter(): void {

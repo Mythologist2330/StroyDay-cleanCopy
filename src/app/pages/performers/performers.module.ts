@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PerformersListComponent } from './performers-list.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { HeaderFiltersComponent } from './components/header-filters/header-filters.component';
@@ -19,7 +20,9 @@ import { FilterCategoriesComponent } from './components/filter-categories/filter
     imports: [
         CommonModule,
         SharedModule,
-        LeafletModule
+        LeafletModule,
+        FormsModule,
+        ReactiveFormsModule,
     ],
 })
 export class PerformersModule { }

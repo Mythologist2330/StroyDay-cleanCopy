@@ -3,7 +3,7 @@ import { IPerformersCard } from '../../interfaces/IPerformersCard';
 import { PerformersCardService } from '../../services/performers-card.service';
 import { FilterService } from '../../services/filter.service';
 import { IFilter } from '../../interfaces/IFilter';
-import { tileLayer, latLng } from 'leaflet';
+import { QuerySnapshot } from '@angular/fire/firestore';
 
 @Component({
     selector: 'app-performersPage',
@@ -17,6 +17,11 @@ export class PerformersListComponent implements OnInit{
     public stations: string[] = [];
     public filters: IFilter[];
     public tags = ['Оформление и дизайн', 'Вентиляция', '2.0 и выше'];
+
+    public city = 'Москва';
+    public stars = 1;
+    public feedback = '0';
+    public orderBy = 'header';
 
     openCloseMap = false;
     moduleWindowMapLocation = false;
@@ -45,6 +50,21 @@ export class PerformersListComponent implements OnInit{
           })
         })
       }
+
+    getFilterValue(e: any) {
+        if (e.field === 'stars') {
+        this.stars = +e.value;
+        }
+        console.log(e)
+        this.buildQuery();
+    }
+
+    switchOrderBy(order: string) {
+        if (this.orderBy !== order) {
+            this.orderBy = order;
+            console.log(order)
+        }
+    }
 
     openLocationMap(event) {
         
@@ -186,7 +206,22 @@ export class PerformersListComponent implements OnInit{
         })
     }
 
-
+    buildQuery(){
+        this.cardSrv.getPerformersWithQuery()
+            .where('city', '==', this.city)
+            // .where('stars','>=', this.stars)
+            .where('feedback','>', this.feedback)
+            // .orderBy(this.orderBy, 'desc')
+            .get()
+            .then((snap: QuerySnapshot<any>) => {
+              let cards = [];
+              snap.forEach(doc => {
+                cards.push(doc.data());                
+                this.performersCards = cards;
+              });
+              console.log(cards);
+            });        
+    }
 
     animateHeader(): void {
         window.onscroll = () => {
@@ -199,13 +234,9 @@ export class PerformersListComponent implements OnInit{
     }
 
     ngOnInit(): void {
-        this.cardSrv.getAllPerformersCard()
-            .subscribe((cards) => {
-                this.performersCards = cards;
-                console.log(cards);
-            });
+        this.filters = this.filterSrv.filters;
         this.animateHeader();
-        this.filters = this.filterSrv.filters;        
         this.getStations();
+        this.buildQuery();     
     }
 }

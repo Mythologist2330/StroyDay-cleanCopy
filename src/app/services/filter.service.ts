@@ -7,45 +7,182 @@ import { IFilter } from '../interfaces/IFilter'
 
 export class FilterService {
   
-  readonly filters: IFilter[] = [
+  filters: IFilter[] = [
     {
+        field: 'rating',
         title: 'Рейтинг исполнителя',
-        selector: ['Не выбран', '1.0 и больше', '2.0 и больше', '3.0 и больше', '4.0 и больше', '5.0'],
+        selector: [{
+          value: '0', 
+          text: 'Не выбран'
+        },
+        {
+          value: '1', 
+          text: '1.0 и больше'
+        },
+        {
+          value: '2', 
+          text: '2.0 и больше'
+        }, 
+        {
+          value: '3', 
+          text: '3.0 и больше'
+        },
+        {
+          value: '4', 
+          text: '4.0 и больше'
+        },
+        {
+          value: '5', 
+          text: '5.0'
+        }],
         type: 'radio'
     },
     {
+        field: 'feedback',
         title: 'Положительные отзывы',
-        selector: ['Не выбрано', 'Не менее 5', 'Не менее 10', 'Не менее 15', 'Не менее 20'],
+        selector: [
+          {
+            value: '0', 
+            text: 'Не выбрано'
+          },
+          {
+            value: '5', 
+            text: 'Не менее 5'
+          },
+          {
+            value: '10', 
+            text: 'Не менее 10'
+          },
+          {
+            value: '15', 
+            text: 'Не менее 15'
+          },
+          {
+            value: '20', 
+            text: 'Не менее 20'
+          }],
         type: 'radio'
     },
     {
+        field: 'rating',
         title: 'Скидка',
-        selector: ['Не имеет значения', 'Да', 'Нет'],
+        selector: [
+          {
+            value: '0', 
+            text: 'Не имеет значения'
+          },
+          {
+            value: 'yes', 
+            text: 'Да'
+          },
+          {
+            value: 'no', 
+            text: 'Нет'
+          }],
         type: 'radio'
     },
     {
+        field: 'rating',
         title: 'Договор',
-        selector: ['Не имеет значения', 'Да', 'Нет'],
+        selector: [
+          {
+            value: '0', 
+            text: 'Не имеет значения'
+          },
+          {
+            value: 'yes', 
+            text: 'Да'
+          },
+          {
+            value: 'no', 
+            text: 'Нет'
+          }],
         type: 'radio'
     },
-    {
+    { 
+        field: 'rating',
         title: 'Тип профиля',
-        selector: ['Юридическое лицо', 'Индивид. предприниматель', 'Физическое лицо'],
+        selector: [
+          {
+            value: '1', 
+            text: 'Юридическое лицо'
+          },
+          {
+            value: '2', 
+            text: 'Индивид. предприниматель'
+          },
+          {
+            value: '3', 
+            text: 'Физическое лицо'
+          }],
         type: 'radio'
     },
     {
+        field: 'rating',
         title: 'Уровень цен',
-        selector: ['Эконом', 'Стандарт', 'Премиум'],
+        selector: [{
+          value: '1', 
+          text: 'Эконом'
+        },
+        {
+          value: '2', 
+          text: 'Стандарт'
+        },
+        {
+          value: '3', 
+          text: 'Премиум'
+        }],
         type: 'checkbox'
     },
     {
+        field: 'rating',
         title: 'Заказов в работе',
-        selector: ['Не выбрано', 'Не более 3', 'Не более 60', 'Не более 10', 'Не более 15'],
+        selector: [{
+          value: '0', 
+          text: 'Не выбрано'
+        },
+        {
+          value: '3', 
+          text: 'Не более 3'
+        },
+        {
+          value: '5', 
+          text: 'Не более 5'
+        }, 
+        {
+          value: '10', 
+          text: 'Не более 10'
+        },
+        {
+          value: '15', 
+          text: 'Не более 15'
+        }],
         type: 'radio'
     },
     {
+        field: 'activity',
         title: 'Активность исполнителя',
-        selector: ['Не выбрано', 'Каждый час', 'Раз в день', 'Раз в неделю', 'Очень редко'],
+        selector: [
+          {
+            value: '0', 
+            text: 'Не выбрано'
+          },
+          {
+            value: 'hour', 
+            text: 'Каждый час'
+          },
+          {
+            value: 'day', 
+            text: 'Раз в день'
+          },
+          {
+            value: 'week', 
+            text: 'Раз в неделю'
+          },
+          {
+            value: 'rarely', 
+            text: 'Очень редко'
+          }],
         type: 'radio'
     }
   ];

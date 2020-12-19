@@ -2,9 +2,10 @@ export interface IPerformersCard{
     id: string;
     gallery: string[];
     logo: string;
+    stars: string;
+    feedback: number;
     description: {
         header: string;
-        rating: string;
         discount: string;
         serviceClass: [{
             name: string;

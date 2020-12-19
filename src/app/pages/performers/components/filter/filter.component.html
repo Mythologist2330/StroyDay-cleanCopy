@@ -9,17 +9,17 @@
             <ng-container *ngIf="filter.type === 'radio'; else checkbox">
                 <ng-container *ngFor='let point of filter.selector'>
                     <label>
-                        <input type="radio" [name]='filter.title'>
+                        <input (change)='sendData(point)' type="radio" [name]='filter.title'>
                         <div class="circle"><div class="circle-inner"></div></div>
-                        <p>{{point}}</p>
+                        <p>{{point.text}}</p>
                     </label>
                 </ng-container> 
             </ng-container>
             <ng-template #checkbox>      
                 <ng-container *ngFor='let point of filter.selector'>          
                     <label>
-                        <input type="checkbox">
-                        <p>{{point}}</p>
+                        <input (change)='sendData(point)' type="checkbox" [name]='filter.title'>
+                        <p>{{point.text}}</p>
                     </label>
                 </ng-container>
             </ng-template>

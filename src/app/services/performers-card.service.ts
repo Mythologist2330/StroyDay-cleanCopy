@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IPerformersCard } from '../interfaces/IPerformersCard';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, CollectionReference } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,10 @@ export class PerformersCardService {
 
   getAllPerformersCard(): Observable<any>  {
     return this.firestore.collection('performersCard').valueChanges();
+  }
+
+  getPerformersWithQuery(): CollectionReference<any> {
+      return this.firestore.collection('performersCard').ref
   }
 
   createPerformersCard(card: IPerformersCard): Promise<any> {

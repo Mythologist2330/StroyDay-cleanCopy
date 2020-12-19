@@ -15,8 +15,8 @@
         <app-filter-categories [categories]='categories'></app-filter-categories>
 
         <ng-container *ngFor='let filter of filters'>
-            <app-filter [filter]='filter'></app-filter>
-        </ng-container>        
+            <app-filter [filter]='filter' (sendFilter)='getFilterValue($event)'></app-filter>
+        </ng-container>
         
         <div class="filters-buttons-reset-apply">
             <button class="filters-buttons-reset">Сбросить</button>
@@ -36,12 +36,12 @@
         <div class="sort-by">
             <p class="sort-by-p">Сортировать по:</p>
             <label>
-                <input type="radio" name="sortBy" checked>
+                <input (change)="switchOrderBy('header')"  type="radio" name="sortBy" checked>
                 <p>алфавиту</p>
             </label>
 
             <label>
-                <input type="radio" name="sortBy">
+                <input (change)="switchOrderBy('stars')" type="radio" name="sortBy">
                 <p>рейтингу</p>
             </label>
         </div>
@@ -79,7 +79,7 @@
                 <div class="description">
                     <p class="description-header">{{ card.description.header }}</p>
     
-                    <app-rating-stars></app-rating-stars>
+                    <app-rating-stars [stars]='card.stars'></app-rating-stars>
 
                     <div class="description-discount">{{ card.description.discount }}</div>
 
