@@ -219,6 +219,10 @@
             align-items: center;
             justify-content: center;
 
+            &:hover{
+                cursor: pointer;
+            }
+
             mat-icon{
                 color: #fff;
                 font-size: 38px;
@@ -262,5 +266,65 @@
 
 
 @media screen and (max-width: 1275px) {
+    .container{
 
+        .service{
+            width: auto;
+            margin: 0 24px;
+
+            .service-description{
+                width: auto;
+            }
+        }
+
+        .service-found-in-segments{
+            width: auto;
+            height: auto;
+            padding: 24px;
+            margin: 64px auto 42px auto;
+    
+            .segment-cards{
+                flex-direction: column;
+                height: 564px;
+                margin-top: 26px;
+
+                .segment-card{
+                    width: 100%;
+    
+                    button{
+                        width: 100%;
+                        margin: 0 0 -2px 0px;
+                    }
+                }
+            }
+        }
+
+        .consultant-assistance{
+            width: auto;
+            height: 104px;
+            padding: 24px;
+            margin: 50px 24px 0 24px;
+
+            img{
+                display: none;
+            }
+        }
+
+        .gallery{
+            padding: 0 24px;
+            margin: 40px 0;
+
+            .gallery-arrow{
+                right: 24px;
+            }
+        }
+
+        .button-gallery-by-services{
+            margin: 0 24px;
+        }
+
+        .additional-info-title{
+            margin: 56px 24px 24px 24px;
+        }
+    }
 }

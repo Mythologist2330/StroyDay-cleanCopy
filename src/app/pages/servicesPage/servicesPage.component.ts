@@ -12,11 +12,12 @@ export class ServicesPageComponent implements OnInit{
     shrinkHeader: boolean = false;
     filterLocationToggle: boolean = false;
     showButtonsResetApply: boolean = false;
+    moduleFilterLocation;
 
 
 
     showButtonsResetApplyFunction(event) {
-        if (event.view.innerWidth < 767) {
+        if (event.view.innerWidth < 768) {
             this.showButtonsResetApply = true
         }
     }
