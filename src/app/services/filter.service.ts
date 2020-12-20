@@ -9,7 +9,7 @@ export class FilterService {
   
   filters: IFilter[] = [
     {
-        field: 'rating',
+        field: 'stars',
         title: 'Рейтинг исполнителя',
         selector: [{
           value: '0', 
@@ -64,7 +64,7 @@ export class FilterService {
         type: 'radio'
     },
     {
-        field: 'rating',
+        field: 'discount',
         title: 'Скидка',
         selector: [
           {
@@ -82,7 +82,7 @@ export class FilterService {
         type: 'radio'
     },
     {
-        field: 'rating',
+        field: 'contract',
         title: 'Договор',
         selector: [
           {
@@ -100,7 +100,7 @@ export class FilterService {
         type: 'radio'
     },
     { 
-        field: 'rating',
+        field: 'face',
         title: 'Тип профиля',
         selector: [
           {
@@ -118,7 +118,7 @@ export class FilterService {
         type: 'radio'
     },
     {
-        field: 'rating',
+        field: 'price',
         title: 'Уровень цен',
         selector: [{
           value: '1', 
@@ -135,7 +135,7 @@ export class FilterService {
         type: 'checkbox'
     },
     {
-        field: 'rating',
+        field: 'ordersInProgress',
         title: 'Заказов в работе',
         selector: [{
           value: '0', 

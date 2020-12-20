@@ -3,7 +3,6 @@ import { IPerformersCard } from '../../interfaces/IPerformersCard';
 import { PerformersCardService } from '../../services/performers-card.service';
 import { FilterService } from '../../services/filter.service';
 import { IFilter } from '../../interfaces/IFilter';
-import { QuerySnapshot } from '@angular/fire/firestore';
 
 @Component({
     selector: 'app-performersPage',
@@ -18,10 +17,20 @@ export class PerformersListComponent implements OnInit{
     public filters: IFilter[];
     public tags = ['Оформление и дизайн', 'Вентиляция', '2.0 и выше'];
 
+    
     public city = 'Москва';
     public stars = 1;
     public feedback = '0';
+    public comment = '0'
     public orderBy = 'header';
+    public params = {
+        city: this.city, 
+        stars: this.stars,
+        feedback: this.feedback,
+    };
+
+    public nextPage: {};
+    public prevPage: {};
 
     openCloseMap = false;
     moduleWindowMapLocation = false;
@@ -51,12 +60,24 @@ export class PerformersListComponent implements OnInit{
         })
       }
 
-    getFilterValue(e: any) {
-        if (e.field === 'stars') {
-        this.stars = +e.value;
-        }
+    getFilterValue(e: { field: string, value: string }) {
+        this.params[e.field] = e.value.toString();        
         console.log(e)
-        this.buildQuery();
+        this.cardSrv.getAllPerformersCard(this.params)
+            .subscribe(data => {
+                console.log(data);
+                this.performersCards = data.result.result
+                this.nextPage = data.next;
+                this.prevPage = data.previous;
+            });  
+    }
+
+    getNextPage() {
+        this.params['page'] = this.nextPage;
+    }
+
+    getPreviousPage() {
+        this.params['page'] = this.prevPage;
     }
 
     switchOrderBy(order: string) {
@@ -206,23 +227,6 @@ export class PerformersListComponent implements OnInit{
         })
     }
 
-    buildQuery(){
-        this.cardSrv.getPerformersWithQuery()
-            .where('city', '==', this.city)
-            // .where('stars','>=', this.stars)
-            .where('feedback','>', this.feedback)
-            // .orderBy(this.orderBy, 'desc')
-            .get()
-            .then((snap: QuerySnapshot<any>) => {
-              let cards = [];
-              snap.forEach(doc => {
-                cards.push(doc.data());                
-                this.performersCards = cards;
-              });
-              console.log(cards);
-            });        
-    }
-
     animateHeader(): void {
         window.onscroll = () => {
             if (window.pageYOffset > 100) {
@@ -237,6 +241,12 @@ export class PerformersListComponent implements OnInit{
         this.filters = this.filterSrv.filters;
         this.animateHeader();
         this.getStations();
-        this.buildQuery();     
+        this.cardSrv.getAllPerformersCard(this.params)
+            .subscribe(data => {
+                console.log(data);
+                this.performersCards = data.result.result
+                this.nextPage = data.next;
+                this.prevPage = data.previous;
+            });     
     }
 }

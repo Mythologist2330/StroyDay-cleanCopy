@@ -219,7 +219,7 @@
 
 
         <div class="pager">
-            <div class="pager-item arrow-pager">
+            <div *ngIf='prevPage' class="pager-item arrow-pager" (click)='getPreviousPage()'>
                 <mat-icon>keyboard_arrow_left</mat-icon>
             </div>
 
@@ -231,7 +231,7 @@
             <div class="pager-item">...</div>
             <div class="pager-item">10</div>
 
-            <div class="pager-item arrow-pager item-end">
+            <div *ngIf='nextPage' class="pager-item arrow-pager item-end" (click)='getNextPage()'>
                 <mat-icon>keyboard_arrow_right</mat-icon>
             </div>
         </div>
