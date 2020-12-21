@@ -70,7 +70,7 @@
     .performers {
         padding: 34px 116px 24px 32px;
         margin: auto;
-        // width: 100%;    
+        width: 100%;
         max-width: 1140px;        
         .number-of-found{
             margin: 16px 0 9px 0;
@@ -155,32 +155,6 @@
                 font-size: 12px;
                 line-height: 18px;
                 color: #8594A8;
-            }
-        }
-        .pager{
-            width: 512px;
-            height: 56px;
-            margin: 56px auto;
-            border: 1px solid #C3CBD6;
-            border-radius: 5px;
-            display: flex;
-
-            .pager-item{
-                width: 100%;
-                color: #334D6E;
-                font-size: 14px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-right: 1px solid #C3CBD6;
-
-                &:hover{
-                    cursor: pointer;
-                }
-                
-                &.item-end{
-                    border: none;
-                }
             }
         }
     }
@@ -298,6 +272,7 @@
 
         .performers{
             max-width: 1275px;
+            width: auto;
             padding: 34px 0px 24px 0;
             margin: auto;
 
@@ -384,6 +359,7 @@
         .performers{
             max-width: 767px;
 
+
             .number-of-found{
                 max-width: 288px;
                 margin: 17px 0 9px 0;
@@ -443,19 +419,7 @@
                 padding: 16px;
                 position: relative;
                 margin: 12px 0px 12px 0;
-            }
-
-            .pager{
-                width: 112px;
-
-                .pager-item{
-                    display: none;
-                }
-
-                .arrow-pager{
-                    display: flex;
-                }
-            }
+            }            
         }
     }
 }

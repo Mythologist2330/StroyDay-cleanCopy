@@ -28,9 +28,7 @@ export class PerformersListComponent implements OnInit{
         stars: this.stars,
         feedback: this.feedback,
     };
-
-    public nextPage: {};
-    public prevPage: {};
+    public pager: any = null;
 
     public isFavorite = false;
     openCloseMap = false;
@@ -67,18 +65,21 @@ export class PerformersListComponent implements OnInit{
         this.cardSrv.getAllPerformersCard(this.params)
             .subscribe(data => {
                 console.log(data);
-                this.performersCards = data.result.result
-                this.nextPage = data.next;
-                this.prevPage = data.previous;
+                this.performersCards = data.result.result;
+                this.pager = {
+                    nextPage: data.next,
+                    prevPage: data.previous,
+                    countPage: data.count
+                }
             });  
     }
 
     getNextPage() {
-        this.params['page'] = this.nextPage;
+        this.params['page'] = this.pager.nextPage;
     }
 
     getPreviousPage() {
-        this.params['page'] = this.prevPage;
+        this.params['page'] = this.pager.prevPage;
     }
 
     switchOrderBy(order: string) {
@@ -220,8 +221,12 @@ export class PerformersListComponent implements OnInit{
             .subscribe(data => {
                 console.log(data);
                 this.performersCards = data.result.result
-                this.nextPage = data.next;
-                this.prevPage = data.previous;
+                this.pager = {
+                    nextPage: data.result.next,
+                    prevPage: data.result.previous,
+                    countPage: data.result.count
+                }
+                console.log(this.pager)
             });     
     }
 }

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PerformersListComponent } from './performers-list.component';
@@ -9,6 +10,10 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { FilterLocationComponent } from './components/filter-location/filter-location.component';
 import { FilterCategoriesComponent } from './components/filter-categories/filter-categories.component';
 import { CardComponent } from './components/card/card.component';
+
+const routes = [
+    {path: 'performers', component: PerformersListComponent}
+]
 
 @NgModule({
     declarations: [
@@ -26,6 +31,7 @@ import { CardComponent } from './components/card/card.component';
         LeafletModule,
         FormsModule,
         ReactiveFormsModule,
+        RouterModule.forRoot(routes)
     ],
 })
 export class PerformersModule { }

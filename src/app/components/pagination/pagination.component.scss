@@ -1,0 +1,40 @@
+.pager{
+    width: fit-content;
+    height: 56px;
+    margin: 56px auto;
+    border: 1px solid #C3CBD6;
+    border-radius: 5px;
+    display: flex;
+
+    .pager-item{
+        width: 54px;
+        color: #334D6E;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-right: 1px solid #C3CBD6;
+
+        &:hover{
+            cursor: pointer;
+        }
+        
+        &.item-end{
+            border: none;
+        }
+    }
+}
+
+@media screen and (max-width:767px) {
+    .pager{
+        width: 112px;
+
+        .pager-item{
+            display: none;
+        }
+
+        .arrow-pager{
+            display: flex;
+        }
+    }
+}

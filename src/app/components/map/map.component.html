@@ -6,7 +6,6 @@
     <div class="map" [ngClass]="toggle ? 'show' : ''"
         leaflet 
         [leafletOptions]="this.mapSrv.mapOptions"
-        [leafletLayersControl]="this.mapSrv.layersControl"
         (leafletMapReady)="this.mapSrv.onMapReady($event)" >
     </div>
 </div>

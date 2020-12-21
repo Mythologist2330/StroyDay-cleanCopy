@@ -43,8 +43,7 @@ import { ServiceSpecificComponent } from './pages/servicesPage/components/servic
     FormRegistrationPageComponent,
     RegistrBasicInfoComponent,
     RegistrRequisitesComponent,
-
-    ServiceSpecificComponent
+    ServiceSpecificComponent,
   ],
   imports: [
     CommonModule,

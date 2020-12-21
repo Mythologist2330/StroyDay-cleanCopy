@@ -13,7 +13,7 @@ const routes: Routes = [
     {path: 'registrBasicInfo', component: RegistrBasicInfoComponent},
     {path: 'registrRequisites', component: RegistrRequisitesComponent}
   ]},
-  {path: 'servicesPage', component: ServicesPageComponent, children: [
+  {path: 'services', component: ServicesPageComponent, children: [
     {path: '', component: ServicesComponent},
     {path: 'serviceСatalog', component: ServiceCatalogComponent}
   ]},

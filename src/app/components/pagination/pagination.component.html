@@ -1,0 +1,11 @@
+<div class="pager" >
+    <div class="pager-item arrow-pager">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+    </div>
+    <ng-container *ngFor='let page of pager; let i = index'>
+        <div class="pager-item">{{i + 1}}</div>
+    </ng-container>
+    <div class="pager-item arrow-pager item-end">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+    </div>
+</div>

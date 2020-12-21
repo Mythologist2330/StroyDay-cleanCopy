@@ -16,12 +16,6 @@ export class MapService {
   popup: Popup;
   latLng: LatLng;
   latLngArray: LatLng[] = [];
-  layersControl = {
-    baseLayers: {
-      Схема: tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' }),
-      Спутник: tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {})
-    }
-  };
   color: string;
   readonly metroSpb = [
     {
