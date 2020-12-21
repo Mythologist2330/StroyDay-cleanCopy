@@ -8,6 +8,7 @@ import { SharedModule } from "../../shared/shared.module";
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { FilterLocationComponent } from './components/filter-location/filter-location.component';
 import { FilterCategoriesComponent } from './components/filter-categories/filter-categories.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
     declarations: [        
@@ -16,6 +17,8 @@ import { FilterCategoriesComponent } from './components/filter-categories/filter
         HeaderFiltersComponent,
         FilterLocationComponent,
         FilterCategoriesComponent,
+        CardComponent,
+
     ],
     imports: [
         CommonModule,

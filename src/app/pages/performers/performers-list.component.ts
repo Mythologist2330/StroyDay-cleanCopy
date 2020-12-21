@@ -32,6 +32,7 @@ export class PerformersListComponent implements OnInit{
     public nextPage: {};
     public prevPage: {};
 
+    public isFavorite = false;
     openCloseMap = false;
     moduleWindowMapLocation = false;
     shrinkHeader = false;
@@ -199,33 +200,7 @@ export class PerformersListComponent implements OnInit{
                 filters.style.overflow = 'auto';
             }
         });
-    }
-
-    addToFavorites(event): void {
-        event.path.filter((buttonContainer) => {
-
-            if (buttonContainer.className === 'add-to-favorites') {
-                for (let button of buttonContainer.children) {
-                    if (button.classList[0] === 'button-removed-from-favorites') {
-                        if (button.style.display === 'none') {
-                            button.style.display = 'block'
-                        } else {
-                            button.style.display = 'none'
-                        }
-                    }
-        
-                    if (button.classList[0] === 'button-added-to-favorites') {
-                        if (button.style.display === 'block') {
-                            button.style.display = 'none'
-                        } else {
-                            button.style.display = 'block'
-                        }
-                    }
-                }
-            }
-
-        })
-    }
+    }    
 
     animateHeader(): void {
         window.onscroll = () => {
