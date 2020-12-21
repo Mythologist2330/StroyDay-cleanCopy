@@ -1,66 +1,106 @@
-<div class="header" [ngStyle]="{
-    height: toggleBurger === false ? '91px' : '443px'
-}">
+<div class="container">
 
-    <div class="city-and-phone">
-        <p>Ваш город: <span>Москва</span></p>
-        <p>+7 (495) 000-00-00</p>
-    </div>
-
-
-    <div class="navbar-block" [ngStyle]="{
-        height: toggleBurger === false ? '61px' : '93%'
-    }">
-        <div class="navbar">
-            <div class="navbar-logo">
-                <img src="../../../assets/images/navbar-logo.png">
-            </div>
-
-            <div class="nav-columns">
-                <div class="nav-column">
-                    <img src="../../../assets/images/burger-lines.png">
-                    <p>Товары</p>
-                </div>
-                
-                <div class="nav-column">
-                    <img src="../../../assets/images/burger-lines.png">
-                    <p>Услуги</p>
-                </div>
-            </div>
-
-            <div class="menu">
-                <p class="menu-list" routerLink="/">Главная</p>
-                <p class="menu-list">Заявки</p>
-                <p class="menu-list" routerLink="/performersPage">Исполнители</p>
-                <p class="menu-list">Галерея работ</p>
-                <p class="menu-list">Калькуляторы</p>
-                <p class="menu-list">Документы</p>
-                <p class="menu-list">База знаний</p>
-            </div>
-
-            <div class="sign-in">
-                <img src="../../../assets/images/profile.png">
-
-                <p class="sing-in-text">Профиль</p>
-
-                <button class="btn-are-you-performer" routerLink="/formRegistrationPage">Вы исполнитель?</button>
-            </div>
-            
-            <div class="toggle-burger" (click)="toggleNavbarBurger()">
-                <div class="toggle-burger-lines"></div>
-            </div>
+    <div class="city-and-phone-and-button">
+        <div class="city">
+            <mat-icon aria-hidden="false">place</mat-icon>
+            <p>Санкт-Петербург</p>
         </div>
 
-        <div class="burger-menu" [ngStyle]="{
-            transform: toggleBurger === true ? 'none' : 'translateY(-100%)'
-        }">
-            <p class="burger-menu-list">Главная</p>
-            <p class="burger-menu-list">Заявки</p>
-            <p class="burger-menu-list">Исполнители</p>
-            <p class="burger-menu-list">Калькуляторы</p>
-            <p class="burger-menu-list">Документы</p>
-            <p class="burger-menu-list">фото</p>
-            <p class="burger-menu-list">База знаний</p>
+        <div class="phone-and-button">
+            <p class="phone">+7 (495) 000-00-00</p>
+            <button>Стать Исполнителем</button>
+        </div>
+    </div>
+
+    <div class="header">
+        <div class="header-devide-top">
+            <img class="main-logo" src="../../../assets/images/main-logo.png">
+    
+            <button routerLink="servicesPage" class="button-services" (click)="openCloseBurgerMenu($event)">
+                <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0H18V2H0V0ZM0 5H18V7H0V5ZM0 10H18V12H0V10Z" fill="white"/>
+                </svg>
+                <span>Услуги</span>
+            </button>
+    
+            <div class="menu">
+                <div class="menu-list-title">
+                    <span>Меню</span>
+                    <mat-icon (click)="openCloseBurgerMenu($event)">clear</mat-icon>
+                </div>
+
+                <div class="menu-list-services">
+                    <span>Услуги</span>
+                    <mat-icon>navigate_next</mat-icon>
+                </div>
+
+                <div class="menu-link menu-link-without-border">Главная</div>
+                <div class="menu-link">Заявки</div>
+                <div routerLink="performersPage" class="menu-link">Исполнители</div>
+                <div class="menu-link">Галерея работ</div>
+                <div class="menu-link">Калькулятор</div>
+                <div class="menu-link">Документы</div>
+                <div class="menu-link">База знаний</div>
+            </div>
+
+            <button class="button-sign-in">
+                <span>Войти</span>
+                <mat-icon>input</mat-icon>
+            </button>
+
+            <div class="profile">
+                <mat-icon>chat_bubble_outlined</mat-icon>
+                <mat-icon>notifications_none_outlined</mat-icon>
+                <mat-icon>bookmark_border</mat-icon>
+
+                <img class="profile-avatar" src="../../../assets/images/avatar-profile.png" (click)="profileToogle = !profileToogle">
+
+                <div [ngStyle]="{display: profileToogle ? 'block' : 'none'}" class="profile-module-window">
+                    <div class="profile-title" (click)="profileToogle = !profileToogle">
+                        <p>Профиль</p>
+                        <mat-icon>clear</mat-icon>
+                    </div>
+                    
+                    <svg  class="triangle" width="24" height="10" viewBox="0 0 24 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.7196 1.06697L0 10H24L13.2804 1.06697C12.5387 0.448897 11.4613 0.448897 10.7196 1.06697Z" fill="white"/>
+                    </svg>
+
+                    <div class="profile-name">
+                        <div class="name">
+                            <img src="../../../assets/images/avatar-profile.png">
+
+                            <div>
+                                <p>Дмитрий Иванов</p>
+                                <a>Перейти в личный кабинет</a>
+                            </div>
+                        </div>
+
+                        <div class="nav">
+                            <p>Сообщения <span>15</span></p>
+                            <p>Уведомления</p>
+                            <p>Избранное</p>
+                        </div>
+                    </div>
+
+                    <div class="compony">
+                        <img src="../../../assets/images/profile-logo-compony.png">
+                        <p>ООО "Стройинвест"</p>
+                    </div>
+
+                    <div class="compony">
+                        <img src="../../../assets/images/profile-logo-compony.png">
+                        <p>ЗАО "Стройкомпани"</p>
+                    </div>
+
+                    <div class="logout-from-all-accounts">
+                        <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 15V12H6V8H13V5L18 10L13 15ZM11 0C11.5304 0 12.0391 0.210714 12.4142 0.585786C12.7893 0.960859 13 1.46957 13 2V4H11V2H2V18H11V16H13V18C13 18.5304 12.7893 19.0391 12.4142 19.4142C12.0391 19.7893 11.5304 20 11 20H2C1.46957 20 0.960859 19.7893 0.585786 19.4142C0.210714 19.0391 0 18.5304 0 18V2C0 1.46957 0.210714 0.960859 0.585786 0.585786C0.960859 0.210714 1.46957 0 2 0H11Z" fill="#EA4545"/>
+                        </svg>
+
+                        <p>Выйти из всех аккаунтов</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

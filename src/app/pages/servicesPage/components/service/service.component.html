@@ -1,0 +1,93 @@
+<div class="container">
+
+    <div class="service">
+        <app-breadcrumbs></app-breadcrumbs>
+    
+        <h1 class="service-header">Визуализация интерьера</h1>
+    
+        <p class="service-description">В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты, которые смогут заставить посетителей оставаться на нём как можно дальше, то вы попали по адресу. За кворк можно заказать хоть 10 статей, главное чтоб общий объём был 6000 символов без пробелов.</p>
+    </div>
+
+    <div class="service-found-in-segments">
+        <p class="segments-title">Найдено 2356 исполнителей в 3 ценовых сегментах</p>
+        
+        <div class="segment-cards">
+            <div *ngFor="let serviceSegment of foundServicesSegment" class="segment-card" [style]="{borderColor: serviceSegment.color, backgroundColor: serviceSegment.backgroundColor}">
+
+                <div [style]="{color: serviceSegment.color}">
+                    <div class="price-from-and-found-performers">
+                        <p class="price-from">от {{ serviceSegment.priceFrom }} ₽</p>
+                        <p class="found-performers">Найдено {{ serviceSegment.foundPerformers }}</p>
+                    </div>
+
+                    <p class="type-of-sergemt">{{ serviceSegment.typeOfSegment }}</p>
+                </div>
+
+                <button [style]="{backgroundColor: serviceSegment.color}">Подобрать исполнителя</button>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="consultant-assistance">
+        <img src="../../../../../assets/images/bg-consultant-assistance.png">
+
+        <div class="content">
+            <p class="can-not-select-performer">Не можете выбрать исполнителя?</p>
+            <p class="use-consultant-assistance">Воспользуйтесь услугами консультанта</p>
+        </div>
+
+        <button>Помощь консультанта</button>
+    </div>
+
+    <div class="gallery">
+        <p class="gallery-header">Последние работы по услуге</p>
+
+        <div class="last-works-container">
+            <div *ngFor="let lastWork of galleryLastWorks" class="last-works">
+    
+                <img [src]="lastWork.logo">
+
+                <div class="title-and-rating">
+                    <p class="title">{{ lastWork.title }}</p>
+                    
+                    <div class="rating">
+                        <p>{{ lastWork.rating }}</p>
+
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 7.635L8.09 9.5L7.27 5.985L10 3.62L6.405 3.31L5 0L3.595 3.31L0 3.62L2.725 5.985L1.91 9.5L5 7.635Z" fill="#FFB438"/>
+                        </svg>
+
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 7.635L8.09 9.5L7.27 5.985L10 3.62L6.405 3.31L5 0L3.595 3.31L0 3.62L2.725 5.985L1.91 9.5L5 7.635Z" fill="#FFB438"/>
+                        </svg>
+
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 7.635L8.09 9.5L7.27 5.985L10 3.62L6.405 3.31L5 0L3.595 3.31L0 3.62L2.725 5.985L1.91 9.5L5 7.635Z" fill="#FFB438"/>
+                        </svg>
+
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 7.635L8.09 9.5L7.27 5.985L10 3.62L6.405 3.31L5 0L3.595 3.31L0 3.62L2.725 5.985L1.91 9.5L5 7.635Z" fill="#FFB438"/>
+                        </svg>
+
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 7.635L8.09 9.5L7.27 5.985L10 3.62L6.405 3.31L5 0L3.595 3.31L0 3.62L2.725 5.985L1.91 9.5L5 7.635Z" fill="#FFB438"/>
+                        </svg>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+
+        <div class="gallery-arrow">
+            <mat-icon>arrow_forward</mat-icon>
+        </div>
+    </div>
+
+    <div class="button-gallery-by-services">
+        <button>Галерея работ по услуге</button>
+    </div>
+
+    <div class="additional-info-title">Дополнительная информация</div>
+
+</div>

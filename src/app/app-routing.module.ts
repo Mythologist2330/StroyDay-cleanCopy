@@ -3,17 +3,21 @@ import { Routes, RouterModule } from '@angular/router';
 import { RegistrBasicInfoComponent } from './pages/formRegistrationPage/components/registrBasicInfo/registrBasicInfo.component';
 import { RegistrRequisitesComponent } from './pages/formRegistrationPage/components/registrRequisites/registrRequisites.component';
 import { FormRegistrationPageComponent } from './pages/formRegistrationPage/formRegistrationPage.component';
-import { PerformersListComponent } from './pages/performers/performers-list.component';
+import { ServiceSpecificComponent } from './pages/servicesPage/components/service/service.component';
+import { ServiceCatalogComponent } from './pages/servicesPage/components/serviceCatalog/serviceСatalog.component';
+import { ServicesComponent } from './pages/servicesPage/components/services/services.component';
+import { ServicesPageComponent } from './pages/servicesPage/servicesPage.component';
 
 const routes: Routes = [
-  {path: '', component: PerformersListComponent},
-
   {path: 'formRegistrationPage', component: FormRegistrationPageComponent, children: [
     {path: 'registrBasicInfo', component: RegistrBasicInfoComponent},
     {path: 'registrRequisites', component: RegistrRequisitesComponent}
   ]},
-
-  {path: 'performersPage', component: PerformersListComponent}
+  {path: 'servicesPage', component: ServicesPageComponent, children: [
+    {path: '', component: ServicesComponent},
+    {path: 'serviceСatalog', component: ServiceCatalogComponent}
+  ]},
+  {path: 'serviceSpecific', component: ServiceSpecificComponent}
 ]
 
 @NgModule({

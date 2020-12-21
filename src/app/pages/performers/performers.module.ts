@@ -11,7 +11,7 @@ import { FilterCategoriesComponent } from './components/filter-categories/filter
 import { CardComponent } from './components/card/card.component';
 
 @NgModule({
-    declarations: [        
+    declarations: [
         PerformersListComponent,
         FilterComponent,
         HeaderFiltersComponent,

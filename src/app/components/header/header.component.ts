@@ -8,10 +8,47 @@ import { Component } from '@angular/core';
 
 export class HeaderComponent {
 
-  toggleBurger = false
+  profileToogle: boolean = false
 
-  toggleNavbarBurger() {
-    this.toggleBurger = !this.toggleBurger
+
+
+
+  openCloseBurgerMenu(event) {
+    if (event.view.innerWidth <= 767) {
+
+      event.path.filter((containerBurgerMenu) => {
+        if (containerBurgerMenu.className === 'header-devide-top') {
+          for (let burgerMenu of containerBurgerMenu.children) {
+            if (burgerMenu.className === 'menu') {
+
+              if (burgerMenu.style.left === '0%') {
+                burgerMenu.style.left = '-100%'
+              } else {
+                burgerMenu.style.left = '0%'
+              }
+
+            }
+          }
+        }
+
+        if (containerBurgerMenu.localName === 'html') {
+          if (containerBurgerMenu.style.overflow === 'hidden') {
+            containerBurgerMenu.style.overflow = 'auto';
+          } else {
+            containerBurgerMenu.style.overflow = 'hidden';
+          }
+        }
+  
+        if (containerBurgerMenu.localName === 'body') {
+          if (containerBurgerMenu.style.overflow === 'hidden') {
+            containerBurgerMenu.style.overflow = 'auto';
+          } else {
+            containerBurgerMenu.style.overflow = 'hidden';
+          }
+        }
+
+      })
+    }
   }
 
 }

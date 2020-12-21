@@ -1,0 +1,330 @@
+.container{
+    padding: 34px 0 56px 0;
+    margin: auto;
+    background-color: #F7F9FB;
+    overflow: hidden;
+
+    .service{
+        width: 1174px;
+        margin: auto;
+
+        .service-header{
+            margin: 14px 0 15px 0;
+            font-weight: bold;
+            font-size: 32px;
+            line-height: 40px;
+            color: #334D6E;
+        }
+    
+        .service-description{
+            width: 776px;
+            line-height: 24px;
+            color: #8594A8;
+        }
+    }
+
+    .service-found-in-segments{
+        width: 1240px;
+        height: 286px;
+        padding: 32px;
+        margin: 56px auto 42px auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: #fff;
+        box-shadow: 0px 4px 40px rgba(71, 84, 101, 0.05);
+
+        .segments-title{
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 28px;
+            color: #334D6E;
+        }
+
+        .segment-cards{
+            display: flex;
+            justify-content: space-between;
+
+            .segment-card{
+                width: 376px;
+                height: 178px;
+                padding: 24px;
+                margin-bottom: -2px;
+                border-width: 2px;
+                border-style: solid;
+                border-radius: 8px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                div{
+                    display: flex;
+
+                    .price-from-and-found-performers{
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+
+                        .price-from{
+                            font-weight: bold;
+                            font-size: 32px;
+                            line-height: 28px;
+                            margin: 3px 0 0 -1px;
+                        }
+
+                        .found-performers{
+                            line-height: 24px;
+                            opacity: 0.8;
+                            margin: 11px 0 0 -2px;
+                        }
+                    }
+
+                    .type-of-sergemt{
+                        font-weight: 500;
+                        font-size: 12px;
+                        line-height: 18px;
+                        letter-spacing: 0.5px;
+                        text-transform: uppercase;
+                        margin: -2px -2px 0 0;
+                    }
+                }
+
+                button{
+                    width: 328px;
+                    height: 48px;
+                    margin: 0 0 -2px -2px;
+                    border-radius: 3px;
+                    color: #fff;
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 18px;
+                    letter-spacing: 0.013em;
+                }
+            }
+        }
+    }
+
+    .consultant-assistance{
+        width: 1174px;
+        height: 120px;
+        padding: 32px 32px 32px 35px;
+        margin: auto;
+        background-color: #0D6FE3;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .content{
+            width: 420px;
+            margin: 0 2px 4px 0;
+
+            .can-not-select-performer{
+                font-weight: 500;
+                font-size: 24px;
+                line-height: 32px;
+                color: #fff;
+            }
+
+            .use-consultant-assistance{
+                line-height: 24px;
+                color: #fff;
+                opacity: 0.6;
+            }
+        }
+
+        button{
+            width: 242px;
+            height: 56px;
+            border-radius: 3px;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 18px;
+            color: #0D6FE3;
+            letter-spacing: 0.02em;
+        }
+    }
+
+    .gallery{
+        width: 100%;
+        padding: 0 56px;
+        margin: 56px 0 40px 0;
+        position: relative;
+
+        .gallery-header{
+            width: 1176px;
+            margin: auto;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 28px;
+            color: #334D6E;
+        }
+
+        .last-works-container{
+            display: flex;
+            width: 1176px;
+            margin: 24px auto 0 auto;
+
+            .last-works{
+                min-width: 374px;
+                height: 280px;
+                margin: 0 26px 0 0;
+                background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%), url(../../../../../assets/images/bg-last-works.png);
+                border-radius: 4px;
+                display: flex;
+                align-items: flex-end;
+
+                img{
+                    border-radius: 50%;
+                    margin: 0 0 47px 24px;
+                }
+
+                .title-and-rating{
+                    color: #FFFFFF;
+                    margin: 0 0 27px 16px;
+
+                    .title{
+                        font-weight: 500;
+                        line-height: 24px;
+                    }
+
+                    .rating{
+                        display: flex;
+                        align-items: center;
+                        margin-top: 4px;
+                        
+                        p{
+                            font-size: 14px;
+                            margin-right: 5px;
+                        }
+
+                        svg{
+                            margin-right: 2px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .gallery-arrow{
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background-color: #0D6FE3;
+            position: absolute;
+            top: 157px;
+            right: 63px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover{
+                cursor: pointer;
+            }
+
+            mat-icon{
+                color: #fff;
+                font-size: 38px;
+                width: 38px;
+                height: 38px;
+            }
+        }
+    }
+
+    .button-gallery-by-services{
+        width: 1174px;
+        margin: auto;
+
+        button{
+            width: 276px;
+            height: 48px;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 18px;
+            color: #FFFFFF;
+            background-color: #0D6FE3;
+            border-radius: 3px;
+        }
+    }
+
+    .additional-info-title{
+        width: 1174px;
+        margin: 56px auto 24px auto;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 28px;
+        color: #334D6E;
+    }
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1275px) {
+    .container{
+
+        .service{
+            width: auto;
+            margin: 0 24px;
+
+            .service-description{
+                width: auto;
+            }
+        }
+
+        .service-found-in-segments{
+            width: auto;
+            height: auto;
+            padding: 24px;
+            margin: 64px auto 42px auto;
+    
+            .segment-cards{
+                flex-direction: column;
+                height: 564px;
+                margin-top: 26px;
+
+                .segment-card{
+                    width: 100%;
+    
+                    button{
+                        width: 100%;
+                        margin: 0 0 -2px 0px;
+                    }
+                }
+            }
+        }
+
+        .consultant-assistance{
+            width: auto;
+            height: 104px;
+            padding: 24px;
+            margin: 50px 24px 0 24px;
+
+            img{
+                display: none;
+            }
+        }
+
+        .gallery{
+            padding: 0 24px;
+            margin: 40px 0;
+
+            .gallery-arrow{
+                right: 24px;
+            }
+        }
+
+        .button-gallery-by-services{
+            margin: 0 24px;
+        }
+
+        .additional-info-title{
+            margin: 56px 24px 24px 24px;
+        }
+    }
+}

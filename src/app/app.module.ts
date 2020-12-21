@@ -23,6 +23,10 @@ import { RegistrRequisitesComponent } from './pages/formRegistrationPage/compone
 
 import { PerformersModule } from './pages/performers/performers.module';
 import { SharedModule } from "./shared/shared.module";
+import { MaterialModule } from "./shared/material.module";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServicesPageModule } from './pages/servicesPage/servicesPage.module';
+import { ServiceSpecificComponent } from './pages/servicesPage/components/service/service.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +43,8 @@ import { SharedModule } from "./shared/shared.module";
     FormRegistrationPageComponent,
     RegistrBasicInfoComponent,
     RegistrRequisitesComponent,
+
+    ServiceSpecificComponent
   ],
   imports: [
     CommonModule,
@@ -50,8 +56,10 @@ import { SharedModule } from "./shared/shared.module";
     SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    
     PerformersModule,
+    MaterialModule,
+    BrowserAnimationsModule,
+    ServicesPageModule
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent],

@@ -1,0 +1,23 @@
+<div class="container">
+
+    <h1 class="services-header">Услуги</h1>
+
+    <div class="services-cards">
+
+        <div *ngFor="let service of services" class="services-card">
+            <div class="service-container-alignment">
+                <p routerLink="serviceСatalog" class="service-title">{{ service.title }}</p>
+    
+                <div class="some-of-services">
+                    <p>{{ service.someOfServices.service1 }}</p>
+                    <p>{{ service.someOfServices.service2 }}</p>
+                    <p>{{ service.someOfServices.service3 }}</p>
+                    <p>{{ service.someOfServices.service4 }}</p>
+                </div>
+            </div>
+
+            <p routerLink="serviceСatalog" class="showAllServices">Показать все услуги ({{ service.showAllServices }})</p>
+        </div>
+    </div>
+
+</div>

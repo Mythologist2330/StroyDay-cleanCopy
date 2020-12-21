@@ -1,0 +1,85 @@
+<div class="container">
+    <div [ngStyle]="{height: shrinkHeader ? '69px' : '0'}"></div>
+    <div class="filters-container" [ngClass]="shrinkHeader ? 'fixed' : ''">
+        <div class="filters">
+
+            <div class="filter">
+                <p class="search-title">Быстрый поиск</p>
+    
+                <div class="search">
+                    <input type="search" placeholder="Поиск по услугам">
+    
+                    <button>
+                        <mat-icon>search</mat-icon>
+                    </button>
+                </div>
+            </div>
+    
+            <div class="filter filter-location" [ngClass]="toggle ? 'show showFilterLocation' : ''">
+                <div class="filter-title" (click)='toggle = !toggle; showButtonsResetApply = false'>
+                    <p>Местоположение</p>
+                    <mat-icon class="filter-title-arrow">keyboard_arrow_down</mat-icon>
+                    <mat-icon class="filter-title-clear">clear</mat-icon>
+                </div>
+            
+                <div class="filter-inner">
+                    <div class="filter-inner-location">
+                        <fieldset>
+                            <legend>Населённый пункт</legend>
+            
+                            <select name="">
+                                <option value="">Москва</option>
+                                <option value="">Питер</option>
+                            </select>
+                        </fieldset>
+            
+                        <fieldset>
+                            <legend>Район</legend>
+            
+                            <select name="">
+                                <option value="">Москва</option>
+                                <option value="">Питер</option>
+                            </select>
+                        </fieldset>
+            
+                        <fieldset>
+                            <legend>Метро</legend>
+            
+                            <select name="">
+                                <option value="">Москва</option>
+                                <option value="">Питер</option>
+                            </select>
+                        </fieldset>
+            
+                        <fieldset>
+                            <legend>Радиус поиска</legend>
+            
+                            <select name="">
+                                <option value="">Москва</option>
+                                <option value="">Питер</option>
+                            </select>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+
+            <button class="filter-button-location" (click)="toggle = !toggle; showButtonsResetApplyFunction($event)">
+                <mat-icon>place</mat-icon>
+            </button>
+
+            <div class="filters-buttons-reset-apply" [ngStyle]="{display: showButtonsResetApply ? 'flex' : 'none'}">
+                <button class="filters-buttons-reset">Сбросить</button>
+                <button class="filters-buttons-apply">Применить</button>
+            </div>
+    
+        </div>
+    </div>
+
+
+    <div class="services">
+        <app-breadcrumbs></app-breadcrumbs>
+
+        <router-outlet></router-outlet>
+    </div>
+
+</div>
