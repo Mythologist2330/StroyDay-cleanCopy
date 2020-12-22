@@ -1,123 +1,152 @@
-<div class="gallery">
-    <div class="big-image">
-        <img [src]="card.gallery[0]">
-    </div>
-
-    <div class="small-images">
-        <img [src]="card.gallery[1]">
-        <img [src]="card.gallery[2]">
-        <img [src]="card.gallery[3]">
-    </div>
-
-    <div class="arrow-block left">
-        <div class="arrow arrow-left">
-            <mat-icon>keyboard_arrow_left</mat-icon>
-        </div>
-    </div>
-    <div class="arrow-block right">
-        <div class="arrow arrow-right">
-            <mat-icon>keyboard_arrow_right</mat-icon>
-        </div>
-    </div>
-</div>
-
-<div class="logo-description-statistics-block">
-    <div class="logo">
-        <img [src]="card.logo">
-    </div>
-
-    <div class="description">
-        <p class="description-header">{{ card.description.header }}</p>
-
-        <app-rating-stars [stars]='+card.stars'></app-rating-stars>
-
-        <div class="description-discount">{{ card.description.discount }}</div>
-
-        <div class="description-service-class">
-            <div *ngFor="let serviceClass of card.description.serviceClass">
-                <p [style]="{color: serviceClass.color}">{{ serviceClass.name }}</p>
+<ng-container *ngIf='!isMobile; else mobile'>
+    <div class="performers-card">        
+        <div class="gallery">
+            <div class="big-image">
+                <img [src]="card.gallery[0]">
             </div>
-        </div>
 
-        <div class="description-elem ">
-            <img src='/assets/images/performers/marker.png'>      
-            <p>{{ card.description.location }}</p>
-        </div>
+            <div class="small-images">
+                <img [src]="card.gallery[1]">
+                <img [src]="card.gallery[2]">
+                <img [src]="card.gallery[3]">
+            </div>
 
-        <div class="description-elem">
-            <img src='/assets/images/performers/metro.png'>        
-            <p>{{ card.description.metro }}</p>
-        </div>
-
-        <div class="description-elem">
-            <img src='/assets/images/performers/category.png'>
-            <p>{{ card.description.activity }}</p>
-        </div>
-
-        <div class="description-elem">
-            <img src='/assets/images/performers/text-box.png'>
-            <p>{{ card.description.contract }}</p>
-        </div>
-
-        <div class="description-elem">
-            <img src='/assets/images/performers/account.png'>        
-            <p>{{ card.description.face }}</p>
-        </div>
-
-        <div class="description-info">
-            <img src='/assets/images/performers/info.png'>        
-            <p>{{ card.description.info }}</p>
-        </div>
-    </div>
-
-    <div class="statistics">
-        <div class="statistic">
-            <p>Выполнено заказов</p>
-            <p class="value">{{ card.statistics.amountCompletedOrders }}</p>
-        </div>
-
-        <hr>
-
-        <div class="statistic">
-            <p>Цены</p>
-            <p class="value">{{ card.statistics.prices }}</p>
-        </div>
-
-        <hr>
-
-        <div class="statistic">
-            <p>Оценки</p>
-
-            <div class="likes-and-dislikes">
-                <div class='like'>
-                    <mat-icon>thumb_up</mat-icon>
-                    <p class="value">{{ card.statistics.rating.likes }}</p>
+            <div class="arrow-block left">
+                <div class="arrow arrow-left">
+                    <mat-icon>keyboard_arrow_left</mat-icon>
                 </div>
-                <div class="dislikes">
-                    <mat-icon>thumb_down</mat-icon>
-                    <p class="value">{{ card.statistics.rating.dislikes }}</p>
+            </div>
+            <div class="arrow-block right">
+                <div class="arrow arrow-right">
+                    <mat-icon>keyboard_arrow_right</mat-icon>
                 </div>
             </div>
         </div>
 
-        <hr>
+        <div class="logo-description-statistics-block">
+            <div class="logo">
+                <img [src]="card.logo">
+            </div>
 
-        <div class="statistic">
-            <p>Заказов в работе</p>
-            <p class="value">{{ card.statistics.ordersInProgress }}</p>
+            <div class="description">
+                <p class="description-header">{{ card.description.header }}</p>
+
+                <app-rating-stars [stars]='+card.stars'></app-rating-stars>
+
+                <div class="description-discount">{{ card.description.discount }}</div>
+
+                <div class="description-service-class">
+                    <div *ngFor="let serviceClass of card.description.serviceClass">
+                        <p [style]="{color: serviceClass.color}">{{ serviceClass.name }}</p>
+                    </div>
+                </div>
+
+                <div class="description-elem ">
+                    <img src='/assets/images/performers/marker.png'>      
+                    <p>{{ card.description.location }}</p>
+                </div>
+
+                <div class="description-elem">
+                    <img src='/assets/images/performers/metro.png'>        
+                    <p>{{ card.description.metro }}</p>
+                </div>
+
+                <div class="description-elem">
+                    <img src='/assets/images/performers/category.png'>
+                    <p>{{ card.description.activity }}</p>
+                </div>
+
+                <div class="description-elem">
+                    <img src='/assets/images/performers/text-box.png'>
+                    <p>{{ card.description.contract }}</p>
+                </div>
+
+                <div class="description-elem">
+                    <img src='/assets/images/performers/account.png'>        
+                    <p>{{ card.description.face }}</p>
+                </div>
+
+                <div class="description-info">
+                    <img src='/assets/images/performers/info.png'>        
+                    <p>{{ card.description.info }}</p>
+                </div>
+            </div>
+
+            <div class="statistics">
+                <div class="statistic">
+                    <p>Выполнено заказов</p>
+                    <p class="value">{{ card.statistics.amountCompletedOrders }}</p>
+                </div>
+
+                <hr>
+
+                <div class="statistic">
+                    <p>Цены</p>
+                    <p class="value">{{ card.statistics.prices }}</p>
+                </div>
+
+                <hr>
+
+                <div class="statistic">
+                    <p>Оценки</p>
+
+                    <div class="likes-and-dislikes">
+                        <div class='like'>
+                            <mat-icon>thumb_up</mat-icon>
+                            <p class="value">{{ card.statistics.rating.likes }}</p>
+                        </div>
+                        <div class="dislikes">
+                            <mat-icon>thumb_down</mat-icon>
+                            <p class="value">{{ card.statistics.rating.dislikes }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="statistic">
+                    <p>Заказов в работе</p>
+                    <p class="value">{{ card.statistics.ordersInProgress }}</p>
+                </div>
+
+
+                <div class="buttons">
+                    <button class="write-message">                                
+                        <mat-icon>email</mat-icon>
+                        Написать
+                    </button>
+                    <button class="add-to-favorites" (click)="isFavorite = !isFavorite">
+                        <img [src]="!isFavorite ? '/assets/images/performers/bookmark-disabled.png' : '/assets/images/performers/bookmark-enabled.png'">                                
+                    </button>
+                </div>
+
+                <p class="online">{{ card.statistics.online }}</p>
+            </div>
         </div>
-
-
-        <div class="buttons">
-            <button class="write-message">                                
-                <mat-icon>email</mat-icon>
-                Написать
-            </button>
-            <button class="add-to-favorites" (click)="isFavorite = !isFavorite">
-                <img [src]="!isFavorite ? '/assets/images/performers/bookmark-disabled.png' : '/assets/images/performers/bookmark-enabled.png'">                                
-            </button>
-        </div>
-
-        <p class="online">{{ card.statistics.online }}</p>
     </div>
-</div>
+</ng-container>
+
+<ng-template #mobile>
+    <div class='mobile'>
+        <div class="logo">
+            <img [src]="card.logo">
+        </div>
+        <div class='description'>
+            <div class='topline'>
+                <p class="title">{{card.description.header}}</p>
+                <button class="add-to-favorites" (click)="isFavorite = !isFavorite">
+                    <img [src]="!isFavorite ? '/assets/images/performers/bookmark-disabled.png' : '/assets/images/performers/bookmark-enabled.png'">                                
+                </button>
+            </div>
+            <div class='middleline'>
+                <app-rating-stars [stars]='+card.stars'></app-rating-stars>
+                <div class="discount">{{ card.description.discount }}</div>
+            </div>
+            <div class='bottomline'>
+                <div *ngFor="let serviceClass of card.description.serviceClass">
+                    <p [style]="{color: serviceClass.color}">{{ serviceClass.name }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

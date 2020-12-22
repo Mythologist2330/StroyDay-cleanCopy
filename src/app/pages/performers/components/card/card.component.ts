@@ -6,12 +6,13 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
+    isMobile = false;
     public isFavorite = false;
     @Input() card: any
 
     constructor() { }
 
     ngOnInit(): void {
-        console.log(this.card);
+        if (window.innerWidth <= 767) { this.isMobile = true }
     }
 }

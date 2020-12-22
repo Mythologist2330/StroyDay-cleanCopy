@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-tags',
@@ -7,7 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TagsComponent implements OnInit {
 
-  @Input() tags: string[];
+  @Input() tags: {field: string, value: string}[];
+  @Output() changeTags = new EventEmitter();
 
   constructor() { }
 
@@ -15,8 +16,14 @@ export class TagsComponent implements OnInit {
     console.log(this.tags);
   }
 
+  deleteTag(index) {
+    this.tags.splice(index, 1);
+    this.changeTags.emit(this.tags);
+  }
+
   resetTags() {
-    console.log('Reset all tags!')
+    this.tags = [];
+    this.changeTags.emit(this.tags)
   }
 
 }

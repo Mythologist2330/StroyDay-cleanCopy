@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { IPerformersCard } from '../interfaces/IPerformersCard';
-import { AngularFirestore, CollectionReference } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -11,18 +12,32 @@ import { HttpClient } from '@angular/common/http';
 export class PerformersCardService {
 
   private readonly url ='https://us-central1-stroyday-93226.cloudfunctions.net/getCards/cards';
+  public subjectCards$ = new BehaviorSubject([]);
+  public get cards$(): Observable<any> {
+    return this.subjectCards$.asObservable();
+  }
 
   constructor(
     private firestore: AngularFirestore,
     private http: HttpClient
-    ) { }
+    ) { 
+      this.renderCardsSub()
+    }
 
   getAllPerformersCard(params): Observable<any>  {
-    return this.http.get(this.url, {params});
+    return this.http.get(this.url, {params})
+    .pipe(
+      tap(console.log),
+    )
   }
 
-  getPerformersWithQuery(): CollectionReference<any> {
-      return this.firestore.collection('performersCard').ref
+  renderCardsSub(params = {}): Subscription {
+    return this.getAllPerformersCard(params).subscribe(
+      data => {
+        this.subjectCards$.next(data);
+        console.log('Next!!!')
+      }
+    );
   }
 
   createPerformersCard(card: IPerformersCard): Promise<any> {

@@ -3,6 +3,7 @@ import { IPerformersCard } from '../../interfaces/IPerformersCard';
 import { PerformersCardService } from '../../services/performers-card.service';
 import { FilterService } from '../../services/filter.service';
 import { IFilter } from '../../interfaces/IFilter';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-performersPage',
@@ -10,32 +11,19 @@ import { IFilter } from '../../interfaces/IFilter';
     styleUrls: ['./performers-list.component.scss']
 })
 
-export class PerformersListComponent implements OnInit{
-
-
+export class PerformersListComponent implements OnInit {
+    public toggle = false;
     public stations: string[] = [];
-    public filters: IFilter[];
-    public tags = ['Оформление и дизайн', 'Вентиляция', '2.0 и выше'];
-
-    
-    public city = 'Москва';
-    public stars = 1;
-    public feedback = '0';
-    public comment = '0'
+    public filters: IFilter[];    
     public orderBy = 'header';
-    public params = {
-        city: this.city, 
-        stars: this.stars,
-        feedback: this.feedback,
-    };
+    public params: {field: string, value: string}[] = [];
     public pager: any = null;
-
     public isFavorite = false;
-    openCloseMap = false;
-    moduleWindowMapLocation = false;
-    shrinkHeader = false;
-    decreaseFieldClick = false;
-    performersCards: IPerformersCard[] = [];
+    public openCloseMap = false;
+    public moduleWindowMapLocation = false;
+    public shrinkHeader = false;
+    public decreaseFieldClick = false;
+    public performersCards: IPerformersCard[] = [];
     readonly categories = [
         'Архитектура и проектирование',
         'Инженерные системы',
@@ -46,6 +34,7 @@ export class PerformersListComponent implements OnInit{
         'Строительная техника',
         'Инженерные системы',
     ];
+    public cardsSub$: Subscription;
 
     constructor(
         private cardSrv: PerformersCardService,
@@ -60,18 +49,26 @@ export class PerformersListComponent implements OnInit{
       }
 
     getFilterValue(e: { field: string, value: string }) {
-        this.params[e.field] = e.value.toString();        
-        console.log(e)
-        this.cardSrv.getAllPerformersCard(this.params)
-            .subscribe(data => {
-                console.log(data);
-                this.performersCards = data.result.result;
-                this.pager = {
-                    nextPage: data.next,
-                    prevPage: data.previous,
-                    countPage: data.count
-                }
+        const index = this.params.findIndex(param => param.field === e.field );
+        if (index === -1) {
+            this.params.push({
+                field: e.field,
+                value: e.value
             });  
+        } else {
+            this.params[index] = e;
+        }
+        
+        const query = {};
+        this.params.map(param => {
+            query[param.field] = param.value;
+        });
+        this.cardSrv.getAllPerformersCard(query) 
+    }
+
+    changeTags(e) {
+        this.params = e;
+        console.log(this.params);
     }
 
     getNextPage() {
@@ -89,8 +86,7 @@ export class PerformersListComponent implements OnInit{
         }
     }
 
-    openLocationMap(event) {
-        
+    openLocationMap(event) {        
         event.path.filter((htmlAndBody) => {
             if (htmlAndBody.localName === 'html') {
                 if (htmlAndBody.style.overflow === 'hidden') {
@@ -99,7 +95,6 @@ export class PerformersListComponent implements OnInit{
                     htmlAndBody.style.overflow = 'hidden'
                 }
             }
-
             if (htmlAndBody.localName === 'body') {
                 if (htmlAndBody.style.overflow === 'hidden') {
                     htmlAndBody.style.overflow = 'auto'
@@ -109,8 +104,6 @@ export class PerformersListComponent implements OnInit{
             }
         })
     }
-
-
     openCloseFilter(event): void {
         event.path.filter((filter) => {
             if (filter.className === 'filter') {
@@ -137,7 +130,6 @@ export class PerformersListComponent implements OnInit{
                         }
                     }
                 }
-
                 for (let arrow of filter.children) {
                     if (arrow.className === 'filter-title') {
                         if (arrow.children[1].style.transform === 'rotate(-180deg)') {
@@ -151,12 +143,9 @@ export class PerformersListComponent implements OnInit{
         });
     }
 
-
     openCloseCheckboxes(event): void {
-
         event.path.filter((checkboxesList) => {
             if (checkboxesList.className === 'checkboxes-list') {
-
                 if (checkboxesList.children[1].style.display === 'block') {
                     checkboxesList.children[1].style.display = 'none';
                     checkboxesList.children[0].children[0].style.transform = 'rotate(0deg)';
@@ -168,65 +157,53 @@ export class PerformersListComponent implements OnInit{
         });
     }
 
-
-    closeContainerFilters(event): void {
-
-        event.path.filter((filters) => {
-
-            if (filters.className === 'filters') {
-                filters.style.left = '-100%';
-
-                for (let filtersButtons of filters.children) {
-                    if (filtersButtons.className === 'filters-buttons-reset-apply') {
-                        filtersButtons.style.display = 'none';
-                    }
-                }
-            }
-
-            if (filters.className === 'container container-performers-page') {
-
-                for (let overlay of filters.children) {
-
-                    if (overlay.className === 'overlay') {
-                        overlay.style.display = 'none';
-                    }
-                }
-            }
-
-            if (filters.localName === 'body') {
-                filters.style.overflow = 'auto';
-            }
-
-            if (filters.localName === 'html') {
-                filters.style.overflow = 'auto';
-            }
-        });
-    }    
-
     animateHeader(): void {
-        window.onscroll = () => {
-            if (window.pageYOffset > 100) {
-                this.shrinkHeader  = true;
-            } else {
-                this.shrinkHeader  = false;
-            }
-        };
+        window.onscroll = () => this.shrinkHeader = (window.pageYOffset > 100) ? true : false;
+    };
+
+    resetFilters() {
+        const query = {};
+        this.params.map(param => {
+            query[param.field] = param.value;
+        });
+        this.cardSrv.getAllPerformersCard(query);
+        this.toggle = !this.toggle;
+        this.params = [];
+    }
+
+    setFilters() {
+        const query = {};
+        this.params.map(param => {
+            query[param.field] = param.value;
+        });        
+        this.cardSrv.getAllPerformersCard(query);
+        this.toggle = !this.toggle;
+    }
+
+    invertToggle(e) {
+        this.toggle = e;
     }
 
     ngOnInit(): void {
         this.filters = this.filterSrv.filters;
         this.animateHeader();
         this.getStations();
-        this.cardSrv.getAllPerformersCard(this.params)
-            .subscribe(data => {
-                console.log(data);
-                this.performersCards = data.result.result
-                this.pager = {
-                    nextPage: data.result.next,
-                    prevPage: data.result.previous,
-                    countPage: data.result.count
+
+        this.cardsSub$ = this.cardSrv.cards$
+            .subscribe(cards => {
+                if (cards.result) {
+                    this.performersCards = cards.result.result;
+                    console.log(this.performersCards);
+                    this.pager = {
+                        nextPage: cards.result.next,
+                        prevPage: cards.result.previous,
+                        countPage: cards.result.count
+                    }
                 }
-                console.log(this.pager)
-            });     
+            }); 
+    }
+
+    ngOnDestroy(): void {
+        this.cardsSub$.unsubscribe();
     }
 }

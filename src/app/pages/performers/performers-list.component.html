@@ -1,12 +1,14 @@
 <div class="container-header-filters-and-sorting">
-    <app-header-filters [ngClass]="shrinkHeader ? 'fixed' : ''"></app-header-filters>
+    <app-header-filters [toggle]="this.toggle"
+                        [count]='this.params.length'
+                        (invertToggle)='invertToggle($event)' 
+                        [ngClass]="shrinkHeader ? 'fixed' : ''"></app-header-filters>
 </div>
-
 <div class="container container-performers-page">
-    <div class="filters">
+    <div class="filters" [ngClass]="toggle ? 'show' : ''">
         <div class="filter filter-header">
             <p>Фильтр</p>
-            <div class="filter-header-close-filter" (click)="closeContainerFilters($event)">
+            <div class="filter-header-close-filter" (click)="toggle = !toggle">
                 <mat-icon class='close'>close</mat-icon>
             </div>
         </div>
@@ -18,47 +20,44 @@
             <app-filter [filter]='filter' (sendFilter)='getFilterValue($event)'></app-filter>
         </ng-container>
         
-        <div class="filters-buttons-reset-apply">
-            <button class="filters-buttons-reset">Сбросить</button>
-            <button class="filters-buttons-apply">Применить</button>
+        <div class="filters-buttons">
+            <button class="reset" (click)='resetFilters()'>Сбросить</button>
+            <button class="apply" (click)='setFilters()'>Применить</button>
         </div>
     </div>
 
     <div class="performers">
         <app-breadcrumbs></app-breadcrumbs>
 
-        <p class="number-of-found">Найдено 180 исполнителей</p>
-        <p class="selected-categories">Все категории исполнителей</p>
+        <p class="count">Найдено {{performersCards.length}} исполнителей</p>
+        <app-tags [tags]='params' (changeTags)='changeTags($event)' class="tags-search"></app-tags>
+          
+        <ng-container *ngIf='performersCards.length; else noCards'>  
+            <app-map></app-map>
+                
+            <div class="sort-by">
+                <p class="sort-by-p">Сортировать по:</p>
+                <label>
+                    <input (change)="switchOrderBy('header')"  type="radio" name="sortBy" checked>
+                    <p>алфавиту</p>
+                </label>
 
-        <app-tags [tags]='tags' class="tags-search"></app-tags>
-        <app-map></app-map>
-            
-        <div class="sort-by">
-            <p class="sort-by-p">Сортировать по:</p>
-            <label>
-                <input (change)="switchOrderBy('header')"  type="radio" name="sortBy" checked>
-                <p>алфавиту</p>
-            </label>
+                <label>
+                    <input (change)="switchOrderBy('stars')" type="radio" name="sortBy">
+                    <p>рейтингу</p>
+                </label>
+            </div>    
 
-            <label>
-                <input (change)="switchOrderBy('stars')" type="radio" name="sortBy">
-                <p>рейтингу</p>
-            </label>
-        </div>
-
-        <ng-container *ngIf='performersCards.length; else noCards'>
-            <div *ngFor="let card of performersCards" class="performers-card">
+            <ng-container *ngFor="let card of performersCards">
                 <app-card [card]='card'></app-card>
-            </div>  
-        </ng-container>
-        
+            </ng-container>  
+        </ng-container>        
 
         <ng-template #noCards>
             <div class="performers-not-found">
                 <svg width="134" height="94" viewBox="0 0 134 94" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M97.0002 47C99.1889 47 101.356 46.569 103.378 45.7314C105.4 44.8938 107.238 43.6661 108.785 42.1185C110.333 40.5709 111.561 38.7335 112.398 36.7114C113.236 34.6893 113.667 32.5221 113.667 30.3334C113.667 25.9131 111.911 21.6739 108.785 18.5483C105.66 15.4227 101.42 13.6667 97.0002 13.6667C92.5799 13.6667 88.3407 15.4227 85.2151 18.5483C82.0894 21.6739 80.3335 25.9131 80.3335 30.3334C80.3335 32.5221 80.7646 34.6893 81.6022 36.7114C82.4398 38.7335 83.6674 40.5709 85.2151 42.1185C88.3407 45.2441 92.5799 47 97.0002 47ZM47.0002 40.3334C52.3045 40.3334 57.3916 38.2262 61.1423 34.4755C64.893 30.7248 67.0002 25.6377 67.0002 20.3334C67.0002 15.029 64.893 9.94197 61.1423 6.19124C57.3916 2.44051 52.3045 0.333374 47.0002 0.333374C41.6958 0.333374 36.6088 2.44051 32.858 6.19124C29.1073 9.94197 27.0002 15.029 27.0002 20.3334C27.0002 25.6377 29.1073 30.7248 32.858 34.4755C36.6088 38.2262 41.6958 40.3334 47.0002 40.3334ZM97.0002 60.3334C84.8002 60.3334 60.3335 66.4667 60.3335 78.6667V93.6667H133.667V78.6667C133.667 66.4667 109.2 60.3334 97.0002 60.3334ZM47.0002 53.6667C31.4668 53.6667 0.333496 61.4667 0.333496 77.0001V93.6667H47.0002V78.6667C47.0002 73 49.2002 63.0667 62.8002 55.5334C57.0002 54.3334 51.4002 53.6667 47.0002 53.6667Z" fill="#8594A8"/>
                 </svg>
-
                 <p class="performers-not-found-p">Исполнители не найдены</p>
                 <p class="try-adjust-filter">Попробуйте скорректировать фильтр</p>
             </div> 
@@ -66,25 +65,15 @@
 
         <ng-container *ngIf='pager !== null'>            
             <app-pagination [data]='pager'></app-pagination>
-        </ng-container>
-        
+        </ng-container>        
     </div>
-
-
-
 
     <div class="module-window-map-location" [ngStyle]="{display: moduleWindowMapLocation ? 'block' : 'none'}">
         <p>Организация на карте</p>
-
         <div class="module-window-map-location-map"></div>
-
         <svg (click)="moduleWindowMapLocation = false; openLocationMap($event)" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M10 1.26213L8.73787 0L5 3.73787L1.26213 0L0 1.26213L3.73787 5L0 8.73787L1.26213 10L5 6.26213L8.73787 10L10 8.73787L6.26213 5L10 1.26213Z" fill="#8594A8"/>
         </svg>
     </div>
-
-
     <div class="overlay" [ngStyle]="{display: moduleWindowMapLocation ? 'block' : 'none'}"></div>
-
-
 </div>

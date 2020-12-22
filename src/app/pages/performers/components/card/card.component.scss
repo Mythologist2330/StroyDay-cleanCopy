@@ -1,6 +1,13 @@
-:host {
+.performers-card {
     display: flex;
+    height: 346px;
+    margin: 24px 0;
+    padding: 24px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.1);
 }
+
 .gallery{
     width: 240px;
     height: 100%;
@@ -66,21 +73,23 @@
     }
 }
 
+.logo {
+    width: 56px;
+    margin: 0 16px;
+
+    img {
+        border-radius: 50%;
+        border: 1px solid #C3CBD6;
+        position: relative;
+        top: -2px;
+        left: -2px;
+    }
+}
+
 .logo-description-statistics-block{
     display: flex;
     
-    .logo{
-        width: 56px;
-        margin: 0 16px;
 
-        img{
-            border-radius: 50%;
-            border: 1px solid #C3CBD6;
-            position: relative;
-            top: -2px;
-            left: -2px;
-        }
-    }
 
     .description{
         width: 320px;
@@ -205,7 +214,14 @@
     display: none;
 }
 
-@media screen and (max-width: 1275px) {
+@media screen and (max-width: 1275px) {    
+    .performers-card {
+        width: 720px;
+        height: auto;
+        margin: auto;
+        padding: 24px 24px 24px 25px;
+        display: block;
+    }
     .gallery{
         width: auto;
         height: 160px;
@@ -260,18 +276,24 @@
     }
 }
 
-@media screen and (max-width:767px) {   
-
-    .gallery { display: none; }
+@media screen and (max-width:767px) {    
+    .performers-card {
+        width: 100%;
+        padding: 16px;
+        position: relative;
+        margin: 12px 0;
+    }
+    .gallery {
+        display: none;
+    }
     .logo-description-statistics-block {
         height: 100%;
-        display: flex;
-        .logo{
+        display: block;
+        .logo {
             position: absolute;
             top: 18px;
             left: 18px;
-
-            img{
+            img {
                 width: 32px;
                 height: 32px;
             }
@@ -279,9 +301,9 @@
 
         .description{
             width: auto;
-
             .description-elem{
                 margin: 8px 0 0 0;
+                display: none;
             }
 
             .description-header{
@@ -366,8 +388,63 @@
                 }
             }
 
-            .online{
+            .online {
                 display: none;
+            }
+        }
+    }
+}
+
+.mobile {
+    display: flex;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.1);
+    padding: 19px 21px;
+    margin-bottom: 12px;
+    .logo {
+        margin-left: 0;
+    }
+    .description {
+        width: 100%;
+        .topline {
+            display: flex;
+            justify-content: space-between;
+            .title {            
+                font-size: 16px;
+                line-height: 24px;
+                font-weight: 600;
+                letter-spacing: 0.004em;
+            }
+            button {
+                background: #fff;
+            }
+        }
+        .middleline {
+            display: flex;
+            align-items: center;
+            .discount {
+                height: 18px;
+                font-weight: bold;
+                font-size: 12px;
+                line-height: 18px;
+                color: #fff;
+                margin-left: 13px;
+                padding: 0 8px;
+                background-color: #EA4545;
+                border-radius: 20px;
+            }
+        }
+        .bottomline {
+            display: flex;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 18px;
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+            div { 
+                margin-right: 12px;
             }
         }
     }

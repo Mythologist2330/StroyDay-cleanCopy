@@ -1,8 +1,14 @@
-<ng-container *ngFor='let tag of tags'>
-    <div class="tag-search">
-        <p>{{tag}}</p>
-        <mat-icon>close</mat-icon>
-    </div>
+<ng-container *ngIf='tags.length; else noTags'>
+    <ng-container *ngFor='let tag of tags; let i = index'>
+        <div class="tag-search">
+            <p>{{tag.field}}: {{tag.value}}</p>
+            <mat-icon (click)='deleteTag(i)'>close</mat-icon>
+        </div>
+    </ng-container>
+
+    <p class="reset-all-tags-search" (click)='resetTags()'>Сбросить все фильтры</p>
 </ng-container>
 
-<p class="reset-all-tags-search" (click)='resetTags()'>Сбросить все фильтры</p>
+<ng-template #noTags>
+    <p class="selected-categories">Все категории исполнителей</p>
+</ng-template>
