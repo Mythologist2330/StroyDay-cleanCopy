@@ -10,7 +10,7 @@ import { IFilter } from '../../../../interfaces/IFilter';
 export class FilterComponent implements OnInit {
 
   @Input() filter: IFilter;
-  @Output() sendFilter = new EventEmitter();
+  @Output() sendFilter = new EventEmitter<IFilter>();
   public toggle = false; 
 
   constructor() {
@@ -20,10 +20,12 @@ export class FilterComponent implements OnInit {
   }
   
   sendData(e): void {
-    this.sendFilter.emit({field: this.filter.field, value: e.value});
+    this.filter.checked = [e.value];
+    this.sendFilter.emit(this.filter);
   }
 
   resetFilter(): void {
-      console.log('Reset filter: ' + this.filter.title + '!')
+      this.filter.checked = ['0'];
+      this.sendFilter.emit(this.filter);
   }
 }

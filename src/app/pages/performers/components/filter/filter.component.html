@@ -9,7 +9,11 @@
             <ng-container *ngIf="filter.type === 'radio'; else checkbox">
                 <ng-container *ngFor='let point of filter.selector'>
                     <label>
-                        <input (change)='sendData(point)' type="radio" [name]='filter.title'>
+                        <input type="radio"
+                            (change)='sendData(point)'
+                            [name]='filter.title' 
+                            [checked]='filter.checked.includes(point.value)'
+                            >
                         <div class="circle"><div class="circle-inner"></div></div>
                         <p>{{point.text}}</p>
                     </label>

@@ -14,11 +14,12 @@ import { Subscription } from 'rxjs';
 export class PerformersListComponent implements OnInit {
     public toggle = false;
     public stations: string[] = [];
-    public filters: IFilter[];    
+    public filters: IFilter[];
     public orderBy = 'header';
-    public params: {field: string, value: string}[] = [];
+    public params: {title:string, field: string, value: string, text: string }[] = [];
     public pager: any = null;
     public isFavorite = false;
+
     public openCloseMap = false;
     public moduleWindowMapLocation = false;
     public shrinkHeader = false;
@@ -34,7 +35,6 @@ export class PerformersListComponent implements OnInit {
         'Строительная техника',
         'Инженерные системы',
     ];
-    public cardsSub$: Subscription;
 
     constructor(
         private cardSrv: PerformersCardService,
@@ -48,27 +48,36 @@ export class PerformersListComponent implements OnInit {
         })
       }
 
-    getFilterValue(e: { field: string, value: string }) {
-        const index = this.params.findIndex(param => param.field === e.field );
+    getFilterValue(filter: IFilter) {
+        let checkpoint;
+        filter.checked.map(
+            active => {
+                checkpoint = filter.selector.find(point => point.value === active)
+            }
+        )
+        this.setParams(filter.title, filter.field, checkpoint.value, checkpoint.text)
+
+    }
+
+    setParams(title, field, value, text) {
+        const index = this.params.findIndex(param => param.field === field );
         if (index === -1) {
             this.params.push({
-                field: e.field,
-                value: e.value
-            });  
+                title, field, value, text
+            });
         } else {
-            this.params[index] = e;
+            this.params[index] = { title, field, value, text };
         }
-        
-        const query = {};
-        this.params.map(param => {
-            query[param.field] = param.value;
-        });
-        this.cardSrv.getAllPerformersCard(query) 
+        this.sendRequest(this.params)
     }
 
     changeTags(e) {
         this.params = e;
         console.log(this.params);
+        this.params.map(param => {
+            this.filters.find(filter => filter.field === param.field).checked = [param.value]
+        })
+        console.log(this.filters)
     }
 
     getNextPage() {
@@ -84,6 +93,25 @@ export class PerformersListComponent implements OnInit {
             this.orderBy = order;
             console.log(order)
         }
+    }
+
+    sendRequest(params) {
+        const query = {};
+        params.map(param => {
+            query[param.field] = param.value;
+        });
+        this.cardSrv.getAllPerformersCard(query)
+            .subscribe(cards => {
+                if (cards.result) {
+                    this.performersCards = cards.result.result;
+                    console.log(this.performersCards);
+                    this.pager = {
+                        nextPage: cards.result.next,
+                        prevPage: cards.result.previous,
+                        countPage: cards.result.count
+                    }
+                }
+            }); 
     }
 
     openLocationMap(event) {        
@@ -162,22 +190,14 @@ export class PerformersListComponent implements OnInit {
     };
 
     resetFilters() {
-        const query = {};
-        this.params.map(param => {
-            query[param.field] = param.value;
-        });
-        this.cardSrv.getAllPerformersCard(query);
         this.toggle = !this.toggle;
         this.params = [];
+        this.sendRequest(this.params)
     }
 
     setFilters() {
-        const query = {};
-        this.params.map(param => {
-            query[param.field] = param.value;
-        });        
-        this.cardSrv.getAllPerformersCard(query);
         this.toggle = !this.toggle;
+        this.sendRequest(this.params)
     }
 
     invertToggle(e) {
@@ -188,22 +208,10 @@ export class PerformersListComponent implements OnInit {
         this.filters = this.filterSrv.filters;
         this.animateHeader();
         this.getStations();
-
-        this.cardsSub$ = this.cardSrv.cards$
-            .subscribe(cards => {
-                if (cards.result) {
-                    this.performersCards = cards.result.result;
-                    console.log(this.performersCards);
-                    this.pager = {
-                        nextPage: cards.result.next,
-                        prevPage: cards.result.previous,
-                        countPage: cards.result.count
-                    }
-                }
-            }); 
+        this.sendRequest(this.params)
+        console.log(this.filters)
     }
 
     ngOnDestroy(): void {
-        this.cardsSub$.unsubscribe();
     }
 }

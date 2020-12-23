@@ -7,8 +7,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class TagsComponent implements OnInit {
 
-  @Input() tags: {field: string, value: string}[];
+  @Input() tags: {title:string, field: string, value: string, text: string }[];
   @Output() changeTags = new EventEmitter();
+  isEmpty() {
+    return !(this.tags.some(tag => tag.value !== '0'))
+  }
 
   constructor() { }
 
@@ -17,7 +20,7 @@ export class TagsComponent implements OnInit {
   }
 
   deleteTag(index) {
-    this.tags.splice(index, 1);
+    this.tags[index].value = '0';
     this.changeTags.emit(this.tags);
   }
 

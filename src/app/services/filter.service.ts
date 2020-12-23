@@ -11,6 +11,7 @@ export class FilterService {
     {
         field: 'stars',
         title: 'Рейтинг исполнителя',
+        checked: ['0'],
         selector: [{
           value: '0', 
           text: 'Не выбран'
@@ -40,6 +41,7 @@ export class FilterService {
     {
         field: 'feedback',
         title: 'Положительные отзывы',
+        checked: ['0'],
         selector: [
           {
             value: '0', 
@@ -66,6 +68,7 @@ export class FilterService {
     {
         field: 'discount',
         title: 'Скидка',
+        checked: ['0'],
         selector: [
           {
             value: '0', 
@@ -84,6 +87,7 @@ export class FilterService {
     {
         field: 'contract',
         title: 'Договор',
+        checked: ['0'],
         selector: [
           {
             value: '0', 
@@ -102,7 +106,12 @@ export class FilterService {
     { 
         field: 'face',
         title: 'Тип профиля',
+        checked: ['0'],
         selector: [
+          {
+            value: '0', 
+            text: 'Не имеет значения'
+          },
           {
             value: '1', 
             text: 'Юридическое лицо'
@@ -120,6 +129,7 @@ export class FilterService {
     {
         field: 'price',
         title: 'Уровень цен',
+        checked: [],
         selector: [{
           value: '1', 
           text: 'Эконом'
@@ -137,6 +147,7 @@ export class FilterService {
     {
         field: 'ordersInProgress',
         title: 'Заказов в работе',
+        checked: ['0'],
         selector: [{
           value: '0', 
           text: 'Не выбрано'
@@ -162,6 +173,7 @@ export class FilterService {
     {
         field: 'activity',
         title: 'Активность исполнителя',
+        checked :['0'],
         selector: [
           {
             value: '0', 

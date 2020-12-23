@@ -1,9 +1,11 @@
-<ng-container *ngIf='tags.length; else noTags'>
+<ng-container *ngIf='!isEmpty(); else noTags'>
     <ng-container *ngFor='let tag of tags; let i = index'>
-        <div class="tag-search">
-            <p>{{tag.field}}: {{tag.value}}</p>
-            <mat-icon (click)='deleteTag(i)'>close</mat-icon>
-        </div>
+        <ng-container *ngIf="tag.value !== '0'">
+            <div class="tag-search">
+                <p>{{tag.title}}: {{tag.text}}</p>
+                <mat-icon (click)='deleteTag(i)'>close</mat-icon>
+            </div>
+        </ng-container>       
     </ng-container>
 
     <p class="reset-all-tags-search" (click)='resetTags()'>Сбросить все фильтры</p>
