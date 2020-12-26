@@ -142,7 +142,7 @@ export class FilterService {
           value: '3', 
           text: 'Премиум'
         }],
-        type: 'checkbox'
+        type: 'radio'
     },
     {
         field: 'ordersInProgress',

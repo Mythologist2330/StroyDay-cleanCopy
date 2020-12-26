@@ -24,11 +24,8 @@ export class PerformersCardService {
       this.renderCardsSub()
     }
 
-  getAllPerformersCard(params): Observable<any>  {
+  getAllPerformersCard(params?): Observable<any>  {
     return this.http.get(this.url, {params})
-    .pipe(
-      tap(console.log),
-    )
   }
 
   renderCardsSub(params = {}): Subscription {

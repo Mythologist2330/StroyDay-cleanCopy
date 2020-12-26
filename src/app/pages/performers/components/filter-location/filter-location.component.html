@@ -9,20 +9,21 @@
             <fieldset>
                 <legend>Населённый пункт</legend>
 
-                <select name="">
-                    <option value="">Москва</option>
-                    <option value="">Питер</option>
+                <select name="" (change)='addLocation($event)'>
+                    <option value="Не выбрано">Не выбрано</option>
+                    <option value="Москва">Москва</option>
+                    <option value="Санкт-Петербург">Санкт-Петербург</option>
                 </select>
             </fieldset>
 
-            <fieldset>
+            <!-- <fieldset>
                 <legend>Район</legend>
 
                 <select name="">
                     <option value="">Москва</option>
                     <option value="">Питер</option>
                 </select>
-            </fieldset>
+            </fieldset> -->
 
             <fieldset>
                 <legend>Метро</legend>
@@ -34,7 +35,7 @@
                 </select>
             </fieldset>
 
-            <fieldset>
+            <!-- <fieldset>
                 <legend>Радиус поиска</legend>
                 <select name="">
                     <option value="">1км</option>
@@ -42,7 +43,7 @@
                     <option value="">10км</option>
                     <option value="">20км</option>
                 </select>
-            </fieldset>
+            </fieldset> -->
         </div>
     </div>
 </div>

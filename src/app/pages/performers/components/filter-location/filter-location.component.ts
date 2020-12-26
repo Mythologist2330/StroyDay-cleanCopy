@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, EventEmitter, OnInit, Output } from '@angular/core';
+
 
 @Component({
   selector: 'app-filter-location',
@@ -8,9 +9,14 @@ import { Component, Input, OnInit } from '@angular/core';
 export class FilterLocationComponent implements OnInit {
 
   @Input() stations: string[];
+  @Output() location = new EventEmitter();
 
   public toggle = false;
   constructor() { }
+
+  addLocation(event) {
+    this.location.emit(event);
+  }
 
   ngOnInit(): void {
   }

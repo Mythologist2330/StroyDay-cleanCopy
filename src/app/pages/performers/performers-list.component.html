@@ -1,6 +1,6 @@
 <div class="container-header-filters-and-sorting">
     <app-header-filters [toggle]="this.toggle"
-                        [count]='this.params.length'
+                        [count]='this.tags.length'
                         (invertToggle)='invertToggle($event)' 
                         [ngClass]="shrinkHeader ? 'fixed' : ''"></app-header-filters>
 </div>
@@ -13,11 +13,11 @@
             </div>
         </div>
 
-        <app-filter-location [stations]='stations'></app-filter-location>
+        <app-filter-location [stations]='stations' (location)="setLocation($event)"></app-filter-location>
         <app-filter-categories [categories]='categories'></app-filter-categories>
 
         <ng-container *ngFor='let filter of filters'>
-            <app-filter [filter]='filter' (sendFilter)='getFilterValue($event)'></app-filter>
+            <app-filter [filter]='filter' (sendFilter)='updateFilterCheckedValue($event)'></app-filter>
         </ng-container>
         
         <div class="filters-buttons">
@@ -27,13 +27,14 @@
     </div>
 
     <div class="performers">
+        <!-- <div class='loading' *ngIf='isLoading'></div> -->
         <app-breadcrumbs></app-breadcrumbs>
 
         <p class="count">Найдено {{performersCards.length}} исполнителей</p>
-        <app-tags [tags]='params' (changeTags)='changeTags($event)' class="tags-search"></app-tags>
+        <app-tags [tags]='tags' (changeTags)='removeTag($event)' class="tags-search"></app-tags>
           
         <ng-container *ngIf='performersCards.length; else noCards'>  
-            <app-map></app-map>
+            <app-map [markers]='markers'></app-map>
                 
             <div class="sort-by">
                 <p class="sort-by-p">Сортировать по:</p>

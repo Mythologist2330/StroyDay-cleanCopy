@@ -29,7 +29,7 @@ export interface IPerformersCard{
         online: string;
     };
     latLng: {
-        lat: 59.94469496963479
-        lng: 30.365695953369144
+        lat: string;
+        lng: string;
     }
 }

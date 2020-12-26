@@ -20,6 +20,7 @@ export class FilterComponent implements OnInit {
   }
   
   sendData(e): void {
+    console.log(e);
     this.filter.checked = [e.value];
     this.sendFilter.emit(this.filter);
   }

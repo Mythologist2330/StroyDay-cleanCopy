@@ -389,7 +389,8 @@ export class MapService {
       ]
     }
   ]
-  constructor() {}
+  constructor() {
+  }
 
   updateMap(): void {
     this.map.invalidateSize();
@@ -397,7 +398,6 @@ export class MapService {
 
   onMapReady(map: Map): void {
     this.map = map;
-    this.showMetro(this.metroSpb);
     this.map.on('click', (e: any) => {
       console.log(e.latlng)
     });
@@ -413,6 +413,10 @@ export class MapService {
           .addTo(this.map)
       })
     })
+  }
+
+  createLatLng(lat, lng) {
+    return new LatLng(lat, lng);
   }
 
   initializeMapOptions(): void {
@@ -450,10 +454,13 @@ export class MapService {
     return polyline;
   }
 
-  createMarker(latLng: LatLng, title: string , icon: Icon): Marker {
+  createMarker(latLng: LatLng, title: string , icon?: Icon): Marker {
+    if (icon) {
+      const icon = this.createIcon('/assets/images/marker.png', [30, 36], [15, 36]);
+    }
     return new Marker(latLng, { title } )
       .setIcon(icon)
-      .bindPopup(title);
+      .bindPopup(title)
   }
 
   getMylocation(): void {

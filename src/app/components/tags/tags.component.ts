@@ -16,17 +16,14 @@ export class TagsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.tags);
   }
 
-  deleteTag(index) {
-    this.tags[index].value = '0';
-    this.changeTags.emit(this.tags);
+  deleteTag(tag) {
+    this.changeTags.emit(tag);
   }
 
   resetTags() {
-    this.tags = [];
-    this.changeTags.emit(this.tags)
+    this.changeTags.emit()
   }
 
 }

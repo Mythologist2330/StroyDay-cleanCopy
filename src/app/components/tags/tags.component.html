@@ -3,7 +3,7 @@
         <ng-container *ngIf="tag.value !== '0'">
             <div class="tag-search">
                 <p>{{tag.title}}: {{tag.text}}</p>
-                <mat-icon (click)='deleteTag(i)'>close</mat-icon>
+                <mat-icon (click)='deleteTag(tag)'>close</mat-icon>
             </div>
         </ng-container>       
     </ng-container>

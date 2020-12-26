@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { IPerformersCard } from '../../interfaces/IPerformersCard';
 import { PerformersCardService } from '../../services/performers-card.service';
 import { FilterService } from '../../services/filter.service';
+import { MapService } from '../../services/map.service';
 import { IFilter } from '../../interfaces/IFilter';
-import { Subscription } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Marker } from 'leaflet';
 
 @Component({
     selector: 'app-performersPage',
@@ -16,9 +18,11 @@ export class PerformersListComponent implements OnInit {
     public stations: string[] = [];
     public filters: IFilter[];
     public orderBy = 'header';
-    public params: {title:string, field: string, value: string, text: string }[] = [];
+    public tags: {title:string, field?: string, value?: string, text: string[] }[] = [];
     public pager: any = null;
     public isFavorite = false;
+    public markers: Marker[] = [];
+    public isLoading = false;
 
     public openCloseMap = false;
     public moduleWindowMapLocation = false;
@@ -38,7 +42,10 @@ export class PerformersListComponent implements OnInit {
 
     constructor(
         private cardSrv: PerformersCardService,
-        private filterSrv: FilterService) {}
+        private filterSrv: FilterService,
+        private mapSrv: MapService,
+        private router: Router,
+        private activatedRoute: ActivatedRoute) {}
 
     getStations() {
         this.filterSrv.metroSpb.map(line => {
@@ -48,44 +55,32 @@ export class PerformersListComponent implements OnInit {
         })
       }
 
-    getFilterValue(filter: IFilter) {
-        let checkpoint;
-        filter.checked.map(
-            active => {
-                checkpoint = filter.selector.find(point => point.value === active)
+      setLocation(e) {
+          console.log(e.target.value);
+          
+      }
+
+    updateFilterCheckedValue(filter: IFilter) {
+        this.filters.map(oldFilter => {
+            if (oldFilter.title === filter.title) {
+                oldFilter = filter;
+                console.log("Фильтр " + oldFilter.title + " обновлен:");
             }
-        )
-        this.setParams(filter.title, filter.field, checkpoint.value, checkpoint.text)
-
-    }
-
-    setParams(title, field, value, text) {
-        const index = this.params.findIndex(param => param.field === field );
-        if (index === -1) {
-            this.params.push({
-                title, field, value, text
-            });
-        } else {
-            this.params[index] = { title, field, value, text };
-        }
-        this.sendRequest(this.params)
-    }
-
-    changeTags(e) {
-        this.params = e;
-        console.log(this.params);
-        this.params.map(param => {
-            this.filters.find(filter => filter.field === param.field).checked = [param.value]
         })
-        console.log(this.filters)
+        this.setFilters();
     }
 
-    getNextPage() {
-        this.params['page'] = this.pager.nextPage;
-    }
-
-    getPreviousPage() {
-        this.params['page'] = this.pager.prevPage;
+    removeTag(tag) {
+        if (!tag) {
+            this.resetFilters();
+            return
+        }
+        this.filters.map(filter => {
+            if (filter.title === tag.title) {
+                filter.checked = filter.type === 'radio' ? ['0'] : [];
+            }
+        });
+        this.updateQueryParams();
     }
 
     switchOrderBy(order: string) {
@@ -95,24 +90,101 @@ export class PerformersListComponent implements OnInit {
         }
     }
 
-    sendRequest(params) {
-        const query = {};
-        params.map(param => {
-            query[param.field] = param.value;
-        });
-        this.cardSrv.getAllPerformersCard(query)
+    sendRequest(params?) {
+        this.cardSrv.getAllPerformersCard(params)
             .subscribe(cards => {
                 if (cards.result) {
                     this.performersCards = cards.result.result;
-                    console.log(this.performersCards);
                     this.pager = {
                         nextPage: cards.result.next,
                         prevPage: cards.result.previous,
                         countPage: cards.result.count
                     }
+                    this.performersCards.map(card => {
+                        const latLng = this.mapSrv.createLatLng(card.latLng.lat, card.latLng.lng);
+                        this.markers.push(this.mapSrv.createMarker(latLng, card.description.header))
+                    })           
+                    
                 }
             }); 
     }
+
+    resetFilters() {
+        this.filters.map(filter => {
+            if (filter.type === 'radio') {
+                filter.checked = ['0']
+            } else if (filter.type === 'checkbox') {                
+                filter.checked = []
+            }
+        });        
+        this.setFilters();
+    }
+
+    setFilters() {
+        this.toggle = false;
+        this.updateQueryParams();
+    }
+
+    updateQueryParams() {
+        const queryParams = {};
+        this.filters.map(filter => {
+            if (filter.checked[0] && filter.checked[0] !== '0') {
+                queryParams[filter.field] = filter.checked.join(',');
+            }
+        });
+        this.router.navigate(['/performers'], {
+            queryParams
+        })
+    }
+
+    invertToggle(e) {
+        this.toggle = e;
+    }
+
+    initTags(params) {
+        this.tags = [];
+        this.filters.map(filter => {
+            if (params[filter.field]) {
+                filter.checked = params[filter.field].split(',');
+
+                const points = [];
+                filter.checked.map(point => {
+                    points.push(filter.selector.find(val => val.value === point).text)
+                })
+                const tag = {
+                    title: filter.title,
+                    text: points
+                }
+                this.tags.push(tag);
+            }
+        });
+    }
+
+    initFilters(params) {
+        this.filters.map(filter => {
+            if (params[filter.field]) {
+                filter.checked = params[filter.field].split(',');
+            }
+        })
+    }
+
+    ngOnInit(): void {
+        this.isLoading = true;
+        this.filters = this.filterSrv.filters;
+        this.animateHeader();
+        this.activatedRoute.queryParams
+            .subscribe(params => {
+                this.sendRequest(params);
+                this.initFilters(params);
+                this.initTags(params);
+            })
+    }
+
+    ngOnDestroy(): void {
+        console.log('destroy');
+    }
+
+    
 
     openLocationMap(event) {        
         event.path.filter((htmlAndBody) => {
@@ -188,30 +260,4 @@ export class PerformersListComponent implements OnInit {
     animateHeader(): void {
         window.onscroll = () => this.shrinkHeader = (window.pageYOffset > 100) ? true : false;
     };
-
-    resetFilters() {
-        this.toggle = !this.toggle;
-        this.params = [];
-        this.sendRequest(this.params)
-    }
-
-    setFilters() {
-        this.toggle = !this.toggle;
-        this.sendRequest(this.params)
-    }
-
-    invertToggle(e) {
-        this.toggle = e;
-    }
-
-    ngOnInit(): void {
-        this.filters = this.filterSrv.filters;
-        this.animateHeader();
-        this.getStations();
-        this.sendRequest(this.params)
-        console.log(this.filters)
-    }
-
-    ngOnDestroy(): void {
-    }
 }
