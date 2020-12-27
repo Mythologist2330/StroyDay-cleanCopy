@@ -20,7 +20,6 @@ export class FilterLocationComponent implements OnInit {
   setFilter(e) {
     this.filter.checked = [e.target.value];
     this.sendFilter.emit(this.filter);
-    console.log(this.filter)
   }
 
   ngOnInit(): void {

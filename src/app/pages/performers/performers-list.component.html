@@ -44,12 +44,12 @@
             <div class="sort-by">
                 <p class="sort-by-p">Сортировать по:</p>
                 <label>
-                    <input (change)="switchOrderBy('header')"  type="radio" name="sortBy" checked>
+                    <input (change)="switchOrderBy('abc')"  type="radio" name="sortBy" [checked]='orderBy === "abc" ? true : false'>
                     <p>алфавиту</p>
                 </label>
 
                 <label>
-                    <input (change)="switchOrderBy('stars')" type="radio" name="sortBy">
+                    <input (change)="switchOrderBy('rating')" type="radio" name="sortBy" [checked]='orderBy === "rating" ? true : false'>
                     <p>рейтингу</p>
                 </label>
             </div>    

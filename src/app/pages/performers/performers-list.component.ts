@@ -84,19 +84,18 @@ export class PerformersListComponent implements OnInit {
     }
 
     switchOrderBy(order: string) {
-        if (this.orderBy !== order) {
-            this.orderBy = order;
-            console.log(order)
-        }
+        if (this.orderBy === order) { return }
+        this.orderBy = order;
+        this.updateQueryParams();
     }
 
     sendRequest(params?) {
-        console.log(params)
         this.cardSrv.getAllPerformersCard(params)
             .subscribe(cards => {
                 if (cards.result) {
                     this.performersCards = cards.result.result;
                     this.mapSrv.showPerformers(this.performersCards);
+                    this.orderBy = cards.result.orderBy;
                     this.pager = {
                         nextPage: cards.result.next,
                         prevPage: cards.result.previous,
@@ -126,11 +125,12 @@ export class PerformersListComponent implements OnInit {
     }
 
     updateQueryParams() {
-        const queryParams = {};
+        const queryParams: any = {};
         this.filters.map(filter => {
             if (filter.checked[0] && filter.checked[0] !== '0') {
                 queryParams[filter.field] = filter.checked.join(',');
             }
+            queryParams.orderBy = this.orderBy;
         });
         this.router.navigate(['/performers'], {
             queryParams
@@ -166,7 +166,6 @@ export class PerformersListComponent implements OnInit {
                 filter.checked = params[filter.field].split(',');
             }
         })
-        console.log(this.filters)
     }
 
     ngOnInit(): void {
@@ -175,6 +174,7 @@ export class PerformersListComponent implements OnInit {
         this.filters = this.filterSrv.filters;
         this.activatedRoute.queryParams
             .subscribe(params => {
+                console.log(params)
                 this.sendRequest(params);
                 this.initFilters(params);
                 this.initTags(params);

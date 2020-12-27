@@ -32,7 +32,6 @@ export class PerformersCardService {
     return this.getAllPerformersCard(params).subscribe(
       data => {
         this.subjectCards$.next(data);
-        console.log('Next!!!')
       }
     );
   }

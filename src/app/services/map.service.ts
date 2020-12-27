@@ -402,7 +402,7 @@ export class MapService {
     this.map.on('click', (e: any) => {
       console.log(e.latlng)
     });
-    this.map.on('resize', _ => this.updateMap())
+    this.map.on('resize', _ => console.log('!'))
   }
 
   showMetro(metro) {
@@ -417,7 +417,6 @@ export class MapService {
   }
 
   showPerformers(perf: IPerformersCard[]) {
-    console.log(this.markers)
     this.markers.map(marker => marker.removeFrom(this.map));
     this.markers = [];
 
@@ -444,7 +443,6 @@ export class MapService {
           })
       ]
     };
-    console.log(this.markers);
   }
 
   removeAllFromMap(): void {

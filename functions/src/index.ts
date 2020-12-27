@@ -76,6 +76,15 @@ app.get('/cards', async (request, response) => {
             return card.description.activity === request.query.activity
           })
         }
+        if (request.query.orderBy === 'abc') {          
+          cards.sort((a, b) => {
+            return a.description.header.localeCompare(b.description.header)
+          })
+        } else {
+          cards.sort((a, b) => {
+            return +a.stars - +b.stars;
+          })
+        }
       }
 
       let limit = 10;
@@ -98,6 +107,7 @@ app.get('/cards', async (request, response) => {
         previous: {},
         count: Math.ceil(cards.length / limit),
         result: cards.slice(startIndex, endIndex),
+        orderBy: request.query.orderBy || 'rating',
       }
 
       if (endIndex <= result.count) {
