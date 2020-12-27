@@ -1,4 +1,4 @@
-<div class="filter" [ngClass]="toggle ? 'show' : ''">
+<div *ngIf="filter.type === 'radio'" class="filter" [ngClass]="toggle ? 'show' : ''">
     <div class="filter-title" (click)='toggle = !toggle'>
         <p>{{filter.title}}</p>
         <mat-icon>keyboard_arrow_down</mat-icon>
@@ -6,7 +6,7 @@
 
     <div class="filter-inner">
         <div class="filter-inner-rating">
-            <ng-container *ngIf="filter.type === 'radio'; else checkbox">
+            <ng-container *ngIf="filter.type === 'radio'">
                 <ng-container *ngFor='let point of filter.selector'>
                     <label>
                         <input type="radio"
@@ -19,14 +19,14 @@
                     </label>
                 </ng-container> 
             </ng-container>
-            <ng-template #checkbox>
+            <!-- <ng-template #checkbox>
                 <ng-container *ngFor='let point of filter.selector'>          
                     <label>
                         <input (change)='sendData(point)' type="checkbox" [name]='filter.title'>
                         <p>{{point.text}}</p>
                     </label>
                 </ng-container>
-            </ng-template>
+            </ng-template> -->
             <p class="reset" (click)='resetFilter()'>Сбросить</p>
         </div>
     </div>

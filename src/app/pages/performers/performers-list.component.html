@@ -13,8 +13,13 @@
             </div>
         </div>
 
-        <app-filter-location [stations]='stations' (location)="setLocation($event)"></app-filter-location>
-        <app-filter-categories [categories]='categories'></app-filter-categories>
+        <ng-container *ngFor='let filter of filters'>
+            <ng-container *ngIf="filter.field === 'city'">
+                <app-filter-location [stations]='getStations()' [filter]='filter' (sendFilter)="updateFilterCheckedValue($event)"></app-filter-location>
+            </ng-container>            
+        </ng-container>
+
+        <!-- <app-filter-categories [categories]='categories'></app-filter-categories> -->
 
         <ng-container *ngFor='let filter of filters'>
             <app-filter [filter]='filter' (sendFilter)='updateFilterCheckedValue($event)'></app-filter>

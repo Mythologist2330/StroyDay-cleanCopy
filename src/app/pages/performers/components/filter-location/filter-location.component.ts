@@ -1,4 +1,5 @@
 import { Component, Input, EventEmitter, OnInit, Output } from '@angular/core';
+import { IFilter } from '../../../../interfaces/IFilter';
 
 
 @Component({
@@ -9,13 +10,17 @@ import { Component, Input, EventEmitter, OnInit, Output } from '@angular/core';
 export class FilterLocationComponent implements OnInit {
 
   @Input() stations: string[];
+  @Input() filter: IFilter;
   @Output() location = new EventEmitter();
+  @Output() sendFilter = new EventEmitter();
 
   public toggle = false;
   constructor() { }
 
-  addLocation(event) {
-    this.location.emit(event);
+  setFilter(e) {
+    this.filter.checked = [e.target.value];
+    this.sendFilter.emit(this.filter);
+    console.log(this.filter)
   }
 
   ngOnInit(): void {

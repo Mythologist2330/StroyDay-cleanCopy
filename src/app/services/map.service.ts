@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { tileLayer, latLng, icon, Map, MapOptions, Marker, LatLng, Icon, Popup, Polyline } from 'leaflet';
+import { IPerformersCard } from '../interfaces/IPerformersCard';
 
 @Injectable({
   providedIn: 'root'
@@ -415,6 +416,18 @@ export class MapService {
     })
   }
 
+  showPerformers(perf: IPerformersCard[]) {
+    console.log(this.markers)
+    this.markers.map(marker => marker.removeFrom(this.map));
+    this.markers = [];
+
+    const icon = this.createIcon('/assets/images/marker.png', [30, 36], [15, 36]);
+    perf.map(card => {
+      const latLng = new LatLng(+card.latLng.lat, +card.latLng.lng);
+      this.markers.push(this.createMarker(latLng, card.description.header, icon));        
+    });
+  }
+
   createLatLng(lat, lng) {
     return new LatLng(lat, lng);
   }
@@ -429,8 +442,9 @@ export class MapService {
           {
             maxZoom: 18,
           })
-      ],
+      ]
     };
+    console.log(this.markers);
   }
 
   removeAllFromMap(): void {
@@ -455,7 +469,7 @@ export class MapService {
   }
 
   createMarker(latLng: LatLng, title: string , icon?: Icon): Marker {
-    if (icon) {
+    if (!icon) {
       const icon = this.createIcon('/assets/images/marker.png', [30, 36], [15, 36]);
     }
     return new Marker(latLng, { title } )

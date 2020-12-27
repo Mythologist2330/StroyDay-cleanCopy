@@ -53,12 +53,12 @@ export class PerformersListComponent implements OnInit {
             this.stations.push(station.title)
           })
         })
-      }
+        return this.stations;
+    }
 
-      setLocation(e) {
-          console.log(e.target.value);
-          
-      }
+    setLocation(e) {
+        console.log(e);
+    }
 
     updateFilterCheckedValue(filter: IFilter) {
         this.filters.map(oldFilter => {
@@ -91,19 +91,17 @@ export class PerformersListComponent implements OnInit {
     }
 
     sendRequest(params?) {
+        console.log(params)
         this.cardSrv.getAllPerformersCard(params)
             .subscribe(cards => {
                 if (cards.result) {
                     this.performersCards = cards.result.result;
+                    this.mapSrv.showPerformers(this.performersCards);
                     this.pager = {
                         nextPage: cards.result.next,
                         prevPage: cards.result.previous,
                         countPage: cards.result.count
-                    }
-                    this.performersCards.map(card => {
-                        const latLng = this.mapSrv.createLatLng(card.latLng.lat, card.latLng.lng);
-                        this.markers.push(this.mapSrv.createMarker(latLng, card.description.header))
-                    })           
+                    }      
                     
                 }
             }); 
@@ -115,6 +113,8 @@ export class PerformersListComponent implements OnInit {
                 filter.checked = ['0']
             } else if (filter.type === 'checkbox') {                
                 filter.checked = []
+            } else if (filter.type === 'select') {
+                filter.checked = ['0']
             }
         });        
         this.setFilters();
@@ -166,25 +166,24 @@ export class PerformersListComponent implements OnInit {
                 filter.checked = params[filter.field].split(',');
             }
         })
+        console.log(this.filters)
     }
 
     ngOnInit(): void {
         this.isLoading = true;
-        this.filters = this.filterSrv.filters;
         this.animateHeader();
+        this.filters = this.filterSrv.filters;
         this.activatedRoute.queryParams
             .subscribe(params => {
                 this.sendRequest(params);
                 this.initFilters(params);
                 this.initTags(params);
-            })
+            });  
     }
 
     ngOnDestroy(): void {
         console.log('destroy');
-    }
-
-    
+    }    
 
     openLocationMap(event) {        
         event.path.filter((htmlAndBody) => {

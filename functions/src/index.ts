@@ -29,12 +29,6 @@ app.get('/cards', async (request, response) => {
           })
         }
 
-        if (request.query.city) {
-          cards = cards.filter((card) => {
-            return card.city === request.query.city
-          })
-        }
-
         if (request.query.metro) {
           cards = cards.filter((card) => {
             return card.description.metro === request.query.metro

@@ -7,7 +7,24 @@ import { IFilter } from '../interfaces/IFilter'
 
 export class FilterService {
   
-  filters: IFilter[] = [
+  filters: IFilter[] = [ {
+        field: 'city',
+        title: 'Город',
+        checked: ['0'],
+        selector: [{
+          value: '0', 
+          text: 'Не выбран'
+        },
+        {
+          value: '1', 
+          text: 'Москва'
+        },
+        {
+          value: '2', 
+          text: 'Санкт-Петербург'
+        }],
+        type: 'select'
+    },
     {
         field: 'stars',
         title: 'Рейтинг исполнителя',

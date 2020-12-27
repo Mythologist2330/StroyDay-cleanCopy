@@ -17,14 +17,15 @@ export class MapComponent implements OnInit {
 
    }
 
+  onMapReady(map: Map): void {
+    this.map = map;
+    this.map.on('click', (e: any) => {
+      console.log(e.latlng)
+    });
+  }
+
   ngOnInit(): void {
     this.mapSrv.initializeMapOptions();
-    if (this.map) {
-      this.markers.map(marker => {
-        marker.addTo(this.mapSrv.map)
-      })
-    }
-    console.log(this.map)
   }
 
 
