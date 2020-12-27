@@ -1,22 +1,24 @@
 <ng-container *ngIf='!isMobile; else mobile'>
     <div class="performers-card">        
         <div class="gallery">
-            <div class="big-image">
-                <img [src]="card.gallery[0]">
+            <div class="big-image" [ngStyle]="{'transform': 'translateX(' + bigX + 'px)'}">
+                <ng-container *ngFor='let image of card.gallery'>
+                    <img [src]="image">
+                </ng-container>
             </div>
 
-            <div class="small-images">
-                <img [src]="card.gallery[1]">
-                <img [src]="card.gallery[2]">
-                <img [src]="card.gallery[3]">
+            <div class="small-images" [ngStyle]="{'transform': 'translateX(' + smallX + 'px)'}">
+                <ng-container *ngFor='let image of card.gallery ; let i = index'>
+                    <img [ngClass]='i === (-bigX / 240) ? "active": ""' [src]="image" (click)='changeSlide(i)'>
+                </ng-container>
             </div>
 
-            <div class="arrow-block left">
+            <div class="arrow-block left" (click)="prev()">
                 <div class="arrow arrow-left">
                     <mat-icon>keyboard_arrow_left</mat-icon>
                 </div>
             </div>
-            <div class="arrow-block right">
+            <div class="arrow-block right" (click)="next()">
                 <div class="arrow arrow-right">
                     <mat-icon>keyboard_arrow_right</mat-icon>
                 </div>

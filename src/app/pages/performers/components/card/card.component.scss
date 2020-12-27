@@ -15,10 +15,13 @@
     flex-direction: column;
     justify-content: space-between;
     position: relative;
+    overflow: hidden;
 
     .big-image{
         width: 240px;
         height: 240px;
+        display: flex;
+        transition: all 0.3s ease-in-out;
         img{
             border-radius: 2px;
         }
@@ -27,10 +30,15 @@
     .small-images{
         display: flex;
         justify-content: space-between;
+        transition: all 0.3s ease-in-out;
         img{
             width: 74px;
             height: 50px;
             border-radius: 2px;
+            margin-right: 9px;
+            &.active {
+                border: 2px solid #0d6fe3;
+            }
         }
     }
 
@@ -237,10 +245,12 @@
             img{
                 width: 240px;
                 height: 160px;
+                margin-right: 16px;
             }
         }
 
         .small-images{
+            display: none;
 
             img{
                 width: 240px;
