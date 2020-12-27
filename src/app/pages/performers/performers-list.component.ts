@@ -67,7 +67,7 @@ export class PerformersListComponent implements OnInit {
                 console.log("Фильтр " + oldFilter.title + " обновлен:");
             }
         })
-        this.setFilters();
+        this.updateQueryParams();
     }
 
     removeTag(tag) {
@@ -90,6 +90,7 @@ export class PerformersListComponent implements OnInit {
     }
 
     sendRequest(params?) {
+        this.isLoading = true;
         this.cardSrv.getAllPerformersCard(params)
             .subscribe(cards => {
                 if (cards.result) {
@@ -100,13 +101,15 @@ export class PerformersListComponent implements OnInit {
                         nextPage: cards.result.next,
                         prevPage: cards.result.previous,
                         countPage: cards.result.count
-                    }      
+                    }
+                    this.isLoading = false;
                     
                 }
             }); 
     }
 
     resetFilters() {
+        this.toggle = false;
         this.filters.map(filter => {
             if (filter.type === 'radio') {
                 filter.checked = ['0']
@@ -115,11 +118,11 @@ export class PerformersListComponent implements OnInit {
             } else if (filter.type === 'select') {
                 filter.checked = ['0']
             }
-        });        
-        this.setFilters();
+        });
+        this.updateQueryParams();
     }
 
-    setFilters() {
+    applyFilters() {
         this.toggle = false;
         this.updateQueryParams();
     }
@@ -174,7 +177,6 @@ export class PerformersListComponent implements OnInit {
         this.filters = this.filterSrv.filters;
         this.activatedRoute.queryParams
             .subscribe(params => {
-                console.log(params)
                 this.sendRequest(params);
                 this.initFilters(params);
                 this.initTags(params);

@@ -22,6 +22,14 @@ export class CardComponent implements OnInit {
         this.bigX -= 240;
         this.smallX -= 83
       }
+      // setTimeout(() => {
+      //   let currentSlide = this.card.gallery[0];
+      //   (this.card.gallery as Array<string>).shift();
+      //   this.card.gallery.push(currentSlide);
+      //   this.smallX = 0;
+      //   this.bigX = 0;
+      // }, 500)
+      
     }
 
     prev() {
@@ -32,6 +40,10 @@ export class CardComponent implements OnInit {
         this.bigX += 240;
         this.smallX += 83;
       }
+      // let currentSlide = this.card.gallery[this.card.gallery.length - 1];
+      // (this.card.gallery as Array<string>).pop();
+      // this.card.gallery.unshift(currentSlide);
+      // console.log(this.card.gallery);
     }
 
     changeSlide(index) {      
