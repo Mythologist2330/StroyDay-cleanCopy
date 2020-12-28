@@ -67,3 +67,36 @@
         }
     }
 }
+
+
+
+@media screen and (max-width: 1275px) {
+
+    .container{
+        max-width: 720px;
+
+        .service-catalog-cards{
+            width: 100%;
+    
+            .service-catalog-card{
+                width: 48.2%;
+            }
+        }
+    }
+}
+
+
+
+@media screen and (max-width: 767px) {
+
+    .container{
+
+        .service-catalog-cards{
+    
+            .service-catalog-card{
+                width: 100%;
+            }
+        }
+    }
+
+}
