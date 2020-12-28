@@ -27,12 +27,12 @@
         
         <div class="filters-buttons">
             <button class="reset" (click)='resetFilters()'>Сбросить</button>
-            <button class="apply" (click)='setFilters()'>Применить</button>
+            <button class="apply" (click)='applyFilters()'>Применить</button>
         </div>
     </div>
 
-    <div class="performers">
-        <!-- <div class='loading' *ngIf='isLoading'></div> -->
+    <div class="lds-dual-ring" *ngIf="isLoading"></div>
+    <div class="performers" [ngClass]="isLoading ? 'loading' : ''">
         <app-breadcrumbs></app-breadcrumbs>
 
         <p class="count">Найдено {{performersCards.length}} исполнителей</p>
