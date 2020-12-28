@@ -15,29 +15,114 @@
     <div class="header">
         <div class="header-devide-top">
             <img class="main-logo" src="../../../assets/images/main-logo.png">
-    
-            <button routerLink="services" class="button-services" (click)="openCloseBurgerMenu($event)">
+
+            <div class="button-burger-menu" (click)="openCloseBurgerMenu($event)">
                 <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0 0H18V2H0V0ZM0 5H18V7H0V5ZM0 10H18V12H0V10Z" fill="white"/>
                 </svg>
+            </div>
+
+            <button class="button-services" (click)="buttonServicesIconToggle = !buttonServicesIconToggle; navigationModuleToggleMobile($event)">
+                <svg [ngStyle]="{display: buttonServicesIconToggle ? 'none' : 'block'}" width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0H18V2H0V0ZM0 5H18V7H0V5ZM0 10H18V12H0V10Z" fill="white"/>
+                </svg>
+                <mat-icon [ngStyle]="{display: buttonServicesIconToggle ? 'block' : 'none'}" class="button-services-clear">clear</mat-icon>
                 <span>Услуги</span>
+                <mat-icon class="button-services-navigate-next">navigate_next</mat-icon>
             </button>
-    
-            <div class="menu">
-                <div class="menu-list-title">
-                    <span>Меню</span>
-                    <mat-icon (click)="openCloseBurgerMenu($event)">clear</mat-icon>
+
+            <div [ngStyle]="{display: buttonServicesIconToggle ? 'block' : 'none'}" class="navigation-module-window">
+
+                <div class="navigation-module-window-header" (click)="buttonServicesIconToggle = !buttonServicesIconToggle; navigationModuleToggleMobile($event)">
+                    <div>
+                        <mat-icon>navigate_before</mat-icon>
+                        <p>Услуги</p>
+                    </div>
+
+                    <mat-icon>clear</mat-icon>
                 </div>
 
-                <div class="menu-list-services">
-                    <span>Услуги</span>
-                    <mat-icon>navigate_next</mat-icon>
+                <div class="navigation-module-window-search">
+                    <div class="navigate-search">
+                        <input type="text" placeholder="Быстрый поиск по услугам">
+                        <button><mat-icon>search</mat-icon></button>
+                    </div>
                 </div>
+
+                <div class="navigation-module-window-navigate">
+                    <div class="navigate-basic">
+                        <p>Архитектура и проектирование <mat-icon>navigate_next</mat-icon></p>
+                        <p>Оформление и дизайн <mat-icon>navigate_next</mat-icon></p>
+                        <p>Строительство <mat-icon>navigate_next</mat-icon></p>
+                        <p>Ремонт и отделка <mat-icon>navigate_next</mat-icon></p>
+                        <p>Инженерные системы <mat-icon>navigate_next</mat-icon></p>
+                        <p>Бытовые услуги <mat-icon>navigate_next</mat-icon></p>
+                        <p>Загородное строительство и ремонт, ландшафтный дизайн <mat-icon>navigate_next</mat-icon></p>
+                        <p>Стройматериалы <mat-icon>navigate_next</mat-icon></p>
+                        <p>Строительное оборудование <mat-icon>navigate_next</mat-icon></p>
+                        <p>Спецтехника и грузоперевозки <mat-icon>navigate_next</mat-icon></p>
+                        <p>Прочие работы и услуги <mat-icon>navigate_next</mat-icon></p>
+                        <p>Готовые проекты <mat-icon>navigate_next</mat-icon></p>
+                        <p>Поддержка бизнеса <mat-icon>navigate_next</mat-icon></p>
+                        <p>Сопутствующие товары и услуги <mat-icon>navigate_next</mat-icon></p>
+                        <p>Програмное обеспечение <mat-icon>navigate_next</mat-icon></p>
+                        <p>Реставрационные работы <mat-icon>navigate_next</mat-icon></p>
+                    </div>
+
+                    <div class="navigate-specific">
+                        <p class="main-links-title">Архитектура и проектирование</p>
+                        <div class="navigate-specific-main-links">
+                            <div class="main-links-column">
+                                <p>Архитектурное проектирование</p>
+                                <p>Визуализация интерьера</p>
+                                <p>3D проектирование</p>
+                                <p>Дизайн интерьера</p>
+                            </div>
+
+                            <div class="main-links-column">
+                                <p>Архитектурное проектирование</p>
+                                <p>Визуализация интерьера</p>
+                                <p>3D проектирование</p>
+                                <p>Дизайн интерьера</p>
+                            </div>
+                        </div>
+
+                        <div class="navigate-specific-sub-links">
+                            <div class="sub-links-column">
+                                <p class="sub-links-title">Архитектура многоэтажных домов</p>
+
+                                <p class="sub-links">Архитектурное проектирование</p>
+                                <p class="sub-links">Визуализация интерьера</p>
+                                <p class="sub-links">3D проектирование</p>
+                                <p class="sub-links">Дизайн интерьера</p>
+                            </div>
+
+                            <div class="sub-links-column">
+                                <p class="sub-links-title">Проектирование садов</p>
+
+                                <p class="sub-links">Архитектурное проектирование</p>
+                                <p class="sub-links">Визуализация интерьера</p>
+                                <p class="sub-links">3D проектирование</p>
+                                <p class="sub-links">Дизайн интерьера</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="menu">
+                <div class="menu-list-title" (click)="openCloseBurgerMenu($event)">
+                    <span>Меню</span>
+                    <mat-icon>clear</mat-icon>
+                </div>
+
+                <div class="menu-list-services"></div>
 
                 <div class="menu-link menu-link-without-border">Главная</div>
                 <div class="menu-link">Заявки</div>
-                <div routerLink="performers" class="menu-link">Исполнители</div>
-                <div class="menu-link">Галерея работ</div>
+                <div routerLink="performersPage" class="menu-link">Исполнители</div>
+                <div routerLink="servicesPage" class="menu-link">Галерея работ</div>
                 <div class="menu-link">Калькулятор</div>
                 <div class="menu-link">Документы</div>
                 <div class="menu-link">База знаний</div>

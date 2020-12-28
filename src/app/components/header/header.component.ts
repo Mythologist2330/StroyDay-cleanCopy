@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 export class HeaderComponent {
 
   profileToogle: boolean = false
-
+  buttonServicesIconToggle: boolean = false
 
 
 
@@ -22,9 +22,19 @@ export class HeaderComponent {
             if (burgerMenu.className === 'menu') {
 
               if (burgerMenu.style.left === '0%') {
-                burgerMenu.style.left = '-100%'
+                burgerMenu.style.left = '-120%'
               } else {
                 burgerMenu.style.left = '0%'
+              }
+
+            }
+
+            if(burgerMenu.className === 'button-services') {
+
+              if (burgerMenu.style.left === 'calc(0% - 16px)') {
+                burgerMenu.style.left = '-120%'
+              } else {
+                burgerMenu.style.left = 'calc(0% - 16px)'
               }
 
             }
@@ -48,6 +58,41 @@ export class HeaderComponent {
         }
 
       })
+    }
+  }
+
+
+  navigationModuleToggleMobile(event) {
+    if (event.view.innerWidth <= 767) {
+
+      event.path.filter((navigationModuleContainer) => {
+
+        if (navigationModuleContainer.className === 'header-devide-top') {
+          for (let navigationModule of navigationModuleContainer.children) {
+            if (navigationModule.className === 'navigation-module-window') {
+
+              this.buttonServicesIconToggle = true
+
+              if (navigationModule.style.right === '-16px') {
+                navigationModule.style.right = 'calc(-100% - 48px)'
+
+                setTimeout(() => {
+                  this.buttonServicesIconToggle = false
+                }, 200);
+
+              } else {
+
+                setTimeout(() => {
+                  navigationModule.style.right = '-16px'
+                }, 0);
+              }
+
+            }
+          }
+        }
+
+      })
+
     }
   }
 
