@@ -40,6 +40,7 @@ export class PerformersListComponent implements OnInit {
         'Инженерные системы',
     ];
 
+
     constructor(
         private cardSrv: PerformersCardService,
         private filterSrv: FilterService,

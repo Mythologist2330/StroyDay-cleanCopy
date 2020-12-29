@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PerformersListComponent } from './performers-list.component';
@@ -10,6 +10,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { FilterLocationComponent } from './components/filter-location/filter-location.component';
 import { FilterCategoriesComponent } from './components/filter-categories/filter-categories.component';
 import { CardComponent } from './components/card/card.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes = [
     {path: 'performers', component: PerformersListComponent}
@@ -22,8 +23,7 @@ const routes = [
         HeaderFiltersComponent,
         FilterLocationComponent,
         FilterCategoriesComponent,
-        CardComponent,
-
+        CardComponent
     ],
     imports: [
         CommonModule,
@@ -31,7 +31,8 @@ const routes = [
         LeafletModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule.forRoot(routes)
+        RouterModule.forRoot(routes),
+        BrowserAnimationsModule
     ],
 })
 export class PerformersModule { }
