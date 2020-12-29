@@ -93,7 +93,7 @@
             opacity: 0.1;
         }     
         .count{
-            margin: 16px 0 9px 0;
+            margin: 14px 0 9px 0;
             font-size: 32px;
             line-height: 40px;
             font-weight: bold;
@@ -101,7 +101,7 @@
         }
 
         .tags-search{
-            margin: 17px 0px 17px 0px;
+            margin: 9px 0px 17px 0px;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
@@ -207,11 +207,13 @@
 
     .container {
         .filters{
-            max-width: 250.33px;
-            width: auto;
+            max-width: 300px;
+            min-width: 250px;
+            width: 100%;
+
             .filter{
                 max-width: 300px;
-                padding: 16px 16px;
+                padding: 16px 32px;
                 .field-click{
                     z-index: 999;
                 }
@@ -221,12 +223,17 @@
                     }
                 }
             }
+
+            .filter-header{
+                padding: 15px 16px 16px 16px;
+            }
         }
         .performers{
-            padding: 34px 0 24px 0;
+            padding: 34px 16px 24px 16px;
         }
     }
 }
+
 @media screen and (max-width:1275px) {
     .container-header-filters-and-sorting{
         display: block;

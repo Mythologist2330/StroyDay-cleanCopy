@@ -1,5 +1,6 @@
 .performers-card {
     display: flex;
+    width: 976px;
     height: 346px;
     margin: 24px 0;
     padding: 24px;
@@ -143,12 +144,14 @@
         hr {
             height: 1px;
             background-color: #C3CBD6;
-            margin: 11px 0;
+            margin: 11px 0 12px 0;
+            border: none;
         }
 
         .statistic{
             display: flex;
             justify-content: space-between;
+            height: 20px;
             font-size: 14px;
             color: #334D6E;
             .value{
@@ -159,13 +162,16 @@
             .likes-and-dislikes{
                 display: flex;
                 align-items: center;
+                justify-content: space-between;
+                width: 87px;
+                margin-top: 4px;
 
                 div{
-                    margin-left: 12px;
                     display: flex;
                 }
                 .mat-icon {
                     font-size:17px;
+                    margin-left: -2px;
                 }
                 .like .mat-icon {
                     color: #46AA32 
@@ -226,7 +232,7 @@
     .performers-card {
         width: 720px;
         height: auto;
-        margin: auto;
+        margin: 24px auto;
         padding: 24px 24px 24px 25px;
         display: block;
     }

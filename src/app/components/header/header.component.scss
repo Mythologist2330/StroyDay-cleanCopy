@@ -120,7 +120,7 @@
                 width: calc(100vw - 17px);
                 position: absolute;
                 top: 64px;
-                z-index: 107;
+                z-index: 1007;
                 background-color: #fff;
                 box-shadow: 0 10px 10px 0 rgba(226, 232, 239, 0.6);
 
@@ -302,7 +302,6 @@
                 font-weight: 500;
                 font-size: 14px;
                 line-height: 18px;
-                //display: flex;
                 align-items: center;
                 justify-content: center;
                 color: #334D6E;
