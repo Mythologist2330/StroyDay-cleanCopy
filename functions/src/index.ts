@@ -49,13 +49,13 @@ app.get('/cards', async (request, response) => {
 
         if (request.query.contract) {
           cards = cards.filter((card: IPerformersCard) => {
-            return card.description.contract === request.query.contract
+            return card.description.contract.toString() === request.query.contract
           })
         }
 
         if (request.query.face) {
           cards = cards.filter((card: IPerformersCard) => {
-            return card.description.face === request.query.face
+            return card.description.face.toString() === request.query.face
           })
         }
 

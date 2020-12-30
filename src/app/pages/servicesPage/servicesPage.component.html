@@ -70,16 +70,13 @@
             <div class="filters-buttons-reset-apply" [ngStyle]="{display: showButtonsResetApply ? 'flex' : 'none'}">
                 <button class="filters-buttons-reset">Сбросить</button>
                 <button class="filters-buttons-apply">Применить</button>
-            </div>
-    
+            </div>    
         </div>
     </div>
 
 
     <div class="services">
-        <app-breadcrumbs></app-breadcrumbs>
-
+        <app-breadcrumbs [page]='page'></app-breadcrumbs>
         <router-outlet></router-outlet>
     </div>
-
 </div>

@@ -1,5 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IPerformersCard } from '../../../../interfaces/IPerformersCard';
+import { MapService } from '../../../../services/map.service';
 
 @Component({
   selector: 'app-card',
@@ -59,9 +61,10 @@ export class CardComponent implements OnInit {
   public isMobile = false;
     public isFavorite = false;
     public sliderState = 'start';
-    @Input() card: any;
+    @Input() card: IPerformersCard;
+    @Output() scrollToMap = new EventEmitter<IPerformersCard>();
 
-    constructor() { }
+    constructor(public mapSrv: MapService) { }
 
     next() {
         this.sliderState = 'next';
@@ -83,14 +86,6 @@ export class CardComponent implements OnInit {
         }, 0)
     }
 
-    changeSlide(index: number): void {
-        if (index === 1) {
-          this.next();
-        } else if (index === 2) {
-          this.doubleNext()
-        }
-    }
-
     doubleNext() {
       this.sliderState = 'double';
         setTimeout(() => {
@@ -103,6 +98,35 @@ export class CardComponent implements OnInit {
           this.card.gallery.push(currentSlide);
           this.sliderState = 'start';
         }, 200)
+    }
+
+    changeSlide(index: number): void {
+        if (index === 1) {
+          this.next();
+        } else if (index === 2) {
+          this.doubleNext()
+        }
+    }
+
+    scroll() {
+      this.scrollToMap.emit();
+      const x = this.mapSrv.markers.find(marker => {        
+        return marker.options.title === this.card.description.header
+      }).openPopup();
+      this.mapSrv.map.setView(x.getLatLng(), 16)
+    }
+
+    getFace() {
+      switch (this.card.description.face) {
+        case (0): 
+          return 'Не указано'
+        case (1):
+          return 'Юридическое лицо'
+        case (2):
+          return 'Индивидуальный предприниматель'
+        case (3):
+          return 'Физическое лицо'
+      }
     }
 
     ngOnInit(): void {

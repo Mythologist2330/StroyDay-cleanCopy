@@ -15,6 +15,7 @@ import { Marker } from 'leaflet';
 
 export class PerformersListComponent implements OnInit {
     public toggle = false;
+    public page = 'Исполнители';
     public stations: string[] = [];
     public filters: IFilter[];
     public orderBy = 'header';
@@ -28,6 +29,7 @@ export class PerformersListComponent implements OnInit {
     public moduleWindowMapLocation = false;
     public shrinkHeader = false;
     public decreaseFieldClick = false;
+    public card: IPerformersCard;
     public performersCards: IPerformersCard[] = [];
     readonly categories = [
         'Архитектура и проектирование',
@@ -39,7 +41,6 @@ export class PerformersListComponent implements OnInit {
         'Строительная техника',
         'Инженерные системы',
     ];
-
 
     constructor(
         private cardSrv: PerformersCardService,
@@ -170,6 +171,10 @@ export class PerformersListComponent implements OnInit {
                 filter.checked = params[filter.field].split(',');
             }
         })
+    }
+
+    scrollToMap(el: HTMLElement) {
+        el.scrollIntoView();
     }
 
     ngOnInit(): void {

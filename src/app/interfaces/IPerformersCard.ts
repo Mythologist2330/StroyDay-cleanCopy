@@ -15,7 +15,7 @@ export interface IPerformersCard{
         metro: string;
         activity: string;
         contract: string;
-        face: string;
+        face: number;
         info: string;
     };
     statistics: {

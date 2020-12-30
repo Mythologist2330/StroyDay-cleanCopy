@@ -423,7 +423,7 @@ export class MapService {
     const icon = this.createIcon('/assets/images/marker.png', [30, 36], [15, 36]);
     perf.map(card => {
       const latLng = new LatLng(+card.latLng.lat, +card.latLng.lng);
-      this.markers.push(this.createMarker(latLng, card.description.header, icon));        
+      this.markers.push(this.createMarker(latLng, card.description.header, icon, card.logo, card.description.location));        
     });
   }
 
@@ -466,13 +466,23 @@ export class MapService {
     return polyline;
   }
 
-  createMarker(latLng: LatLng, title: string , icon?: Icon): Marker {
+  createMarker(latLng: LatLng, title: string , icon?: Icon, logo?: string, adress?: string): Marker {
     if (!icon) {
       const icon = this.createIcon('/assets/images/marker.png', [30, 36], [15, 36]);
     }
     return new Marker(latLng, { title } )
       .setIcon(icon)
-      .bindPopup(title)
+      .bindPopup(`
+        <div style="display: flex;">
+          <div class="logo">
+            <img style="border-radius: 50%; border: 1px solid #ccc" src='${logo}'>
+          </div>
+          <div>
+            <p style="margin: 5px 1rem 10px; font-weight: 500; font-size: 14px; font-family: Roboto; color: #334D6E; text-decoration: underline">${title}</p>
+            <p style="margin: 0 1rem; font-size: 12px; font-family: Roboto">${adress}</p>
+          </div>
+        </div>
+        `)
   }
 
   getMylocation(): void {
