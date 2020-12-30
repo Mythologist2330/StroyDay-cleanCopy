@@ -82,7 +82,7 @@ app.get('/cards', async (request, response) => {
           })
         } else {
           cards.sort((a, b) => {
-            return +a.stars - +b.stars;
+            return +b.stars - +a.stars;
           })
         }
       }

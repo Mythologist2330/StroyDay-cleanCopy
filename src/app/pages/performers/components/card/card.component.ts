@@ -1,4 +1,4 @@
-import { state, style, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -6,75 +6,103 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
   animations: [
-    trigger('slider', [
+    trigger('bigSlider', [
         state('start', style({
-          transition: 'all 0.3s ease-in-out'
+          transform: `translateX(0px)`,
         })),
-
-        state('end', style({
-          transition: 'none'
-        }))
+        state('next', style({
+          transform: `translateX(-240px)`,
+        })),
+        state('double', style({
+          transform: `translateX(-480px)`,
+        })),  
+        state('prev', style({
+          transform: `translateX(-240px)`,
+        })),    
+        transition('start => next', [
+          animate('.2s')
+        ]),         
+        transition('start => double', [
+          animate('.2s')
+        ]),  
+        transition('prev => start', [
+          animate('.2s')
+        ]),
+    ]),
+    trigger('smallSlider', [
+      state('start', style({
+        transform: `translateX(0px)`,
+      })),
+      state('next', style({
+        transform: `translateX(-83px)`,
+      })),
+      state('double', style({
+        transform: `translateX(-166px)`,
+      })),
+      state('prev', style({
+        transform: `translateX(-83px)`,
+      })),    
+      transition('start => next', [
+        animate('.2s')
+      ]),  
+      transition('start => double', [
+        animate('.2s')
+      ]),
+      transition('prev => start', [
+        animate('.2s')
+      ]),
     ])
   ]
 })
 
 export class CardComponent implements OnInit {
-    isMobile = false;
+  public isMobile = false;
     public isFavorite = false;
-    public bigX = 0;
-    public smallX = 0;
-    @Input() card: any
-
-
-
-    sliderState = 'start'
-
-  
+    public sliderState = 'start';
+    @Input() card: any;
 
     constructor() { }
 
-    animate() {
-      this.sliderState = this.sliderState === 'end' ? 'start' : 'end'
-    }
-
     next() {
-      if (this.bigX === -(this.card.gallery.length - 1) * 240) {
-        this.smallX = 0;
-        this.bigX = 0;
-      } else {
-        this.bigX -= 240;
-        this.smallX -= 83;
-      }
-      setTimeout(() => {
-        this.sliderState = this.sliderState === 'end' ? 'start' : 'end'
-        let currentSlide = this.card.gallery[0];
-        (this.card.gallery as Array<string>).shift();
-        this.card.gallery.push(currentSlide);
-        this.smallX = 0;
-        this.bigX = 0;
+        this.sliderState = 'next';
         setTimeout(() => {
-          this.sliderState = this.sliderState === 'end' ? 'start' : 'end'
-        }, 300);
-      }, 300)
+          let currentSlide = this.card.gallery[0];
+          this.card.gallery.shift();
+          this.card.gallery.push(currentSlide);
+          this.sliderState = 'start';
+        }, 200)
     }
 
     prev() {
-      if (this.bigX === 0) {
-        this.bigX = -(this.card.gallery.length - 1) * 240;
-        this.smallX = -(this.card.gallery.length - 1) * 83;
-      } else {
-        this.bigX += 240;
-        this.smallX += 83;
-      }
-      // let currentSlide = this.card.gallery[this.card.gallery.length - 1];
-      // (this.card.gallery as Array<string>).pop();
-      // this.card.gallery.unshift(currentSlide);
-      // console.log(this.card.gallery);
+        let currentSlide = this.card.gallery[this.card.gallery.length - 1];
+        this.card.gallery.pop();
+        this.card.gallery.unshift(currentSlide); 
+        this.sliderState = 'prev';
+        setTimeout(() => {
+          this.sliderState = 'start';
+        }, 0)
     }
 
-    changeSlide(index) {      
-      this.bigX = -index * 240;
-      this.smallX = -index * 83;
+    changeSlide(index: number): void {
+        if (index === 1) {
+          this.next();
+        } else if (index === 2) {
+          this.doubleNext()
+        }
+    }
+
+    doubleNext() {
+      this.sliderState = 'double';
+        setTimeout(() => {
+          let currentSlide = this.card.gallery[0];
+          this.card.gallery.shift();
+          this.card.gallery.push(currentSlide);
+
+          currentSlide = this.card.gallery[0];
+          this.card.gallery.shift();
+          this.card.gallery.push(currentSlide);
+          this.sliderState = 'start';
+        }, 200)
     }
 
     ngOnInit(): void {

@@ -22,9 +22,9 @@
         width: 240px;
         height: 240px;
         display: flex;
-        transition: all 0.3s ease-in-out;
         img{
-            border-radius: 2px;
+            border-radius: 2px;            
+            width: 240px
         }
     }
 
@@ -37,7 +37,7 @@
             height: 50px;
             border-radius: 2px;
             margin-right: 9px;
-            &.active {
+            &:first-of-type {
                 border: 2px solid #0d6fe3;
             }
         }
@@ -249,7 +249,7 @@
             height: 160px;
 
             img{
-                width: 240px;
+                width: 224px;
                 height: 160px;
                 margin-right: 16px;
             }

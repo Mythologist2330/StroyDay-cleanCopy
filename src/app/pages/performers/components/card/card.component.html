@@ -1,15 +1,15 @@
 <ng-container *ngIf='!isMobile; else mobile'>
     <div class="performers-card">        
         <div class="gallery">
-            <div class="big-image" [@slider]="sliderState" [ngStyle]="{'transform': 'translateX(' + bigX + 'px)'}">
+            <div class="big-image" [@bigSlider]="sliderState">
                 <ng-container *ngFor='let image of card.gallery'>
                     <img [src]="image">
                 </ng-container>
             </div>
 
-            <div class="small-images" [@slider]="sliderState" [ngStyle]="{'transform': 'translateX(' + smallX + 'px)'}">
+            <div class="small-images" [@smallSlider]="sliderState">
                 <ng-container *ngFor='let image of card.gallery ; let i = index'>
-                    <img [ngClass]='i === (-bigX / 240) ? "active": ""' [src]="image" (click)='changeSlide(i)'>
+                    <img [src]="image" (click)='changeSlide(i)'>
                 </ng-container>
             </div>
 
