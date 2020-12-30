@@ -23,9 +23,12 @@
     "@angular/platform-browser-dynamic": "^11.0.4",
     "@angular/router": "^11.0.4",
     "@asymmetrik/ngx-leaflet": "^8.1.0",
+    "@runette/ngx-leaflet-fullscreen": "^1.0.4",
+    "@types/leaflet.fullscreen": "^1.6.0",
     "angular-leaflet": "0.0.17",
     "firebase": "^8.1.2",
     "leaflet": "^1.7.1",
+    "leaflet.fullscreen": "^1.6.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

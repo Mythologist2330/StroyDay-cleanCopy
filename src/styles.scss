@@ -92,13 +92,7 @@ $StroyDay-cleanCopy-theme: mat-light-theme((
     font-family: "Roboto-ThinItalic";
     src: url("../fonts/Roboto-ThinItalic.ttf") format("truetype");
 }
-
-
-
-
-
-
-
+@import "../node_modules/@runette/leaflet-fullscreen/dist/leaflet.fullscreen.css";
 
 *{
     box-sizing: border-box;
