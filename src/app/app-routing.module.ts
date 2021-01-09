@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { RegistrBasicInfoComponent } from './pages/formRegistrationPage/components/registrBasicInfo/registrBasicInfo.component';
 import { RegistrRequisitesComponent } from './pages/formRegistrationPage/components/registrRequisites/registrRequisites.component';
 import { FormRegistrationPageComponent } from './pages/formRegistrationPage/formRegistrationPage.component';
+import { PerformerComponent } from './pages/performer/performer.component';
 import { ServiceSpecificComponent } from './pages/servicesPage/components/service/service.component';
 import { ServiceCatalogComponent } from './pages/servicesPage/components/serviceCatalog/serviceСatalog.component';
 import { ServicesComponent } from './pages/servicesPage/components/services/services.component';

@@ -57,55 +57,55 @@ import { Component, Input, OnInit } from '@angular/core';
 
 export class CardComponent implements OnInit {
   public isMobile = false;
-    public isFavorite = false;
-    public sliderState = 'start';
-    @Input() card: any;
+  public isFavorite = false;
+  public sliderState = 'start';
+  @Input() card: any;
 
-    constructor() { }
+  constructor() { }
 
-    next() {
-        this.sliderState = 'next';
-        setTimeout(() => {
-          let currentSlide = this.card.gallery[0];
-          this.card.gallery.shift();
-          this.card.gallery.push(currentSlide);
-          this.sliderState = 'start';
-        }, 200)
-    }
+  next() {
+      this.sliderState = 'next';
+      setTimeout(() => {
+        let currentSlide = this.card.gallery[0];
+        this.card.gallery.shift();
+        this.card.gallery.push(currentSlide);
+        this.sliderState = 'start';
+      }, 200)
+  }
 
-    prev() {
-        let currentSlide = this.card.gallery[this.card.gallery.length - 1];
-        this.card.gallery.pop();
-        this.card.gallery.unshift(currentSlide); 
-        this.sliderState = 'prev';
-        setTimeout(() => {
-          this.sliderState = 'start';
-        }, 0)
-    }
+  prev() {
+      let currentSlide = this.card.gallery[this.card.gallery.length - 1];
+      this.card.gallery.pop();
+      this.card.gallery.unshift(currentSlide); 
+      this.sliderState = 'prev';
+      setTimeout(() => {
+        this.sliderState = 'start';
+      }, 0)
+  }
 
-    changeSlide(index: number): void {
-        if (index === 1) {
-          this.next();
-        } else if (index === 2) {
-          this.doubleNext()
-        }
-    }
+  changeSlide(index: number): void {
+      if (index === 1) {
+        this.next();
+      } else if (index === 2) {
+        this.doubleNext()
+      }
+  }
 
-    doubleNext() {
-      this.sliderState = 'double';
-        setTimeout(() => {
-          let currentSlide = this.card.gallery[0];
-          this.card.gallery.shift();
-          this.card.gallery.push(currentSlide);
+  doubleNext() {
+    this.sliderState = 'double';
+      setTimeout(() => {
+        let currentSlide = this.card.gallery[0];
+        this.card.gallery.shift();
+        this.card.gallery.push(currentSlide);
 
-          currentSlide = this.card.gallery[0];
-          this.card.gallery.shift();
-          this.card.gallery.push(currentSlide);
-          this.sliderState = 'start';
-        }, 200)
-    }
+        currentSlide = this.card.gallery[0];
+        this.card.gallery.shift();
+        this.card.gallery.push(currentSlide);
+        this.sliderState = 'start';
+      }, 200)
+  }
 
-    ngOnInit(): void {
-        if (window.innerWidth <= 767) { this.isMobile = true }
-    }
+  ngOnInit(): void {
+    if (window.innerWidth <= 767) { this.isMobile = true }
+  }
 }

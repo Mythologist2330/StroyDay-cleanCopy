@@ -27,6 +27,8 @@ import { MaterialModule } from "./shared/material.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServicesPageModule } from './pages/servicesPage/servicesPage.module';
 import { ServiceSpecificComponent } from './pages/servicesPage/components/service/service.component';
+import { PerformerComponent } from './pages/performer/performer.component';
+import { PerformerModule } from './pages/performer/performer.module';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,7 @@ import { ServiceSpecificComponent } from './pages/servicesPage/components/servic
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     PerformersModule,
+    PerformerModule,
     MaterialModule,
     BrowserAnimationsModule,
     ServicesPageModule
