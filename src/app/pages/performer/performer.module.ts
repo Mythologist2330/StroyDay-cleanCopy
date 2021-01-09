@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule } from "@angular/router";
 import { LeafletModule } from "@asymmetrik/ngx-leaflet";
 import { SharedModule } from "../../shared/shared.module";
+import { aboutPerformer } from "./components/about-performer/about-performer.component";
 import { CardComponent } from "./components/card/card.component";
 import { PerformerComponent } from "./performer.component";
 
@@ -15,7 +16,8 @@ const routes = [
 @NgModule({
     declarations: [
         PerformerComponent,
-        CardComponent
+        CardComponent,
+        aboutPerformer
     ],
     imports: [
         CommonModule,
