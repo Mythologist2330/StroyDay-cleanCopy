@@ -1,21 +1,15 @@
 <div class="container">
 
-
-
-
-
     <div class="slider">
         <ng-container *ngFor="let img of sliderImages">
             <img [src]="img">
         </ng-container>
     </div>
-
     <div class="arrow-block left">
         <div class="arrow arrow-left">
             <mat-icon>arrow_back</mat-icon>
         </div>
     </div>
-
     <div class="arrow-block right">
         <div class="arrow arrow-right">
             <mat-icon>arrow_forward</mat-icon>
@@ -23,11 +17,11 @@
     </div>
 
 
-    
 
     <app-card></app-card>
-
     <app-aboutPerformer></app-aboutPerformer>
+    <app-mapLocation></app-mapLocation>
+
 
 
 </div>

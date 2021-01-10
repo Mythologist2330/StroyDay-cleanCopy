@@ -7,6 +7,7 @@ import { LeafletModule } from "@asymmetrik/ngx-leaflet";
 import { SharedModule } from "../../shared/shared.module";
 import { aboutPerformer } from "./components/about-performer/about-performer.component";
 import { CardComponent } from "./components/card/card.component";
+import { MapLocationComponent } from "./components/map-location/map-location.component";
 import { PerformerComponent } from "./performer.component";
 
 const routes = [
@@ -17,7 +18,8 @@ const routes = [
     declarations: [
         PerformerComponent,
         CardComponent,
-        aboutPerformer
+        aboutPerformer,
+        MapLocationComponent
     ],
     imports: [
         CommonModule,
