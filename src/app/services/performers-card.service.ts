@@ -36,6 +36,10 @@ export class PerformersCardService {
     );
   }
 
+  getPerformersCardById(cardId: string) {
+    return this.firestore.doc('performersCard/' + cardId).get()
+  }
+
   createPerformersCard(card: IPerformersCard): Promise<any> {
     const id = this.firestore.createId();
     return this.firestore.collection('performersCard').add({...card, id});
@@ -48,9 +52,5 @@ export class PerformersCardService {
   updatePerformersCard(card: IPerformersCard): Promise<void> {
     return this.firestore.doc('performersCard/' + card.id).update(card);
   }
-
-
-
-
 
 }
