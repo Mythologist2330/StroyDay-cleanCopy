@@ -1,0 +1,15 @@
+<div class="container">
+
+    <p class="header">Допуски, разрешения, сертификаты</p>
+
+    <div class="certificates">
+
+        <div *ngFor="let certificate of certificates" class="certificate">
+            <img [src]="certificate.certificate">
+            <p class="title">{{ certificate.title }}</p>
+            <p class="description">{{ certificate.description }}</p>
+        </div>
+
+    </div>
+
+</div>
