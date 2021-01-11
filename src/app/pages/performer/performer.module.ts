@@ -9,6 +9,7 @@ import { aboutPerformer } from "./components/about-performer/about-performer.com
 import { CardComponent } from "./components/card/card.component";
 import { MapLocationComponent } from "./components/map-location/map-location.component";
 import { reviewsComponent } from "./components/reviews/reviews.component";
+import { submitApplicationComponent } from "./components/submit-application/submit-application.component";
 import { PerformerComponent } from "./performer.component";
 
 const routes = [
@@ -21,7 +22,8 @@ const routes = [
         CardComponent,
         aboutPerformer,
         MapLocationComponent,
-        reviewsComponent
+        reviewsComponent,
+        submitApplicationComponent
     ],
     imports: [
         CommonModule,
