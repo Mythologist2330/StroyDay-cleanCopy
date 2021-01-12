@@ -2,6 +2,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IPerformersCard } from '../../../../interfaces/IPerformersCard';
 import { MapService } from '../../../../services/map.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card',
@@ -64,7 +65,8 @@ export class CardComponent implements OnInit {
     @Input() card: IPerformersCard;
     @Output() scrollToMap = new EventEmitter<IPerformersCard>();
 
-    constructor(public mapSrv: MapService) { }
+    constructor(public mapSrv: MapService,
+                private router: Router) { }
 
   next() {
       this.sliderState = 'next';
@@ -113,7 +115,6 @@ export class CardComponent implements OnInit {
       const x = this.mapSrv.markers.find(marker => {        
         return marker.options.title === this.card.description.header
       }).openPopup();
-      this.mapSrv.map.setView(x.getLatLng(), 16)
     }
 
     getFace() {
@@ -127,6 +128,10 @@ export class CardComponent implements OnInit {
         case (3):
           return 'Физическое лицо'
       }
+    }
+
+    goToCard(cardId: string) {
+      this.router.navigate([`/performer/${cardId}`])
     }
 
     ngOnInit(): void {

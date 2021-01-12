@@ -22,13 +22,12 @@ import { RegistrBasicInfoComponent } from './pages/formRegistrationPage/componen
 import { RegistrRequisitesComponent } from './pages/formRegistrationPage/components/registrRequisites/registrRequisites.component';
 
 import { PerformersModule } from './pages/performers/performers.module';
+import { PerformerModule } from './pages/performer/performer.module';
 import { SharedModule } from "./shared/shared.module";
 import { MaterialModule } from "./shared/material.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServicesPageModule } from './pages/servicesPage/servicesPage.module';
 import { ServiceSpecificComponent } from './pages/servicesPage/components/service/service.component';
-import { PerformerComponent } from './pages/performer/performer.component';
-import { PerformerModule } from './pages/performer/performer.module';
 
 @NgModule({
   declarations: [

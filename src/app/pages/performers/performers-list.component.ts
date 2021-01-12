@@ -188,9 +188,7 @@ export class PerformersListComponent implements OnInit {
                 this.sendRequest(params);
                 this.initFilters(params);
                 this.initTags(params);
-            }); 
-            
-        this.cardSrv.getPerformersCardById('Gf71ri9foWOFEVyzhNaP').subscribe(console.log)
+            });            
     }
 
     ngOnDestroy(): void {

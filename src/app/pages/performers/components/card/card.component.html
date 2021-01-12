@@ -31,7 +31,7 @@
             </div>
 
             <div class="description">
-                <p class="description-header" routerLink='/performer'>{{ card.description.header }}</p>
+                <p class="description-header" (click)="goToCard(card.id)">{{ card.description.header }}</p>
 
                 <app-rating-stars [stars]='+card.stars'></app-rating-stars>
 
