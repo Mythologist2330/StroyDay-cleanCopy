@@ -1,0 +1,40 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 776px;
+    height: 120px;
+    padding: 0 32px 0 24px;
+    margin: 56px auto 80px auto;
+    background-color: #0D6FE3;
+    border-radius: 4px;
+
+    .text{
+        margin-right: 52px;
+
+        .conditions{
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 32px;
+            color: #FFFFFF;
+        }
+
+        .write{
+            font-size: 16px;
+            line-height: 24px;
+            color: #FFFFFF;
+            opacity: 0.6;
+        }
+    }
+
+    button{
+        width: 186px;
+        height: 48px;
+        background-color: #FFFFFF;
+        border-radius: 3px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        color: #0D6FE3;
+    }
+}

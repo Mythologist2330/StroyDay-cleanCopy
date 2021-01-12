@@ -1,0 +1,113 @@
+<div class="container">
+
+
+    <div class="header">
+        <p>Отзывы <span>135</span></p>
+    </div>
+
+    <div class="statistics">
+
+    </div>
+
+    <div class="sort-by">
+        <p class="sort-by-p">Сортировать по:</p>
+
+        <label>
+            <input type="radio" name="sortBy" checked>
+            <p>сначала новые</p>
+        </label>
+
+        <label>
+            <input type="radio" name="sortBy">
+            <p>сначала положительные</p>
+        </label>
+
+        <label>
+            <input type="radio" name="sortBy">
+            <p>сначала отрицательные</p>
+        </label>
+    </div>
+
+    <div *ngFor="let review of reviews" class="review">
+
+        <div class="user-and-rating">
+            <div class="user">
+                <img [src]="review.avatar">
+
+                <div class="name-and-date">
+                    <p class="name">{{ review.name }}</p>
+                    <p class="date">{{ review.date }}</p>
+                </div>
+            </div>
+
+            <div class="rating">
+                <p>{{ review.rating }}</p>
+
+                <div class="stars"></div>
+            </div>
+        </div>
+
+        <p class="title-comment">{{ review.titleComment }}</p>
+
+        <p class="comment">{{ review.comment }}</p>
+
+        <hr>
+
+        <div class="button-reply-and-likes-and-dislikes">
+            <div class="button-reply">
+                <p class="amount-of-comments">{{ review.amountOfComments }}</p>
+    
+                <p>Ответить</p>
+            </div>
+
+            <div class="likes-and-dislikes">
+                <mat-icon class="like">thumb_up</mat-icon>
+                <p>{{ review.likesOrDislikes }}</p>
+                <mat-icon class="dislike">thumb_down</mat-icon>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="reply-and-send-replies">
+
+            <div class="reply-and-send">
+                <textarea placeholder="Ваш комментарий"></textarea>
+                <button>Отправить</button>
+            </div>
+
+            <div *ngFor="let reply of review.replies" class="reply">
+                <div class="reply-user">
+                    <img [src]="reply.avatar">
+
+                    <div class="reply-name-and-date">
+                        <p class="reply-name">{{ reply.name }}</p>
+                        <p class="reply-date">{{ reply.date }}</p>
+                    </div>
+                </div>
+
+                <div class="reply-comment">
+                    <hr>
+                    <p>{{ reply.comment }}</p>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+    <button class="button-show-more">Показать еще 10 отзывов</button>
+
+
+</div>

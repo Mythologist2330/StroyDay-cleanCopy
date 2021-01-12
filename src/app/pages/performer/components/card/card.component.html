@@ -1,0 +1,90 @@
+<div class="container">
+    <div class="performers-card">
+        <div class="logo-description-statistics-block">
+            <div class="logo">
+                <img [src]="card.logo">
+            </div>
+
+            <div class="description">
+                <p class="description-header">{{ card.description.header }}</p>
+
+                <app-rating-stars [stars]='+card.stars'></app-rating-stars>
+
+                <div class="description-elem">
+                    <img src='/assets/images/performers/category.png'>
+                    <p>{{ card.description.activity }}</p>
+                </div>
+
+                <div class="description-elem">
+                    <img src='/assets/images/performers/marker.png'>      
+                    <p>{{ card.description.location }}</p>
+                </div>
+
+                <div class="description-elem">
+                    <img src='/assets/images/performers/metro.png'>        
+                    <p>{{ card.description.metro }}</p>
+                </div>
+            </div>
+
+            <div class="statistics">
+                <div class="statistic">
+                    <p>Выполнено заявок</p>
+                    <p class="value">{{ card.statistics.amountCompletedOrders }}</p>
+                </div>
+
+                <hr>
+
+                <div class="statistic">
+                    <p>Цены</p>
+                    <p class="value">{{ card.statistics.prices }}</p>
+                </div>
+
+                <hr>
+
+                <div class="statistic">
+                    <p>Оценки</p>
+
+                    <div class="likes-and-dislikes">
+                        <div class='like'>
+                            <mat-icon>thumb_up</mat-icon>
+                            <p class="value">{{ card.statistics.rating.likes }}</p>
+                        </div>
+                        <div class="dislikes">
+                            <mat-icon>thumb_down</mat-icon>
+                            <p class="value">{{ card.statistics.rating.dislikes }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="statistic">
+                    <p>Заявок в работе</p>
+                    <p class="value">{{ card.statistics.ordersInProgress }}</p>
+                </div>
+
+                <div class="buttons">
+                    <button class="write-message">                                
+                        <mat-icon>email</mat-icon>
+                        Написать
+                    </button>
+                    <button class="add-to-favorites" (click)="isFavorite = !isFavorite">
+                        <img [src]="!isFavorite ? '/assets/images/performers/bookmark-disabled.png' : '/assets/images/performers/bookmark-enabled.png'">                                
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="discount-from-performer">
+        <svg width="26" height="28" viewBox="0 0 26 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.7579 3.32493L21.4695 7.82826L25.5645 9.9166L23.4995 13.9999L25.5762 18.0833L21.4462 20.1716L20.7345 24.6749L16.1962 23.9633L12.9645 27.1833L9.72118 23.9166L5.21785 24.6633L4.49452 20.1249L0.422852 18.0483L2.49952 13.9649L0.434518 9.9166L4.52952 7.80493L5.24118 3.3366L9.75618 4.08326L12.9995 0.804932L16.2312 4.0366L20.7579 3.32493ZM10.0829 8.1666C9.61872 8.1666 9.1736 8.35097 8.84541 8.67916C8.51723 9.00735 8.33285 9.45247 8.33285 9.9166C8.33285 10.3807 8.51723 10.8258 8.84541 11.154C9.1736 11.4822 9.61872 11.6666 10.0829 11.6666C10.547 11.6666 10.9921 11.4822 11.3203 11.154C11.6485 10.8258 11.8329 10.3807 11.8329 9.9166C11.8329 9.45247 11.6485 9.00735 11.3203 8.67916C10.9921 8.35097 10.547 8.1666 10.0829 8.1666ZM15.9162 16.3333C15.4521 16.3333 15.0069 16.5176 14.6787 16.8458C14.3506 17.174 14.1662 17.6191 14.1662 18.0833C14.1662 18.5474 14.3506 18.9925 14.6787 19.3207C15.0069 19.6489 15.4521 19.8333 15.9162 19.8333C16.3803 19.8333 16.8254 19.6489 17.1536 19.3207C17.4818 18.9925 17.6662 18.5474 17.6662 18.0833C17.6662 17.6191 17.4818 17.174 17.1536 16.8458C16.8254 16.5176 16.3803 16.3333 15.9162 16.3333ZM8.81118 19.8333L18.8329 9.8116L17.1879 8.1666L7.16618 18.1883L8.81118 19.8333Z" fill="white"/>
+        </svg>
+
+        <p>Исполнитель предоставляет скидку 15% на все услуги</p>
+
+        <svg width="99" height="52" viewBox="0 0 99 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M80.0357 -16.0646L82.8367 1.6904L98.9541 9.92393L90.8265 26.023L99 42.1221L82.7449 50.3556L79.9439 68.1106L62.0816 65.3047L49.3622 78L36.5969 65.1207L18.8724 68.0646L16.0255 50.1716L0 41.9841L8.17347 25.885L0.0459183 9.92393L16.1633 1.59841L18.9643 -16.0186L36.7347 -13.0747L49.5 -26L62.2194 -13.2587L80.0357 -16.0646ZM38.0204 3.02433C36.1937 3.02433 34.4417 3.75125 33.15 5.04517C31.8583 6.3391 31.1327 8.09404 31.1327 9.92393C31.1327 11.7538 31.8583 13.5088 33.15 14.8027C34.4417 16.0966 36.1937 16.8235 38.0204 16.8235C39.8471 16.8235 41.5991 16.0966 42.8908 14.8027C44.1825 13.5088 44.9082 11.7538 44.9082 9.92393C44.9082 8.09404 44.1825 6.3391 42.8908 5.04517C41.5991 3.75125 39.8471 3.02433 38.0204 3.02433ZM60.9796 35.2225C59.1528 35.2225 57.4009 35.9494 56.1092 37.2433C54.8175 38.5372 54.0918 40.2922 54.0918 42.1221C54.0918 43.952 54.8175 45.7069 56.1092 47.0008C57.4009 48.2948 59.1528 49.0217 60.9796 49.0217C62.8063 49.0217 64.5583 48.2948 65.85 47.0008C67.1417 45.7069 67.8673 43.952 67.8673 42.1221C67.8673 40.2922 67.1417 38.5372 65.85 37.2433C64.5583 35.9494 62.8063 35.2225 60.9796 35.2225ZM33.0153 49.0217L72.4592 9.50995L65.9847 3.02433L26.5408 42.536L33.0153 49.0217Z" fill="#CF3636"/>
+        </svg>
+    </div>
+</div>

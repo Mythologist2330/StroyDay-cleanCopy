@@ -66,25 +66,25 @@ export class CardComponent implements OnInit {
 
     constructor(public mapSrv: MapService) { }
 
-    next() {
-        this.sliderState = 'next';
-        setTimeout(() => {
-          let currentSlide = this.card.gallery[0];
-          this.card.gallery.shift();
-          this.card.gallery.push(currentSlide);
-          this.sliderState = 'start';
-        }, 200)
-    }
+  next() {
+      this.sliderState = 'next';
+      setTimeout(() => {
+        let currentSlide = this.card.gallery[0];
+        this.card.gallery.shift();
+        this.card.gallery.push(currentSlide);
+        this.sliderState = 'start';
+      }, 200)
+  }
 
-    prev() {
-        let currentSlide = this.card.gallery[this.card.gallery.length - 1];
-        this.card.gallery.pop();
-        this.card.gallery.unshift(currentSlide); 
-        this.sliderState = 'prev';
-        setTimeout(() => {
-          this.sliderState = 'start';
-        }, 0)
-    }
+  prev() {
+      let currentSlide = this.card.gallery[this.card.gallery.length - 1];
+      this.card.gallery.pop();
+      this.card.gallery.unshift(currentSlide); 
+      this.sliderState = 'prev';
+      setTimeout(() => {
+        this.sliderState = 'start';
+      }, 0)
+  }
 
     doubleNext() {
       this.sliderState = 'double';
@@ -93,12 +93,12 @@ export class CardComponent implements OnInit {
           this.card.gallery.shift();
           this.card.gallery.push(currentSlide);
 
-          currentSlide = this.card.gallery[0];
-          this.card.gallery.shift();
-          this.card.gallery.push(currentSlide);
-          this.sliderState = 'start';
-        }, 200)
-    }
+        currentSlide = this.card.gallery[0];
+        this.card.gallery.shift();
+        this.card.gallery.push(currentSlide);
+        this.sliderState = 'start';
+      }, 200)
+  }
 
     changeSlide(index: number): void {
         if (index === 1) {
