@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { IPerformersCard } from 'functions/src/IPerformersCard';
 
 @Component({
     selector: 'app-card',
@@ -9,25 +10,5 @@ import { Component } from '@angular/core';
 export class CardComponent{
     
     public isFavorite = false;
-
-    card: any = {
-        logo: '../../../assets/images/logo.performersPage.png',
-        description: {
-            header: 'Архитектурное бюро ZROBYM Architects',
-            stars: '5.0',
-            activity: 'Оформление и дизайн, строительство, восстановление фасадов, отделка жилых помещений',
-            location: 'Москва, СВАО, ул. Тверская, д. 16, оф. 8',
-            metro: 'Щелковская'
-        },
-        statistics: {
-            amountCompletedOrders: 356,
-            prices: 'Премиум',
-            rating: {
-                likes: 211,
-                dislikes: 4
-            },
-            ordersInProgress: 3
-        }
-    }
-
+    @Input() card: IPerformersCard;
 }
