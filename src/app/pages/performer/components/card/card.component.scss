@@ -180,7 +180,6 @@
 
 
 
-
 @media screen and (max-width: 1275px) {
     .container{
         top: 0;
@@ -216,22 +215,28 @@
 }
 
 @media screen and (max-width:767px) {
+    .container{
+        width: 320px;
+    }
+
     .performers-card {
         width: 100%;
-        padding: 16px;
+        padding: 32px 16px;
         position: relative;
-        margin: 12px 0;
+        margin: 0;
 
-        .logo-description-statistics-block {
+        .logo-description-statistics-block{
             height: 100%;
             display: block;
+
             .logo {
                 position: absolute;
-                top: 18px;
+                top: 34px;
                 left: 18px;
+
                 img {
-                    width: 32px;
-                    height: 32px;
+                    width: 64px;
+                    height: 64px;
                 }
             }
 
@@ -240,95 +245,41 @@
 
                 .description-elem{
                     margin: 8px 0 0 0;
-                    display: none;
                 }
 
                 .description-header{
-                    width: 184px;
+                    margin: 0 0 12px 76px;
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+
+                app-rating-stars{
                     position: relative;
-                    left: 44px;
-                    top: -3px;
-                }
-
-                .description-rating{
-                    width: 184px;
-                    margin: 5px 0 0 0;
-                    position: relative;
-                    left: 44px;
-                    top: -3px;
-                }
-
-                .description-discount{
-                    display: block;
-                    position: absolute;
-                    top: 69px;
-                    left: 156px;
-                    font-size: 12px;
-                    line-height: 18px;
-                    color: #fff;
-                    padding: 0 9px;
-                    background-color: #EA4545;
-                    border-radius: 20px;
-                }
-
-                .description-service-class{
-                    display: flex;
-                    margin-left: 44px;
-
-                    div{
-
-                        p{
-                            letter-spacing: 0.5px;
-                            font-weight: 600;
-                            font-size: 12px;
-                            line-height: 18px;
-                            margin-right: 12px;
-                            text-transform: uppercase;
-                        }
-                    }
-                }
-                .description-location, .description-metro, .description-activity, .description-contract, .description-face, .description-info{
-                    display: none;
+                    left: 76px;
+                    top: -7px;
                 }
             }
 
             .statistics{
-                height: auto;
-                margin: 0;
-                padding: 0;
-                background-color: #fff;
-
-                hr{
-                    display: none;
-                }
-
-                .statistic{
-                    display: none;
-                }
+                width: 288px;
+                margin: 24px 0 0 0;
 
                 .buttons{
 
                     .write-message{
-                        display: none;
+                        flex: 0 0 75%;
                     }
 
                     .add-to-favorites{
-                        position: absolute;
-                        top: 16px;
-                        right: 16px;
-                        flex: none;
-                        width: 24px;
-                        height: 24px;
-                        margin: 0;
-                        border: none;
-                        background-color: #fff;
+                        flex: 0 0 20%;
                     }
-                }
-
-                .online {
-                    display: none;
                 }
             }
         }
+    }
+
+    .discount-from-performer{
+        display: none;
     }
 }
