@@ -9,6 +9,7 @@ import { aboutPerformer } from "./components/about-performer/about-performer.com
 import { CardComponent } from "./components/card/card.component";
 import { certificatesComponent } from "./components/certificates/certificates.component";
 import { MapLocationComponent } from "./components/map-location/map-location.component";
+import { postedApplicationsComponent } from "./components/posted-applications/posted-applications.component";
 import { reviewsComponent } from "./components/reviews/reviews.component";
 import { submitApplicationComponent } from "./components/submit-application/submit-application.component";
 import { writeToPerformerComponent } from "./components/write-to-performer/write-to-performer.component";
@@ -26,8 +27,9 @@ const routes = [
         MapLocationComponent,
         reviewsComponent,
         submitApplicationComponent,
-        writeToPerformerComponent,
-        certificatesComponent
+        postedApplicationsComponent,
+        certificatesComponent,
+        writeToPerformerComponent
     ],
     imports: [
         CommonModule,
