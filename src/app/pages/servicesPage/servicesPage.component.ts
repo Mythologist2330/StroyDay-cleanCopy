@@ -9,18 +9,16 @@ import { Component, OnInit } from "@angular/core";
 export class ServicesPageComponent implements OnInit{
 
     public toggle = false;
+    public page = 'Услуги';
     shrinkHeader: boolean = false;
     filterLocationToggle: boolean = false;
     showButtonsResetApply: boolean = false;
-
-
 
     showButtonsResetApplyFunction(event) {
         if (event.view.innerWidth < 768) {
             this.showButtonsResetApply = true
         }
     }
-
 
     animateHeader(): void {
         window.onscroll = () => {

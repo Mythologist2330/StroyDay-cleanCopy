@@ -1,4 +1,4 @@
-export interface IPerformersCard{
+export class Performer {
     id: string;
     gallery: string[];
     logo: string;
@@ -31,5 +31,9 @@ export interface IPerformersCard{
     latLng: {
         lat: string;
         lng: string;
+    }
+
+    constructor(source: Partial<Performer>) {
+        Object.assign(this, source);
     }
 }

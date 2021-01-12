@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { IPerformersCard } from '../../interfaces/IPerformersCard';
 import { LatLng, Map, Marker } from 'leaflet';
 import { MapService } from '../../services/map.service';
 
@@ -14,8 +15,8 @@ export class MapComponent implements OnInit {
   map: Map;
   public fullscreenOptions: {[key:string]:any} = {
     position: 'topleft',
-    title: 'View Fullscreen',
-    titleCancel: 'Exit Fullscreen',
+    title: 'Во весь экран',
+    titleCancel: 'Свернуть',
   };
 
   constructor(public mapSrv: MapService) {
@@ -31,6 +32,8 @@ export class MapComponent implements OnInit {
 
   ngOnInit(): void {
     this.mapSrv.initializeMapOptions();
+    
+
   }
 
 

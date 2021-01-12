@@ -111,11 +111,11 @@ export class FilterService {
             text: 'Не имеет значения'
           },
           {
-            value: 'yes', 
+            value: 'true', 
             text: 'Да'
           },
           {
-            value: 'no', 
+            value: 'false', 
             text: 'Нет'
           }],
         type: 'radio'
@@ -146,8 +146,11 @@ export class FilterService {
     {
         field: 'price',
         title: 'Уровень цен',
-        checked: [],
+        checked: ['0'],
         selector: [{
+          value: '0', 
+          text: 'Не имеет значения'
+        },{
           value: '1', 
           text: 'Эконом'
         },

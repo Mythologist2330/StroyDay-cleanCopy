@@ -8,75 +8,54 @@ const app = express();
 app.use(cors({origin: true}));
 
 app.get('/cards', async (request, response) => {
-    console.log(request.query)
     const snaps = await db.collection('performersCard').get()
+    const q = request.query;
     let cards: IPerformersCard[] = [];
     snaps.forEach((snap: any) => {
         return cards.push(snap.data());
     })
-    if (request.query) {
-        if (request.query.stars) {
-          cards = cards.filter((card) => {
-            return +card.stars >= +(request.query.stars || '0')
-          })          
-          console.log('Виден запрос: ' + request.query.stars)
-          console.log(request.query)
+    if (q) {
+        if (q.stars) {
+          cards = cards.filter(card => +card.stars >= +(q.stars || '0'))
         }
 
-        if (request.query.city) {
-          cards = cards.filter((card) => {
-            return card.city === request.query.city
-          })
+        if (q.city) {
+          cards = cards.filter(card => card.city === q.city)
         }
 
-        if (request.query.metro) {
-          cards = cards.filter((card) => {
-            return card.description.metro === request.query.metro
-          })
+        if (q.metro) {
+          cards = cards.filter(card => card.description.metro === q.metro)
         }
 
-        if (request.query.feedback) {
-          cards = cards.filter((card: IPerformersCard) => {
-            return +card.feedback >= +(request.query.feedback || '0')
-          })
+        if (q.feedback) {
+          cards = cards.filter(card => +card.feedback >= +(q.feedback || '0'))
         }
 
-        if (request.query.discount) {
-          cards = cards.filter((card: IPerformersCard) => {
-            return card.description.discount === request.query.discount
-          })
+        if (q.discount) {
+          cards = cards.filter(card => card.description.discount === q.discount)
         }
 
-        if (request.query.contract) {
-          cards = cards.filter((card: IPerformersCard) => {
-            return card.description.contract === request.query.contract
-          })
+        if (q.contract) {
+          cards = cards.filter(card => card.description.contract.toString() === q.contract)
         }
 
-        if (request.query.face) {
-          cards = cards.filter((card: IPerformersCard) => {
-            return card.description.face === request.query.face
-          })
+        if (q.face) {
+          cards = cards.filter(card => card.description.face.toString() === q.face)
         }
 
-        if (request.query.price) {
-          cards = cards.filter((card: IPerformersCard) => {
-            return card.statistics.prices === request.query.price
-          })
+        if (q.price) {
+          cards = cards.filter(card => card.statistics.prices === q.price)
         }
 
-        if (request.query.ordersInProgress) {
-          cards = cards.filter((card: IPerformersCard) => {
-            return +card.statistics.ordersInProgress >= +(request.query.ordersInProgress || '0')
-          })
+        if (q.ordersInProgress) {
+          cards = cards.filter(card => +card.statistics.ordersInProgress >= +(q.ordersInProgress || '0'))
         }
 
-        if (request.query.activity) {
-          cards = cards.filter((card: IPerformersCard) => {
-            return card.description.activity === request.query.activity
-          })
+        if (q.activity) {
+          cards = cards.filter(card => card.description.activity === q.activity)
         }
-        if (request.query.orderBy === 'abc') {          
+        
+        if (q.orderBy === 'abc') {          
           cards.sort((a, b) => {
             return a.description.header.localeCompare(b.description.header)
           })
@@ -89,14 +68,14 @@ app.get('/cards', async (request, response) => {
 
       let limit = 10;
 
-      if (request.query.limit && typeof request.query.limit === 'string' && +request.query.limit <= 50 ) {
-        limit = parseInt(request.query.limit);
+      if (q.limit && typeof q.limit === 'string' && +q.limit <= 50 ) {
+        limit = parseInt(q.limit);
       }
 
       let page = 1;
 
-      if (request.query.page && typeof request.query.page === 'string') {
-        page = parseInt(request.query.page)
+      if (q.page && typeof q.page === 'string') {
+        page = parseInt(q.page)
       }
 
       const startIndex = page - 1;
@@ -107,7 +86,7 @@ app.get('/cards', async (request, response) => {
         previous: {},
         count: Math.ceil(cards.length / limit),
         result: cards.slice(startIndex, endIndex),
-        orderBy: request.query.orderBy || 'rating',
+        orderBy: q.orderBy || 'rating',
       }
 
       if (endIndex <= result.count) {

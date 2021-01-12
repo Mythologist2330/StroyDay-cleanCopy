@@ -16,7 +16,7 @@ import { writeToPerformerComponent } from "./components/write-to-performer/write
 import { PerformerComponent } from "./performer.component";
 
 const routes = [
-  {path: 'performer', component: PerformerComponent}
+  {path: 'performer/:id', component: PerformerComponent}
 ]
 
 @NgModule({

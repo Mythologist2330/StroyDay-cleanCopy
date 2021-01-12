@@ -31,7 +31,7 @@
             </div>
 
             <div class="description">
-                <p class="description-header" routerLink='/performer'>{{ card.description.header }}</p>
+                <p class="description-header" (click)="goToCard(card.id)">{{ card.description.header }}</p>
 
                 <app-rating-stars [stars]='+card.stars'></app-rating-stars>
 
@@ -43,9 +43,9 @@
                     </div>
                 </div>
 
-                <div class="description-elem ">
+                <div class="description-elem location">
                     <img src='/assets/images/performers/marker.png'>      
-                    <p>{{ card.description.location }}</p>
+                    <p (click)="scroll()">{{ card.description.location }}</p>
                 </div>
 
                 <div class="description-elem">
@@ -58,14 +58,14 @@
                     <p>{{ card.description.activity }}</p>
                 </div>
 
-                <div class="description-elem">
+                <div class="description-elem" *ngIf='card.description.contract'>
                     <img src='/assets/images/performers/text-box.png'>
-                    <p>{{ card.description.contract }}</p>
+                    <p>Работает по договору</p>
                 </div>
 
                 <div class="description-elem">
                     <img src='/assets/images/performers/account.png'>        
-                    <p>{{ card.description.face }}</p>
+                    <p>{{ getFace() }}</p>
                 </div>
 
                 <div class="description-info">

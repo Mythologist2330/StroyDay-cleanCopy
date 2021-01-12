@@ -36,3 +36,12 @@
         }
     }
 }
+
+.leaflet-popup-content-wrapper .leaflet-popup-content {
+    .wrap {
+        display: flex;
+    }
+    .logo {
+        border-radius: 50%;
+    }
+}

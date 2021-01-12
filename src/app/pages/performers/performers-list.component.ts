@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { IPerformersCard } from '../../interfaces/IPerformersCard';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PerformersCardService } from '../../services/performers-card.service';
 import { FilterService } from '../../services/filter.service';
 import { MapService } from '../../services/map.service';
-import { IFilter } from '../../interfaces/IFilter';
-import { Router, ActivatedRoute } from '@angular/router';
 import { Marker } from 'leaflet';
+import { IPerformersCard } from '../../interfaces/IPerformersCard';
+import { IFilter } from '../../interfaces/IFilter';
+import { ITag } from 'src/app/interfaces/ITag';
 
 @Component({
     selector: 'app-performersPage',
@@ -14,11 +15,17 @@ import { Marker } from 'leaflet';
 })
 
 export class PerformersListComponent implements OnInit {
+
+    // Дохрена флажков!
+
     public toggle = false;
+    public page = 'Исполнители';
+    public performersCards: IPerformersCard[] = [];
+    public card: IPerformersCard;
     public stations: string[] = [];
     public filters: IFilter[];
     public orderBy = 'header';
-    public tags: {title:string, field?: string, value?: string, text: string[] }[] = [];
+    public tags: ITag[] = [];
     public pager: any = null;
     public isFavorite = false;
     public markers: Marker[] = [];
@@ -28,7 +35,6 @@ export class PerformersListComponent implements OnInit {
     public moduleWindowMapLocation = false;
     public shrinkHeader = false;
     public decreaseFieldClick = false;
-    public performersCards: IPerformersCard[] = [];
     readonly categories = [
         'Архитектура и проектирование',
         'Инженерные системы',
@@ -39,7 +45,6 @@ export class PerformersListComponent implements OnInit {
         'Строительная техника',
         'Инженерные системы',
     ];
-
 
     constructor(
         private cardSrv: PerformersCardService,
@@ -71,10 +76,9 @@ export class PerformersListComponent implements OnInit {
         this.updateQueryParams();
     }
 
-    removeTag(tag) {
+    removeTag(tag: ITag) {
         if (!tag) {
-            this.resetFilters();
-            return
+            return this.resetFilters();
         }
         this.filters.map(filter => {
             if (filter.title === tag.title) {
@@ -85,7 +89,9 @@ export class PerformersListComponent implements OnInit {
     }
 
     switchOrderBy(order: string) {
-        if (this.orderBy === order) { return }
+        if (this.orderBy === order) {
+            return
+        }
         this.orderBy = order;
         this.updateQueryParams();
     }
@@ -103,8 +109,7 @@ export class PerformersListComponent implements OnInit {
                         prevPage: cards.result.previous,
                         countPage: cards.result.count
                     }
-                    this.isLoading = false;
-                    
+                    this.isLoading = false;                    
                 }
             }); 
     }
@@ -112,12 +117,10 @@ export class PerformersListComponent implements OnInit {
     resetFilters() {
         this.toggle = false;
         this.filters.map(filter => {
-            if (filter.type === 'radio') {
+            if (filter.type === ('radio' || 'select')) {
                 filter.checked = ['0']
             } else if (filter.type === 'checkbox') {                
                 filter.checked = []
-            } else if (filter.type === 'select') {
-                filter.checked = ['0']
             }
         });
         this.updateQueryParams();
@@ -155,7 +158,7 @@ export class PerformersListComponent implements OnInit {
                 filter.checked.map(point => {
                     points.push(filter.selector.find(val => val.value === point).text)
                 })
-                const tag = {
+                const tag: ITag = {
                     title: filter.title,
                     text: points
                 }
@@ -172,6 +175,10 @@ export class PerformersListComponent implements OnInit {
         })
     }
 
+    scrollToMap(el: HTMLElement) {
+        el.scrollIntoView();
+    }
+
     ngOnInit(): void {
         this.isLoading = true;
         this.animateHeader();
@@ -181,7 +188,7 @@ export class PerformersListComponent implements OnInit {
                 this.sendRequest(params);
                 this.initFilters(params);
                 this.initTags(params);
-            });  
+            });            
     }
 
     ngOnDestroy(): void {

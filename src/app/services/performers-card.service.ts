@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, Subscription, pipe } from 'rxjs';
+import { filter, map, tap } from 'rxjs/operators';
 import { IPerformersCard } from '../interfaces/IPerformersCard';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { HttpClient } from '@angular/common/http';
@@ -36,6 +36,18 @@ export class PerformersCardService {
     );
   }
 
+  getPerformersCardById(cardId: string) {
+    return this.firestore.collection('performersCard')
+      .valueChanges()
+      .pipe(        
+        map(cards => {
+          return cards.filter((card: IPerformersCard) => {
+            return card.id === cardId
+          })
+        })
+      )
+  }
+
   createPerformersCard(card: IPerformersCard): Promise<any> {
     const id = this.firestore.createId();
     return this.firestore.collection('performersCard').add({...card, id});
@@ -48,9 +60,5 @@ export class PerformersCardService {
   updatePerformersCard(card: IPerformersCard): Promise<void> {
     return this.firestore.doc('performersCard/' + card.id).update(card);
   }
-
-
-
-
 
 }
