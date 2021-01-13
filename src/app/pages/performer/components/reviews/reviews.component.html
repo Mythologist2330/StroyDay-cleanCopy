@@ -13,22 +13,25 @@
         <p class="sort-by-p">Сортировать по:</p>
 
         <label>
-            <input type="radio" name="sortBy" checked>
+            <input type="radio" name="sortByReviews" checked>
             <p>сначала новые</p>
         </label>
 
         <label>
-            <input type="radio" name="sortBy">
+            <input type="radio" name="sortByReviews">
             <p>сначала положительные</p>
         </label>
 
         <label>
-            <input type="radio" name="sortBy">
+            <input type="radio" name="sortByReviews">
             <p>сначала отрицательные</p>
         </label>
     </div>
 
-    <div *ngFor="let review of reviews" class="review">
+
+
+
+    <div [ngStyle]="{'border-color': getReviewBorderColor(review.rating), 'background': getReviewBackground(review.rating)}" *ngFor="let review of reviews" class="review">
 
         <div class="user-and-rating">
             <div class="user">
@@ -55,9 +58,11 @@
 
         <div class="button-reply-and-likes-and-dislikes">
             <div class="button-reply">
-                <p class="amount-of-comments">{{ review.amountOfComments }}</p>
+                <p (click)="showReplies = true" *ngIf="review.amountOfComments && !showReplies" class="amount-of-comments">{{ review.amountOfComments }} комментариев</p>
+
+                <p (click)="showReplies = false" *ngIf="showReplies" class="amount-of-comments">Скрыть комментарии</p>
     
-                <p>Ответить</p>
+                <p (click)="showReplies = true">Ответить</p>
             </div>
 
             <div class="likes-and-dislikes">
@@ -67,43 +72,36 @@
             </div>
         </div>
 
-
-
-
-
-        <div class="reply-and-send-replies">
+        <div *ngIf="showReplies" class="reply-and-send-replies">
 
             <div class="reply-and-send">
                 <textarea placeholder="Ваш комментарий"></textarea>
                 <button>Отправить</button>
             </div>
 
-            <div *ngFor="let reply of review.replies" class="reply">
-                <div class="reply-user">
-                    <img [src]="reply.avatar">
+            <div class="replies">
 
-                    <div class="reply-name-and-date">
-                        <p class="reply-name">{{ reply.name }}</p>
-                        <p class="reply-date">{{ reply.date }}</p>
+                <div *ngFor="let reply of review.replies" class="reply">
+                    <div class="reply-user">
+                        <img [src]="reply.avatar">
+
+                        <div class="reply-name-and-date">
+                            <p class="reply-name">{{ reply.name }}</p>
+                            <p class="reply-date">{{ reply.date }}</p>
+                        </div>
+                    </div>
+
+                    <div class="reply-comment">
+                        <hr>
+                        <p>{{ reply.comment }}</p>
                     </div>
                 </div>
 
-                <div class="reply-comment">
-                    <hr>
-                    <p>{{ reply.comment }}</p>
-                </div>
             </div>
 
         </div>
 
-
-
-
-
-
-
     </div>
-
 
 
 
