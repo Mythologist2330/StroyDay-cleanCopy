@@ -9,6 +9,7 @@ import { aboutPerformer } from "./components/about-performer/about-performer.com
 import { authorBlogComponent } from "./components/author-blog/author-blog.component";
 import { CardComponent } from "./components/card/card.component";
 import { certificatesComponent } from "./components/certificates/certificates.component";
+import { documentsComponent } from "./components/documents/documents.component";
 import { MapLocationComponent } from "./components/map-location/map-location.component";
 import { postedApplicationsComponent } from "./components/posted-applications/posted-applications.component";
 import { reviewsComponent } from "./components/reviews/reviews.component";
@@ -30,6 +31,7 @@ const routes = [
         submitApplicationComponent,
         postedApplicationsComponent,
         authorBlogComponent,
+        documentsComponent,
         certificatesComponent,
         writeToPerformerComponent
     ],
