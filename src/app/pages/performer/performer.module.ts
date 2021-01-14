@@ -6,6 +6,7 @@ import { RouterModule } from "@angular/router";
 import { LeafletModule } from "@asymmetrik/ngx-leaflet";
 import { SharedModule } from "../../shared/shared.module";
 import { aboutPerformer } from "./components/about-performer/about-performer.component";
+import { authorBlogComponent } from "./components/author-blog/author-blog.component";
 import { CardComponent } from "./components/card/card.component";
 import { certificatesComponent } from "./components/certificates/certificates.component";
 import { MapLocationComponent } from "./components/map-location/map-location.component";
@@ -28,6 +29,7 @@ const routes = [
         reviewsComponent,
         submitApplicationComponent,
         postedApplicationsComponent,
+        authorBlogComponent,
         certificatesComponent,
         writeToPerformerComponent
     ],

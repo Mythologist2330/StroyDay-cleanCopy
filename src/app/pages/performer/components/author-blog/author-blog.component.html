@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="content">
+
+        <p class="header">Авторский блог</p>
+
+        <div class="cards">
+            <div *ngFor="let card of cards" class="card">
+
+                <img [src]="card.image">
+
+                <div class="main-info">
+                    <p class="tag">{{ card.tag }}</p>
+
+                    <p class="title">{{ card.title }}</p>
+
+                    <hr>
+
+                    <div class="date-and-views-and-likes">
+                        <p class="date">{{ card.date }}</p>
+
+                        <div class="views-and-likes">
+                            <div class="views">
+                                <mat-icon>visibility</mat-icon>
+                                <p>{{ card.views }}</p>
+                            </div>
+
+                            <div>
+                                <mat-icon>favorite</mat-icon>
+                                <p>{{ card.likes }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <button class="button-go-to-blog">Перейти в блог</button>
+
+    </div>
+</div>
