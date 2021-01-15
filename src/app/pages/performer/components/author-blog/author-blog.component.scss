@@ -45,9 +45,10 @@
                         background-color: rgba(13, 111, 227, 0.1);
                         border-radius: 2px;
                         font-weight: 500;
-                        font-size: 12px;
+                        font-size: 10px;
                         line-height: 16px;
                         letter-spacing: 0.5px;
+                        text-transform: uppercase;
                         color: #0D6FE3;
                     }
 
@@ -110,6 +111,84 @@
             font-size: 14px;
             line-height: 18px;
             color: #FFFFFF;
+        }
+    }
+}
+
+@media screen and (max-width: 1275px) {
+    .container{
+
+        .content{
+            width: 720px;
+
+            .cards{
+                width: 720px;
+
+                .card{
+                    flex: 0 0 348px;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container{
+        margin: 40px 0;
+        padding: 40px 0;
+
+        .content{
+            width: 288px;
+
+            .header{
+                font-size: 24px;
+                line-height: 28px;
+            }
+
+            .cards{
+                width: 288px;
+                margin: 12px 0 20px 0;
+
+                .card{
+                    flex: 0 0 288px;
+                    height: 316px;
+                    margin: 12px 0 4px 0;
+                    overflow: hidden;
+
+                    img{
+                        width: 288px;
+                        height: 160px;
+                    }
+
+                    .main-info{
+                        padding: 11px 16px 16px 16px;
+
+                        .date-and-views-and-likes{
+
+                            .views-and-likes{
+                                display: flex;
+                                margin-top: -2px;
+
+                                div{
+                                    align-items: initial;
+                                    font-size: 12px;
+                                    line-height: 18px;
+
+                                    &.views{
+                                        margin-right: 7px;
+                                    }
+
+                                    mat-icon{
+                                        font-size: 18px;
+                                        margin-right: -3px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
