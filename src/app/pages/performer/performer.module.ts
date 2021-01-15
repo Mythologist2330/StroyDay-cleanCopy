@@ -13,6 +13,7 @@ import { documentsComponent } from "./components/documents/documents.component";
 import { MapLocationComponent } from "./components/map-location/map-location.component";
 import { postedApplicationsComponent } from "./components/posted-applications/posted-applications.component";
 import { reviewsComponent } from "./components/reviews/reviews.component";
+import { servicesComponent } from "./components/services/services.component";
 import { submitApplicationComponent } from "./components/submit-application/submit-application.component";
 import { writeToPerformerComponent } from "./components/write-to-performer/write-to-performer.component";
 import { PerformerComponent } from "./performer.component";
@@ -27,6 +28,7 @@ const routes = [
         CardComponent,
         aboutPerformer,
         MapLocationComponent,
+        servicesComponent,
         reviewsComponent,
         submitApplicationComponent,
         postedApplicationsComponent,
