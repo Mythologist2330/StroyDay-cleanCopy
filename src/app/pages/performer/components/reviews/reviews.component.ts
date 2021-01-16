@@ -6,7 +6,7 @@ import { Component } from "@angular/core";
     styleUrls: ['./reviews.component.scss']
 })
 
-export class reviewsComponent{
+export class ReviewsComponent{
 
     showReplies: boolean = false
 

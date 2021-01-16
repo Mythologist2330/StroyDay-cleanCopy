@@ -5,18 +5,18 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule } from "@angular/router";
 import { LeafletModule } from "@asymmetrik/ngx-leaflet";
 import { SharedModule } from "../../shared/shared.module";
-import { aboutPerformer } from "./components/about-performer/about-performer.component";
-import { authorBlogComponent } from "./components/author-blog/author-blog.component";
+import { AboutPerformer } from "./components/about-performer/about-performer.component";
+import { AuthorBlogComponent } from "./components/author-blog/author-blog.component";
 import { CardComponent } from "./components/card/card.component";
-import { certificatesComponent } from "./components/certificates/certificates.component";
-import { completeApplicationsComponent } from "./components/complete-applications/complete-applications.component";
-import { documentsComponent } from "./components/documents/documents.component";
+import { CertificatesComponent } from "./components/certificates/certificates.component";
+import { CompleteApplicationsComponent } from "./components/complete-applications/complete-applications.component";
+import { DocumentsComponent } from "./components/documents/documents.component";
 import { MapLocationComponent } from "./components/map-location/map-location.component";
-import { postedApplicationsComponent } from "./components/posted-applications/posted-applications.component";
-import { reviewsComponent } from "./components/reviews/reviews.component";
-import { servicesComponent } from "./components/services/services.component";
-import { submitApplicationComponent } from "./components/submit-application/submit-application.component";
-import { writeToPerformerComponent } from "./components/write-to-performer/write-to-performer.component";
+import { PostedApplicationsComponent } from "./components/posted-applications/posted-applications.component";
+import { ReviewsComponent } from "./components/reviews/reviews.component";
+import { ServicesComponent } from "./components/services/services.component";
+import { SubmitApplicationComponent } from "./components/submit-application/submit-application.component";
+import { WriteToPerformerComponent } from "./components/write-to-performer/write-to-performer.component";
 import { PerformerComponent } from "./performer.component";
 
 const routes = [
@@ -27,17 +27,17 @@ const routes = [
     declarations: [
         PerformerComponent,
         CardComponent,
-        aboutPerformer,
+        AboutPerformer,
         MapLocationComponent,
-        servicesComponent,
-        reviewsComponent,
-        submitApplicationComponent,
-        completeApplicationsComponent,
-        postedApplicationsComponent,
-        authorBlogComponent,
-        documentsComponent,
-        certificatesComponent,
-        writeToPerformerComponent
+        ServicesComponent,
+        ReviewsComponent,
+        SubmitApplicationComponent,
+        CompleteApplicationsComponent,
+        PostedApplicationsComponent,
+        AuthorBlogComponent,
+        DocumentsComponent,
+        CertificatesComponent,
+        WriteToPerformerComponent
     ],
     imports: [
         CommonModule,

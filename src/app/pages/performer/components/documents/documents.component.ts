@@ -6,7 +6,7 @@ import { Component } from "@angular/core";
     styleUrls: ['./documents.component.scss']
 })
 
-export class documentsComponent {
+export class DocumentsComponent {
 
     documents: any = [
         {

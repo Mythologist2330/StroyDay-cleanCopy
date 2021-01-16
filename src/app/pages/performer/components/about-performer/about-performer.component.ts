@@ -1,12 +1,12 @@
 import { Component } from "@angular/core";
 
 @Component({
-    selector: 'app-aboutPerformer',
+    selector: 'app-about-performer',
     templateUrl: './about-performer.component.html',
     styleUrls: ['./about-performer.component.scss']
 })
 
-export class aboutPerformer {
+export class AboutPerformer {
 
     aboutPerformer: any = {
         departureArea: 'Южный район, Северный район, Юго-восточный район, Подберезовики, Дзержинский район',

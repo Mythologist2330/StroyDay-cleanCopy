@@ -1,12 +1,12 @@
 import { Component } from "@angular/core";
 
 @Component({
-    selector: 'app-completeApplications',
+    selector: 'app-complete-applications',
     templateUrl: './complete-applications.component.html',
     styleUrls: ['./complete-applications.component.scss']
 })
 
-export class completeApplicationsComponent {
+export class CompleteApplicationsComponent {
 
     applications: any = [
         {
