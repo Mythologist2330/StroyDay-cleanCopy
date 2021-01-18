@@ -38,3 +38,47 @@
         color: #0D6FE3;
     }
 }
+
+@media screen and (max-width: 1275px) {
+    .container{
+        width: 720px;
+        padding: 0 24px 0 24px;
+
+        .text{
+            margin-right: 16px;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container{
+        display: block;
+        width: -webkit-fill-available;
+        height: auto;
+        margin: 40px 1rem;
+        padding: 16px;
+
+        img{
+            display: none;
+        }
+
+        .text{
+            margin: 0;
+
+            .task{
+                font-size: 20px;
+                line-height: 28px;
+            }
+
+            .submit{
+                font-size: 14px;
+                line-height: 20px;
+            }
+        }
+
+        button{
+            width: 100%;
+            margin-top: 18px;
+        }
+    }
+}

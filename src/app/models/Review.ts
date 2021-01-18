@@ -11,6 +11,7 @@ export class Review {
     likes: number;
     dislikes: number;
     replies: IComment[];
+    showReplies: boolean;
 
     constructor(source: Partial<Review>) {
         Object.assign(this, source);

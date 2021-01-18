@@ -1,6 +1,19 @@
 import { Component } from "@angular/core";
 import { Review } from "src/app/models/Review";
 
+export interface IReviews {
+    avatar: string,
+    name: string,
+    date: string,
+    rating: number,
+    titleComment: string,
+    comment: string,
+    amountOfComments: number,
+    likesOrDislikes: number,
+    replies: any,
+    showReplies: boolean
+}
+
 @Component({
     selector: 'app-reviews',
     templateUrl: './reviews.component.html',
@@ -34,7 +47,8 @@ export class ReviewsComponent{
                     createdAt:  new Date(),
                     text: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
                 }
-            ]
+            ],
+            showReplies: false // Говнокод!
         },
         {
             avatar: '/assets/images/performer/avatar.png',
@@ -58,7 +72,8 @@ export class ReviewsComponent{
                     createdAt: new Date(),
                     text: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
                 }
-            ]
+            ],
+            showReplies: false // Говнокод!
         },
         {
             avatar: '/assets/images/performer/avatar.png',
@@ -82,9 +97,12 @@ export class ReviewsComponent{
                     createdAt: new Date(),
                     text: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
                 }
-            ]
+            ],
+            showReplies: false // Говнокод!
         }
-    ];
+    ]
+
+    wees = [5,4,3,2,1]
 
 
     getReviewBorderColor(rating: number): string {
@@ -105,6 +123,24 @@ export class ReviewsComponent{
         } else if (rating < 3) {
             return 'linear-gradient(0deg, rgba(234, 69, 69, 0.05), rgba(234, 69, 69, 0.05)), #FFFFFF'
         }
+    }
+
+
+
+    showPercentInLine(rating: number): number {
+        let total = this.reviews.length;
+        let amount = this.getAmountOfComments(rating);
+        return this.getPercentOf(total, amount)
+    }
+
+    getAmountOfComments(rating: number): number {
+        return this.reviews.filter((review: Review) => {
+            return review.rating === rating
+        }).length;
+    }
+
+    getPercentOf(total: number, amount: number): number {
+        return amount / total * 100
     }
 
 }

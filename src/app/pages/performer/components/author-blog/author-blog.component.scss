@@ -139,7 +139,8 @@
         padding: 40px 0;
 
         .content{
-            width: 288px;
+            width: 100%;
+            padding: 0 1rem;
 
             .header{
                 font-size: 24px;
@@ -147,18 +148,18 @@
             }
 
             .cards{
-                width: 288px;
+                width: auto;
                 margin: 12px 0 20px 0;
 
                 .card{
-                    flex: 0 0 288px;
-                    height: 316px;
+                    flex: 0 0 100%;
+                    height: auto;
                     margin: 12px 0 4px 0;
                     overflow: hidden;
 
                     img{
-                        width: 288px;
-                        height: 160px;
+                        width: 100%;
+                        height: auto;
                     }
 
                     .main-info{

@@ -28,6 +28,17 @@
         </label>
     </div>
 
+    <fieldset class="sort-by-mobile">
+        <legend>Сортировка</legend>
+
+        <select>
+            <option value="">Все заявки</option>
+            <option value="">Эконом</option>
+            <option value="">Стандарт</option>
+            <option value="">Премиум</option>
+        </select>
+    </fieldset>
+
     <div class="applications">
         <div *ngFor="let application of applications" class="application">
 
