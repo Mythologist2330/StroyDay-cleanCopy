@@ -53,8 +53,9 @@
 @media screen and (max-width: 767px) {
     .container{
         display: block;
-        width: 288px;
+        width: -webkit-fill-available;
         height: auto;
+        margin: 56px 1rem 80px 1rem;
         padding: 16px;
 
         img{
