@@ -93,8 +93,9 @@
 
 @media screen and (max-width: 767px) {
     .container{
-        width: 288px;
+        width: 100%;
         height: auto;
+        padding: 0 1rem;
         margin: 40px auto 34px auto;
 
         .header{
@@ -115,14 +116,13 @@
                 }
     
                 .field{
-                    max-width: 280px;
+                    margin-right: 8px;
                 }
             }
         }
 
         .additional-info{
-            max-width: 280px;
-            margin: 8px 0 5px 0;
+            margin: 8px 8px 5px 0;
         }
 
         .show-full-additional-info{
