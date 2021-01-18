@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Review } from "src/app/models/Review";
 
 @Component({
     selector: 'app-reviews',
@@ -10,80 +11,80 @@ export class ReviewsComponent{
 
     showReplies: boolean = false
 
-    reviews: any = [
+    reviews: Review[] = [
         {
-            avatar: '../../../../../assets/images/performer/avatar.png',
+            avatar: '/assets/images/performer/avatar.png',
             name: 'Иван Алексеев',
-            date: '22 января 2020 в 12:44',
-            rating: 5.0,
+            createdAt: new Date(),
+            rating: 5,
             titleComment: 'Мне понравилось!',
             comment: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты, которые смогут заставить посетителей оставаться на нём как можно дальше, то вы попали по адресу. За кворк можно заказать хоть 10 статей, главное чтоб общий объём был 6000 символов без пробелов.',
-            amountOfComments: 13,
-            likesOrDislikes: 23,
+            likes: 23,
+            dislikes: 0,
             replies: [
                 {
-                    avatar: '../../../../../assets/images/performer/avatar.png',
+                    avatar: '/assets/images/performer/avatar.png',
                     name: 'Иван Алексеев',
-                    date: '23 января 2020 в 12:44',
-                    comment: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
+                    createdAt:  new Date(),
+                    text: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
                 },
                 {
-                    avatar: '../../../../../assets/images/performer/avatar.png',
+                    avatar: '/assets/images/performer/avatar.png',
                     name: 'Иван Алексеев',
-                    date: '24 января 2020 в 12:44',
-                    comment: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
+                    createdAt:  new Date(),
+                    text: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
                 }
             ]
         },
         {
-            avatar: '../../../../../assets/images/performer/avatar.png',
+            avatar: '/assets/images/performer/avatar.png',
             name: 'Иван Алексеев',
-            date: '22 января 2020 в 12:44',
-            rating: 2.0,
+            createdAt: new Date(),
+            rating: 2,
             titleComment: 'Очень не очень!',
             comment: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты, которые смогут заставить посетителей оставаться на нём как можно дальше, то вы попали по адресу. За кворк можно заказать хоть 10 статей, главное чтоб общий объём был 6000 символов без пробелов.',
-            likesOrDislikes: 23,
+            likes: 14,
+            dislikes: 0,
             replies: [
                 {
-                    avatar: '../../../../../assets/images/performer/avatar.png',
+                    avatar: '/assets/images/performer/avatar.png',
                     name: 'Иван Алексеев',
-                    date: '23 января 2020 в 12:44',
-                    comment: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
+                    createdAt: new Date(),
+                    text: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
                 },
                 {
-                    avatar: '../../../../../assets/images/performer/avatar.png',
+                    avatar: '/assets/images/performer/avatar.png',
                     name: 'Иван Алексеев',
-                    date: '24 января 2020 в 12:44',
-                    comment: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
+                    createdAt: new Date(),
+                    text: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
                 }
             ]
         },
         {
-            avatar: '../../../../../assets/images/performer/avatar.png',
+            avatar: '/assets/images/performer/avatar.png',
             name: 'Иван Алексеев',
-            date: '22 января 2020 в 12:44',
-            rating: 3.0,
+            createdAt: new Date(),
+            rating: 3,
             titleComment: 'Так себе, но пойдет!',
             comment: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты, которые смогут заставить посетителей оставаться на нём как можно дальше, то вы попали по адресу. За кворк можно заказать хоть 10 статей, главное чтоб общий объём был 6000 символов без пробелов.',
-            amountOfComments: 13,
-            likesOrDislikes: 0,
+            likes: 5,
+            dislikes: 0,
             replies: [
                 {
-                    avatar: '../../../../../assets/images/performer/avatar.png',
+                    avatar: '/assets/images/performer/avatar.png',
                     name: 'Иван Алексеев',
-                    date: '23 января 2020 в 12:44',
-                    comment: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
+                    createdAt: new Date(),
+                    text: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
                 },
                 {
-                    avatar: '../../../../../assets/images/performer/avatar.png',
+                    avatar: '/assets/images/performer/avatar.png',
                     name: 'Иван Алексеев',
-                    date: '24 января 2020 в 12:44',
-                    comment: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
+                    createdAt: new Date(),
+                    text: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
                 }
             ]
         }
-    ]
-
+    ];
 
 
     getReviewBorderColor(rating: number): string {

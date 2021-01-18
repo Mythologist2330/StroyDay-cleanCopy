@@ -4,6 +4,7 @@ import { filter, map, tap } from 'rxjs/operators';
 import { IPerformersCard } from '../interfaces/IPerformersCard';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { HttpClient } from '@angular/common/http';
+import { Performer } from '../models/Performer';
 
 @Injectable({
   providedIn: 'root'
@@ -21,11 +22,14 @@ export class PerformersCardService {
     private firestore: AngularFirestore,
     private http: HttpClient
     ) { 
-      this.renderCardsSub()
+      this.renderCardsSub();
     }
 
   getAllPerformersCard(params?): Observable<any>  {
     return this.http.get(this.url, {params})
+      .pipe(
+        tap(console.log)
+      )
   }
 
   renderCardsSub(params = {}): Subscription {
@@ -36,15 +40,16 @@ export class PerformersCardService {
     );
   }
 
-  getPerformersCardById(cardId: string) {
-    return this.firestore.collection('performersCard')
+  getPerformersCardById(cardId: string): Observable<Performer> {
+    return this.firestore.collection('performers')
       .valueChanges()
       .pipe(        
         map(cards => {
           return cards.filter((card: IPerformersCard) => {
             return card.id === cardId
           })
-        })
+        }),
+        map(cards => new Performer(cards[0]))
       )
   }
 

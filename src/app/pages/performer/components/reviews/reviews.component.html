@@ -39,7 +39,7 @@
 
                 <div class="name-and-date">
                     <p class="name">{{ review.name }}</p>
-                    <p class="date">{{ review.date }}</p>
+                    <p class="date">{{ review.createdAt | date : 'dd MMMM yyyy hh:mm' }}</p>
                 </div>
             </div>
 
@@ -58,7 +58,7 @@
 
         <div class="button-reply-and-likes-and-dislikes">
             <div class="button-reply">
-                <p (click)="showReplies = true" *ngIf="review.amountOfComments && !showReplies" class="amount-of-comments">{{ review.amountOfComments }} комментариев</p>
+                <p (click)="showReplies = true" *ngIf="review.replies && !showReplies" class="amount-of-comments">{{ review.replies.length }} комментариев</p>
 
                 <p (click)="showReplies = false" *ngIf="showReplies" class="amount-of-comments">Скрыть комментарии</p>
     
@@ -67,8 +67,9 @@
 
             <div class="likes-and-dislikes">
                 <mat-icon class="like">thumb_up</mat-icon>
-                <p>{{ review.likesOrDislikes }}</p>
+                <p *ngIf='review.likes > 0'>{{ review.likes }}</p>
                 <mat-icon class="dislike">thumb_down</mat-icon>
+                <p *ngIf='review.dislikes > 0'>{{ review.dislikes }}</p>
             </div>
         </div>
 
@@ -87,13 +88,13 @@
 
                         <div class="reply-name-and-date">
                             <p class="reply-name">{{ reply.name }}</p>
-                            <p class="reply-date">{{ reply.date }}</p>
+                            <p class="reply-date">{{ reply.createdAt | date : 'dd MMMM yyyy hh:mm' }}</p>
                         </div>
                     </div>
 
                     <div class="reply-comment">
                         <hr>
-                        <p>{{ reply.comment }}</p>
+                        <p>{{ reply.text }}</p>
                     </div>
                 </div>
 

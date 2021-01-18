@@ -1,8 +1,8 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IPerformersCard } from '../../../../interfaces/IPerformersCard';
 import { MapService } from '../../../../services/map.service';
 import { Router } from '@angular/router';
+import { Performer } from 'src/app/models/Performer';
 
 @Component({
   selector: 'app-card',
@@ -62,8 +62,8 @@ export class CardComponent implements OnInit {
   public isMobile = false;
     public isFavorite = false;
     public sliderState = 'start';
-    @Input() card: IPerformersCard;
-    @Output() scrollToMap = new EventEmitter<IPerformersCard>();
+    @Input() card: Performer;
+    @Output() scrollToMap = new EventEmitter<Performer>();
 
     constructor(public mapSrv: MapService,
                 private router: Router) { }
@@ -113,12 +113,12 @@ export class CardComponent implements OnInit {
     scroll() {
       this.scrollToMap.emit();
       const x = this.mapSrv.markers.find(marker => {        
-        return marker.options.title === this.card.description.header
+        return marker.options.title === this.card.description.title
       }).openPopup();
     }
 
-    getFace() {
-      switch (this.card.description.face) {
+    getlegalStatus() {
+      switch (this.card.description.legalStatus) {
         case (0): 
           return 'Не указано'
         case (1):
@@ -127,6 +127,17 @@ export class CardComponent implements OnInit {
           return 'Индивидуальный предприниматель'
         case (3):
           return 'Физическое лицо'
+      }
+    }
+
+    getColor(service) {
+      switch (service) {
+        case ('эконом'): 
+          return '#F8601F'
+        case ('стандарт'):
+          return '#0D6FE3'
+        case ('премиум'):
+          return '#9F8C66'
       }
     }
 

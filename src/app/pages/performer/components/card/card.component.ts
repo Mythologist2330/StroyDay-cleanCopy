@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IPerformersCard } from 'functions/src/IPerformersCard';
+import { Performer } from 'src/app/models/Performer';
 
 @Component({
     selector: 'app-card',
@@ -10,5 +10,5 @@ import { IPerformersCard } from 'functions/src/IPerformersCard';
 export class CardComponent{
     
     public isFavorite = false;
-    @Input() card: IPerformersCard;
+    @Input() card: Performer;
 }

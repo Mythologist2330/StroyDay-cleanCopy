@@ -31,26 +31,26 @@
             </div>
 
             <div class="description">
-                <p class="description-header" (click)="goToCard(card.id)">{{ card.description.header }}</p>
+                <p class="description-header" (click)="goToCard(card.id)">{{ card.description.title }}</p>
 
                 <app-rating-stars [stars]='+card.stars'></app-rating-stars>
 
                 <div class="description-discount">{{ card.description.discount }}</div>
 
                 <div class="description-service-class">
-                    <div *ngFor="let serviceClass of card.description.serviceClass">
-                        <p [style]="{color: serviceClass.color}">{{ serviceClass.name }}</p>
+                    <div *ngFor="let service of card.serviceList">
+                        <p [style]="{color: getColor(service)}">{{ service }}</p>
                     </div>
                 </div>
 
                 <div class="description-elem location">
                     <img src='/assets/images/performers/marker.png'>      
-                    <p (click)="scroll()">{{ card.description.location }}</p>
+                    <p (click)="scroll()">{{ card.getLocation() }}</p>
                 </div>
 
                 <div class="description-elem">
                     <img src='/assets/images/performers/metro.png'>        
-                    <p>{{ card.description.metro }}</p>
+                    <p>{{ card.location.metro }}</p>
                 </div>
 
                 <div class="description-elem">
@@ -65,7 +65,7 @@
 
                 <div class="description-elem">
                     <img src='/assets/images/performers/account.png'>        
-                    <p>{{ getFace() }}</p>
+                    <p>{{ getlegalStatus() }}</p>
                 </div>
 
                 <div class="description-info">
@@ -77,14 +77,14 @@
             <div class="statistics">
                 <div class="statistic">
                     <p>Выполнено заказов</p>
-                    <p class="value">{{ card.statistics.amountCompletedOrders }}</p>
+                    <p class="value">{{ card.getCompletedOrders().length }}</p>
                 </div>
 
                 <hr>
 
                 <div class="statistic">
                     <p>Цены</p>
-                    <p class="value">{{ card.statistics.prices }}</p>
+                    <p class="value">{{ card.getMinPrice() }}</p>
                 </div>
 
                 <hr>
@@ -95,11 +95,11 @@
                     <div class="likes-and-dislikes">
                         <div class='like'>
                             <mat-icon>thumb_up</mat-icon>
-                            <p class="value">{{ card.statistics.rating.likes }}</p>
+                            <p class="value">{{ card.likes }}</p>
                         </div>
                         <div class="dislikes">
                             <mat-icon>thumb_down</mat-icon>
-                            <p class="value">{{ card.statistics.rating.dislikes }}</p>
+                            <p class="value">{{ card.dislikes }}</p>
                         </div>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
 
                 <div class="statistic">
                     <p>Заказов в работе</p>
-                    <p class="value">{{ card.statistics.ordersInProgress }}</p>
+                    <p class="value">{{ card.getInProgressOrders().length }}</p>
                 </div>
 
 
@@ -122,7 +122,7 @@
                     </button>
                 </div>
 
-                <p class="online">{{ card.statistics.online }}</p>
+                <p class="online">Был в сети два дня назад</p>
             </div>
         </div>
     </div>
@@ -135,7 +135,7 @@
         </div>
         <div class='description'>
             <div class='topline'>
-                <p class="title">{{card.description.header}}</p>
+                <p class="title">{{card.description.title}}</p>
                 <button class="add-to-favorites" (click)="isFavorite = !isFavorite">
                     <img [src]="!isFavorite ? '/assets/images/performers/bookmark-disabled.png' : '/assets/images/performers/bookmark-enabled.png'">                                
                 </button>
@@ -145,8 +145,8 @@
                 <div class="discount">{{ card.description.discount }}</div>
             </div>
             <div class='bottomline'>
-                <div *ngFor="let serviceClass of card.description.serviceClass">
-                    <p [style]="{color: serviceClass.color}">{{ serviceClass.name }}</p>
+                <div *ngFor="let service of card.serviceList">
+                    <p [style]="{color: getColor(service)}">{{ service }}</p>
                 </div>
             </div>
         </div>
