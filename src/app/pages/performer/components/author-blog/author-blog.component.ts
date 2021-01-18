@@ -1,12 +1,12 @@
 import { Component } from "@angular/core";
 
 @Component({
-    selector: 'app-authorBlog',
+    selector: 'app-author-blog',
     templateUrl: './author-blog.component.html',
     styleUrls: ['./author-blog.component.scss']
 })
 
-export class authorBlogComponent {
+export class AuthorBlogComponent {
 
     cards: any = [
         {

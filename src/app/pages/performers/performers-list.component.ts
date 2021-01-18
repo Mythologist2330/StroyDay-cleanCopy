@@ -4,7 +4,7 @@ import { PerformersCardService } from '../../services/performers-card.service';
 import { FilterService } from '../../services/filter.service';
 import { MapService } from '../../services/map.service';
 import { Marker } from 'leaflet';
-import { IPerformersCard } from '../../interfaces/IPerformersCard';
+import { Performer } from '../../models/Performer';
 import { IFilter } from '../../interfaces/IFilter';
 import { ITag } from 'src/app/interfaces/ITag';
 
@@ -20,8 +20,8 @@ export class PerformersListComponent implements OnInit {
 
     public toggle = false;
     public page = 'Исполнители';
-    public performersCards: IPerformersCard[] = [];
-    public card: IPerformersCard;
+    public performersCards: Performer[] = [];
+    public card: Performer;
     public stations: string[] = [];
     public filters: IFilter[];
     public orderBy = 'header';
@@ -101,7 +101,7 @@ export class PerformersListComponent implements OnInit {
         this.cardSrv.getAllPerformersCard(params)
             .subscribe(cards => {
                 if (cards.result) {
-                    this.performersCards = cards.result.result;
+                    this.performersCards = cards.result.result.map(card => new Performer(card));
                     this.mapSrv.showPerformers(this.performersCards);
                     this.orderBy = cards.result.orderBy;
                     this.pager = {

@@ -1,14 +1,14 @@
 import * as functions from 'firebase-functions';
 import express = require('express');
 import { db } from './init.db';
-import { IPerformersCard } from './IPerformersCard';
+import { IPerformersCard } from './interfaces/IPerformersCard';
 const cors = require('cors');
 const app = express();
 
 app.use(cors({origin: true}));
 
 app.get('/cards', async (request, response) => {
-    const snaps = await db.collection('performersCard').get()
+    const snaps = await db.collection('performers').get()
     const q = request.query;
     let cards: IPerformersCard[] = [];
     snaps.forEach((snap: any) => {
@@ -20,19 +20,19 @@ app.get('/cards', async (request, response) => {
         }
 
         if (q.city) {
-          cards = cards.filter(card => card.city === q.city)
+          cards = cards.filter(card => card.location.city === q.city)
         }
 
         if (q.metro) {
-          cards = cards.filter(card => card.description.metro === q.metro)
+          cards = cards.filter(card => card.location.metro === q.metro)
         }
 
         if (q.feedback) {
-          cards = cards.filter(card => +card.feedback >= +(q.feedback || '0'))
+          cards = cards.filter(card => card.orders.length >= +(q.feedback || '0'))
         }
 
         if (q.discount) {
-          cards = cards.filter(card => card.description.discount === q.discount)
+          cards = cards.filter(card => card.description.discount.toString() === q.discount)
         }
 
         if (q.contract) {
@@ -40,15 +40,17 @@ app.get('/cards', async (request, response) => {
         }
 
         if (q.face) {
-          cards = cards.filter(card => card.description.face.toString() === q.face)
+          cards = cards.filter(card => card.description.legalStatus.toString() === q.face)
         }
 
         if (q.price) {
-          cards = cards.filter(card => card.statistics.prices === q.price)
+          cards = cards.filter(card => card.price === q.price)
         }
 
         if (q.ordersInProgress) {
-          cards = cards.filter(card => +card.statistics.ordersInProgress >= +(q.ordersInProgress || '0'))
+          cards = cards.filter(card => {
+            return card.orders.filter(order => order.status === 'Выполяется').length >= +(q.ordersInProgress || 0)
+          })
         }
 
         if (q.activity) {
@@ -57,7 +59,7 @@ app.get('/cards', async (request, response) => {
         
         if (q.orderBy === 'abc') {          
           cards.sort((a, b) => {
-            return a.description.header.localeCompare(b.description.header)
+            return a.description.title.localeCompare(b.description.title)
           })
         } else {
           cards.sort((a, b) => {

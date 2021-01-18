@@ -6,7 +6,7 @@ import { Component } from "@angular/core";
     styleUrls: ['./services.component.scss']
 })
 
-export class servicesComponent {
+export class ServicesComponent {
 
     showService: boolean = false
 

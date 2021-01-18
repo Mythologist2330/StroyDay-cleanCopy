@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PerformersCardService } from '../../services/performers-card.service';
 import { ActivatedRoute } from '@angular/router';
-import { IPerformersCard } from 'src/app/interfaces/IPerformersCard';
+import { Performer } from 'src/app/models/Performer';
 
 @Component({
     selector: 'app-performer',
@@ -11,7 +11,7 @@ import { IPerformersCard } from 'src/app/interfaces/IPerformersCard';
 
 export class PerformerComponent implements OnInit{
     private id: string;
-    public card: IPerformersCard;
+    public card: Performer;
     sliderImages: string[] = [
         '/assets/images/performer/slider-1.png',
         '/assets/images/performer/slider-2.jpg',
@@ -27,8 +27,8 @@ export class PerformerComponent implements OnInit{
         this.id = this.activatedRoute.snapshot.params.id
 
         this.performersSrv.getPerformersCardById(this.id)
-            .subscribe((data: IPerformersCard[]) => {
-                this.card = data[0];
+            .subscribe((data: Performer) => {
+                this.card = data;
                 console.log(this.card)
             })
     }

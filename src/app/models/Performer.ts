@@ -1,39 +1,89 @@
+import { Order } from "./Order";
+import { Service } from "./Service";
+
 export class Performer {
     id: string;
-    gallery: string[];
     logo: string;
-    stars: string;
-    feedback: number;
     description: {
-        header: string;
-        discount: string;
-        serviceClass: [{
-            name: string;
-            color: string;
-        }];
-        location: string;
-        metro: string;
-        activity: string;
-        contract: string;
-        face: number;
+        title: string;
         info: string;
+        lead: string;
+        phone: string;
+        email?: string;
+        fullInfo?: string;
+        discount: string;
+        activity: string;
+        contract: boolean;
+        legalStatus: number;
     };
-    statistics: {
-        amountCompletedOrders: number;
-        prices: string;
-        rating: {
-            likes: number;
-            dislikes: number;
-        };
-        ordersInProgress: number;
-        online: string;
-    };
-    latLng: {
-        lat: string;
-        lng: string;
+    gallery: string[];
+    serviceList: Service[];
+    price: string;
+    likes: number;
+    dislikes: number;
+    stars: number;
+    orders: Order[];
+    location: {
+        city: string;
+        district?: string;
+        adress?: string;
+        lat: number;
+        lng: number;
+        radius: number;
+        departureArea?: string;
+        metro?: string;    
     }
 
     constructor(source: Partial<Performer>) {
         Object.assign(this, source);
+    }
+
+    getLocation() {
+        let location = '';
+        if (this.location.city) {
+            location += this.location.city;
+        }
+        if (this.location.district) {
+            location += this.location.district;
+        }
+        if (this.location.adress) {
+            location += this.location.adress;
+        }
+        return location;
+    }
+
+    getCompletedOrders(): Order[] {
+        return this.orders.filter(order => order.status === 'Выполнена')
+    }
+
+    getInProgressOrders(): Order[] {
+        return this.orders.filter(order => order.status === 'Выполняется')
+    }
+    
+    getMinPrice() {
+        return 'От 1500р'
+      }
+
+    getRating() {
+        let orderWithRating = this.orders.filter(order => order.rating !== null);
+        let sum = orderWithRating.reduce((sum, order) => sum + order.rating, 0)
+        let median = sum/this.orders.length;
+        return median.toFixed(1)
+    }
+
+    setLike() {
+        this.likes++
+    }
+
+    removeLike() {
+        this.likes--
+    }
+
+    setDisike() {
+        this.dislikes++
+    }
+
+    removeDisike() {
+        this.dislikes--
     }
 }

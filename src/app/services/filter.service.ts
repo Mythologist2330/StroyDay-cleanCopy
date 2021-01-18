@@ -16,11 +16,11 @@ export class FilterService {
           text: 'Не выбран'
         },
         {
-          value: '1', 
+          value: 'Москва', 
           text: 'Москва'
         },
         {
-          value: '2', 
+          value: 'Санкт-Петербург', 
           text: 'Санкт-Петербург'
         }],
         type: 'select'
@@ -151,15 +151,15 @@ export class FilterService {
           value: '0', 
           text: 'Не имеет значения'
         },{
-          value: '1', 
+          value: 'Эконом', 
           text: 'Эконом'
         },
         {
-          value: '2', 
+          value: 'Стандарт', 
           text: 'Стандарт'
         },
         {
-          value: '3', 
+          value: 'Премиум', 
           text: 'Премиум'
         }],
         type: 'radio'

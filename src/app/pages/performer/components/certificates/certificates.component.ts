@@ -6,7 +6,7 @@ import { Component } from "@angular/core";
     styleUrls: ['./certificates.component.scss']
 })
 
-export class certificatesComponent {
+export class CertificatesComponent {
 
     certificates: any = [
         {
