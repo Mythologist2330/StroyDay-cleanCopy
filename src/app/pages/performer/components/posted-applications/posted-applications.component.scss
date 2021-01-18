@@ -61,20 +61,36 @@
         }
     }
 
+    .sort-by-mobile{
+        display: none;
+    }
+
     .application{
         width: 776px;
-        margin: 24px 0;
+        margin: 30px 0;
         padding: 24px;
         background-color: #FFFFFF;
-        box-shadow: 0px 4px 40px rgba(71, 84, 101, 0.05);
+        box-shadow: 0px 4px 40px rgba(71, 84, 101, 0.05), 0 8px 0 0 rgb(14, 110, 224, 1);
         border-radius: 4px;
 
-        .application-title{
-            margin-bottom: 8px;
-            font-weight: 500;
-            font-size: 20px;
-            line-height: 28px;
-            color: #334D6E;
+        .title-and-price{
+            display: flex;
+            justify-content: space-between;
+
+            .application-title{
+                margin-bottom: 8px;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 28px;
+                color: #334D6E;
+            }
+
+            .application-price{
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 24px;
+                color: #8594A8;
+            }
         }
 
         .application-description{
@@ -104,6 +120,7 @@
             .views-and-reviews{
                 display: flex;
                 align-items: center;
+                margin-top: -2px;
 
                 div{
                     display: flex;
@@ -113,18 +130,24 @@
                     line-height: 20px;
                     color: #8594A8;
 
+                    mat-icon{
+                        width: 22px;
+                        height: 22px;
+                        font-size: 22px;
+                    }
+
                     &.views{
-                        margin-right: 20px;
+                        margin-right: 18px;
                         
                         p{
-                            margin-left: 9px;
+                            margin-left: 8px;
                         }
                     }
 
                     &.reviews{
                         
                         p{
-                            margin-left: 12px;
+                            margin-left: 9px;
                         }
                     }
                 }
@@ -135,7 +158,7 @@
     .button-show-more{
         width: 100%;
         height: 48px;
-        margin-top: 8px;
+        margin-top: 11px;
         background-color: #FFFFFF;
         border: 1px solid #C3CBD6;
         border-radius: 3px;
@@ -143,5 +166,130 @@
         font-size: 14px;
         line-height: 18px;
         color: #334D6E;
+    }
+}
+
+@media screen and (max-width: 1275px) {
+    .container{
+        width: 720px;
+
+        .application{
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container{
+        width: -webkit-fill-available;
+        margin: 40px 1rem 42px 1rem;
+
+        .header{
+            margin-right: 14%;
+            font-size: 24px;
+            line-height: 28px
+        }
+
+        .sort-by{
+            display: none;
+        }
+
+        .sort-by-mobile{
+            display: block;
+            width: -webkit-fill-available;
+            height: 52px;
+            margin-top: 12px;
+            border: 1px solid #C3CBD6;
+            border-radius: 4px;
+
+            legend{
+                margin-left: 8px;
+                padding: 0 4px;
+                font-size: 12px;
+                line-height: 18px;
+                color: #8594A8;
+            }
+
+            select{
+                width: 100%;
+                height: 26px;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 20px;
+                color: #334D6E;
+                border: none;
+                padding: 0 12px;
+                background-color: #F7F9FB;
+                background-image: url(../../../../../assets/images/select-arrow.performersPage.png);
+                background-repeat: no-repeat;
+                background-position: right;
+                background-position-x: calc(100% - 18px);
+
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+
+                &:focus{
+                    outline: none;
+                }
+            }
+        }
+
+        .application{
+            width: 100%;
+            margin: 16px 0 24px 0;
+            padding: 16px;
+
+            .title-and-price{
+
+                .application-title{
+                    font-size: 14px;
+                    line-height: 20px;
+                }
+
+                .application-price{
+                    margin-left: 8px;
+                    font-size: 14px;
+                    line-height: 20px;
+                    min-width: max-content;
+                }
+            }
+
+            hr{
+                margin: 12px 0;
+            }
+
+            .date-and-views-and-reviews{
+    
+                .views-and-reviews{
+    
+                    div{
+                        font-size: 12px;
+                        line-height: 18px;
+
+                        mat-icon{
+                            font-size: 16px;
+                            width: 16px;
+                            height: 16px;
+                        }
+
+                        &.views{
+                            margin-right: 9px;
+                            
+                            p{
+                                margin-left: 2px;
+                            }
+                        }
+    
+                        &.reviews{
+                            
+                            p{
+                                margin-left: 4px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

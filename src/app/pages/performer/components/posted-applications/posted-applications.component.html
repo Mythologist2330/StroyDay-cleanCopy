@@ -1,6 +1,6 @@
 <div class="container">
 
-    <p class="header">Размещенные заявки Исполнителя</p>
+    <p class="header">Размещенные заявки исполнителя</p>
     
     <div class="sort-by">
         <label>
@@ -22,9 +22,24 @@
         </label>
     </div>
 
+    <fieldset class="sort-by-mobile">
+        <legend>Сортировка</legend>
+
+        <select>
+            <option value="">Все заявки</option>
+            <option value="">Активные</option>
+            <option value="">Завершенные</option>
+        </select>
+    </fieldset>
+
     <div *ngFor="let application of applications" class="application">
-        <p class="application-title">{{ application.title }}</p>
+        <div class="title-and-price">
+            <p class="application-title">{{ application.title }}</p>
+            <p class="application-price">{{ application.price }}</p>
+        </div>
+
         <p class="application-description">{{ application.description }}</p>
+
         <hr>
 
         <div class="date-and-views-and-reviews">
