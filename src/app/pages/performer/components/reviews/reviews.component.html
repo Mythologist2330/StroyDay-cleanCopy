@@ -81,7 +81,7 @@
 
         <div class="button-reply-and-likes-and-dislikes">
             <div class="button-reply">
-                <p (click)="showReplies = true" *ngIf="review.replies && !showReplies" class="amount-of-comments">{{ review.replies.length }} комментариев</p>
+                <p (click)="review.showReplies = true" *ngIf="review.replies && !review.showReplies" class="amount-of-comments">{{ review.replies.length }} комментариев</p>
 
                 <p (click)="review.showReplies = false" *ngIf="review.showReplies" class="amount-of-comments">Скрыть комментарии</p>
 
