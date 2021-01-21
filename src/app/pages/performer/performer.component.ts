@@ -12,11 +12,6 @@ import { Performer } from 'src/app/models/Performer';
 export class PerformerComponent implements OnInit{
     private id: string;
     public card: Performer;
-    sliderImages: string[] = [
-        '/assets/images/performer/slider-1.png',
-        '/assets/images/performer/slider-2.jpg',
-        '/assets/images/performer/slider-3.jpg'
-    ]
 
     constructor (
         private performersSrv: PerformersCardService,

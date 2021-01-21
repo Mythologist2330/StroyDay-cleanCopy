@@ -15,6 +15,7 @@ import { MapLocationComponent } from "./components/map-location/map-location.com
 import { PostedApplicationsComponent } from "./components/posted-applications/posted-applications.component";
 import { ReviewsComponent } from "./components/reviews/reviews.component";
 import { ServicesComponent } from "./components/services/services.component";
+import { SliderComponent } from "./components/slider/slider.component";
 import { SubmitApplicationComponent } from "./components/submit-application/submit-application.component";
 import { WriteToPerformerComponent } from "./components/write-to-performer/write-to-performer.component";
 import { PerformerComponent } from "./performer.component";
@@ -26,6 +27,7 @@ const routes = [
 @NgModule({
     declarations: [
         PerformerComponent,
+        SliderComponent,
         CardComponent,
         AboutPerformer,
         MapLocationComponent,

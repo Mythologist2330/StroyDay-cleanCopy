@@ -1,23 +1,15 @@
 <div class="container">
 
-    <div class="slider">
-        <ng-container *ngFor="let img of sliderImages">
-            <img [src]="img">
-        </ng-container>
-    </div>
-    <div class="arrow-block left">
-        <div class="arrow arrow-left">
-            <mat-icon>arrow_back</mat-icon>
-        </div>
-    </div>
-    <div class="arrow-block right">
-        <div class="arrow arrow-right">
-            <mat-icon>arrow_forward</mat-icon>
-        </div>
-    </div>
+    <button class="button-back">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+        <span>К списку Исполнителей</span>
+    </button>
+    <button class="button-see-all-works">
+        <mat-icon>camera_alt</mat-icon>
+        <span>Посмотреть все работы</span>
+    </button>
 
-
-
+    <app-slider></app-slider>
     <app-card [card]='card'></app-card>
     <app-about-performer></app-about-performer>
     <app-map-location></app-map-location>
@@ -30,7 +22,5 @@
     <app-documents></app-documents>
     <app-certificates></app-certificates>
     <app-write-to-performer></app-write-to-performer>
-
-
 
 </div>
