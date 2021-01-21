@@ -1,5 +1,6 @@
 import { animate, state, style, transition, trigger } from "@angular/animations";
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
+import { Performer } from "src/app/models/Performer";
 
 @Component({
     selector: 'app-slider',
@@ -8,7 +9,7 @@ import { Component } from "@angular/core";
     animations: [
         trigger('slider', [
             state('start', style({
-                transform: `translateX(-450px)`,
+                transform: `translateX(-410px)`,
             })),
             state('next', style({
                 transform: `translateX(-1226px)`,
@@ -29,6 +30,7 @@ import { Component } from "@angular/core";
 export class SliderComponent{
 
     public sliderState = 'start';
+    @Input() card: Performer;
 
     sliderImages: string[] = [
         '/assets/images/performer/slider-1.png',

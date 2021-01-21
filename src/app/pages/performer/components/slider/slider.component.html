@@ -1,6 +1,12 @@
 <div class="slider">
     <div class="images" [@slider]="sliderState">
-        <ng-container class="images" *ngFor="let img of sliderImages">
+        <ng-container class="images" *ngFor="let img of card.gallery">
+            <img [src]="img">
+        </ng-container>
+    </div>
+
+    <div class="images images-mobile">
+        <ng-container class="images" *ngFor="let img of card.gallery">
             <img [src]="img">
         </ng-container>
     </div>

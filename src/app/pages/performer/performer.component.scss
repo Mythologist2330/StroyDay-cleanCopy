@@ -1,5 +1,6 @@
 .container{
     position: relative;
+    overflow: hidden;
     background-color: #F7F9FB;
     padding-bottom: 80px;
 
@@ -36,6 +37,56 @@
 
             mat-icon{
                 color: #0D6FE3;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1275px) {
+    .container{
+        padding-bottom: 40px;
+
+        button{
+            top: 32px;
+
+            &.button-back{
+                left: 24px;
+            }
+
+            &.button-see-all-works{
+                right: 24px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container{
+        flex-direction: column;
+
+        button{
+            top: 0;
+            width: -webkit-fill-available;
+            justify-content: unset;
+
+            &.button-back{
+                left: 0;
+                border-radius: 0;
+
+                mat-icon{
+                    margin-right: 20px;
+                }
+            }
+
+            &.button-see-all-works{
+                justify-content: center;
+                top: 168px;
+                right: auto;
+                margin: 0 1rem;
+
+                mat-icon{
+                    margin-right: 14px;
+                }
             }
         }
     }
