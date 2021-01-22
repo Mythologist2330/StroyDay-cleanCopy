@@ -8,6 +8,7 @@ import { Component } from "@angular/core";
 
 export class PostedApplicationsComponent {
 
+    openCloseComponent: boolean = false
     applications: any = [
         {
             title: 'Сделать дизайн-план детской комнаты',
