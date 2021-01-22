@@ -22,6 +22,7 @@ export interface IReviews {
 
 export class ReviewsComponent{
 
+    openCloseComponent: boolean = false
     showReplies: boolean = false
 
     reviews: Review[] = [
