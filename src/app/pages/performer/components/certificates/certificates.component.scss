@@ -73,8 +73,8 @@
 
 @media screen and (max-width: 767px) {
     .container{
-        width: 288px;
-        margin: 40px auto;
+        width: -webkit-fill-available;
+        margin: 40px 1rem;
 
         .arrow{
             width: 28px;
@@ -89,7 +89,8 @@
         }
 
         .certificates{
-            display: block;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
 
             .certificate{
                 width: 288px;
