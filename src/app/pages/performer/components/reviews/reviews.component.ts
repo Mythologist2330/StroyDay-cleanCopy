@@ -1,7 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { ReviewService } from 'src/app/services/review.service';
 import { Review } from "src/app/models/Review";
-import { Subscription } from "rxjs";
 import { IComment } from "src/app/interfaces/IComment";
 
 @Component({
@@ -13,10 +12,11 @@ import { IComment } from "src/app/interfaces/IComment";
 export class ReviewsComponent implements OnInit {
 
     @Input() performerId: string;
-    private reviewsSub$: Subscription;
     public reviews: Review[] = [];
     public text = '';
     public readonly wees = [5,4,3,2,1];
+    public openCloseComponent: boolean = false
+    public showReplies: boolean = false
 
     constructor(private reviewSrv: ReviewService) {}
 
@@ -70,11 +70,6 @@ export class ReviewsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.reviewsSub$ = this.reviewSrv.getAllReview(this.performerId)
-            .subscribe(reviews => {
-                this.reviews = reviews;
-                console.log(this.reviews)
-            })
     }
 
 }

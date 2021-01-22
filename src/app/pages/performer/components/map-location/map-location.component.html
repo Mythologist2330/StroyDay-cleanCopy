@@ -1,6 +1,11 @@
 <div class="container">
 
-    <p class="header">Местоположение</p>
-    <img src="../../../../../assets/images/performer/map-bg-need-delete-later.png">
+    <mat-icon [ngStyle]="{transform: openCloseComponent ? 'rotate(180deg)' : 'none'}" class="arrow">keyboard_arrow_down</mat-icon>
+
+    <p class="header" (click)="openCloseComponent = !openCloseComponent">Местоположение</p>
+
+    <div class="open-close-component" *ngIf="openCloseComponent">
+        <img src="../../../../../assets/images/performer/map-bg-need-delete-later.png">
+    </div>
 
 </div>

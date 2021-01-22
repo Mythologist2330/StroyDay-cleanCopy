@@ -1,13 +1,28 @@
 .container{
+    position: relative;
     width: 776px;
     margin: 64px auto;
 
+    .arrow{
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        top: 0;
+        right: 0;
+        font-size: 40px;
+        color: #90A0B7;
+        transition: all .2s;
+    }
+
     .header{
+        position: relative;
         margin-bottom: 32px;
         font-weight: 500;
         font-size: 32px;
         line-height: 40px;
         color: #334D6E;
+        z-index: 6;
+        cursor: pointer;
     }
 
     .documents{
@@ -63,8 +78,14 @@
 
 @media screen and (max-width: 767px) {
     .container{
-        width: 288px;
-        margin: 40px auto;
+        width: -webkit-fill-available;
+        margin: 40px 1rem;
+
+        .arrow{
+            width: 28px;
+            height: 28px;
+            font-size: 28px;
+        }
 
         .header{
             margin-bottom: 16px;
@@ -73,11 +94,11 @@
         }
 
         .documents{
-            display: block;
+            flex-wrap: wrap;
 
             .document{
                 width: max-content;
-                margin: 12px 0 0 0;
+                margin: 12px 12px 0 0;
             }
         }
     }

@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
 
 export class MapLocationComponent{
 
-
+    openCloseComponent: boolean = false
 
 }

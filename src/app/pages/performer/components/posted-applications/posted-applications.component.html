@@ -1,64 +1,68 @@
 <div class="container">
 
-    <p class="header">Размещенные заявки исполнителя</p>
+    <mat-icon [ngStyle]="{transform: openCloseComponent ? 'rotate(180deg)' : 'none'}" class="arrow">keyboard_arrow_down</mat-icon>
+
+    <p class="header" (click)="openCloseComponent = !openCloseComponent">Размещенные заявки исполнителя</p>
+
+    <div class="open-close-component" *ngIf="openCloseComponent">
+        <div class="sort-by">
+            <label>
+                <input type="radio" name="sortBy" checked>
+                <p>Все</p>
+                <span class="amount-all">34</span>
+            </label>
     
-    <div class="sort-by">
-        <label>
-            <input type="radio" name="sortBy" checked>
-            <p>Все</p>
-            <span class="amount-all">34</span>
-        </label>
-
-        <label>
-            <input type="radio" name="sortBy">
-            <p>активные</p>
-            <span class="amount-active">18</span>
-        </label>
-
-        <label>
-            <input type="radio" name="sortBy">
-            <p>завершенные</p>
-            <span class="amount-complete">80</span>
-        </label>
-    </div>
-
-    <fieldset class="sort-by-mobile">
-        <legend>Сортировка</legend>
-
-        <select>
-            <option value="">Все заявки</option>
-            <option value="">Активные</option>
-            <option value="">Завершенные</option>
-        </select>
-    </fieldset>
-
-    <div *ngFor="let application of applications" class="application">
-        <div class="title-and-price">
-            <p class="application-title">{{ application.title }}</p>
-            <p class="application-price">{{ application.price }}</p>
+            <label>
+                <input type="radio" name="sortBy">
+                <p>активные</p>
+                <span class="amount-active">18</span>
+            </label>
+    
+            <label>
+                <input type="radio" name="sortBy">
+                <p>завершенные</p>
+                <span class="amount-complete">80</span>
+            </label>
         </div>
-
-        <p class="application-description">{{ application.description }}</p>
-
-        <hr>
-
-        <div class="date-and-views-and-reviews">
-            <p class="application-date">{{ application.date }}</p>
-
-            <div class="views-and-reviews">
-                <div class="views">
-                    <mat-icon>visibility</mat-icon>
-                    <p>{{ application.views }}</p>
-                </div>
-
-                <div class="reviews">
-                    <mat-icon>chat_bubble</mat-icon>
-                    <p>{{ application.reviews }}</p>
+    
+        <fieldset class="sort-by-mobile">
+            <legend>Сортировка</legend>
+    
+            <select>
+                <option value="">Все заявки</option>
+                <option value="">Активные</option>
+                <option value="">Завершенные</option>
+            </select>
+        </fieldset>
+    
+        <div *ngFor="let application of applications" class="application">
+            <div class="title-and-price">
+                <p class="application-title">{{ application.title }}</p>
+                <p class="application-price">{{ application.price }}</p>
+            </div>
+    
+            <p class="application-description">{{ application.description }}</p>
+    
+            <hr>
+    
+            <div class="date-and-views-and-reviews">
+                <p class="application-date">{{ application.date }}</p>
+    
+                <div class="views-and-reviews">
+                    <div class="views">
+                        <mat-icon>visibility</mat-icon>
+                        <p>{{ application.views }}</p>
+                    </div>
+    
+                    <div class="reviews">
+                        <mat-icon>chat_bubble</mat-icon>
+                        <p>{{ application.reviews }}</p>
+                    </div>
                 </div>
             </div>
         </div>
+    
+        <button class="button-show-more">Показать еще 10 заявок Исполнителя</button>
     </div>
-
-    <button class="button-show-more">Показать еще 10 заявок Исполнителя</button>
 
 </div>

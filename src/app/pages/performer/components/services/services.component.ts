@@ -8,6 +8,7 @@ import { Component } from "@angular/core";
 
 export class ServicesComponent {
 
+    openCloseComponent: boolean = false
     showService: boolean = false
 
     services: any = [

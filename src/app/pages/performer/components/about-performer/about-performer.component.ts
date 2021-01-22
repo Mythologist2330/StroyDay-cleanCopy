@@ -8,6 +8,7 @@ import { Component } from "@angular/core";
 
 export class AboutPerformer {
 
+    openCloseComponent: boolean = false
     showFullAdditionalInfo: boolean = false
 
     aboutPerformer: any = {

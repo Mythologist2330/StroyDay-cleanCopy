@@ -8,6 +8,7 @@ import { Component } from "@angular/core";
 
 export class DocumentsComponent {
 
+    openCloseComponent: boolean = false
     documents: any = [
         {
             title: 'Акт приема-передачи',

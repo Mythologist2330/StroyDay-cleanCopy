@@ -1,14 +1,28 @@
 .container{
+    position: relative;
     width: 776px;
-    height: 304px;
     margin: 64px auto;
 
+    .arrow{
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        top: 0;
+        right: 0;
+        font-size: 40px;
+        color: #90A0B7;
+        transition: all .2s;
+    }
+
     .header{
+        position: relative;
         margin-bottom: 24px;
         font-weight: 500;
         font-size: 32px;
         line-height: 40px;
         color: #334D6E;
+        z-index: 6;
+        cursor: pointer;
     }
 
     img{
@@ -32,7 +46,13 @@
 @media screen and (max-width: 767px) {
     .container{
         width: -webkit-fill-available;
-        margin: 22px 1rem 40px 1rem;
+        margin: 22px 1rem;
+
+        .arrow{
+            width: 28px;
+            height: 28px;
+            font-size: 28px;
+        }
 
         .header{
             font-size: 24px;
