@@ -78,8 +78,8 @@
 
 @media screen and (max-width: 767px) {
     .container{
-        width: 288px;
-        margin: 40px auto;
+        width: -webkit-fill-available;
+        margin: 40px 1rem;
 
         .arrow{
             width: 28px;
@@ -94,11 +94,11 @@
         }
 
         .documents{
-            display: block;
+            flex-wrap: wrap;
 
             .document{
                 width: max-content;
-                margin: 12px 0 0 0;
+                margin: 12px 12px 0 0;
             }
         }
     }
