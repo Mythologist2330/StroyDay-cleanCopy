@@ -1,20 +1,24 @@
 <div class="container">
 
-    <p class="header">Документы</p>
+    <mat-icon [ngStyle]="{transform: openCloseComponent ? 'rotate(180deg)' : 'none'}" class="arrow">keyboard_arrow_down</mat-icon>
 
-    <div class="documents">
-        <div *ngFor="let document of documents" class="document">
+    <p class="header" (click)="openCloseComponent = !openCloseComponent">Документы</p>
 
-            <div class="image">
-                <img src="../../../../../assets/images/performer/document.png">
+    <div class="open-close-component" *ngIf="openCloseComponent">
+        <div class="documents">
+            <div *ngFor="let document of documents" class="document">
+    
+                <div class="image">
+                    <img src="../../../../../assets/images/performer/document.png">
+                </div>
+    
+                <div class="title-and-format-and-size">
+                    <p class="title">{{ document.title }}</p>
+                    
+                    <p class="format-and-size">{{ document.format }}, {{ document.size }} KB</p>
+                </div>
+    
             </div>
-
-            <div class="title-and-format-and-size">
-                <p class="title">{{ document.title }}</p>
-                
-                <p class="format-and-size">{{ document.format }}, {{ document.size }} KB</p>
-            </div>
-
         </div>
     </div>
 
