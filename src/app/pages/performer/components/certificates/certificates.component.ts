@@ -8,6 +8,7 @@ import { Component } from "@angular/core";
 
 export class CertificatesComponent {
 
+    openCloseComponent: boolean = false
     certificates: any = [
         {
             certificate: '../../../../../assets/images/performer/certificate.png',
