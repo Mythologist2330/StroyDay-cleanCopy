@@ -8,19 +8,21 @@
         <mat-icon>camera_alt</mat-icon>
         <span>Посмотреть все работы</span>
     </button>
-
-    <app-slider [card]='card'></app-slider>
-    <app-card [card]='card'></app-card>
-    <app-about-performer></app-about-performer>
-    <app-map-location></app-map-location>
-    <app-services></app-services>
-    <app-reviews></app-reviews>
-    <app-submit-application></app-submit-application>
-    <app-complete-applications></app-complete-applications>
-    <app-posted-applications></app-posted-applications>
-    <app-author-blog></app-author-blog>
-    <app-documents></app-documents>
-    <app-certificates></app-certificates>
-    <app-write-to-performer></app-write-to-performer>
+    <ng-container *ngIf='card'>
+        <app-slider [gallery]='card.gallery'></app-slider>
+        <app-card [card]='card'></app-card>
+        <app-about-performer></app-about-performer>
+        <app-map-location></app-map-location>
+        <app-services></app-services>
+        <app-reviews [performerId]='id'></app-reviews>
+        <app-submit-application></app-submit-application>
+        <app-complete-applications></app-complete-applications>
+        <app-posted-applications></app-posted-applications>
+        <app-author-blog></app-author-blog>
+        <app-documents></app-documents>
+        <app-certificates></app-certificates>
+        <app-write-to-performer></app-write-to-performer> 
+    </ng-container>
+    
 
 </div>

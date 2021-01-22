@@ -1,18 +1,8 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { ReviewService } from 'src/app/services/review.service';
 import { Review } from "src/app/models/Review";
-
-export interface IReviews {
-    avatar: string,
-    name: string,
-    date: string,
-    rating: number,
-    titleComment: string,
-    comment: string,
-    amountOfComments: number,
-    likesOrDislikes: number,
-    replies: any,
-    showReplies: boolean
-}
+import { Subscription } from "rxjs";
+import { IComment } from "src/app/interfaces/IComment";
 
 @Component({
     selector: 'app-reviews',
@@ -20,90 +10,15 @@ export interface IReviews {
     styleUrls: ['./reviews.component.scss']
 })
 
-export class ReviewsComponent{
+export class ReviewsComponent implements OnInit {
 
-    showReplies: boolean = false
+    @Input() performerId: string;
+    private reviewsSub$: Subscription;
+    public reviews: Review[] = [];
+    public text = '';
+    public readonly wees = [5,4,3,2,1];
 
-    reviews: Review[] = [
-        {
-            avatar: '/assets/images/performer/avatar.png',
-            name: 'Иван Алексеев',
-            createdAt: new Date(),
-            rating: 5,
-            titleComment: 'Мне понравилось!',
-            comment: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты, которые смогут заставить посетителей оставаться на нём как можно дальше, то вы попали по адресу. За кворк можно заказать хоть 10 статей, главное чтоб общий объём был 6000 символов без пробелов.',
-            likes: 23,
-            dislikes: 0,
-            replies: [
-                {
-                    avatar: '/assets/images/performer/avatar.png',
-                    name: 'Иван Алексеев',
-                    createdAt:  new Date(),
-                    text: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
-                },
-                {
-                    avatar: '/assets/images/performer/avatar.png',
-                    name: 'Иван Алексеев',
-                    createdAt:  new Date(),
-                    text: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
-                }
-            ],
-            showReplies: false // Говнокод!
-        },
-        {
-            avatar: '/assets/images/performer/avatar.png',
-            name: 'Иван Алексеев',
-            createdAt: new Date(),
-            rating: 2,
-            titleComment: 'Очень не очень!',
-            comment: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты, которые смогут заставить посетителей оставаться на нём как можно дальше, то вы попали по адресу. За кворк можно заказать хоть 10 статей, главное чтоб общий объём был 6000 символов без пробелов.',
-            likes: 14,
-            dislikes: 0,
-            replies: [
-                {
-                    avatar: '/assets/images/performer/avatar.png',
-                    name: 'Иван Алексеев',
-                    createdAt: new Date(),
-                    text: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
-                },
-                {
-                    avatar: '/assets/images/performer/avatar.png',
-                    name: 'Иван Алексеев',
-                    createdAt: new Date(),
-                    text: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
-                }
-            ],
-            showReplies: false // Говнокод!
-        },
-        {
-            avatar: '/assets/images/performer/avatar.png',
-            name: 'Иван Алексеев',
-            createdAt: new Date(),
-            rating: 3,
-            titleComment: 'Так себе, но пойдет!',
-            comment: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты, которые смогут заставить посетителей оставаться на нём как можно дальше, то вы попали по адресу. За кворк можно заказать хоть 10 статей, главное чтоб общий объём был 6000 символов без пробелов.',
-            likes: 5,
-            dislikes: 0,
-            replies: [
-                {
-                    avatar: '/assets/images/performer/avatar.png',
-                    name: 'Иван Алексеев',
-                    createdAt: new Date(),
-                    text: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
-                },
-                {
-                    avatar: '/assets/images/performer/avatar.png',
-                    name: 'Иван Алексеев',
-                    createdAt: new Date(),
-                    text: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
-                }
-            ],
-            showReplies: false // Говнокод!
-        }
-    ]
-
-    wees = [5,4,3,2,1]
-
+    constructor(private reviewSrv: ReviewService) {}
 
     getReviewBorderColor(rating: number): string {
         if (rating >= 4) {
@@ -125,8 +40,6 @@ export class ReviewsComponent{
         }
     }
 
-
-
     showPercentInLine(rating: number): number {
         let total = this.reviews.length;
         let amount = this.getAmountOfComments(rating);
@@ -141,6 +54,27 @@ export class ReviewsComponent{
 
     getPercentOf(total: number, amount: number): number {
         return amount / total * 100
+    }
+
+    sendComment(review: Review) {
+        const comment: IComment = {
+            authorId: '$@#$#@',
+            avatar: '/assets/images/performer/avatar.png',
+            name: 'Петя Васечкин',
+            text: this.text,
+            createdAt: new Date()
+        }
+        let replies = [comment, ...review.replies]
+        this.reviewSrv.updateReview(review.id, replies)
+        this.text = '';
+    }
+
+    ngOnInit(): void {
+        this.reviewsSub$ = this.reviewSrv.getAllReview(this.performerId)
+            .subscribe(reviews => {
+                this.reviews = reviews;
+                console.log(this.reviews)
+            })
     }
 
 }

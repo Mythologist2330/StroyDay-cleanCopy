@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PerformersCardService } from '../../services/performers-card.service';
 import { ActivatedRoute } from '@angular/router';
 import { Performer } from 'src/app/models/Performer';
+import { IComment } from 'src/app/interfaces/IComment';
+import { Review } from 'src/app/models/Review';
 
 @Component({
     selector: 'app-performer',
@@ -10,7 +12,7 @@ import { Performer } from 'src/app/models/Performer';
 })
 
 export class PerformerComponent implements OnInit{
-    private id: string;
+    public id: string;
     public card: Performer;
 
     constructor (

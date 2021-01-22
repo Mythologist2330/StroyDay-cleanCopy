@@ -61,7 +61,7 @@
 
                 <div class="name-and-date">
                     <p class="name">{{ review.name }}</p>
-                    <p class="date">{{ review.createdAt | date : 'dd MMMM yyyy hh:mm' }}</p>
+                    <p class="date">{{ review.createdAt.toDate() | date : 'dd MMMM yyyy hh:mm' }}</p>
                     <app-rating-stars [stars]="review.rating"></app-rating-stars>
                 </div>
             </div>
@@ -99,19 +99,17 @@
         <div *ngIf="review.showReplies" class="reply-and-send-replies">
 
             <div class="reply-and-send">
-                <textarea placeholder="Ваш комментарий"></textarea>
-                <button>Отправить</button>
+                <textarea [(ngModel)]='text' placeholder="Ваш комментарий"></textarea>
+                <button [disabled]='text.length < 5' (click)='sendComment(review)'>Отправить</button>
             </div>
 
             <div class="replies">
-
                 <div *ngFor="let reply of review.replies" class="reply">
                     <div class="reply-user">
                         <img [src]="reply.avatar">
-
                         <div class="reply-name-and-date">
                             <p class="reply-name">{{ reply.name }}</p>
-                            <p class="reply-date">{{ reply.createdAt | date : 'dd MMMM yyyy hh:mm' }}</p>
+                            <p class="reply-date">{{ reply.createdAt.toDate() | date : 'dd MMMM yyyy hh:mm' }}</p>
                         </div>
                     </div>
 
@@ -120,11 +118,8 @@
                         <p>{{ reply.text }}</p>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
     </div>
 
     <button class="button-show-more">Показать еще 10 отзывов</button>
