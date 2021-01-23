@@ -64,13 +64,6 @@ export class Performer {
         return 'От 1500р'
       }
 
-    getRating() {
-        let orderWithRating = this.orders.filter(order => order.rating !== null);
-        let sum = orderWithRating.reduce((sum, order) => sum + order.rating, 0)
-        let median = sum/this.orders.length;
-        return median.toFixed(1)
-    }
-
     setLike() {
         this.likes++
     }

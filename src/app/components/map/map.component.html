@@ -8,7 +8,7 @@
         leafletFullscreen        
         [leafletOptions]="this.mapSrv.mapOptions"
         (leafletMapReady)="onMapReady($event)"
-        [leafletLayers]='this.mapSrv.markers'
+        [leafletLayers]='this.markers'
         >
     </div>
     <leaflet-fullscreen-control

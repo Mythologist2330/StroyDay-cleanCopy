@@ -2,6 +2,10 @@
     position: relative;
     width: 776px;
     margin: 64px auto;
+    .map-component {
+        height: 304px;
+        overflow: hidden;
+    }
 
     .arrow{
         position: absolute;

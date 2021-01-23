@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ReviewService } from 'src/app/services/review.service';
 import { Review } from "src/app/models/Review";
-import { IComment } from "src/app/interfaces/IComment";
 
 @Component({
     selector: 'app-reviews',
@@ -11,14 +10,12 @@ import { IComment } from "src/app/interfaces/IComment";
 
 export class ReviewsComponent implements OnInit {
 
-    @Input() performerId: string;
-    public reviews: Review[] = [];
-    public text = '';
+    @Input() reviews: Review[] = [];
     public readonly wees = [5,4,3,2,1];
-    public openCloseComponent: boolean = false
-    public showReplies: boolean = false
+    public openCloseComponent = true;
+    public showReplies = false;
 
-    constructor(private reviewSrv: ReviewService) {}
+    constructor() {}
 
     getReviewBorderColor(rating: number): string {
         if (rating >= 4) {
@@ -55,20 +52,7 @@ export class ReviewsComponent implements OnInit {
     getPercentOf(total: number, amount: number): number {
         return amount / total * 100
     }
-
-    sendComment(review: Review) {
-        const comment: IComment = {
-            authorId: '$@#$#@',
-            avatar: '/assets/images/performer/avatar.png',
-            name: 'Петя Васечкин',
-            text: this.text,
-            createdAt: new Date()
-        }
-        let replies = [comment, ...review.replies]
-        this.reviewSrv.updateReview(review.id, replies)
-        this.text = '';
-    }
-
+    
     ngOnInit(): void {
     }
 

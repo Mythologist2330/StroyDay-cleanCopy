@@ -11,4 +11,5 @@ export class CardComponent{
     
     public isFavorite = false;
     @Input() card: Performer;
+    @Input() rating: number;
 }

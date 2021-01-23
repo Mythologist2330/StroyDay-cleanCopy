@@ -102,7 +102,7 @@ export class PerformersListComponent implements OnInit {
             .subscribe(cards => {
                 if (cards.result) {
                     this.performersCards = cards.result.result.map(card => new Performer(card));
-                    this.mapSrv.showPerformers(this.performersCards);
+                    this.markers = this.mapSrv.showPerformers(this.performersCards);
                     this.orderBy = cards.result.orderBy;
                     this.pager = {
                         nextPage: cards.result.next,

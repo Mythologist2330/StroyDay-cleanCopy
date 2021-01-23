@@ -416,26 +416,25 @@ export class MapService {
     })
   }
 
-  showPerformers(perf: Performer[]) {
-    console.log(perf)
+  showPerformers(perf: Performer[]): Marker[] {
     this.markers.map(marker => marker.removeFrom(this.map));
     this.markers = [];
 
-    const icon = this.createIcon('/assets/images/marker.png', [30, 36], [15, 36]);
+    const icon = this.createIcon('/assets/images/marker.png', [30, 36], [15, 0]);
     perf.map(card => {
       const latLng = new LatLng(card.location.lat, card.location.lng);
       this.markers.push(this.createMarker(latLng, card.description.title, icon, card.logo, card.getLocation() ));        
     });
+    return this.markers
   }
 
-  createLatLng(lat, lng) {
+  createLatLng(lat: number, lng: number): LatLng {
     return new LatLng(lat, lng);
   }
 
   initializeMapOptions(): void {
     this.mapOptions = {
       center: latLng(59.93575245264131, 30.316257476806644),
-      zoom: 12,
       layers: [
         tileLayer(
           `http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`,

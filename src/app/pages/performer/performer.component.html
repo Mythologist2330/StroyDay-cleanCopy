@@ -10,11 +10,11 @@
     </button>
     <ng-container *ngIf='card'>
         <app-slider [gallery]='card.gallery'></app-slider>
-        <app-card [card]='card'></app-card>
+        <app-card [card]='card' [rating]='getRating()'></app-card>
         <app-about-performer></app-about-performer>
-        <app-map-location></app-map-location>
+        <app-map-location [markers]='markers'></app-map-location>
         <app-services></app-services>
-        <app-reviews [performerId]='id'></app-reviews>
+        <app-reviews [reviews]='reviews'></app-reviews>
         <app-submit-application></app-submit-application>
         <app-complete-applications></app-complete-applications>
         <app-posted-applications></app-posted-applications>

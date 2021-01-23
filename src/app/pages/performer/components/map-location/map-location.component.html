@@ -4,8 +4,10 @@
 
     <p class="header" (click)="openCloseComponent = !openCloseComponent">Местоположение</p>
 
-    <div class="open-close-component" *ngIf="openCloseComponent">
-        <img src="../../../../../assets/images/performer/map-bg-need-delete-later.png">
+    <div class="map-component" *ngIf="openCloseComponent">
+        <app-map [markers]='markers'></app-map>
     </div>
+
+    
 
 </div>
