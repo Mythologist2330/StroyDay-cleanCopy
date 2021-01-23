@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Marker } from 'leaflet';
 
 @Component({
     selector: 'app-map-location',
@@ -8,6 +9,7 @@ import { Component } from '@angular/core';
 
 export class MapLocationComponent{
 
-    openCloseComponent: boolean = false
+    openCloseComponent = false;
+    @Input() markers: Marker[];
 
 }

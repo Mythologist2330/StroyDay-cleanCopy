@@ -1,6 +1,5 @@
 import { animate, state, style, transition, trigger } from "@angular/animations";
 import { Component, Input } from "@angular/core";
-import { Performer } from "src/app/models/Performer";
 
 @Component({
     selector: 'app-slider',
@@ -30,28 +29,22 @@ import { Performer } from "src/app/models/Performer";
 export class SliderComponent{
 
     public sliderState = 'start';
-    @Input() card: Performer;
-
-    sliderImages: string[] = [
-        '/assets/images/performer/slider-1.png',
-        '/assets/images/performer/slider-2.jpg',
-        '/assets/images/performer/slider-3.jpg'
-    ]
+    @Input() gallery: string[];
 
     next() {
         this.sliderState = 'next';
         setTimeout(() => {
-          let currentSlide = this.sliderImages[0];
-          this.sliderImages.shift();
-          this.sliderImages.push(currentSlide);
+          let currentSlide = this.gallery[0];
+          this.gallery.shift();
+          this.gallery.push(currentSlide);
           this.sliderState = 'start';
         }, 200)
     }
 
     prev() {
-        let currentSlide = this.sliderImages[this.sliderImages.length - 1];
-        this.sliderImages.pop();
-        this.sliderImages.unshift(currentSlide);
+        let currentSlide = this.gallery[this.gallery.length - 1];
+        this.gallery.pop();
+        this.gallery.unshift(currentSlide);
         this.sliderState = 'prev';
         setTimeout(() => {
           this.sliderState = 'start';

@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IPerformersCard } from '../../interfaces/IPerformersCard';
-import { LatLng, Map, Marker } from 'leaflet';
+import { Map, Marker } from 'leaflet';
 import { MapService } from '../../services/map.service';
 
 @Component({
@@ -25,9 +24,27 @@ export class MapComponent implements OnInit {
 
   onMapReady(map: Map): void {
     this.map = map;
+    this.setCenter(this.markers);
     this.map.on('click', (e: any) => {
       console.log(e.latlng)
     });
+  }
+
+  setCenter(markers: Marker[]) {
+    if (!markers.length) {
+      return
+    }
+    let sumLat = 0;
+    let sumLng = 0;
+    markers.map(marker => {
+      sumLat += marker.getLatLng().lat;
+      sumLng += marker.getLatLng().lng;
+    });
+    let count = markers.length;
+    let medianLat = sumLat / count;
+    let medianLng = sumLng / count;
+    let center = this.mapSrv.createLatLng(medianLat, medianLng);
+    this.map.setView(center, 12);
   }
 
   ngOnInit(): void {

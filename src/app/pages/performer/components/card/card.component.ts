@@ -12,6 +12,7 @@ export class CardComponent{
     public isFavorite = false;
     public shrinkHeader = false;
     @Input() card: Performer;
+    @Input() rating: number;
 
     ngOnInit(): void {
         this.animateHeader();
@@ -20,5 +21,4 @@ export class CardComponent{
     animateHeader(): void {
         window.onscroll = () => this.shrinkHeader = (window.pageYOffset > 800) ? true : false;
     };
-
 }

@@ -19,6 +19,7 @@ import { SliderComponent } from "./components/slider/slider.component";
 import { SubmitApplicationComponent } from "./components/submit-application/submit-application.component";
 import { WriteToPerformerComponent } from "./components/write-to-performer/write-to-performer.component";
 import { PerformerComponent } from "./performer.component";
+import { ReviewComponent } from './components/review/review.component';
 
 const routes = [
   {path: 'performer/:id', component: PerformerComponent}
@@ -39,7 +40,8 @@ const routes = [
         AuthorBlogComponent,
         DocumentsComponent,
         CertificatesComponent,
-        WriteToPerformerComponent
+        WriteToPerformerComponent,
+        ReviewComponent
     ],
     imports: [
         CommonModule,

@@ -3,5 +3,5 @@ export interface IComment {
     avatar: string;
     name: string;
     text: string;
-    createdAt: Date;
+    createdAt: Date | any;
 }

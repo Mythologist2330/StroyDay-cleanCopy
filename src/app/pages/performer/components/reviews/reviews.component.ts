@@ -1,18 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
+import { ReviewService } from 'src/app/services/review.service';
 import { Review } from "src/app/models/Review";
-
-export interface IReviews {
-    avatar: string,
-    name: string,
-    date: string,
-    rating: number,
-    titleComment: string,
-    comment: string,
-    amountOfComments: number,
-    likesOrDislikes: number,
-    replies: any,
-    showReplies: boolean
-}
 
 @Component({
     selector: 'app-reviews',
@@ -20,91 +8,14 @@ export interface IReviews {
     styleUrls: ['./reviews.component.scss']
 })
 
-export class ReviewsComponent{
+export class ReviewsComponent implements OnInit {
 
-    openCloseComponent: boolean = false
-    showReplies: boolean = false
+    @Input() reviews: Review[] = [];
+    public readonly wees = [5,4,3,2,1];
+    public openCloseComponent = true;
+    public showReplies = false;
 
-    reviews: Review[] = [
-        {
-            avatar: '/assets/images/performer/avatar.png',
-            name: 'Иван Алексеев',
-            createdAt: new Date(),
-            rating: 5,
-            titleComment: 'Мне понравилось!',
-            comment: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты, которые смогут заставить посетителей оставаться на нём как можно дальше, то вы попали по адресу. За кворк можно заказать хоть 10 статей, главное чтоб общий объём был 6000 символов без пробелов.',
-            likes: 23,
-            dislikes: 0,
-            replies: [
-                {
-                    avatar: '/assets/images/performer/avatar.png',
-                    name: 'Иван Алексеев',
-                    createdAt:  new Date(),
-                    text: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
-                },
-                {
-                    avatar: '/assets/images/performer/avatar.png',
-                    name: 'Иван Алексеев',
-                    createdAt:  new Date(),
-                    text: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
-                }
-            ],
-            showReplies: false // Говнокод!
-        },
-        {
-            avatar: '/assets/images/performer/avatar.png',
-            name: 'Иван Алексеев',
-            createdAt: new Date(),
-            rating: 2,
-            titleComment: 'Очень не очень!',
-            comment: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты, которые смогут заставить посетителей оставаться на нём как можно дальше, то вы попали по адресу. За кворк можно заказать хоть 10 статей, главное чтоб общий объём был 6000 символов без пробелов.',
-            likes: 14,
-            dislikes: 0,
-            replies: [
-                {
-                    avatar: '/assets/images/performer/avatar.png',
-                    name: 'Иван Алексеев',
-                    createdAt: new Date(),
-                    text: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
-                },
-                {
-                    avatar: '/assets/images/performer/avatar.png',
-                    name: 'Иван Алексеев',
-                    createdAt: new Date(),
-                    text: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
-                }
-            ],
-            showReplies: false // Говнокод!
-        },
-        {
-            avatar: '/assets/images/performer/avatar.png',
-            name: 'Иван Алексеев',
-            createdAt: new Date(),
-            rating: 3,
-            titleComment: 'Так себе, но пойдет!',
-            comment: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты, которые смогут заставить посетителей оставаться на нём как можно дальше, то вы попали по адресу. За кворк можно заказать хоть 10 статей, главное чтоб общий объём был 6000 символов без пробелов.',
-            likes: 5,
-            dislikes: 0,
-            replies: [
-                {
-                    avatar: '/assets/images/performer/avatar.png',
-                    name: 'Иван Алексеев',
-                    createdAt: new Date(),
-                    text: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
-                },
-                {
-                    avatar: '/assets/images/performer/avatar.png',
-                    name: 'Иван Алексеев',
-                    createdAt: new Date(),
-                    text: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты.'
-                }
-            ],
-            showReplies: false // Говнокод!
-        }
-    ]
-
-    wees = [5,4,3,2,1]
-
+    constructor() {}
 
     getReviewBorderColor(rating: number): string {
         if (rating >= 4) {
@@ -126,8 +37,6 @@ export class ReviewsComponent{
         }
     }
 
-
-
     showPercentInLine(rating: number): number {
         let total = this.reviews.length;
         let amount = this.getAmountOfComments(rating);
@@ -142,6 +51,9 @@ export class ReviewsComponent{
 
     getPercentOf(total: number, amount: number): number {
         return amount / total * 100
+    }
+    
+    ngOnInit(): void {
     }
 
 }

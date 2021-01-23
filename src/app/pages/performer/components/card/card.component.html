@@ -9,8 +9,10 @@
 
                 <div class="description">
                     <p class="description-header">{{ card.description.title }}</p>
-
-                    <app-rating-stars [stars]='+card.stars'></app-rating-stars>
+                    <ng-container *ngIf='rating'>
+                        <app-rating-stars [stars]='rating'></app-rating-stars>
+                    </ng-container>
+                    
 
                     <div class="description-elem">
                         <img src='/assets/images/performers/category.png'>
