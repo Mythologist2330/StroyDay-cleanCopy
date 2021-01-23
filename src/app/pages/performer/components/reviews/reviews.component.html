@@ -13,6 +13,11 @@
                 <circle class="donut-ring" cx="21" cy="24" r="15.91549430918954" fill="transparent" stroke="#CFE2F9" stroke-width="1.7"></circle>
                 <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#0D6FE3" stroke-width="3" stroke-dasharray="85 100" stroke-dashoffset="0"></circle>
             </svg>
+
+            <div class="statistics-rating-and-based-on-comments">
+                <p class="statistics-rating">4.9</p>
+                <p class="based-on-comments">На основании <span>{{ reviews.length }}</span> отзывов</p>
+            </div>
     
             <div class="lines">
                 <div class="line-block" *ngFor="let wee of wees">
@@ -55,7 +60,7 @@
                 <option value="">Сначала отрицательные</option>
             </select>
         </fieldset>
-    
+
         <div [ngStyle]="{'border-color': getReviewBorderColor(review.rating), 'background': getReviewBackground(review.rating)}" *ngFor="let review of reviews" class="review">
     
             <div class="user-and-rating">
@@ -129,7 +134,7 @@
             </div>
     
         </div>
-    
+
         <button class="button-show-more">Показать еще 10 отзывов</button>
     </div>
 
