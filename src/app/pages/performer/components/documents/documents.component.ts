@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-documents',
@@ -20,6 +21,14 @@ export class DocumentsComponent {
             format: 'PDF',
             size: 365
         }
-    ]
+    ];
+
+    constructor(private router: Router) {
+
+    }
+
+    download() {
+        window.open('assets/files/test.pdf')
+    }
 
 }

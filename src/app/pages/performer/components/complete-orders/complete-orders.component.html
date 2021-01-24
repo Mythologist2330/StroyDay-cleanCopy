@@ -1,0 +1,73 @@
+<div class="container" *ngIf='orders'>
+
+    <mat-icon [ngStyle]="{transform: openCloseComponent ? 'rotate(180deg)' : 'none'}" class="arrow">keyboard_arrow_down</mat-icon>
+
+    <p class="header" (click)="openCloseComponent = !openCloseComponent">Выполненные заявки</p>
+
+    <div class="open-close-component" *ngIf="openCloseComponent">
+        <div class="sort-by">
+            <label>
+                <input (change)='setFilter($event)' type="radio" value="default" name="completeOrders" checked>
+                <p>Все</p>
+                <span class="amount-all">{{ ordersAll.length }}</span>
+            </label>
+    
+            <label>
+                <input (change)='setFilter($event)' type="radio" value="low" name="completeOrders">
+                <p>эконом</p>
+                <span class="amount-economy">{{ ordersLow.length }}</span>
+            </label>
+    
+            <label>
+                <input (change)='setFilter($event)' type="radio" value="standart" name="completeOrders">
+                <p>стандарт</p>
+                <span class="amount-standard">{{ ordersStandart.length }}</span>
+            </label>
+    
+            <label>
+                <input (change)='setFilter($event)' type="radio" value="premium" name="completeOrders">
+                <p>премиум</p>
+                <span class="amount-premium">{{ ordersPremium.length }}</span>
+            </label>
+        </div>
+    
+        <fieldset class="sort-by-mobile">
+            <legend>Сортировка</legend>
+    
+            <select (change)='setFilter($event)'>
+                <option value="default">Все заявки</option>
+                <option value="low">Эконом</option>
+                <option value="standart">Стандарт</option>
+                <option value="premium">Премиум</option>
+            </select>
+        </fieldset>
+    
+        <div class="applications">
+            <div *ngFor="let order of orders" class="application">
+    
+                <div *ngIf="order.images" class="images">
+                    <img *ngFor="let image of order.images" [src]="image">
+                </div>
+    
+                <div class="title-and-price">
+                    <p class="title">{{ order.title }}</p>
+                    <p class="price">{{ order.getPrice() }}</p>
+                </div>
+    
+                <p class="date">Завершен {{ order.createdAt | date : 'dd MMMM yyyy' }}</p>
+    
+                <hr>
+    
+                <div class="rating-and-segment">
+                    <p class="rating"><app-rating-stars [stars]="order.rating"></app-rating-stars></p>
+    
+                    <p [ngStyle]="{'color': getColor(order.segment[0])}" class="segment">{{ order.segment[0] }}</p>
+                </div>
+    
+            </div>
+        </div>
+    
+        <button class="button-show-more" *ngIf='orders.length >= 10'>Показать еще 10 выполненных заявок</button>
+    </div>
+
+</div>

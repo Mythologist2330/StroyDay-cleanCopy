@@ -1,6 +1,8 @@
+import { Segment } from "./Order";
+
 export interface ServicePoint {
     title: string;
-    segments: string[];
+    segment: Segment;
     price: number;
 }
 
@@ -13,10 +15,18 @@ export class Service {
     }
 
     getMinPrice() {
-        let minPrice: number;
+        let minPrice = this.subServices[0].price;
         this.subServices.map(point => {
             !minPrice ? minPrice = point.price : minPrice = Math.min(minPrice, point.price)
         })
-        return minPrice + ' ₽';
+        return 'От ' + minPrice + ' ₽';
+    }
+
+    getSegments(): any[] {
+        let segments = new Set();
+        this.subServices.map(sub => {
+            segments.add(sub.segment)
+        });
+        return Array.from(segments);
     }
 }

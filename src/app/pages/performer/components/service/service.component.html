@@ -1,0 +1,69 @@
+<div class="service-header">
+    <div class="title-and-segments">
+        <p class="title">{{ service.title }}</p>
+
+        <div class="segments">
+            <p [ngStyle]="{'background': getBackground(segment), 'color': getColor(segment)}" *ngFor="let segment of service.getSegments()">{{ segment }}</p>
+        </div>
+    </div>
+
+    <div class="price-and-toggle">
+        <p class="price">{{ service.getMinPrice() }}</p>
+
+        <div (click)="showService = !showService" class="toggle">
+            <svg *ngIf="!showService" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.1663 9.66665H10.1663V16.6666H7.83301V9.66665H0.833008V7.33331H7.83301V0.333313H10.1663V7.33331H17.1663V9.66665Z" fill="#90A0B7"/>
+            </svg>
+
+            <svg *ngIf="showService" width="18" height="3" viewBox="0 0 18 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.1663 2.66671H10.1663H7.83301H0.833008V0.333374H7.83301H10.1663H17.1663V2.66671Z" fill="#90A0B7"/>
+            </svg>
+        </div>
+    </div>
+</div>
+
+<div class="service-header-mobile">
+    <div class="title-segments-price-mobile">
+
+        <p class="title-mobile">{{ service.title }}</p>
+        <p class="segment-mobile" [ngStyle]="{'background': getBackground(segment), 'color': getColor(segment)}" *ngFor="let segment of service.getSegments()">{{ segment }}</p>
+        <p class="price-mobile">{{ service.getMinPrice() }}</p>
+
+    </div>
+
+    <div (click)="showService = !showService" class="toggle-mobile">
+        <svg *ngIf="!showService" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.1663 9.66665H10.1663V16.6666H7.83301V9.66665H0.833008V7.33331H7.83301V0.333313H10.1663V7.33331H17.1663V9.66665Z" fill="#90A0B7"/>
+        </svg>
+
+        <svg *ngIf="showService" width="18" height="3" viewBox="0 0 18 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.1663 2.66671H10.1663H7.83301H0.833008V0.333374H7.83301H10.1663H17.1663V2.66671Z" fill="#90A0B7"/>
+        </svg>
+    </div>
+</div>
+
+<div *ngIf="showService" class="subServices">
+    <div *ngFor="let subService of service.subServices" class="subService">
+
+        <div class="subService-header-and-subService-segment">
+            <p class="subService-header">{{ subService.title }}</p>
+
+            <p [ngStyle]="{'background': getBackground(subService.segment), 'color': getColor(subService.segment)}" class="subService-segment">{{ subService.segment }}</p>
+        </div>
+
+        <p class="subService-price">{{ subService.price }}</p>
+
+    </div>
+</div>
+
+<div *ngIf="showService" class="subServices-mobile">
+    <div *ngFor="let subService of service.subServices" class="subService-mobile">
+
+        <p class="subService-header-mobile">{{ subService.title }}</p>
+
+        <p [ngStyle]="{'background': getBackground(subService.segment), 'color': getColor(subService.segment)}" class="subService-segment-mobile">{{ subService.segment }}</p>
+
+        <p class="subService-price-mobile">{{ subService.price }}</p>
+
+    </div>
+</div>

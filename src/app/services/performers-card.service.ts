@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subscription, pipe } from 'rxjs';
-import { filter, map, tap } from 'rxjs/operators';
-import { IPerformersCard } from '../interfaces/IPerformersCard';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { HttpClient } from '@angular/common/http';
 import { Performer } from '../models/Performer';
@@ -41,11 +40,11 @@ export class PerformersCardService {
   }
 
   getPerformersCardById(cardId: string): Observable<Performer> {
-    return this.firestore.collection('performers')
+    return this.firestore.collection<Partial<Performer>>('performers')
       .valueChanges()
       .pipe(        
         map(cards => {
-          return cards.filter((card: IPerformersCard) => {
+          return cards.filter(card => {
             return card.id === cardId
           })
         }),
@@ -53,7 +52,7 @@ export class PerformersCardService {
       )
   }
 
-  createPerformersCard(card: IPerformersCard): Promise<any> {
+  createPerformersCard(card: Performer): Promise<any> {
     const id = this.firestore.createId();
     return this.firestore.collection('performersCard').add({...card, id});
   }
@@ -62,7 +61,7 @@ export class PerformersCardService {
     return this.firestore.doc('performersCard/' + cardId).delete();
   }
 
-  updatePerformersCard(card: IPerformersCard): Promise<void> {
+  updatePerformersCard(card: Performer): Promise<void> {
     return this.firestore.doc('performersCard/' + card.id).update(card);
   }
 
