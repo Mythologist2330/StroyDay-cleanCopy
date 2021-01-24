@@ -9,7 +9,8 @@ import { Component } from "@angular/core";
 export class ServicesComponent {
 
     public openCloseComponent:boolean = true;
-    showService: boolean = false
+
+    // Говнокод с showServices в объектах
 
     services: any = [
         {
@@ -27,7 +28,8 @@ export class ServicesComponent {
                     segment: 'премиум',
                     price: 'от 33 000 ₽',
                 }
-            ]
+            ],
+            showService: false
         },
         {
             title: 'Ремонт детской комнаты',
@@ -44,7 +46,8 @@ export class ServicesComponent {
                     segment: 'премиум',
                     price: 'от 33 000 ₽',
                 }
-            ]
+            ],
+            showService: false
         },
         {
             title: 'Архитектура промышленных зданий',
@@ -61,7 +64,8 @@ export class ServicesComponent {
                     segment: 'премиум',
                     price: 'от 33 000 ₽',
                 }
-            ]
+            ],
+            showService: false
         },
         {
             title: 'Архитектура помещений',
@@ -78,7 +82,8 @@ export class ServicesComponent {
                     segment: 'премиум',
                     price: 'от 33 000 ₽',
                 }
-            ]
+            ],
+            showService: false
         },
         {
             title: 'Дизайн-проект',
@@ -95,7 +100,8 @@ export class ServicesComponent {
                     segment: 'премиум',
                     price: 'от 33 000 ₽',
                 }
-            ]
+            ],
+            showService: false
         },
         {
             title: 'Архитектура помещений',
@@ -112,7 +118,8 @@ export class ServicesComponent {
                     segment: 'премиум',
                     price: 'от 33 000 ₽',
                 }
-            ]
+            ],
+            showService: false
         }
     ]
 
