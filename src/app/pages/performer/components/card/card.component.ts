@@ -10,6 +10,15 @@ import { Performer } from 'src/app/models/Performer';
 export class CardComponent{
     
     public isFavorite = false;
+    public shrinkHeader = false;
     @Input() card: Performer;
     @Input() rating: number;
+
+    ngOnInit(): void {
+        this.animateHeader();
+    }
+
+    animateHeader(): void {
+        window.onscroll = () => this.shrinkHeader = (window.pageYOffset > 800) ? true : false;
+    };
 }
