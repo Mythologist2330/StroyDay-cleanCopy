@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { first } from 'rxjs/operators';
 import { Service } from '../models/Service';
 
 @Injectable({
@@ -13,14 +14,12 @@ export class ServicesService {
         
     }
 
-    getAllServices(sortBy = 'createdAt'): Observable<any> {
-        return this.firestore.collection('reviews', ref => {
-            return ref.orderBy(sortBy, 'desc')
-        }).snapshotChanges()
+    getAllServices(): Observable<Service[]> {
+        return this.firestore.collection<Service>('services').valueChanges().pipe(first())
     }
 
     createService(service: Service): Promise<any> {
         const id = this.firestore.createId();
-        return this.firestore.collection('reviews').add({...service, id})
+        return this.firestore.collection('services').add({...service, id})
       }
 }

@@ -9,10 +9,10 @@ import { AboutPerformer } from "./components/about-performer/about-performer.com
 import { AuthorBlogComponent } from "./components/author-blog/author-blog.component";
 import { CardComponent } from "./components/card/card.component";
 import { CertificatesComponent } from "./components/certificates/certificates.component";
-import { CompleteApplicationsComponent } from "./components/complete-applications/complete-applications.component";
+import { CompleteOrdersComponent } from "./components/complete-orders/complete-orders.component";
 import { DocumentsComponent } from "./components/documents/documents.component";
 import { MapLocationComponent } from "./components/map-location/map-location.component";
-import { PostedApplicationsComponent } from "./components/posted-applications/posted-applications.component";
+import { PostedOrdersComponent } from "./components/posted-orders/posted-orders.component";
 import { ReviewsComponent } from "./components/reviews/reviews.component";
 import { ServicesComponent } from "./components/services/services.component";
 import { SliderComponent } from "./components/slider/slider.component";
@@ -20,6 +20,7 @@ import { SubmitApplicationComponent } from "./components/submit-application/subm
 import { WriteToPerformerComponent } from "./components/write-to-performer/write-to-performer.component";
 import { PerformerComponent } from "./performer.component";
 import { ReviewComponent } from './components/review/review.component';
+import { ServiceComponent } from './components/service/service.component';
 
 const routes = [
   {path: 'performer/:id', component: PerformerComponent}
@@ -35,13 +36,14 @@ const routes = [
         ServicesComponent,
         ReviewsComponent,
         SubmitApplicationComponent,
-        CompleteApplicationsComponent,
-        PostedApplicationsComponent,
+        CompleteOrdersComponent,
+        PostedOrdersComponent,
         AuthorBlogComponent,
         DocumentsComponent,
         CertificatesComponent,
         WriteToPerformerComponent,
-        ReviewComponent
+        ReviewComponent,
+        ServiceComponent
     ],
     imports: [
         CommonModule,

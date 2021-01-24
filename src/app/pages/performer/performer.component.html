@@ -16,13 +16,11 @@
         <app-services></app-services>
         <app-reviews [reviews]='reviews'></app-reviews>
         <app-submit-application></app-submit-application>
-        <app-complete-applications></app-complete-applications>
-        <app-posted-applications></app-posted-applications>
+        <app-complete-orders [performerId]='card.id'></app-complete-orders>
+        <app-posted-orders [authorId]='card.id'></app-posted-orders>
         <app-author-blog></app-author-blog>
         <app-documents></app-documents>
         <app-certificates></app-certificates>
         <app-write-to-performer></app-write-to-performer> 
     </ng-container>
-    
-
 </div>

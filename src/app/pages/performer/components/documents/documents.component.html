@@ -6,10 +6,10 @@
 
     <div class="open-close-component" *ngIf="openCloseComponent">
         <div class="documents">
-            <div *ngFor="let document of documents" class="document">
+            <div *ngFor="let document of documents" class="document" (click)='download()'>
     
                 <div class="image">
-                    <img src="../../../../../assets/images/performer/document.png">
+                    <img src="/assets/images/performer/document.png">
                 </div>
     
                 <div class="title-and-format-and-size">
