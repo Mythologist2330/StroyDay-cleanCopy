@@ -9,7 +9,7 @@ import { Marker } from 'leaflet';
 
 export class MapLocationComponent{
 
-    openCloseComponent = false;
+    public openCloseComponent:boolean = true;
     @Input() markers: Marker[];
 
 }

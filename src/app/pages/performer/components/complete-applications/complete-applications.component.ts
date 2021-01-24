@@ -8,7 +8,7 @@ import { Component } from "@angular/core";
 
 export class CompleteApplicationsComponent {
 
-    openCloseComponent: boolean = false
+    public openCloseComponent:boolean = true;
     applications: any = [
         {
             title: '3D-проектирование детской комнаты',
