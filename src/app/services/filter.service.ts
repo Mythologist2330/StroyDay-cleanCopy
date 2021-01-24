@@ -56,6 +56,46 @@ export class FilterService {
         type: 'radio'
     },
     {
+        field: 'price',
+        title: 'Уровень цен',
+        checked: ['0'],
+        selector: [{
+          value: '0', 
+          text: 'Не имеет значения'
+        },{
+          value: 'Эконом', 
+          text: 'Эконом'
+        },
+        {
+          value: 'Стандарт', 
+          text: 'Стандарт'
+        },
+        {
+          value: 'Премиум', 
+          text: 'Премиум'
+        }],
+        type: 'radio'
+    },
+    {
+        field: 'discount',
+        title: 'Скидка',
+        checked: ['0'],
+        selector: [
+          {
+            value: '0', 
+            text: 'Не имеет значения'
+          },
+          {
+            value: 'yes', 
+            text: 'Да'
+          },
+          {
+            value: 'no', 
+            text: 'Нет'
+          }],
+        type: 'radio'
+    },
+    {
         field: 'feedback',
         title: 'Положительные отзывы',
         checked: ['0'],
@@ -79,25 +119,6 @@ export class FilterService {
           {
             value: '20', 
             text: 'Не менее 20'
-          }],
-        type: 'radio'
-    },
-    {
-        field: 'discount',
-        title: 'Скидка',
-        checked: ['0'],
-        selector: [
-          {
-            value: '0', 
-            text: 'Не имеет значения'
-          },
-          {
-            value: 'yes', 
-            text: 'Да'
-          },
-          {
-            value: 'no', 
-            text: 'Нет'
           }],
         type: 'radio'
     },
@@ -141,27 +162,6 @@ export class FilterService {
             value: '3', 
             text: 'Физическое лицо'
           }],
-        type: 'radio'
-    },
-    {
-        field: 'price',
-        title: 'Уровень цен',
-        checked: ['0'],
-        selector: [{
-          value: '0', 
-          text: 'Не имеет значения'
-        },{
-          value: 'Эконом', 
-          text: 'Эконом'
-        },
-        {
-          value: 'Стандарт', 
-          text: 'Стандарт'
-        },
-        {
-          value: 'Премиум', 
-          text: 'Премиум'
-        }],
         type: 'radio'
     },
     {

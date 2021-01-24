@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 
 export class DocumentsComponent {
 
-    openCloseComponent: boolean = false
+    public openCloseComponent:boolean = true;
     documents: any = [
         {
             title: 'Акт приема-передачи',
