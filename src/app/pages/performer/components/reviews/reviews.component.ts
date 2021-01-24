@@ -52,6 +52,19 @@ export class ReviewsComponent implements OnInit {
     getPercentOf(total: number, amount: number): number {
         return amount / total * 100
     }
+
+    onChangeEvent(e) {
+        const sortBy = e.target.value;
+        this.reviews.sort((a, b) => {
+            if (sortBy === 'createAt') {
+                return b.createdAt - a.createdAt;
+            } else if (sortBy === 'desc') {
+                return b.rating - a.rating;
+            } else if (sortBy === 'asc') {
+                return a.rating - b.rating;
+            }
+        })
+    }
     
     ngOnInit(): void {
     }

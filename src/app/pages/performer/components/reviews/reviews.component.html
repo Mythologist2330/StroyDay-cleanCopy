@@ -1,7 +1,7 @@
 <div class="container" *ngIf='reviews'>
 
     <div class="header">
-        <p>Отзывы <span>135</span></p>
+        <p>Отзывы <span>{{reviews.length}}</span></p>
     </div>
 
     <div class="open-close-component" *ngIf="openCloseComponent">
@@ -23,8 +23,7 @@
     
                     <div class="line">
                         <div [ngStyle]="{'width': showPercentInLine(wee) + '%'}" class="fill-line"></div>
-                    </div>
-    
+                    </div>    
                     <p><span>{{ getAmountOfComments(wee) }}</span> отзывов</p>
                 </div>
             </div>
@@ -35,17 +34,17 @@
         <p class="sort-by-p">Сортировать по:</p>
 
         <label>
-            <input type="radio" name="sortByReviews" checked>
+            <input (change)="onChangeEvent($event)" type="radio" value='createAt' name="sortByReviews" checked>
             <p>сначала новые</p>
         </label>
 
         <label>
-            <input type="radio" name="sortByReviews">
+            <input (change)="onChangeEvent($event)" type="radio" value='desc' name="sortByReviews">
             <p>сначала положительные</p>
         </label>
 
         <label>
-            <input type="radio" name="sortByReviews">
+            <input (change)="onChangeEvent($event)" type="radio" value='asc' name="sortByReviews">
             <p>сначала отрицательные</p>
         </label>
     </div>
@@ -64,10 +63,7 @@
             'border-color': getReviewBorderColor(review.rating),
             'background': getReviewBackground(review.rating)}"
             *ngFor="let review of reviews">
-        <app-review [review]='review'></app-review>
-        
+        <app-review [review]='review'></app-review>        
     </div>
-
     <button *ngIf='reviews.length >= 10' class="button-show-more">Показать еще 10 отзывов</button>
-
 </div>
