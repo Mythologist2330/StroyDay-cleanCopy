@@ -26,7 +26,7 @@
         </div>
 
         <div class="logo-description-statistics-block">
-            <div class="logo" routerLink='/performer'>
+            <div class="logo">
                 <img [src]="card.logo">
             </div>
 
@@ -135,7 +135,7 @@
         </div>
         <div class='description'>
             <div class='topline'>
-                <p class="title">{{card.description.title}}</p>
+                <p class="title" (click)="goToCard(card.id)">{{card.description.title}}</p>
                 <button class="add-to-favorites" (click)="isFavorite = !isFavorite">
                     <img [src]="!isFavorite ? '/assets/images/performers/bookmark-disabled.png' : '/assets/images/performers/bookmark-enabled.png'">                                
                 </button>

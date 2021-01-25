@@ -316,8 +316,9 @@
         }
         .performers{
             max-width: 767px;
-            .number-of-found {
-                margin: 17px 0 9px 0;
+            padding: 32px 10px 24px;
+            .count{
+                margin: 15px 0 -8px 0;
                 font-size: 24px;
                 line-height: 28px;
             }

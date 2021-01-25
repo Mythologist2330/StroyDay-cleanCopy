@@ -1,7 +1,7 @@
 <div class="wrap">
     <div class="map-title" (click)="toggle = !toggle">
         <p>Исполнители на карте</p>
-        <mat-icon>keyboard_arrow_down</mat-icon>
+        <mat-icon [ngStyle]="{transform: toggle ? 'rotate(180deg)' : 'none'}">keyboard_arrow_down</mat-icon>
     </div>
     <div class="map" [ngClass]="toggle ? 'show' : ''"
         leaflet 
