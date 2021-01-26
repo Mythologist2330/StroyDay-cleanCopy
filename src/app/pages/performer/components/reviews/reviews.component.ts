@@ -66,40 +66,14 @@ export class ReviewsComponent implements OnInit {
         })
     }
 
-    getRatingAllReviews(): number {
-        let generalRating = []
-        let generalSum: number = 0
-
+    getRatingAllReviews(scale: number): number {
+        let generalSum = 0
         for (let review of this.reviews) {
-            generalRating.push(review.rating)
+            generalSum += review.rating
         }
-        for(var i = 0; i < generalRating.length; i++){
-            generalSum += generalRating[i]
-        }
-
-        let returningNumber: number = +(generalSum / (generalRating.length * 5) * 100).toFixed(0)
-
-        console.log((generalSum / (generalRating.length * 5) * 100).toFixed(0))
-        return returningNumber
+        return generalSum / (this.reviews.length * 5) * scale
     }
 
-    getGeneralRatingNumber() {
-        let generalRating = []
-        let generalSum: number = 0
-
-        for (let review of this.reviews) {
-            generalRating.push(review.rating)
-        }
-        for(var i = 0; i < generalRating.length; i++){
-            generalSum += generalRating[i]
-        }
-
-        let returningNumber: number = +(generalSum / (generalRating.length * 5) * 5).toFixed(1)
-
-        console.log((generalSum / (generalRating.length * 5) * 5).toFixed(1))
-        return returningNumber
-    }
-    
     ngOnInit(): void {
     }
 
