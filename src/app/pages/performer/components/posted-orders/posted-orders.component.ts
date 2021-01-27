@@ -12,7 +12,7 @@ import { OrderService } from 'src/app/services/order.service';
 export class PostedOrdersComponent implements OnInit {
 
     @Input() authorId: string;
-    public openCloseComponent: boolean = false
+    public openCloseComponent: boolean = true;
     public orders: Order[] = [];
     public ordersAll: Order[] = [];
     public ordersActive: Order[] = [];

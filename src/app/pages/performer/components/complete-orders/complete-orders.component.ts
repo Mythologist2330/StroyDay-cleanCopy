@@ -12,7 +12,7 @@ import { OrderService } from 'src/app/services/order.service';
 export class CompleteOrdersComponent implements OnInit {
 
     @Input() performerId: string
-    public openCloseComponent = false;
+    public openCloseComponent = true;
     public orders: Order[] = [];
     public ordersAll: Order[] = [];
     public ordersLow: Order[] = [];
