@@ -38,8 +38,14 @@
         <p class="count">Найдено {{performersCards.length}} исполнителей</p>
         <app-tags [tags]='tags' (changeTags)='removeTag($event)' class="tags-search"></app-tags>
           
-        <ng-container *ngIf='performersCards.length; else noCards'>  
-            <app-map [markers]='markers'></app-map>
+        <ng-container *ngIf='performersCards.length; else noCards'>
+            <div class="wrap">
+                <div class="map-title" (click)="toggleMap = !toggleMap">
+                    <p>Исполнители на карте</p>
+                    <mat-icon [ngStyle]="{transform: toggleMap ? 'rotate(180deg)' : 'none'}">keyboard_arrow_down</mat-icon>
+                </div>
+                <app-map [ngClass]="toggleMap ? 'show' : ''" [markers]='markers'></app-map>
+            </div>
                 
             <div class="sort-by">
                 <p class="sort-by-p">Сортировать по:</p>

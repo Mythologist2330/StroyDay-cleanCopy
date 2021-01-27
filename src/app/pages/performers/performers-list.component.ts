@@ -19,6 +19,7 @@ export class PerformersListComponent implements OnInit {
     // Дохрена флажков!
 
     public toggle = false;
+    public toggleMap = false;
     public page = 'Исполнители';
     public performersCards: Performer[] = [];
     public card: Performer;

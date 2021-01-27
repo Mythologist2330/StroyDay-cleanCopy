@@ -10,7 +10,6 @@ import { MapService } from '../../services/map.service';
 export class MapComponent implements OnInit {
 
   @Input() markers: Marker[];
-  public toggle = false;
   map: Map;
   public fullscreenOptions: {[key:string]:any} = {
     position: 'topleft',

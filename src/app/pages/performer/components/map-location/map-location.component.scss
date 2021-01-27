@@ -4,8 +4,10 @@
     margin: 32px auto;
 
     .map-component {
-        height: 304px;
+        height: 240px;
         overflow: hidden;
+        filter: drop-shadow(0px 4px 40px rgba(71, 84, 101, 0.05));
+        border-radius: 4px;
     }
 
     .arrow{
@@ -52,6 +54,10 @@
     .container{
         width: -webkit-fill-available;
         margin: 22px 1rem;
+
+        .map-component{
+            height: 320px;
+        }
 
         .arrow{
             width: 28px;
