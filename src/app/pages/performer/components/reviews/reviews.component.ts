@@ -12,7 +12,7 @@ export class ReviewsComponent implements OnInit {
 
     @Input() reviews: Review[] = [];
     public readonly wees = [5,4,3,2,1];
-    public openCloseComponent = true;
+    public openCloseComponent:boolean = true;
     public showReplies = false;
 
     constructor() {}

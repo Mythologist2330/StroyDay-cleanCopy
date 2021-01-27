@@ -1,6 +1,8 @@
 <div class="container" *ngIf='reviews'>
 
-    <div class="header">
+    <mat-icon [ngStyle]="{transform: openCloseComponent ? 'rotate(180deg)' : 'none'}" class="arrow">keyboard_arrow_down</mat-icon>
+
+    <div class="header" (click)="openCloseComponent = !openCloseComponent">
         <p>Отзывы <span>{{reviews.length}}</span></p>
     </div>
 
@@ -27,43 +29,44 @@
                     <p><span>{{ getAmountOfComments(wee) }}</span> отзывов</p>
                 </div>
             </div>
-        </div>    
+        </div>
+
+        <div class="sort-by">
+            <p class="sort-by-p">Сортировать по:</p>
+
+            <label>
+                <input (change)="onChangeEvent($event)" type="radio" value='createAt' name="sortByReviews" checked>
+                <p>сначала новые</p>
+            </label>
+
+            <label>
+                <input (change)="onChangeEvent($event)" type="radio" value='desc' name="sortByReviews">
+                <p>сначала положительные</p>
+            </label>
+
+            <label>
+                <input (change)="onChangeEvent($event)" type="radio" value='asc' name="sortByReviews">
+                <p>сначала отрицательные</p>
+            </label>
+        </div>
+
+        <fieldset class="sort-by-mobile">
+            <legend>Сортировка</legend>
+
+            <select (change)="onChangeEvent($event)">
+                <option value="createAt">Сначала новые</option>
+                <option value="desc">Сначала положительные</option>
+                <option value="asc">Сначала отрицательные</option>
+            </select>
+        </fieldset>
+
+        <div class="review" [ngStyle]="{
+                'border-color': getReviewBorderColor(review.rating),
+                'background': getReviewBackground(review.rating)}"
+                *ngFor="let review of reviews">
+            <app-review [review]='review'></app-review>        
+        </div>
+
+        <button *ngIf='reviews.length >= 10' class="button-show-more">Показать еще 10 отзывов</button>
     </div>
-
-    <div class="sort-by">
-        <p class="sort-by-p">Сортировать по:</p>
-
-        <label>
-            <input (change)="onChangeEvent($event)" type="radio" value='createAt' name="sortByReviews" checked>
-            <p>сначала новые</p>
-        </label>
-
-        <label>
-            <input (change)="onChangeEvent($event)" type="radio" value='desc' name="sortByReviews">
-            <p>сначала положительные</p>
-        </label>
-
-        <label>
-            <input (change)="onChangeEvent($event)" type="radio" value='asc' name="sortByReviews">
-            <p>сначала отрицательные</p>
-        </label>
-    </div>
-
-    <fieldset class="sort-by-mobile">
-        <legend>Сортировка</legend>
-
-        <select (change)="onChangeEvent($event)">
-            <option value="createAt">Сначала новые</option>
-            <option value="desc">Сначала положительные</option>
-            <option value="asc">Сначала отрицательные</option>
-        </select>
-    </fieldset>
-
-    <div class="review" [ngStyle]="{
-            'border-color': getReviewBorderColor(review.rating),
-            'background': getReviewBackground(review.rating)}"
-            *ngFor="let review of reviews">
-        <app-review [review]='review'></app-review>        
-    </div>
-    <button *ngIf='reviews.length >= 10' class="button-show-more">Показать еще 10 отзывов</button>
 </div>
