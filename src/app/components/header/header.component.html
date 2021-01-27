@@ -119,13 +119,13 @@
 
                 <div class="menu-list-services"></div>
 
-                <div class="menu-link menu-link-without-border">Главная</div>
-                <div class="menu-link">Заявки</div>
-                <div routerLink="performers" class="menu-link">Исполнители</div>
-                <div routerLink="services" class="menu-link">Галерея работ</div>
-                <div class="menu-link">Калькулятор</div>
-                <div class="menu-link">Документы</div>
-                <div class="menu-link">База знаний</div>
+                <div class="menu-link menu-link-without-border" (click)="openCloseBurgerMenu($event)">Главная</div>
+                <div class="menu-link" (click)="openCloseBurgerMenu($event)">Заявки</div>
+                <div routerLink="performers" class="menu-link" (click)="openCloseBurgerMenu($event)">Исполнители</div>
+                <div routerLink="services" class="menu-link" (click)="openCloseBurgerMenu($event)">Галерея работ</div>
+                <div class="menu-link" (click)="openCloseBurgerMenu($event)">Калькулятор</div>
+                <div class="menu-link" (click)="openCloseBurgerMenu($event)">Документы</div>
+                <div class="menu-link" (click)="openCloseBurgerMenu($event)">База знаний</div>
             </div>
 
             <button class="button-sign-in">
