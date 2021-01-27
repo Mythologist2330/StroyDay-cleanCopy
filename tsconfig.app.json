@@ -5,13 +5,6 @@
     "baseUrl": "./",
     "outDir": "dist",
     "types": [],
-    "paths": {
-      "@services/*": ["app/services/*"],
-      "@models/*": ["app/models/*"],
-      "@components/*": ["app/components/*"],
-      "@pages/*": ["app/pages/*"],
-      "@interfaces/*": ["app/interfaces/*"]
-    }
   },
   "files": [
     "src/main.ts",
