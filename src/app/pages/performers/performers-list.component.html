@@ -13,11 +13,9 @@
             </div>
         </div>
 
-        <ng-container *ngFor='let filter of filters'>
-            <ng-container *ngIf="filter.field === 'city'">
-                <app-filter-location [filter]='filter' 
+        <ng-container *ngIf='locationFilters && locationFilters.length'>
+                <app-filter-location [locationFilters]='locationFilters'
                                      (sendFilter)="updateFilterCheckedValue($event)"></app-filter-location>
-            </ng-container>            
         </ng-container>
 
         <app-filter-categories [categories]='categories'></app-filter-categories>

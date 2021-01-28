@@ -2,32 +2,32 @@
 
     <mat-icon [ngStyle]="{transform: openCloseComponent ? 'rotate(180deg)' : 'none'}" class="arrow">keyboard_arrow_down</mat-icon>
 
-    <p class="header" (click)="openCloseComponent = !openCloseComponent">Услуги <span>({{servicesAll.length}})</span></p>
+    <p class="header" (click)="openCloseComponent = !openCloseComponent">Услуги <span>({{getServiceCountBySegment(servicesAll)}})</span></p>
 
     <div class="open-close-component" *ngIf="openCloseComponent">
         <div class="sort-by">
             <label>
                 <input value='все' (change)='setFilter($event)' type="radio" name="sortByServices" checked>
                 <p>Все</p>
-                <span class="amount-all">{{servicesAll.length}}</span>
+                <span class="amount-all">{{getServiceCountBySegment(servicesAll)}}</span>
             </label>
     
             <label>
                 <input value='эконом' (change)='setFilter($event)' type="radio" name="sortByServices">
                 <p>эконом</p>
-                <span class="amount-economy">{{servicesLow.length}}</span>
+                <span class="amount-economy">{{getServiceCountBySegment(servicesLow)}}</span>
             </label>
     
             <label>
                 <input value='стандарт' (change)='setFilter($event)' type="radio" name="sortByServices">
                 <p>стандарт</p>
-                <span class="amount-standard">{{servicesStandart.length}}</span>
+                <span class="amount-standard">{{getServiceCountBySegment(servicesStandart)}}</span>
             </label>
     
             <label>
                 <input value='премиум' (change)='setFilter($event)' type="radio" name="sortByServices">
                 <p>премиум</p>
-                <span class="amount-premium">{{servicesComplete.length}}</span>
+                <span class="amount-premium">{{getServiceCountBySegment(servicesPremium)}}</span>
             </label>
         </div>
 

@@ -17,7 +17,7 @@ export class ServicesComponent implements OnInit {
     public servicesAll: Service[] = [];
     public servicesLow: Service[] = [];
     public servicesStandart: Service[] = [];
-    public servicesComplete: Service[] = [];
+    public servicesPremium: Service[] = [];
 
     constructor(private serviceSrv: ServicesService) {
     }
@@ -39,10 +39,16 @@ export class ServicesComponent implements OnInit {
                     return new Service({...service, subServices: service.getServiceBySegment(Segment.standart)})
                 });
 
-                this.servicesComplete = services.map((service) => {
+                this.servicesPremium = services.map((service) => {
                     return new Service({...service, subServices: service.getServiceBySegment(Segment.premium)})
                 });
         })
+    }
+
+    getServiceCountBySegment(services: Service[]): number {
+        let count = 0;
+        services.map(service => count += service.subServices.length);
+        return count;
     }
 
     setFilter(e) {
@@ -52,7 +58,7 @@ export class ServicesComponent implements OnInit {
         } else if (segment === 'стандарт') {
             this.services = this.servicesStandart
         } else if (segment === 'премиум') {
-            this.services = this.servicesComplete
+            this.services = this.servicesPremium
         } else {
             this.services = this.servicesAll
         }

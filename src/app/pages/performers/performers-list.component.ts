@@ -7,6 +7,7 @@ import { Marker } from 'leaflet';
 import { Performer } from '../../models/Performer';
 import { IFilter } from '../../interfaces/IFilter';
 import { ITag } from 'src/app/interfaces/ITag';
+import { first, switchMap, tap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-performersPage',
@@ -62,7 +63,6 @@ export class PerformersListComponent implements OnInit {
         this.filters.map(oldFilter => {
             if (oldFilter.title === filter.title) {
                 oldFilter = filter;
-                console.log("Фильтр " + oldFilter.title + " обновлен:");
             }
         })
         this.updateQueryParams();
@@ -91,23 +91,32 @@ export class PerformersListComponent implements OnInit {
     sendRequest(params?) {
         this.isLoading = true;
         this.cardSrv.getAllPerformersCard(params)
-            .subscribe(cards => {
-                if (cards.result) {
-                    this.performersCards = cards.result.result.map(card => new Performer(card));
-                    this.markers = this.mapSrv.showPerformers(this.performersCards);
-                    this.orderBy = cards.result.orderBy;
-                    this.pager = {
-                        nextPage: cards.result.next,
-                        prevPage: cards.result.previous,
-                        countPage: cards.result.count
+            .pipe(
+                first(),
+                tap((cards) => {
+                    if (cards.result) {
+                        this.performersCards = cards.result.result.map(card => new Performer(card));
+                        this.markers = this.mapSrv.showPerformers(this.performersCards);
+                        this.orderBy = cards.result.orderBy;
+                        this.pager = {
+                            nextPage: cards.result.next,
+                            prevPage: cards.result.previous,
+                            countPage: cards.result.count
+                        }
+                        this.isLoading = false;
                     }
-                    this.isLoading = false;
-                }
-            }); 
+                })
+            )
+            .subscribe(); 
     }
 
     getLocationFilters(filters: IFilter[]): IFilter[] {
-        return filters.filter(filter => filter.field === ('city' || 'metro' || 'district' || 'radius'))
+        return filters.filter(filter => {
+            return filter.field === 'district' || 
+                   filter.field === 'city' || 
+                   filter.field ==='metro' || 
+                   filter.field ==='radius'
+        })
     }
 
     resetFilters() {
@@ -178,15 +187,22 @@ export class PerformersListComponent implements OnInit {
     ngOnInit(): void {
         this.isLoading = true;
         this.animateHeader();
-        this.filters = this.filterSrv.filters;
-        this.locationFilters = this.getLocationFilters(this.filterSrv.filters)
-        console.log(this.locationFilters)
-        this.activatedRoute.queryParams
-            .subscribe(params => {
-                this.sendRequest(params);
-                this.initFilters(params);
-                this.initTags(params);
-            });            
+        
+        this.filterSrv.getAllFilters()
+            .pipe(
+                first(),
+                tap((filters: IFilter[]) => {
+                    this.filters = filters;
+                    this.locationFilters = this.getLocationFilters(filters).reverse()
+                }),
+                switchMap(() => this.activatedRoute.queryParams),
+                tap(params => {
+                    this.sendRequest(params);
+                    this.initFilters(params);
+                    this.initTags(params);
+                })
+            )
+            .subscribe(console.log)         
     }
 
     ngOnDestroy(): void {

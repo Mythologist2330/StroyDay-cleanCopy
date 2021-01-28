@@ -6,47 +6,16 @@
 
     <div class="filter-inner">
         <div class="filter-inner-location">
-            <fieldset>
-                <legend>Город</legend>
-                <select (change)='setCity($event)' >
-                    <ng-container *ngFor="let city of filter.selector">
-                        <option [value]="city.value" [selected]='filter.checked.includes(city.value)'>{{city.text}}</option>
-                    </ng-container>
-                </select>
-            </fieldset>
-
-            <fieldset *ngIf='stations.length'>
-                <legend>Район</legend>
-                <select>
-                    <option value="Адмиралтейский">Адмиралтейский</option>
-                    <option value="Василеостровский">Василеостровский</option>
-                    <option value="Выборгский">Выборгский</option>
-                    <option value="Калининский">Калининский</option>
-                    <option value="Кировский">Кировский</option>
-                    <option value="Колпинский">Колпинский</option>
-                    <option value="Красногвардейский">Красногвардейский</option>
-                    <option value="Красносельский">Красносельский</option>
-                </select>
-            </fieldset>
-
-            <fieldset *ngIf='stations.length'>
-                <legend>Метро</legend>
-                <select>
-                    <ng-container *ngFor="let station of stations">
-                        <option [value]="station.title">{{station.title}}</option>
-                    </ng-container>
-                </select>
-            </fieldset>
-
-            <fieldset>
-                <legend>Радиус поиска</legend>
-                <select name="">
-                    <option value="">1км</option>
-                    <option value="">5км</option>
-                    <option value="">10км</option>
-                    <option value="">20км</option>
-                </select>
-            </fieldset>
+            <ng-container *ngFor='let filter of locationFilters'>
+                <fieldset *ngIf='filter.selector.length > 1'>
+                    <legend>{{filter.title}}</legend>
+                    <select (change)='setFilter($event.target.value, filter.field)' >
+                        <ng-container *ngFor="let point of filter.selector">
+                            <option [value]="point.value" [selected]='filter.checked.includes(point.value)'>{{point.text}}</option>
+                        </ng-container>
+                    </select>
+                </fieldset>
+            </ng-container>
         </div>
     </div>
 </div>
