@@ -29,9 +29,30 @@ export class ServicesComponent implements OnInit {
             .subscribe(services => {
                 this.services = services;
                 this.servicesAll = services;
-                this.servicesLow = services.filter(service => service.getSegments().includes('эконом'));
-                this.servicesStandart = services.filter(service => service.getSegments().includes('стандарт'));
-                this.servicesComplete = services.filter(service => service.getSegments().includes('премиум'));
+
+                this.servicesLow = services.map((service) => {
+                    service.subServices = service.subServices.filter((subService) => {
+                        return subService.segment === 'эконом'
+                    });
+                    console.log(service.subServices)
+                    return service
+                });
+
+                // this.servicesStandart = services.map((service) => {
+                //     service.subServices = service.subServices.filter((subService) => {
+                //         return subService.segment === 'стандарт'
+                //     });
+                //     console.log(service)
+                //     return service
+                // });
+
+                // this.servicesComplete = services.map((service) => {
+                //     service.subServices = service.subServices.filter((subService) => {
+                //         return subService.segment === 'премиум'
+                //     });
+                //     console.log(service)
+                //     return service
+                // });
         })
     }
 
@@ -43,7 +64,9 @@ export class ServicesComponent implements OnInit {
             this.services = this.servicesStandart
         } else if (segment === 'премиум') {
             this.services = this.servicesComplete
-        } else return
+        } else {
+            this.services = this.servicesAll
+        }
     }
 
 }

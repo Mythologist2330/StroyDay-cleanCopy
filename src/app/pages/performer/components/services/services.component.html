@@ -7,7 +7,7 @@
     <div class="open-close-component" *ngIf="openCloseComponent">
         <div class="sort-by">
             <label>
-                <input value='' (change)='setFilter($event)' type="radio" name="sortByServices" checked>
+                <input value='все' (change)='setFilter($event)' type="radio" name="sortByServices" checked>
                 <p>Все</p>
                 <span class="amount-all">{{servicesAll.length}}</span>
             </label>
@@ -35,7 +35,7 @@
             <legend>Уровень цен</legend>
     
             <select (change)='setFilter($event)'>
-                <option value="">Все</option>
+                <option value="все">Все</option>
                 <option value="эконом">Эконом</option>
                 <option value="стандарт">Стандарт</option>
                 <option value="премиум">Премиум</option>
@@ -43,9 +43,11 @@
         </fieldset>
 
         <div class="services">
-            <div *ngFor="let service of services" class="service">    
-                <app-service [service]='service'></app-service>    
-            </div>
+            <ng-container *ngFor="let service of services">
+                <div *ngIf="service.subServices.length" class="service">
+                    <app-service [service]='service'></app-service>
+                </div>
+            </ng-container>
         </div>
     </div>
 </div>
