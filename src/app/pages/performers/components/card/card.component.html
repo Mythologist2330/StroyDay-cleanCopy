@@ -142,7 +142,7 @@
             </div>
             <div class='middleline'>
                 <app-rating-stars [stars]='+card.stars'></app-rating-stars>
-                <div class="discount">{{ card.description.discount }}</div>
+                <div class="discount" *ngIf='card.description.discount === "yes"'>-15%</div>
             </div>
             <div class='bottomline'>
                 <div *ngFor="let service of card.serviceList">

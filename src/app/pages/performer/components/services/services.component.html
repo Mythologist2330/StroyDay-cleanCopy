@@ -2,7 +2,7 @@
 
     <mat-icon [ngStyle]="{transform: openCloseComponent ? 'rotate(180deg)' : 'none'}" class="arrow">keyboard_arrow_down</mat-icon>
 
-    <p class="header" (click)="openCloseComponent = !openCloseComponent">Услуги</p>
+    <p class="header" (click)="openCloseComponent = !openCloseComponent">Услуги <span>({{servicesAll.length}})</span></p>
 
     <div class="open-close-component" *ngIf="openCloseComponent">
         <div class="sort-by">

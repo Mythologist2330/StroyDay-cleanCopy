@@ -1,5 +1,7 @@
 import { Component, Input, EventEmitter, OnInit, Output } from '@angular/core';
 import { IFilter } from '../../../../interfaces/IFilter';
+import { LocationService } from '../../../../services/location.service';
+import { IStation } from '../../../../interfaces/IMetro';
 
 
 @Component({
@@ -9,20 +11,37 @@ import { IFilter } from '../../../../interfaces/IFilter';
 })
 export class FilterLocationComponent implements OnInit {
 
-  @Input() stations: string[];
   @Input() filter: IFilter;
   @Output() location = new EventEmitter();
   @Output() sendFilter = new EventEmitter();
 
+  public stations: IStation[] = [];
+  public district: string[] = [];
   public toggle = false;
-  constructor() { }
+  constructor(private locationSrv: LocationService) { }
 
-  setFilter(e) {
-    this.filter.checked = [e.target.value];
+  getDistrict() {
+    // this.filterSrv.metroSpb.map(line => {
+    //   line.station.map(station => {
+    //     this.stations.push(station.title)
+    //   })
+    // });
+    // return this.stations;
+  }
+
+  setCity(e) {
+    let city = e.target.value
+    this.filter.checked = [city];
     this.sendFilter.emit(this.filter);
+    if (city == 'Санкт-Петербург') {
+      this.locationSrv.getMetro(city).subscribe(metro => this.stations = metro.stations)
+    } else { this.stations = [] }
   }
 
   ngOnInit(): void {
+    if (this.filter.checked[0] === 'Санкт-Петербург') {
+      this.locationSrv.getMetro(this.filter.checked[0]).subscribe(metro => this.stations = metro.stations)
+    }
   }
 
 }

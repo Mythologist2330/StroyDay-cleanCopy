@@ -42,7 +42,9 @@ export class CompleteOrdersComponent implements OnInit {
             this.orders = this.ordersStandart
         } else if (segment === 'premium') {
             this.orders = this.ordersPremium
-        } else return
+        } else {
+            this.orders = this.ordersAll
+        }
     }
 
     ngOnInit(): void {

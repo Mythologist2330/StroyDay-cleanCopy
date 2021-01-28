@@ -23,8 +23,8 @@ export class PerformersListComponent implements OnInit {
     public page = 'Исполнители';
     public performersCards: Performer[] = [];
     public card: Performer;
-    public stations: string[] = [];
     public filters: IFilter[];
+    public locationFilters: IFilter[];
     public orderBy = 'header';
     public tags: ITag[] = [];
     public pager: any = null;
@@ -53,15 +53,6 @@ export class PerformersListComponent implements OnInit {
         private mapSrv: MapService,
         private router: Router,
         private activatedRoute: ActivatedRoute) {}
-
-    getStations() {
-        this.filterSrv.metroSpb.map(line => {
-          line.station.map(station => {
-            this.stations.push(station.title)
-          })
-        })
-        return this.stations;
-    }
 
     setLocation(e) {
         console.log(e);
@@ -110,9 +101,13 @@ export class PerformersListComponent implements OnInit {
                         prevPage: cards.result.previous,
                         countPage: cards.result.count
                     }
-                    this.isLoading = false;                    
+                    this.isLoading = false;
                 }
             }); 
+    }
+
+    getLocationFilters(filters: IFilter[]): IFilter[] {
+        return filters.filter(filter => filter.field === ('city' || 'metro' || 'district' || 'radius'))
     }
 
     resetFilters() {
@@ -184,6 +179,8 @@ export class PerformersListComponent implements OnInit {
         this.isLoading = true;
         this.animateHeader();
         this.filters = this.filterSrv.filters;
+        this.locationFilters = this.getLocationFilters(this.filterSrv.filters)
+        console.log(this.locationFilters)
         this.activatedRoute.queryParams
             .subscribe(params => {
                 this.sendRequest(params);

@@ -15,7 +15,8 @@
 
         <ng-container *ngFor='let filter of filters'>
             <ng-container *ngIf="filter.field === 'city'">
-                <app-filter-location [stations]='getStations()' [filter]='filter' (sendFilter)="updateFilterCheckedValue($event)"></app-filter-location>
+                <app-filter-location [filter]='filter' 
+                                     (sendFilter)="updateFilterCheckedValue($event)"></app-filter-location>
             </ng-container>            
         </ng-container>
 

@@ -3,7 +3,7 @@
     <mat-icon [ngStyle]="{transform: openCloseComponent ? 'rotate(180deg)' : 'none'}" class="arrow">keyboard_arrow_down</mat-icon>
 
     <div class="header" (click)="openCloseComponent = !openCloseComponent">
-        <p>Отзывы <span>{{reviews.length}}</span></p>
+        <p>Отзывы <span>({{reviews.length}})</span></p>
     </div>
 
     <div class="open-close-component" *ngIf="openCloseComponent">
