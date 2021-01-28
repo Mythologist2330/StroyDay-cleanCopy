@@ -29,4 +29,8 @@ export class Service {
         });
         return Array.from(segments);
     }
+
+    getServiceBySegment(segment: Segment) {
+        return this.subServices.filter(sub => sub.segment === segment)
+    }
 }

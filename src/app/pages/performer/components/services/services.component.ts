@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { map } from "rxjs/operators";
+import { Segment } from "src/app/models/Order";
 import { Service } from "src/app/models/Service";
 import { ServicesService } from 'src/app/services/services.service';
 
@@ -31,28 +32,16 @@ export class ServicesComponent implements OnInit {
                 this.servicesAll = services;
 
                 this.servicesLow = services.map((service) => {
-                    service.subServices = service.subServices.filter((subService) => {
-                        return subService.segment === 'эконом'
-                    });
-                    console.log(service.subServices)
-                    return service
+                    return new Service({...service, subServices: service.getServiceBySegment(Segment.low)})
                 });
 
-                // this.servicesStandart = services.map((service) => {
-                //     service.subServices = service.subServices.filter((subService) => {
-                //         return subService.segment === 'стандарт'
-                //     });
-                //     console.log(service)
-                //     return service
-                // });
+                this.servicesStandart = services.map((service) => {
+                    return new Service({...service, subServices: service.getServiceBySegment(Segment.standart)})
+                });
 
-                // this.servicesComplete = services.map((service) => {
-                //     service.subServices = service.subServices.filter((subService) => {
-                //         return subService.segment === 'премиум'
-                //     });
-                //     console.log(service)
-                //     return service
-                // });
+                this.servicesComplete = services.map((service) => {
+                    return new Service({...service, subServices: service.getServiceBySegment(Segment.premium)})
+                });
         })
     }
 

@@ -11,7 +11,7 @@
     <ng-container *ngIf='card'>
         <app-slider [gallery]='card.gallery'></app-slider>
         <app-card [card]='card' [rating]='getRating()'></app-card>
-        <app-about-performer></app-about-performer>
+        <app-about-performer [card]='card'></app-about-performer>
         <app-map-location [markers]='markers'></app-map-location>
         <app-services></app-services>
         <app-reviews [reviews]='reviews'></app-reviews>
