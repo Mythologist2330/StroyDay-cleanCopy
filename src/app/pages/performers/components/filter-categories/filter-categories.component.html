@@ -9,33 +9,36 @@
         <div class="filter-inner-category">
 
             <div class="search-by-categories">
-                <input type="search" placeholder="Поиск по категориям">
+                <input type="search" [value]='searchText' (change)='setSearch($event.target.value)' placeholder="Поиск по категориям">
 
-                <button>
+                <button (click)='setSearch(searchText)'>
                     <mat-icon>search</mat-icon>
                 </button>
             </div>
+            <div class='search-popup' *ngIf='popup.length;'>
+                <ng-container *ngFor='let point of popup'>
+                    <p (click)='addCheck(point)'>{{point}}</p>
+                </ng-container>
+            </div>
 
             <div class="checkboxes-lists">
-                <div class="checkboxes-list" *ngFor='let category of categories'>
-                    <div class="checkboxes-list-header" (click)="openCloseCheckboxes($event)">
-                        <mat-icon>keyboard_arrow_right</mat-icon>
-                        <p>{{category}}</p>
-                    </div>
+                <div class="checkboxes-list" *ngFor='let category of categories; let i = index'>
 
-                    <div class="checkboxes">
+                    <div class="checkboxes-list-header" [ngClass]="number === i ? 'open' : ''" (click)="number = number === i ? null : i">
+                        <mat-icon>keyboard_arrow_right</mat-icon>
+                        <p>{{category.title}} ({{category.subServices.length}})</p>
+                    </div>
+                    
+                    <div class="checkboxes" [@toggleTree]="number === i ? 'open' : 'close'" *ngFor='let sub of category.subServices'>
                         <label>
-                            <input type="checkbox" name="">
-                            <p>Ремонт и отделка</p>
-                        </label>
-                        
-                        <label>
-                            <input type="checkbox" name="">
-                            <p>Оформление и дизайн</p>
+                            <input type="checkbox" [checked]='isChecked(sub.title)' [value]="sub.title" (change)='setCategories($event.target.value)'>
+                            <p>{{sub.title}}</p>
                         </label>
                     </div>
                 </div>
-                <p class="checkboxes-reset">Сбросить</p>
+
+                
+                <p class="checkboxes-reset" (click)='resetCheckboxes()'>Сбросить</p>
             </div>
         </div>
     </div>

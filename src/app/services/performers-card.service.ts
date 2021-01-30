@@ -27,7 +27,7 @@ export class PerformersCardService {
   getAllPerformersCard(params?): Observable<any>  {
     return this.http.get(this.url, {params})
       .pipe(
-        tap(console.log)
+        // tap(console.log)
       )
   }
 

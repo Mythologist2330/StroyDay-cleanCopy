@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PerformersCardService } from '../../services/performers-card.service';
 import { ReviewService } from 'src/app/services/review.service';
+import { OrderService } from 'src/app/services/order.service';
 import { MapService } from 'src/app/services/map.service';
 import { Performer } from 'src/app/models/Performer';
 import { Marker } from 'leaflet';
@@ -24,6 +25,7 @@ export class PerformerComponent implements OnInit{
     constructor (
         private performersSrv: PerformersCardService,
         private reviewSrv: ReviewService,
+        private orderSrv: OrderService,
         private activatedRoute: ActivatedRoute,
         private mapSrv: MapService,
                 ) {}
@@ -39,6 +41,8 @@ export class PerformerComponent implements OnInit{
                 }),
                 switchMap(card => this.reviewSrv.getAllReview(card.id)),
                 tap(reviews => this.reviews = reviews),
+                switchMap(() => this.orderSrv.getAllOrders(this.card.id)),                
+                tap(orders => this.card.orders = orders),
                 first()
             )
             .subscribe()

@@ -27,6 +27,10 @@ app.get('/cards', async (request, response) => {
           cards = cards.filter(card => card.location.metro === q.metro)
         }
 
+        if (q.district) {
+          cards = cards.filter(card => card.location.district === q.district)
+        }
+
         if (q.feedback) {
           cards = cards.filter(card => card.orders.length >= +(q.feedback || '0'))
         }

@@ -41,10 +41,10 @@ export class Performer {
     getLocation() {
         let location = '';
         if (this.location.city) {
-            location += this.location.city;
+            location += this.location.city + ', ';
         }
         if (this.location.district) {
-            location += this.location.district;
+            location += this.location.district + ', ';
         }
         if (this.location.adress) {
             location += this.location.adress;

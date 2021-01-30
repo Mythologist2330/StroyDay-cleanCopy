@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { map } from "rxjs/operators";
+import { Segment } from "src/app/models/Order";
 import { Service } from "src/app/models/Service";
 import { ServicesService } from 'src/app/services/services.service';
 
@@ -16,7 +17,7 @@ export class ServicesComponent implements OnInit {
     public servicesAll: Service[] = [];
     public servicesLow: Service[] = [];
     public servicesStandart: Service[] = [];
-    public servicesComplete: Service[] = [];
+    public servicesPremium: Service[] = [];
 
     constructor(private serviceSrv: ServicesService) {
     }
@@ -31,29 +32,23 @@ export class ServicesComponent implements OnInit {
                 this.servicesAll = services;
 
                 this.servicesLow = services.map((service) => {
-                    service.subServices = service.subServices.filter((subService) => {
-                        return subService.segment === 'эконом'
-                    });
-                    console.log(service.subServices)
-                    return service
+                    return new Service({...service, subServices: service.getServiceBySegment(Segment.low)})
                 });
 
-                // this.servicesStandart = services.map((service) => {
-                //     service.subServices = service.subServices.filter((subService) => {
-                //         return subService.segment === 'стандарт'
-                //     });
-                //     console.log(service)
-                //     return service
-                // });
+                this.servicesStandart = services.map((service) => {
+                    return new Service({...service, subServices: service.getServiceBySegment(Segment.standart)})
+                });
 
-                // this.servicesComplete = services.map((service) => {
-                //     service.subServices = service.subServices.filter((subService) => {
-                //         return subService.segment === 'премиум'
-                //     });
-                //     console.log(service)
-                //     return service
-                // });
+                this.servicesPremium = services.map((service) => {
+                    return new Service({...service, subServices: service.getServiceBySegment(Segment.premium)})
+                });
         })
+    }
+
+    getServiceCountBySegment(services: Service[]): number {
+        let count = 0;
+        services.map(service => count += service.subServices.length);
+        return count;
     }
 
     setFilter(e) {
@@ -63,7 +58,7 @@ export class ServicesComponent implements OnInit {
         } else if (segment === 'стандарт') {
             this.services = this.servicesStandart
         } else if (segment === 'премиум') {
-            this.services = this.servicesComplete
+            this.services = this.servicesPremium
         } else {
             this.services = this.servicesAll
         }

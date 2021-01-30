@@ -1,9 +1,9 @@
-<div class="container" *ngIf='reviews'>
+<div class="container" *ngIf='reviews && reviews.length'>
 
     <mat-icon [ngStyle]="{transform: openCloseComponent ? 'rotate(180deg)' : 'none'}" class="arrow">keyboard_arrow_down</mat-icon>
 
     <div class="header" (click)="openCloseComponent = !openCloseComponent">
-        <p>Отзывы <span>{{reviews.length}}</span></p>
+        <p>Отзывы <span>({{reviews.length}})</span></p>
     </div>
 
     <div class="open-close-component" *ngIf="openCloseComponent">
@@ -15,7 +15,7 @@
             </svg>
 
             <div class="statistics-rating-and-based-on-comments">
-                <p class="statistics-rating">{{ getRatingAllReviews(5).toFixed(1) }}</p>
+                <p class="statistics-rating">{{ getRatingAllReviews(5).toFixed(1) || 0 }}</p>
                 <p class="based-on-comments">На основании <span>{{ reviews.length }}</span> отзывов</p>
             </div>
     
