@@ -10,12 +10,16 @@ import { Service } from '../models/Service';
 
 
 export class ServicesService {
+
     constructor(private firestore: AngularFirestore) {
-        
     }
 
     getAllServices(): Observable<Service[]> {
         return this.firestore.collection<Service>('services').valueChanges().pipe(first())
+    }
+
+    getCategories(): Observable<any[]> {
+      return this.firestore.collection<any>('serviceList').valueChanges().pipe(first())
     }
 
     createService(service: Service): Promise<any> {

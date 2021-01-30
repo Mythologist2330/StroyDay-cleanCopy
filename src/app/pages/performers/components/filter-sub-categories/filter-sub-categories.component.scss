@@ -1,0 +1,49 @@
+.checkboxes-list-header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    &:hover{
+        cursor: pointer;
+    }
+
+    .mat-icon {
+        transition: all .2s;
+    }
+    &.open {
+        .mat-icon {
+            transform: rotate(90deg);
+        }
+    }
+
+    p{
+        font-weight: 600;
+        font-size: 14px;
+    }
+}
+
+.checkboxes{
+    display: none;
+
+    &.open {
+        display: block;
+    }
+
+    label{
+        display: flex;
+        align-items: center;
+        margin: 12px 0 0 28px;
+
+        input{
+            // width: 20px;
+            // height: 20px;
+            margin-right: 8px;
+            border: 1px solid #C3CBD6;
+            border-radius: 2px;
+        }
+
+        p {
+            font-size: 14px;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+<div class="checkboxes-list-header" (click)='toggle = !toggle' [ngClass]='toggle ? "open" : ""'>
+    <mat-icon>keyboard_arrow_right</mat-icon>
+    <p>{{category.title}} ({{category.subServices.length}})</p>
+</div>
+
+<div class="checkboxes" [ngClass]='toggle ? "open" : ""' *ngFor='let sub of category.subServices'>
+    <label>
+        <input type="checkbox" [checked]='isChecked(sub.title)' [value]="sub.title" (change)='setCategory($event.target.value)'>
+        <p>{{sub.title}}</p>
+    </label>
+</div>

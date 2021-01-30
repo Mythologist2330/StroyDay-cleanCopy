@@ -12,7 +12,6 @@ export class PaginationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.data);
     this.pager = new Array(this.data.count)
   }
 

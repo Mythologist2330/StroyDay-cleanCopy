@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PerformersCardService } from '../../services/performers-card.service';
 import { FilterService } from '../../services/filter.service';
+import { ServicesService } from '../../services/services.service';
 import { MapService } from '../../services/map.service';
 import { Marker } from 'leaflet';
 import { Performer } from '../../models/Performer';
@@ -37,20 +38,15 @@ export class PerformersListComponent implements OnInit {
     public moduleWindowMapLocation = false;
     public shrinkHeader = false;
     public decreaseFieldClick = false;
-    readonly categories = [
-        'Архитектура и проектирование',
-        'Инженерные системы',
-        'Ремонт и отделка',
-        'Строительство',
-        'Банковские гарантии',
-        'Бухгалтерия',
-        'Строительная техника',
-        'Инженерные системы',
-    ];
+
+    public categories = [];
+    public categoryFilter: IFilter;
+    public params: any;
 
     constructor(
         private cardSrv: PerformersCardService,
         private filterSrv: FilterService,
+        private servicesSrv: ServicesService,
         private mapSrv: MapService,
         private router: Router,
         private activatedRoute: ActivatedRoute) {}
@@ -74,7 +70,7 @@ export class PerformersListComponent implements OnInit {
         }
         this.filters.map(filter => {
             if (filter.title === tag.title) {
-                filter.checked = filter.type === 'radio' ? ['0'] : [];
+                filter.checked = filter.type !== 'checkbox' ? ['0'] : [];
             }
         });
         this.updateQueryParams();
@@ -119,14 +115,18 @@ export class PerformersListComponent implements OnInit {
         })
     }
 
+    getCategories() {
+        this.servicesSrv.getCategories().subscribe(categories => {
+            console.log(categories)
+            this.categories = categories;
+            this.updateQueryParams();
+        })
+    }
+
     resetFilters() {
         this.toggle = false;
         this.filters.map(filter => {
-            if (filter.type === ('radio' || 'select')) {
-                filter.checked = ['0']
-            } else if (filter.type === 'checkbox') {                
-                filter.checked = []
-            }
+            filter.checked = (filter.type !== 'checkbox') ? ['0'] : [];
         });
         this.updateQueryParams();
     }
@@ -140,7 +140,7 @@ export class PerformersListComponent implements OnInit {
         const queryParams: any = {};
         this.filters.map(filter => {
             if (filter.checked[0] && filter.checked[0] !== '0') {
-                queryParams[filter.field] = filter.checked.join(',');
+                queryParams[filter.field] = filter.checked.join('+');
             }
             queryParams.orderBy = this.orderBy;
         });
@@ -157,11 +157,11 @@ export class PerformersListComponent implements OnInit {
         this.tags = [];
         this.filters.map(filter => {
             if (params[filter.field]) {
-                filter.checked = params[filter.field].split(',');
+                filter.checked = params[filter.field].split('+');
 
                 const points = [];
                 filter.checked.map(point => {
-                    points.push(filter.selector.find(val => val.value === point).text)
+                    points.push(filter.selector.find(val => val.value === point).text);
                 })
                 const tag: ITag = {
                     title: filter.title,
@@ -191,22 +191,38 @@ export class PerformersListComponent implements OnInit {
         this.filterSrv.getAllFilters()
             .pipe(
                 first(),
-                tap((filters: IFilter[]) => {
-                    this.filters = filters;
-                    this.locationFilters = this.getLocationFilters(filters).reverse()
-                }),
+                tap((filters: IFilter[]) => this.filters = filters),
                 switchMap(() => this.activatedRoute.queryParams),
                 tap(params => {
+                    this.params = params;
                     this.sendRequest(params);
                     this.initFilters(params);
-                    this.initTags(params);
-                })
+                }),
+                switchMap(() => this.servicesSrv.getCategories()),
+                tap(categories => {
+                    this.categories = categories;
+                    this.initCategoryFilterWithSelectors(this.categories);                    
+                    this.initTags(this.params)
+                }),
             )
-            .subscribe(console.log)         
+            .subscribe()         
+    }
+
+    initCategoryFilterWithSelectors(categories) {
+        this.categoryFilter = this.filters.find(filter => filter.field === 'categories');
+        categories.map(cat => {
+            cat.subServices.map(sub => {
+                    this.categoryFilter.selector.push({value: sub.title, text: sub.title})
+            })
+        });
+    }
+
+    setCategoriesFilter(checked: []) {
+        this.categoryFilter.checked = checked;
+        this.updateQueryParams();
     }
 
     ngOnDestroy(): void {
-        console.log('destroy');
     }    
 
     openLocationMap(event) {        

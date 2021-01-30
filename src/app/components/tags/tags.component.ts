@@ -7,10 +7,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class TagsComponent implements OnInit {
 
-  @Input() tags: {title:string, field: string, value: string, text: string }[];
+  @Input() tags: any[];
   @Output() changeTags = new EventEmitter();
   isEmpty() {
-    return !(this.tags.some(tag => tag.value !== '0'))
+    return !(this.tags.some(tag => tag.text[0] !== '0'))
   }
 
   constructor() { }
