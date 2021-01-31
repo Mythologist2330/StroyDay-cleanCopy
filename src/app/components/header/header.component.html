@@ -151,12 +151,12 @@
                     </svg>
 
                     <div class="profile-name">
-                        <div class="name">
+                        <div class="name-and-avatar">
                             <img src="../../../assets/images/avatar-profile.png">
 
                             <div>
-                                <p>Дмитрий Иванов</p>
-                                <a>Перейти в личный кабинет</a>
+                                <p class="name" routerLink="/personalArea" (click)="profileToogle = !profileToogle">Дмитрий Иванов</p>
+                                <p class="name-link" routerLink="/personalArea" (click)="profileToogle = !profileToogle">Перейти в личный кабинет</p>
                             </div>
                         </div>
 
