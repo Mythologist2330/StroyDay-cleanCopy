@@ -349,7 +349,7 @@
                     background-color: #FFFFFF;
                     box-shadow: 0px 0px 15px rgba(22, 47, 78, 0.1);
                     border-radius: 4px;
-                    z-index: 600;
+                    z-index: 667;
 
                     .triangle{
                         position: absolute;
@@ -362,7 +362,7 @@
                         margin-bottom: 16px;
                         border-bottom: 1px solid #C3CBD6;
 
-                        .name{
+                        .name-and-avatar{
                             display: flex;
                             align-items: center;
                         }
@@ -381,17 +381,19 @@
 
                         div{
 
-                            p{
+                            .name{
                                 margin: 1px 0 0 12px;
                                 font-weight: 500;
                                 font-size: 14px;
                                 color: #334D6E;
+                                outline: none;
                             }
 
-                            a{
+                            .name-link{
                                 margin-left: 12px;
                                 font-size: 12px;
                                 color: #8594A8;
+                                outline: none;
                             }
                         }
                         
@@ -874,7 +876,7 @@
                             margin: 0;
                             padding: 0 16px;
 
-                            .name{
+                            .name-and-avatar{
                                 padding: 15px 0 9px 0;
 
                                 img{
@@ -884,11 +886,11 @@
 
                                 div{
 
-                                    p{
+                                    .name{
                                         margin: 1px 0 0 18px;
                                     }
 
-                                    a{
+                                    .name-link{
                                         margin-left: 18px;
                                     }
                                 }

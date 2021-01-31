@@ -31,6 +31,7 @@ import { ServiceSpecificComponent } from './pages/servicesPage/components/servic
 
 import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
+import { PersonalAreaModule } from './pages/personalArea/personalArea.module';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -65,7 +66,8 @@ registerLocaleData(localeRu, 'ru');
     PerformerModule,
     MaterialModule,
     BrowserAnimationsModule,
-    ServicesPageModule
+    ServicesPageModule,
+    PersonalAreaModule
   ],
   providers: [AngularFirestore, { provide: LOCALE_ID, useValue: 'ru' }],
   bootstrap: [AppComponent],
