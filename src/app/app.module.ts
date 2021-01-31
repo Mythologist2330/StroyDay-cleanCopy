@@ -31,7 +31,7 @@ import { ServiceSpecificComponent } from './pages/servicesPage/components/servic
 
 import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
-import { PersonalAreaModule } from './pages/personalArea/personalArea.module';
+import { PersonalAreaModule } from './pages/personal-area/personal-area.module';
 
 registerLocaleData(localeRu, 'ru');
 
