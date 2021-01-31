@@ -192,8 +192,8 @@ export class PerformersListComponent implements OnInit {
             .pipe(
                 first(),
                 tap((filters: IFilter[]) => {
-                    this.filters = filters;
-                    this.locationFilters = this.getLocationFilters(this.filters).reverse()
+                    this.filters = this.sortInOrder(filters);
+                    this.locationFilters = this.getLocationFilters(this.filters);
                 }),
                 switchMap(() => this.activatedRoute.queryParams),
                 tap(params => {
@@ -209,6 +209,33 @@ export class PerformersListComponent implements OnInit {
                 }),
             )
             .subscribe()         
+    }
+
+    sortInOrder(filters: IFilter[]) {
+        let sortedFilters = [];
+        const order = [
+            'categories',
+            'city',
+            'district',
+            'metro',
+            'stars',
+            'price',
+            'discount',
+            'feedback',
+            'contract',
+            'face',
+            'ordersInProgress',
+            'activity'
+        ];
+        order.map(field => {
+            sortedFilters.push(this.pushFilter(field, filters))
+        });
+        return sortedFilters;
+        
+    }
+
+    pushFilter(field: string, filters: IFilter[]) {
+        return filters.find(filter => filter.field === field)
     }
 
     initCategoryFilterWithSelectors(categories) {
