@@ -1,4 +1,13 @@
 .container{
+    display: flex;
     width: 100%;
     background-color: #F7F9FB;
+
+    .center-and-right-columns{
+        margin: 32px 0 56px 32px;
+
+        .center-column{
+            margin-right: 24px;
+        }
+    }
 }
