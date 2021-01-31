@@ -16,8 +16,6 @@
 
     .logo {
         position: relative;
-        width: 120px;
-        margin-right: 24px;
 
         img {
             width: 120px;
@@ -31,7 +29,7 @@
 
         .circle-online{
             position: absolute;
-            top: 92px;
+            bottom: 8px;
             right: 4px;
             width: 16px;
             height: 16px;
@@ -44,6 +42,10 @@
 
     .logo-description-statistics-block{
         display: flex;
+        .logo {
+            height: fit-content;
+            margin-right: 1.5rem;
+        }
 
         .description{
             max-width: 290px;
@@ -244,18 +246,14 @@
             display: block;
 
             .logo {
-                position: absolute;
-                top: 34px;
-                left: 18px;
+                margin-right: 10px;
 
                 img {
                     width: 64px;
                     height: 64px;
                 }
 
-                .circle-online{
-                    top: 45px;
-                    right: 58px;
+                .circle-online {
                     width: 8px;
                     height: 8px;
                 }
@@ -263,25 +261,28 @@
 
             .description{
                 width: auto;
-
-                .description-elem{
-                    margin: 8px 0 0 0;
-                }
-
+                display: flex;
                 .description-header{
-                    min-height: 48px;
-                    margin: 0 0 12px 76px;
                     font-weight: 500;
                     font-size: 16px;
                     line-height: 24px;
-                }
-
-                app-rating-stars{
-                    position: relative;
-                    left: 76px;
-                    top: -7px;
+                    margin: 0;
                 }
             }
+
+            .description-elem{
+                margin: 8px 0 0 0;
+                display: flex;
+                align-items: flex-start;
+                img {
+                    margin-right: 7px;
+                }
+                p {
+                    font-size: 14px;
+                    color: #334D6E;
+                }
+            }
+
 
             .statistics{
                 width: 100%;

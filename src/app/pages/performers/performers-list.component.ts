@@ -191,7 +191,10 @@ export class PerformersListComponent implements OnInit {
         this.filterSrv.getAllFilters()
             .pipe(
                 first(),
-                tap((filters: IFilter[]) => this.filters = filters),
+                tap((filters: IFilter[]) => {
+                    this.filters = filters;
+                    this.locationFilters = this.getLocationFilters(this.filters).reverse()
+                }),
                 switchMap(() => this.activatedRoute.queryParams),
                 tap(params => {
                     this.params = params;
