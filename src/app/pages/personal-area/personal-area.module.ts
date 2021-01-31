@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { SharedModule } from "src/app/shared/shared.module";
+import { BasicInfoComponent } from "./components/basic-info/basic-info.component";
 import { NavigationComponent } from "./components/navigation/navigation.component";
 import { ProfileComponent } from "./components/profile/profile.component";
 import { RequisitesComponent } from "./components/requisites/requisites.component";
@@ -17,7 +18,8 @@ const routes = [
         PersonalAreaComponent,
         NavigationComponent,
         ProfileComponent,
-        RequisitesComponent
+        RequisitesComponent,
+        BasicInfoComponent
     ],
     imports: [
         CommonModule,
