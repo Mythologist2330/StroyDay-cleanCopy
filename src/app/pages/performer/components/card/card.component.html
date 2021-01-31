@@ -2,33 +2,65 @@
     <div class="container">
         <div class="performers-card">
             <div class="logo-description-statistics-block">
-                <div class="logo">
-                    <img [src]="card.logo">
-                    <div class="circle-online"></div>
-                </div>
-
-                <div class="description">
-                    <p class="description-header">{{ card.description.title }}</p>
-                    <ng-container *ngIf='rating'>
-                        <app-rating-stars [stars]='rating'></app-rating-stars>
-                    </ng-container>
-                    
-
-                    <div class="description-elem">
-                        <img src='/assets/images/performers/category.png'>
-                        <p>{{ card.description.activity }}</p>
+                <ng-container *ngIf='!isMobile; else mobile'>
+                    <div class="logo">
+                        <img [src]="card.logo">
+                        <div class="circle-online"></div>
                     </div>
-
-                    <div class="description-elem">
-                        <img src='/assets/images/performers/marker.png'>      
-                        <p>{{ card.getLocation() }}</p>
+                    <div class="description">
+                        <p class="description-header">{{ card.description.title }}</p>
+                        <ng-container *ngIf='rating'>
+                            <app-rating-stars [stars]='rating'></app-rating-stars>
+                        </ng-container>
+                        
+    
+                        <div class="description-elem">
+                            <img src='/assets/images/performers/category.png'>
+                            <p>{{ card.description.activity }}</p>
+                        </div>
+    
+                        <div class="description-elem">
+                            <img src='/assets/images/performers/marker.png'>      
+                            <p>{{ card.getLocation() }}</p>
+                        </div>
+    
+                        <div class="description-elem">
+                            <img src='/assets/images/performers/metro.png'>        
+                            <p>{{ card.location.metro }}</p>
+                        </div>
                     </div>
+                </ng-container>
 
-                    <div class="description-elem">
-                        <img src='/assets/images/performers/metro.png'>        
-                        <p>{{ card.location.metro }}</p>
+                <ng-template #mobile>
+                    <div class='description-mobile'>
+                        <div class='description'>
+                            <div class="logo">
+                                <img [src]="card.logo">
+                                <div class="circle-online"></div>
+                            </div>
+                            <div>
+                                <p class="description-header">{{ card.description.title }}</p>
+                                <ng-container *ngIf='rating'>
+                                    <app-rating-stars [stars]='rating'></app-rating-stars>
+                                </ng-container>
+                            </div>                            
+                        </div>
+                        <div class="description-elem">
+                            <img src='/assets/images/performers/category.png'>
+                            <p>{{ card.description.activity }}</p>
+                        </div>
+    
+                        <div class="description-elem">
+                            <img src='/assets/images/performers/marker.png'>      
+                            <p>{{ card.getLocation() }}</p>
+                        </div>
+    
+                        <div class="description-elem">
+                            <img src='/assets/images/performers/metro.png'>        
+                            <p>{{ card.location.metro }}</p>
+                        </div>
                     </div>
-                </div>
+                </ng-template>                
 
                 <div class="statistics">
                     <div class="statistic">

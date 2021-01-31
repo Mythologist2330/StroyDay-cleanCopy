@@ -9,13 +9,15 @@ import { Performer } from 'src/app/models/Performer';
 
 export class CardComponent{
     
-    public isFavorite = false;
-    public shrinkHeader = false;
     @Input() card: Performer;
     @Input() rating: number;
+    public isFavorite = false;
+    public shrinkHeader = false;
+    public isMobile = false;
 
     ngOnInit(): void {
         this.animateHeader();
+        if (window.innerWidth <= 767) { this.isMobile = true }
     }
 
     animateHeader(): void {
