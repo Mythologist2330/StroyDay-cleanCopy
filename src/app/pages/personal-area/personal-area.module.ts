@@ -7,6 +7,8 @@ import { GalleryComponent } from "./components/gallery/gallery.component";
 import { NavigationComponent } from "./components/navigation/navigation.component";
 import { ProfileComponent } from "./components/profile/profile.component";
 import { RequisitesComponent } from "./components/requisites/requisites.component";
+import { ServiceComponent } from "./components/service/service.component";
+import { ServicesComponent } from "./components/services/services.component";
 import { PersonalAreaComponent } from "./personal-area.component";
 
 
@@ -21,7 +23,9 @@ const routes = [
         ProfileComponent,
         RequisitesComponent,
         BasicInfoComponent,
-        GalleryComponent
+        GalleryComponent,
+        ServicesComponent,
+        ServiceComponent
     ],
     imports: [
         CommonModule,
