@@ -1,0 +1,16 @@
+<div class="container">
+
+    <p class="header">Галерея работ</p>
+
+    <div class="albums">
+        <div class="album" *ngFor="let album of albums" [ngStyle]="{background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, #000000 100%), url' + '(' + album.image + ')'}">
+            <div class="edit"><mat-icon>edit</mat-icon></div>
+
+            <p class="title">{{ album.title }}</p>
+            <p>{{ album.count }}</p>
+        </div>
+    </div>
+
+    <button class="button-all-albums">Все альбомы</button>
+
+</div>
