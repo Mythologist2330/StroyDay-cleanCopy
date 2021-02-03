@@ -1,0 +1,23 @@
+<div class="container">
+
+    <mat-icon class="edit">edit</mat-icon>
+
+    <p class="header">Документы <span>({{ documents.length }})</span></p>
+
+    <div class="documents">
+        <div *ngFor="let document of documents" class="document" (click)='download()'>
+
+            <div class="image-and-title">
+                <div class="image">
+                    <img src="/assets/images/performer/document.png">
+                </div>
+
+                <p class="title">{{ document.title }}</p>
+            </div>
+
+            <p class="format-and-size">{{ document.format }}, {{ document.size }} KB</p>
+
+        </div>
+    </div>
+
+</div>
