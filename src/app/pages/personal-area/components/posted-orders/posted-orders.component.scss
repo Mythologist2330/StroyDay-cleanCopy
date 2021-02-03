@@ -1,0 +1,124 @@
+.container{
+    width: 676px;
+    padding: 29px 31px 31px 31px;
+    margin-top: 24px;
+    background-color: #FFFFFF;
+    border: 1px solid #E3E9F2;
+    border-radius: 4px;
+
+    .header{
+        margin-bottom: 26px;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 28px;
+        color: #334D6E;
+
+        span{
+            color: #90A0B7;
+        }
+    }
+
+    .application{
+        width: 100%;
+        padding: 21px 24px 22px 23px;
+        margin-top: 24px;
+        border: 1px solid #C3CBD6;
+        border-radius: 4px;
+        background-color: #FFFFFF;
+        box-shadow: 0 8px 0 0 rgb(14, 110, 224, 1);
+
+        .title-and-price{
+            display: flex;
+            justify-content: space-between;
+
+            .application-title{
+                margin-bottom: 9px;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 28px;
+                color: #334D6E;
+            }
+
+            .application-price{
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 24px;
+                color: #8594A8;
+            }
+        }
+
+        .application-description{
+            font-size: 14px;
+            line-height: 20px;
+            color: #8594A8;
+        }
+
+        hr{
+            height: 1px;
+            margin: 17px 0 16px 0;
+            border: none;
+            background-color: #C3CBD6;
+        }
+
+        .date-and-views-and-reviews{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .application-date{
+                font-size: 14px;
+                line-height: 20px;
+                color: #8594A8;
+            }
+
+            .views-and-reviews{
+                display: flex;
+                align-items: center;
+                margin-top: -2px;
+
+                div{
+                    display: flex;
+                    align-items: center;
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 20px;
+                    color: #8594A8;
+
+                    mat-icon{
+                        width: 22px;
+                        height: 22px;
+                        font-size: 22px;
+                    }
+
+                    &.views{
+                        margin-right: 18px;
+                        
+                        p{
+                            margin-left: 8px;
+                        }
+                    }
+
+                    &.reviews{
+                        
+                        p{
+                            margin-left: 9px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .button-all-posted-orders{
+        width: 100%;
+        height: 48px;
+        margin-top: 32px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        color: #334D6E;
+        background-color: #FFFFFF;
+        border: 1px solid #C3CBD6;
+        border-radius: 3px;
+    }
+}

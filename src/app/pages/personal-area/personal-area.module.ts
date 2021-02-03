@@ -6,6 +6,7 @@ import { AcceptedOrdersComponent } from "./components/accepted-orders/accepted-o
 import { BasicInfoComponent } from "./components/basic-info/basic-info.component";
 import { GalleryComponent } from "./components/gallery/gallery.component";
 import { NavigationComponent } from "./components/navigation/navigation.component";
+import { PostedOrdersComponent } from "./components/posted-orders/posted-orders.component";
 import { ProfileComponent } from "./components/profile/profile.component";
 import { RequisitesComponent } from "./components/requisites/requisites.component";
 import { ReviewComponent } from "./components/review/review.component";
@@ -31,7 +32,8 @@ const routes = [
         ServiceComponent,
         ReviewsComponent,
         ReviewComponent,
-        AcceptedOrdersComponent
+        AcceptedOrdersComponent,
+        PostedOrdersComponent
     ],
     imports: [
         CommonModule,
