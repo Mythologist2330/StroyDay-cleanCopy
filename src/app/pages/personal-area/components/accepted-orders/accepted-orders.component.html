@@ -1,0 +1,28 @@
+<div class="container">
+
+    <p class="header">Все заявки <span>({{orders.length}})</span></p>
+
+    <div class="applications">
+        <div *ngFor="let order of orders" class="application">
+
+            <div class="title-and-price">
+                <p class="title">{{ order.title }}</p>
+                <p class="price">{{ order.price }}</p>
+            </div>
+
+            <p class="date"><span [ngStyle]="{backgroundColor: getBackgroundColor(order.status)}"></span>{{ order.status }} {{ order.createdAt | date : 'dd MMMM yyyy' }}</p>
+
+            <hr>
+
+            <div class="rating-and-segment">
+                <p class="rating"><app-rating-stars [stars]="order.rating"></app-rating-stars></p>
+
+                <p [ngStyle]="{'color': getColor(order.segment[0])}" class="segment">{{ order.segment[0] }}</p>
+            </div>
+
+        </div>
+    </div>
+
+    <button class="button-all-accepted-orders">Все заявки</button>
+
+</div>

@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { SharedModule } from "src/app/shared/shared.module";
+import { AcceptedOrdersComponent } from "./components/accepted-orders/accepted-orders.component";
 import { BasicInfoComponent } from "./components/basic-info/basic-info.component";
 import { GalleryComponent } from "./components/gallery/gallery.component";
 import { NavigationComponent } from "./components/navigation/navigation.component";
@@ -29,7 +30,8 @@ const routes = [
         ServicesComponent,
         ServiceComponent,
         ReviewsComponent,
-        ReviewComponent
+        ReviewComponent,
+        AcceptedOrdersComponent
     ],
     imports: [
         CommonModule,
