@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="performer">
 
     <mat-icon class="edit">edit</mat-icon>
 
@@ -16,7 +16,7 @@
                 <p>Категории услуг</p>
             </div>
 
-            <p class="field">Оформление и дизайн, строительство, восстановление фасадов, отделка жилых помещений</p>
+            <p class="field">{{ performer.description.activity }}</p>
         </div>
 
         <hr>
@@ -29,7 +29,7 @@
                 <p>Район выезда</p>
             </div>
 
-            <p class="field">Южный район, Северный район, Юго-восточный район, Подберезовики</p>
+            <p class="field">{{ performer.getLocation() }}</p>
         </div>
 
         <hr>
@@ -42,7 +42,7 @@
                 <p>Метро</p>
             </div>
 
-            <p class="field">Перечисление станций метро</p>
+            <p class="field">{{ performer.location.metro }}</p>
         </div>
 
         <hr>
@@ -55,7 +55,7 @@
                 <p>Контактное лицо</p>
             </div>
 
-            <p class="field">Иванов Константин Константинович</p>
+            <p class="field">{{ performer.description.lead }}</p>
         </div>
 
         <hr>
@@ -68,7 +68,7 @@
                 <p>Телефон</p>
             </div>
 
-            <p class="field">+7 888 473-23-22</p>
+            <p class="field">{{ performer.description.phone }}</p>
         </div>
 
         <hr>
@@ -81,7 +81,7 @@
                 <p>E-mail</p>
             </div>
 
-            <p class="field">example@gmail.com</p>
+            <p class="field">{{ performer.description.email }}</p>
         </div>
 
         <hr>
@@ -94,7 +94,7 @@
                 <p>Местоположение</p>
             </div>
 
-            <p class="field">г. Санкт-Петербург, Невский пр-кт, д. 116, корп. 22, оф. 11</p>
+            <p class="field">{{ performer.getLocation() }}</p>
         </div>
 
         <hr>
@@ -114,6 +114,6 @@
         </div>
     </div>
 
-    <p class="additional-info">В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты, которые смогут заставить посетителей оставаться на нём как можно дальше, то вы попали по адресу. За кворк можно заказать хоть 10 статей, главное чтоб общий объём был 6000 символов без пробелов.</p>
+    <p class="additional-info">{{ performer.description.fullInfo }}</p>
 
 </div>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Performer } from 'src/app/models/Performer';
 
 @Component({
     selector: 'app-basicInfo',
@@ -8,6 +9,6 @@ import { Component } from '@angular/core';
 
 export class BasicInfoComponent{
 
-
+    @Input() performer: Performer
 
 }
