@@ -19,7 +19,7 @@ import { PersonalAreaComponent } from "./personal-area.component";
 
 
 const routes = [
-  {path: 'personalArea', component: PersonalAreaComponent}
+  {path: 'personalArea/:id', component: PersonalAreaComponent}
 ]
 
 @NgModule({
