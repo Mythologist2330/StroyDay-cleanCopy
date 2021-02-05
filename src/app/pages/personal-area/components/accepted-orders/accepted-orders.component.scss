@@ -18,13 +18,15 @@
         }
     }
 
-    .applications{
+    .applications-columns{
         display: flex;
-        flex-wrap: wrap;
         justify-content: space-between;
+    }
+
+    .applications{
 
         .application{
-            flex: 0 0 298px;
+            width: 298px;
             height: min-content;
             padding: 13px 15px 16px 15px;
             margin-top: 16px;

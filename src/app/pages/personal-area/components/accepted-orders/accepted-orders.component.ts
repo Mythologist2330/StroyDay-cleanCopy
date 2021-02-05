@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { Order, Segment, Status } from "src/app/models/Order";
 
 @Component({
     selector: 'app-acceptedOrders',
@@ -6,41 +7,43 @@ import { Component } from "@angular/core";
     styleUrls: ['./accepted-orders.component.scss']
 })
 
-export class AcceptedOrdersComponent {
+export class AcceptedOrdersComponent implements OnInit{
 
-    orders: any = [
-        {
-            title: 'Капитальный ремонт квартиры в сталинской многоэтажке',
-            price: '15 000 ₽',
-            createdAt: 122,
-            rating: 5,
-            segment: ['эконом'],
-            status: 'В работе'
-        },
-        {
+    leftColumn: Order[] = []
+    rightColumn: Order[] = []
+    orders: Order[] = [
+        new Order({
             title: 'Капитальный ремонт квартиры',
-            price: '15 000 ₽',
+            price: 15000,
             createdAt: 122,
             rating: 5,
-            segment: ['премиум'],
-            status: 'Завершен'
-        },
-        {
+            segment: [Segment.premium],
+            status: Status.complete
+        }),
+        new Order({
             title: 'Капитальный ремонт квартиры в сталинской многоэтажке',
-            price: '15 000 ₽',
+            price: 15000,
             createdAt: 122,
             rating: 5,
-            segment: ['эконом'],
-            status: 'В работе'
-        },
-        {
+            segment: [Segment.low],
+            status: Status.inProgress
+        }),
+        new Order({
             title: 'Капитальный ремонт квартиры в сталинской многоэтажке',
-            price: '15 000 ₽',
+            price: 15000,
             createdAt: 122,
             rating: 5,
-            segment: ['стандарт'],
-            status: 'Завершен'
-        }
+            segment: [Segment.standart],
+            status: Status.complete
+        }),
+        new Order({
+            title: 'Капитальный ремонт квартиры в сталинской многоэтажке',
+            price: 15000,
+            createdAt: 122,
+            rating: 5,
+            segment: [Segment.low],
+            status: Status.inProgress
+        })
     ]
 
     getColor(segment) {
@@ -54,10 +57,20 @@ export class AcceptedOrdersComponent {
     }
 
     getBackgroundColor(status) {
-        if (status === 'В работе') {
+        if (status === Status.inProgress) {
             return '#46AA32'
         } else {
             return '#8594A8'
+        }
+    }
+
+    ngOnInit() {
+        for (let serialNumber = 0; serialNumber < this.orders.length; serialNumber++) {
+            if(serialNumber % 2 === 0) {
+                this.rightColumn.push(new Order(this.orders[serialNumber]))
+            } else {
+                this.leftColumn.push(new Order(this.orders[serialNumber]))
+            }
         }
     }
 
