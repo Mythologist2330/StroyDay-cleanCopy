@@ -9,6 +9,7 @@ import { Performer } from 'src/app/models/Performer';
 
 export class ProfileComponent{
 
-    @Input() performer: Performer
+    @Input() performer: Performer;
+    @Input() rating: number;
 
 }
