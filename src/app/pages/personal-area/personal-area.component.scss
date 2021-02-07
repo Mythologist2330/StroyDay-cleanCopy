@@ -23,6 +23,8 @@
             margin: 32px 24px 56px 24px;
 
             .center-column{
+                display: flex;
+                justify-content: space-between;
                 width: 100%;
                 margin-right: 0;
             }
@@ -35,6 +37,11 @@
 
         .center-and-right-columns{
             margin: 24px 16px 56px 16px;
+
+            .center-column{
+                display: block;
+                margin-bottom: 32px;
+            }
         }
     }
 }

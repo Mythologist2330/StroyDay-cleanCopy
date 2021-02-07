@@ -42,3 +42,25 @@
         }
     }
 }
+
+@media screen and (max-width: 1275px) {
+    .container{
+        width: 230px;
+        height: 100%;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container{
+        width: 100%;
+        height: auto;
+        padding: 13px 15px 15px 15px;
+        margin-top: 24px;
+
+        .edit{
+            top: 13px;
+            right: 13px;
+        }
+    }
+}
