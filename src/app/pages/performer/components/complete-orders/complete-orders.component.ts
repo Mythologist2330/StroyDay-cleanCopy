@@ -13,6 +13,8 @@ export class CompleteOrdersComponent implements OnInit {
 
     @Input() performerId: string
     public openCloseComponent = true;
+    public leftColumn: Order[] = [];
+    public rightColumn: Order[] = [];
     public orders: Order[] = [];
     public ordersAll: Order[] = [];
     public ordersLow: Order[] = [];
@@ -56,12 +58,20 @@ export class CompleteOrdersComponent implements OnInit {
             }),
             first()
             )
-        .subscribe(orders => {   
-            this.orders = orders;         
+        .subscribe(orders => {
+            this.orders = orders;
             this.ordersAll = orders;
             this.ordersLow = orders.filter(order => order.segment[0] === Segment.low);
             this.ordersStandart = orders.filter(order => order.segment[0] === Segment.standart);
             this.ordersPremium = orders.filter(order => order.segment[0] === Segment.premium);
+
+            for (let serialNumber = 0; serialNumber < this.orders.length; serialNumber++) {
+                if(serialNumber % 2 === 0) {
+                    this.rightColumn.push(new Order(this.orders[serialNumber]))
+                } else {
+                    this.leftColumn.push(new Order(this.orders[serialNumber]))
+                }
+            }
         })
     }
 }
