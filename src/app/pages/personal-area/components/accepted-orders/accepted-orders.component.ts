@@ -13,6 +13,14 @@ export class AcceptedOrdersComponent implements OnInit{
     rightColumn: Order[] = []
     orders: Order[] = [
         new Order({
+            title: 'Капитальный ремонт квартиры в сталинской многоэтажке',
+            price: 15000,
+            createdAt: 122,
+            rating: 5,
+            segment: [Segment.low],
+            status: Status.inProgress
+        }),
+        new Order({
             title: 'Капитальный ремонт квартиры',
             price: 15000,
             createdAt: 122,
@@ -35,14 +43,6 @@ export class AcceptedOrdersComponent implements OnInit{
             rating: 5,
             segment: [Segment.standart],
             status: Status.complete
-        }),
-        new Order({
-            title: 'Капитальный ремонт квартиры в сталинской многоэтажке',
-            price: 15000,
-            createdAt: 122,
-            rating: 5,
-            segment: [Segment.low],
-            status: Status.inProgress
         })
     ]
 
@@ -67,9 +67,9 @@ export class AcceptedOrdersComponent implements OnInit{
     ngOnInit() {
         for (let serialNumber = 0; serialNumber < this.orders.length; serialNumber++) {
             if(serialNumber % 2 === 0) {
-                this.rightColumn.push(new Order(this.orders[serialNumber]))
-            } else {
                 this.leftColumn.push(new Order(this.orders[serialNumber]))
+            } else {
+                this.rightColumn.push(new Order(this.orders[serialNumber]))
             }
         }
     }
