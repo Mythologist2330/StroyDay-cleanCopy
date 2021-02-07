@@ -67,9 +67,9 @@ export class CompleteOrdersComponent implements OnInit {
 
             for (let serialNumber = 0; serialNumber < this.orders.length; serialNumber++) {
                 if(serialNumber % 2 === 0) {
-                    this.rightColumn.push(new Order(this.orders[serialNumber]))
-                } else {
                     this.leftColumn.push(new Order(this.orders[serialNumber]))
+                } else {
+                    this.rightColumn.push(new Order(this.orders[serialNumber]))
                 }
             }
         })
