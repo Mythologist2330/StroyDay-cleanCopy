@@ -30,6 +30,17 @@
         </label>
     </div>
 
+    <fieldset class="sort-by-mobile">
+        <legend>Уровень цен</legend>
+
+        <select (change)='setFilter($event)'>
+            <option value="все">Все</option>
+            <option value="эконом">Эконом</option>
+            <option value="стандарт">Стандарт</option>
+            <option value="премиум">Премиум</option>
+        </select>
+    </fieldset>
+
     <div class="services">
         <ng-container *ngFor="let service of services">
             <div *ngIf="service.subServices.length" class="service">

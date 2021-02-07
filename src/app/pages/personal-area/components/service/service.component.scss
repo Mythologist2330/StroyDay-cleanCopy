@@ -119,22 +119,23 @@
         display: flex;
         justify-content: space-between;
 
-        .title-segments-price-mobile{
-            flex: 0 0 93%;
+        .title-segments-mobile{
+            display: inline-block;
+            flex: 0 0 62%;
+            margin-right: 8px;
+            font-size: 16px;
+            line-height: 24px;
+            color: #334D6E;
 
             .title-mobile{
-                display: inline-block;
-                margin-right: 8px;
-                font-size: 16px;
-                line-height: 24px;
-                color: #334D6E;
+                margin-right: 6px;
             }
 
             .segment-mobile{
                 display: inline-block;
                 width: max-content;
                 padding: 3px 8px;
-                margin-right: 4px;
+                margin: 5px 9px 0 0;
                 text-transform: uppercase;
                 border-radius: 60px;
                 font-weight: bold;
@@ -142,23 +143,16 @@
                 line-height: 12px;
                 letter-spacing: 0.5px;
             }
-
-            .price-mobile{
-                display: inline-block;
-                margin-left: 4px;
-                font-weight: 500;
-                font-size: 16px;
-                line-height: 24px;
-                color: #334D6E;
-            }
         }
 
-        .toggle-mobile{
-            margin: 5px 5px 0 0;
-
-            svg{
-                height: 18px;
-            }
+        .price-mobile{
+            display: inline-table;
+            min-width: max-content;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 21px;
+            color: #334D6E;
+            border-bottom: 1px dashed #334D6E;
         }
     }
 
@@ -168,36 +162,45 @@
 
     .subServices-mobile{
         display: block;
-        margin: 12px 0 0 24px;
+        margin: 18px 5px 0 24px;
 
         .subService-mobile{
+            display: flex;
+            justify-content: space-between;
             margin-top: 8px;
 
-            .subService-header-mobile{
+            .subService-header-subService-segment-mobile{
                 display: inline-block;
-                margin-right: 8px;
+                flex: 0 0 63%;
+                margin-right: 7px;
                 font-size: 14px;
                 line-height: 20px;
                 color: #334D6E;
-            }
 
-            .subService-segment-mobile{
-                display: inline-block;
-                font-weight: bold;
-                padding: 3px 8px;
-                text-transform: uppercase;
-                border-radius: 60px;
-                font-size: 8px;
-                line-height: 12px;
-                letter-spacing: 0.5px;
+                .subService-header-mobile{
+                    margin-right: 7px;
+                }
+
+                .subService-segment-mobile{
+                    position: relative;
+                    top: -2px;
+                    display: inline-block;
+                    font-weight: bold;
+                    padding: 3px 8px;
+                    text-transform: uppercase;
+                    border-radius: 60px;
+                    font-size: 8px;
+                    line-height: 12px;
+                    letter-spacing: 0.5px;
+                }
             }
 
             .subService-price-mobile{
                 display: inline-block;
-                margin-left: 8px;
+                min-width: max-content;
                 font-weight: 500;
-                font-size: 16px;
-                line-height: 24px;
+                font-size: 14px;
+                line-height: 20px;
                 color: #334D6E;
             }
         }
