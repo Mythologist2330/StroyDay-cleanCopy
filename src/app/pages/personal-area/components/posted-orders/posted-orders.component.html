@@ -10,7 +10,7 @@
 
     <div *ngFor="let order of orders" class="order">
         <div class="title-and-price">
-            <p class="title">{{ order.title }}</p>
+            <p class="title">{{ order.title }} <span>{{ order.price }}</span></p>
             <p class="price">{{ order.price }}</p>
         </div>
 
@@ -22,9 +22,15 @@
             <p class="info-elem"><span class="param">Бюджет:</span> 100 000 — 250 000 руб.</p>
             <p class="info-elem"><span class="param">Срок выполнения:</span> до 25 января 2021</p>
             <p class="info-elem">
-                <span class="param">Уровень цен:</span>
+                <span class="param last-param">Уровень цен:</span>
                 <span class="segment" *ngFor="let segment of order.segments"[ngStyle]="{'background': getBackground(segment), 'color': getColor(segment)}">{{ segment }}</span>
             </p>
+        </div>
+
+        <div class="statistics-mobile">
+            <p class="statistic"><mat-icon>camera_alt</mat-icon>{{ order.amountOfPhotos }}</p>
+            <p class="statistic"><mat-icon>visibility</mat-icon>{{ order.views }}</p>
+            <p class="statistic"><mat-icon>chat_bubble</mat-icon>{{ order.reviews }} откликов</p>
         </div>
 
         <hr>

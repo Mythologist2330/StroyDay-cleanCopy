@@ -36,6 +36,10 @@
                 font-size: 20px;
                 line-height: 28px;
                 color: #334D6E;
+
+                span{
+                    display: none;
+                }
             }
 
             .price{
@@ -63,13 +67,18 @@
 
                 .param{
                     font-weight: 500;
+
+                    &.last-param{
+                        margin-right: 4px;
+                    }
                 }
 
                 .segment{
                     position: relative;
                     top: -2px;
-                    margin-left: 4px;
-                    padding: 4px 12px;
+                    display: inline-block;
+                    margin-right: 4px;
+                    padding: 0 12px;
                     font-weight: bold;
                     font-size: 10px;
                     line-height: 20px;
@@ -78,6 +87,10 @@
                     text-transform: uppercase;
                 }
             }
+        }
+
+        .statistics-mobile{
+            display: none;
         }
 
         hr{
@@ -130,5 +143,83 @@
         background-color: #FFFFFF;
         border: 1px solid #C3CBD6;
         border-radius: 3px;
+    }
+}
+
+@media screen and (max-width: 1275px) {
+    .container{
+        width: 720px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container{
+        width: 100%;
+        padding: 13px 15px 15px 15px;
+
+        .header{
+            margin-bottom: 14px;
+        }
+
+        .order{
+            padding: 13px 15px 13px 15px;;
+
+            .title-and-price{
+
+                .title{
+                    font-size: 16px;
+                    line-height: 24px;
+
+                    span{
+                        display: inline-block;
+                        min-width: max-content;
+                        color: #8594A8;
+                    }
+                }
+
+                .price{
+                    display: none;
+                }
+            }
+
+            .statistics-mobile{
+                display: block;
+                display: flex;
+                margin-top: 15px;
+
+                .statistic{
+                    display: flex;
+                    align-items: center;
+                    margin-left: 8px;
+                    font-weight: 500;
+                    font-size: 12px;
+                    line-height: 20px;
+                    color: #8594A8;
+
+                    &:first-child{
+                        margin: 0;
+                    }
+
+                    mat-icon{
+                        margin-right: 4px;
+                    }
+                }
+            }
+
+            hr{
+                margin: 6px 0 15px 0;
+            }
+
+            .date-and-statistics{
+
+                .statistics{
+                    display: none;
+                }
+            }
+        }
+
+        .button-all-posted-orders{
+            margin-top: 0;
+        }
     }
 }
