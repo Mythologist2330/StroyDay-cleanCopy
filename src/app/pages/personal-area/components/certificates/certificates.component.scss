@@ -59,3 +59,31 @@
         }
     }
 }
+
+@media screen and (max-width: 1275px) {
+    .container{
+        width: 720px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container{
+        width: 100%;
+        padding: 13px 15px 14px 15px;
+
+        .edit{
+            top: 13px;
+            right: 13px;
+        }
+
+        .header{
+            max-width: 81%;
+            margin-bottom: 16px;
+        }
+
+        .certificate{
+            align-items: unset;
+            margin-top: 13px;
+        }
+    }
+}
