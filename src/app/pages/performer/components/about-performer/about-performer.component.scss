@@ -70,6 +70,10 @@
         color: #8594A8;
     }
 
+    .additional-info-mobile{
+        display: none;
+    }
+
     .show-full-additional-info{
         display: none;
     }
@@ -146,7 +150,15 @@
         }
 
         .additional-info{
+            display: none;
+        }
+
+        .additional-info-mobile{
             margin: 8px 8px 5px 0;
+            display: block;
+            font-size: 16px;
+            line-height: 24px;
+            color: #8594A8;
         }
 
         .show-full-additional-info{

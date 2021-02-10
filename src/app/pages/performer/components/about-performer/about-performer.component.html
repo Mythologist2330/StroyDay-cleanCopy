@@ -70,9 +70,10 @@
             </div>
         </div>
 
-        <p class="additional-info">{{ card.description.fullInfo }}</p>
+        <p *ngIf='card.description.fullInfo' class="additional-info">{{ card.description.fullInfo }}</p>
+        <p *ngIf='card.description.fullInfo' class="additional-info-mobile"><span *ngIf='!showFullInfo'>{{ card.getShortInfo() }}</span><span *ngIf='showFullInfo'>{{ card.description.fullInfo }}</span></p>
 
-        <!-- <p class="show-full-additional-info">Показать полностью</p> -->
+        <p class="show-full-additional-info" (click)="showFullInfo = !showFullInfo"><span *ngIf='!showFullInfo'>Показать полностью</span><span *ngIf='showFullInfo'>Скрыть</span></p>
 
         <div class="tags">
             <div class="tag">

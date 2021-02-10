@@ -9,8 +9,8 @@ import { Performer } from "src/app/models/Performer";
 
 export class AboutPerformer {
 
-    public openCloseComponent:boolean = true;
-    public showFullAdditionalInfo: boolean = false;
     @Input() card: Performer;
+    public openCloseComponent = true;
+    public showFullInfo = false;
 
 }
