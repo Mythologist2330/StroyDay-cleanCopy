@@ -47,7 +47,7 @@ export class PostedOrdersComponent{
             return '#9F8C66'
         }
     }
-    
+
     getBackground(segment) {
         if (segment === 'эконом') {
             return 'linear-gradient(0deg, rgba(248, 96, 31, 0.2), rgba(248, 96, 31, 0.2)), #FFFFFF'
