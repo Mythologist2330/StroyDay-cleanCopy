@@ -1,5 +1,4 @@
-import { Component, OnInit } from "@angular/core";
-import { Order, Segment, Status } from "src/app/models/Order";
+import { Component } from "@angular/core";
 
 @Component({
     selector: 'app-acceptedOrders',
@@ -7,43 +6,36 @@ import { Order, Segment, Status } from "src/app/models/Order";
     styleUrls: ['./accepted-orders.component.scss']
 })
 
-export class AcceptedOrdersComponent implements OnInit{
+export class AcceptedOrdersComponent{
 
-    leftColumn: Order[] = []
-    rightColumn: Order[] = []
-    orders: Order[] = [
-        new Order({
-            title: 'Капитальный ремонт квартиры в сталинской многоэтажке',
-            price: 15000,
-            createdAt: 122,
-            rating: 5,
-            segment: [Segment.low],
-            status: Status.inProgress
-        }),
-        new Order({
-            title: 'Капитальный ремонт квартиры',
-            price: 15000,
-            createdAt: 122,
-            rating: 5,
-            segment: [Segment.premium],
-            status: Status.complete
-        }),
-        new Order({
-            title: 'Капитальный ремонт квартиры в сталинской многоэтажке',
-            price: 15000,
-            createdAt: 122,
-            rating: 5,
-            segment: [Segment.low],
-            status: Status.inProgress
-        }),
-        new Order({
-            title: 'Капитальный ремонт квартиры в сталинской многоэтажке',
-            price: 15000,
-            createdAt: 122,
-            rating: 5,
-            segment: [Segment.standart],
-            status: Status.complete
-        })
+    orders: any = [
+        {
+            title: 'Дизайн-проект частного дома',
+            price: '13 000 ₽',
+            description: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты, которые смогут заставить. В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту',
+            segments: ['эконом', 'стандарт'],
+            amountOfPhotos: 12,
+            views: 540,
+            reviews: 13
+        },
+        {
+            title: 'Дизайн-проект детской',
+            price: '13 000 ₽',
+            description: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты, которые смогут заставить. В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту',
+            segments: ['эконом', 'стандарт'],
+            amountOfPhotos: 12,
+            views: 540,
+            reviews: 13
+        },
+        {
+            title: 'Дизайн-проект квартиры',
+            price: '13 000 ₽',
+            description: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты, которые смогут заставить. В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту',
+            segments: ['эконом', 'стандарт'],
+            amountOfPhotos: 12,
+            views: 540,
+            reviews: 13
+        }
     ]
 
     getColor(segment) {
@@ -56,21 +48,13 @@ export class AcceptedOrdersComponent implements OnInit{
         }
     }
 
-    getBackgroundColor(status) {
-        if (status === Status.inProgress) {
-            return '#46AA32'
-        } else {
-            return '#8594A8'
-        }
-    }
-
-    ngOnInit() {
-        for (let serialNumber = 0; serialNumber < this.orders.length; serialNumber++) {
-            if(serialNumber % 2 === 0) {
-                this.leftColumn.push(new Order(this.orders[serialNumber]))
-            } else {
-                this.rightColumn.push(new Order(this.orders[serialNumber]))
-            }
+    getBackground(segment) {
+        if (segment === 'эконом') {
+            return 'linear-gradient(0deg, rgba(248, 96, 31, 0.2), rgba(248, 96, 31, 0.2)), #FFFFFF'
+        } else if (segment === 'стандарт') {
+            return 'linear-gradient(0deg, rgba(13, 111, 227, 0.2), rgba(13, 111, 227, 0.2)), #FFFFFF'
+        } else if (segment === 'премиум') {
+            return 'linear-gradient(0deg, rgba(159, 140, 102, 0.2), rgba(159, 140, 102, 0.2)), #FFFFFF'
         }
     }
 
