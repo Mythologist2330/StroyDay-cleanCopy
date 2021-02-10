@@ -71,6 +71,10 @@
         color: #8594A8;
     }
 
+    .additional-info-mobile{
+        display: none;
+    }
+
     .show-full-additional-info{
         display: none;
     }
@@ -128,7 +132,15 @@
         }
 
         .additional-info{
+            display: none;
+        }
+
+        .additional-info-mobile{
+            display: block;
             margin: 6px 8px 6px 0;
+            font-size: 16px;
+            line-height: 24px;
+            color: #8594A8;
         }
 
         .show-full-additional-info{

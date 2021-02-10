@@ -114,8 +114,9 @@
         </div>
     </div>
 
-    <p class="additional-info">{{ performer.description.fullInfo }}</p>
+    <p *ngIf='performer.description.fullInfo' class="additional-info">{{ performer.description.fullInfo }}</p>
+    <p *ngIf='performer.description.fullInfo' class="additional-info-mobile"><span *ngIf='!showFullInfo'>{{ performer.getShortInfo() }}</span><span *ngIf='showFullInfo'>{{ performer.description.fullInfo }}</span></p>
 
-    <p class="show-full-additional-info">Показать полностью</p>
+    <p class="show-full-additional-info" (click)="showFullInfo = !showFullInfo"><span *ngIf='!showFullInfo'>Показать полностью</span><span *ngIf='showFullInfo'>Скрыть</span></p>
 
 </div>

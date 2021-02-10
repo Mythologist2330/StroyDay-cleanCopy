@@ -10,5 +10,6 @@ import { Performer } from 'src/app/models/Performer';
 export class BasicInfoComponent{
 
     @Input() performer: Performer
+    showFullInfo = false
 
 }
