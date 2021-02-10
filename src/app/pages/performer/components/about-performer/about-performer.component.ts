@@ -11,6 +11,9 @@ export class AboutPerformer {
 
     @Input() card: Performer;
     public openCloseComponent = true;
-    public showFullInfo = false;
+    showFullInfo = false;
+    linkFullInfo(): string {
+        return this.showFullInfo ? 'Скрыть' : 'Показать полностью';
+    }
 
 }

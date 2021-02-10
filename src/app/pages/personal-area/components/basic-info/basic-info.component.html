@@ -114,9 +114,17 @@
         </div>
     </div>
 
-    <p *ngIf='performer.description.fullInfo' class="additional-info">{{ performer.description.fullInfo }}</p>
-    <p *ngIf='performer.description.fullInfo' class="additional-info-mobile"><span *ngIf='!showFullInfo'>{{ performer.getShortInfo() }}</span><span *ngIf='showFullInfo'>{{ performer.description.fullInfo }}</span></p>
-
-    <p class="show-full-additional-info" (click)="showFullInfo = !showFullInfo"><span *ngIf='!showFullInfo'>Показать полностью</span><span *ngIf='showFullInfo'>Скрыть</span></p>
+    <ng-container *ngIf='performer.description.fullInfo'>
+        <p class="additional-info">{{ performer.description.fullInfo }}</p>
+        <p class="additional-info-mobile">
+            <span *ngIf='!showFullInfo; else hide'>{{ performer.getShortInfo() }}</span>
+        </p>
+        <p class="show-full-additional-info" (click)="showFullInfo = !showFullInfo">
+            <span>{{linkFullInfo()}}</span>
+        </p>
+    </ng-container>
+    <ng-template #hide>
+        <span *ngIf='showFullInfo'>{{ performer.description.fullInfo }}</span>
+    </ng-template>
 
 </div>
