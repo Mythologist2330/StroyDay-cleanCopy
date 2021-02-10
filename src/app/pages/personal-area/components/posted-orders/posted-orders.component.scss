@@ -7,7 +7,7 @@
     border-radius: 4px;
 
     .header{
-        margin-bottom: 26px;
+        margin-bottom: 18px;
         font-weight: 500;
         font-size: 20px;
         line-height: 28px;
@@ -18,28 +18,27 @@
         }
     }
 
-    .application{
+    .order{
         width: 100%;
-        padding: 21px 24px 22px 23px;
-        margin-top: 24px;
+        padding: 21px 23px 22px 23px;
+        margin-bottom: 20px;
         border: 1px solid #C3CBD6;
         border-radius: 4px;
         background-color: #FFFFFF;
-        box-shadow: 0 8px 0 0 rgb(14, 110, 224, 1);
+        box-shadow: 0 8px 0 0 rgb(133, 148, 168, 1);
 
         .title-and-price{
             display: flex;
             justify-content: space-between;
 
-            .application-title{
-                margin-bottom: 9px;
+            .title{
                 font-weight: 500;
                 font-size: 20px;
                 line-height: 28px;
                 color: #334D6E;
             }
 
-            .application-price{
+            .price{
                 font-weight: 500;
                 font-size: 16px;
                 line-height: 24px;
@@ -47,62 +46,73 @@
             }
         }
 
-        .application-description{
+        .description{
+            margin: 9px 0 10px 0;
             font-size: 14px;
             line-height: 20px;
             color: #8594A8;
         }
 
+        .info{
+
+            .info-elem{
+                margin-top: 4px;
+                font-size: 14px;
+                line-height: 20px;
+                color: #334D6E;
+
+                .param{
+                    font-weight: 500;
+                }
+
+                .segment{
+                    position: relative;
+                    top: -2px;
+                    margin-left: 4px;
+                    padding: 4px 12px;
+                    font-weight: bold;
+                    font-size: 10px;
+                    line-height: 20px;
+                    letter-spacing: 0.5px;
+                    border-radius: 60px;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
         hr{
+            width: 100%;
             height: 1px;
-            margin: 17px 0 16px 0;
+            margin: 14px 0;
             border: none;
             background-color: #C3CBD6;
         }
 
-        .date-and-views-and-reviews{
+        .date-and-statistics{
             display: flex;
-            align-items: center;
             justify-content: space-between;
 
-            .application-date{
+            .date{
                 font-size: 14px;
                 line-height: 20px;
                 color: #8594A8;
             }
 
-            .views-and-reviews{
+            .statistics{
                 display: flex;
-                align-items: center;
-                margin-top: -2px;
+                margin: -2px 1px 0 0;
 
-                div{
+                .statistic{
                     display: flex;
                     align-items: center;
+                    margin-left: 12px;
                     font-weight: 500;
                     font-size: 14px;
                     line-height: 20px;
                     color: #8594A8;
 
                     mat-icon{
-                        width: 22px;
-                        height: 22px;
-                        font-size: 22px;
-                    }
-
-                    &.views{
-                        margin-right: 18px;
-                        
-                        p{
-                            margin-left: 8px;
-                        }
-                    }
-
-                    &.reviews{
-                        
-                        p{
-                            margin-left: 9px;
-                        }
+                        margin-right: 8px;
                     }
                 }
             }
@@ -112,7 +122,7 @@
     .button-all-posted-orders{
         width: 100%;
         height: 48px;
-        margin-top: 32px;
+        margin-top: 4px;
         font-weight: 500;
         font-size: 14px;
         line-height: 18px;
