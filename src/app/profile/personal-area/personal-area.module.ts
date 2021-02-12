@@ -1,6 +1,5 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { RouterModule } from "@angular/router";
 import { SharedModule } from "src/app/shared/shared.module";
 import { AcceptedOrdersComponent } from "./components/accepted-orders/accepted-orders.component";
 import { BasicInfoComponent } from "./components/basic-info/basic-info.component";
@@ -15,11 +14,6 @@ import { ReviewsComponent } from "./components/reviews/reviews.component";
 import { ServiceComponent } from "./components/service/service.component";
 import { ServicesComponent } from "./components/services/services.component";
 import { PersonalAreaComponent } from "./personal-area.component";
-
-
-const routes = [
-  {path: 'personalArea/:id', component: PersonalAreaComponent}
-]
 
 @NgModule({
     declarations: [
@@ -39,8 +33,7 @@ const routes = [
     ],
     imports: [
         CommonModule,
-        SharedModule,
-        RouterModule.forRoot(routes)
+        SharedModule
     ],
 })
 export class PersonalAreaModule { }
