@@ -6,7 +6,6 @@ import { BasicInfoComponent } from "./components/basic-info/basic-info.component
 import { CertificatesComponent } from "./components/certificates/certificates.component";
 import { DocumentsComponent } from "./components/documents/documents.component";
 import { GalleryComponent } from "./components/gallery/gallery.component";
-import { NavigationComponent } from "./components/navigation/navigation.component";
 import { PostedOrdersComponent } from "./components/posted-orders/posted-orders.component";
 import { ProfileComponent } from "./components/profile/profile.component";
 import { RequisitesComponent } from "./components/requisites/requisites.component";
@@ -18,7 +17,6 @@ import { PersonalAreaComponent } from "./personal-area.component";
 @NgModule({
     declarations: [
         PersonalAreaComponent,
-        NavigationComponent,
         ProfileComponent,
         RequisitesComponent,
         BasicInfoComponent,
