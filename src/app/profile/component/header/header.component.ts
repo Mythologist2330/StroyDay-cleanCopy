@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
 
 export class HeaderComponent{
 
-
+  openBurgerMenu = false
+  openMainSectionsMenu = false
+  openMainSectionsModalMenu = false
 
 }
