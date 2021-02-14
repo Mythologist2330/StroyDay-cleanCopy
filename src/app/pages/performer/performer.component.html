@@ -1,13 +1,14 @@
 <div class="container">
-
-    <button routerLink="/performers" class="button-back">
+    <button routerLink="/pages/performers" class="button-back">
         <mat-icon>keyboard_arrow_left</mat-icon>
         <span>К списку Исполнителей</span>
     </button>
+
     <button class="button-see-all-works">
         <mat-icon>camera_alt</mat-icon>
         <span>Посмотреть все работы</span>
     </button>
+
     <ng-container *ngIf='card'>
         <app-slider [gallery]='card.gallery'></app-slider>
         <app-card [card]='card' [rating]='getRating()'></app-card>
