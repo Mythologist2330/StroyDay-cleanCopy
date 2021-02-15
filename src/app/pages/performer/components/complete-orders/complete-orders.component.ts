@@ -38,6 +38,7 @@ export class CompleteOrdersComponent implements OnInit {
 
     setFilter(e) {
         const segment = e.target.value;
+        console.log(segment)
         if (segment === 'low') {
             this.orders = this.ordersLow
         } else if (segment === 'standart') {
@@ -47,6 +48,27 @@ export class CompleteOrdersComponent implements OnInit {
         } else {
             this.orders = this.ordersAll
         }
+        this.setOrdersIntoTwoColumns();
+    }
+
+    setOrdersIntoTwoColumns(): void {
+        this.leftColumn = []
+        this.rightColumn = []
+        this.orders.map((order, i) => {
+            if (i % 2 === 0) {
+                this.leftColumn.push(new Order(order))
+            } else {
+                this.rightColumn.push(new Order(order))
+            }
+        })
+    }
+
+    initOrders(orders: Order[]) {
+        this.orders = orders;
+        this.ordersAll = orders;
+        this.ordersLow = orders.filter(order => order.segment[0] === Segment.low);
+        this.ordersStandart = orders.filter(order => order.segment[0] === Segment.standart);
+        this.ordersPremium = orders.filter(order => order.segment[0] === Segment.premium);
     }
 
     ngOnInit(): void {
@@ -59,19 +81,8 @@ export class CompleteOrdersComponent implements OnInit {
             first()
             )
         .subscribe(orders => {
-            this.orders = orders;
-            this.ordersAll = orders;
-            this.ordersLow = orders.filter(order => order.segment[0] === Segment.low);
-            this.ordersStandart = orders.filter(order => order.segment[0] === Segment.standart);
-            this.ordersPremium = orders.filter(order => order.segment[0] === Segment.premium);
-
-            for (let serialNumber = 0; serialNumber < this.orders.length; serialNumber++) {
-                if(serialNumber % 2 === 0) {
-                    this.leftColumn.push(new Order(this.orders[serialNumber]))
-                } else {
-                    this.rightColumn.push(new Order(this.orders[serialNumber]))
-                }
-            }
+            this.initOrders(orders);
+            this.setOrdersIntoTwoColumns();
         })
     }
 }
