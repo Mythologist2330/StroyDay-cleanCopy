@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
+import { Order } from "src/app/models/Order";
 
 @Component({
     selector: 'app-posted-orders',
@@ -8,35 +9,7 @@ import { Component } from "@angular/core";
 
 export class PostedOrdersComponent{
 
-    orders: any = [
-        {
-            title: 'Дизайн-проект частного дома',
-            price: '13 000 ₽',
-            description: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты, которые смогут заставить. В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту',
-            segments: ['эконом', 'стандарт'],
-            amountOfPhotos: 12,
-            views: 540,
-            reviews: 13
-        },
-        {
-            title: 'Дизайн-проект детской',
-            price: '13 000 ₽',
-            description: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты, которые смогут заставить. В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту',
-            segments: ['эконом', 'стандарт'],
-            amountOfPhotos: 12,
-            views: 540,
-            reviews: 13
-        },
-        {
-            title: 'Дизайн-проект квартиры',
-            price: '13 000 ₽',
-            description: 'В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты, которые смогут заставить. В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту',
-            segments: ['эконом', 'стандарт'],
-            amountOfPhotos: 12,
-            views: 540,
-            reviews: 13
-        }
-    ]
+    @Input() orders: Order[];
 
     getColor(segment) {
         if (segment === 'эконом') {

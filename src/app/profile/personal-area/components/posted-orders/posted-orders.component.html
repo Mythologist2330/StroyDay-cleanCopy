@@ -11,31 +11,33 @@
         <p class="description">{{ order.description }}</p>
 
         <div class="info">
-            <p class="info-elem"><span class="param">Вид услуг:</span> Монтаж электрики</p>
-            <p class="info-elem"><span class="param">Местоположение:</span> г. Санкт-Петербург, Центральный р-он, ул. Новая, д. 15</p>
-            <p class="info-elem"><span class="param">Бюджет:</span> 100 000 — 250 000 руб.</p>
-            <p class="info-elem"><span class="param">Срок выполнения:</span> до 25 января 2021</p>
-            <p class="info-elem">
+            <p class="info-elem"><span class="param">Вид услуг:</span></p>
+            <p class="info-elem"><span class="param">Местоположение:</span></p>
+            <p class="info-elem"><span class="param">Бюджет:</span></p>
+            <p class="info-elem"><span class="param">Срок выполнения:</span></p>
+            <p class="info-elem" *ngIf="order.segment">
                 <span class="param last-param">Уровень цен:</span>
-                <span class="segment" *ngFor="let segment of order.segments"[ngStyle]="{'background': getBackground(segment), 'color': getColor(segment)}">{{ segment }}</span>
+                <span class="segment" *ngFor="let segment of order.segment" [ngStyle]="{'background': getBackground(segment), 'color': getColor(segment)}">{{ segment }}</span>
             </p>
         </div>
 
         <div class="statistics-mobile">
             <p class="statistic"><mat-icon>camera_alt</mat-icon>{{ order.amountOfPhotos }}</p>
             <p class="statistic"><mat-icon>visibility</mat-icon>{{ order.views }}</p>
-            <p class="statistic"><mat-icon>chat_bubble</mat-icon>{{ order.reviews }} откликов</p>
+            <p class="statistic" *ngIf="order.reviews"><mat-icon>chat_bubble</mat-icon>{{ order.reviews.length }} откликов</p>
+            <!-- возможный костыль *ngIf="order.reviews"-->
         </div>
 
         <hr>
 
         <div class="date-and-statistics">
-            <p class="date">Завершена 22 января 2021</p>
+            <p class="date">//Тут надо вывести дату</p>
 
             <div class="statistics">
                 <p class="statistic"><mat-icon>camera_alt</mat-icon>{{ order.amountOfPhotos }}</p>
                 <p class="statistic"><mat-icon>visibility</mat-icon>{{ order.views }}</p>
-                <p class="statistic"><mat-icon>chat_bubble</mat-icon>{{ order.reviews }} откликов</p>
+                <p class="statistic" *ngIf="order.reviews"><mat-icon>chat_bubble</mat-icon>{{ order.reviews.length }} откликов</p>
+                <!-- возможный костыль *ngIf="order.reviews"-->
             </div>
         </div>
     </div>
