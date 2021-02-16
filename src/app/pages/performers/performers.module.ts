@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PerformersListComponent } from './performers-list.component';
@@ -13,9 +12,6 @@ import { CardComponent } from './components/card/card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FilterSubCategoriesComponent } from './components/filter-sub-categories/filter-sub-categories.component';
 
-const routes = [
-    {path: 'performers', component: PerformersListComponent}
-]
 
 @NgModule({
     declarations: [
@@ -33,7 +29,6 @@ const routes = [
         LeafletModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule.forRoot(routes),
         BrowserAnimationsModule
     ],
 })

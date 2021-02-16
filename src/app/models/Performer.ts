@@ -59,6 +59,14 @@ export class Performer {
     getInProgressOrders(): Order[] {
         return this.orders.filter(order => order.status === 'Выполняется')
     }
+
+    getLegalStatus() {
+        switch (this.description.legalStatus) {
+            case 1: return 'Физическое лицо';            
+            case 2: return 'Юридическое лицо';
+            case 3: return 'Индивидуальный предприниматель';
+        }
+    }
     
     getMinPrice() {
         return 'От 1500р'
@@ -78,5 +86,10 @@ export class Performer {
 
     removeDisike() {
         this.dislikes--
+    }
+
+    getShortInfo(): string {
+        const strLength = this.description.fullInfo.indexOf(" ", 110);
+        return this.description.fullInfo.substring(0, strLength) + '...'
     }
 }

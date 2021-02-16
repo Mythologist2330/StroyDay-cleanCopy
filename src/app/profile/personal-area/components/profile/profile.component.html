@@ -1,0 +1,53 @@
+<div class="container" *ngIf="performer">
+
+    <mat-icon class="edit">edit</mat-icon>
+
+    <div class="logo-and-title-and-rating-and-statistics">
+
+        <div class="logo-and-title-and-rating">
+            <div class="logo">
+                <img [src]="performer.logo">
+                <div class="add-photo">
+                    <mat-icon>photo_camera</mat-icon>
+                </div>
+            </div>
+        
+            <p class="title">{{ performer.description.title }}</p>
+        
+            <app-rating-stars [stars]="5"></app-rating-stars>
+        </div>
+
+        <div class="statistics">
+            <div class="statistic">
+                <p>Выполнено заявок</p>
+                <p class="statistic-count">{{ performer.orders.length }}</p>
+            </div>
+    
+            <div class="statistic">
+                <p>Размещенные заявки</p>
+                <p class="statistic-count">{{ performer.orders.length }}</p>
+            </div>
+    
+            <div class="statistic">
+                <p>Отзывов</p>
+                <p class="statistic-count" *ngIf="performer.reviews">{{ performer.reviews.length }}</p>
+                <!-- костыль с *ngIf="performer.reviews" -->
+            </div>
+    
+            <div class="statistic">
+                <p>Оценки</p>
+                <div class="likes-and-dislikes">
+                    <p><mat-icon class="likes">thumb_up</mat-icon>{{ performer.likes }}</p>
+                    <p><mat-icon class="dislikes">thumb_down</mat-icon>{{ performer.dislikes }}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="buttons">
+        <button class="button-go-to-public-page">Перейти к публичной странице</button>
+        <p class="share-link">Поделиться ссылкой</p>
+    </div>
+
+</div>

@@ -142,7 +142,7 @@ export class CardComponent implements OnInit {
     }
 
     goToCard(cardId: string) {
-      this.router.navigate([`/performer/${cardId}`])
+      this.router.navigate([`pages/performer/${cardId}`])
     }
 
     ngOnInit(): void {

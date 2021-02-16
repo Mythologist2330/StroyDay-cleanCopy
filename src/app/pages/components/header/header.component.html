@@ -1,0 +1,192 @@
+<div class="container">
+
+    <div class="city-and-phone-and-button">
+        <div class="city">
+            <mat-icon aria-hidden="false">place</mat-icon>
+            <p>Санкт-Петербург</p>
+        </div>
+
+        <div class="phone-and-button">
+            <p class="phone">+7 (495) 000-00-00</p>
+            <button>Стать Исполнителем</button>
+        </div>
+    </div>
+
+    <div class="header">
+        <div class="header-devide-top">
+            <img class="main-logo" src="../../../assets/images/main-logo.png">
+
+            <div class="button-burger-menu" (click)="openCloseBurgerMenu($event)">
+                <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0H18V2H0V0ZM0 5H18V7H0V5ZM0 10H18V12H0V10Z" fill="white"/>
+                </svg>
+            </div>
+
+            <button class="button-services" (click)="buttonServicesIconToggle = !buttonServicesIconToggle; navigationModuleToggleMobile($event)">
+                <svg [ngStyle]="{display: buttonServicesIconToggle ? 'none' : 'block'}" width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0H18V2H0V0ZM0 5H18V7H0V5ZM0 10H18V12H0V10Z" fill="white"/>
+                </svg>
+                <mat-icon [ngStyle]="{display: buttonServicesIconToggle ? 'block' : 'none'}" class="button-services-clear">clear</mat-icon>
+                <span>Услуги</span>
+                <mat-icon class="button-services-navigate-next">navigate_next</mat-icon>
+            </button>
+
+            <div [ngStyle]="{display: buttonServicesIconToggle ? 'block' : 'none'}" class="navigation-module-window">
+
+                <div class="navigation-module-window-header" (click)="buttonServicesIconToggle = !buttonServicesIconToggle; navigationModuleToggleMobile($event)">
+                    <div>
+                        <mat-icon>navigate_before</mat-icon>
+                        <p>Услуги</p>
+                    </div>
+
+                    <mat-icon>clear</mat-icon>
+                </div>
+
+                <div class="navigation-module-window-search">
+                    <div class="navigate-search">
+                        <input type="text" placeholder="Быстрый поиск по услугам">
+                        <button><mat-icon>search</mat-icon></button>
+                    </div>
+                </div>
+
+                <div class="navigation-module-window-navigate">
+                    <div class="navigate-basic">
+                        <p>Архитектура и проектирование <mat-icon>navigate_next</mat-icon></p>
+                        <p>Оформление и дизайн <mat-icon>navigate_next</mat-icon></p>
+                        <p>Строительство <mat-icon>navigate_next</mat-icon></p>
+                        <p>Ремонт и отделка <mat-icon>navigate_next</mat-icon></p>
+                        <p>Инженерные системы <mat-icon>navigate_next</mat-icon></p>
+                        <p>Бытовые услуги <mat-icon>navigate_next</mat-icon></p>
+                        <p>Загородное строительство и ремонт, ландшафтный дизайн <mat-icon>navigate_next</mat-icon></p>
+                        <p>Стройматериалы <mat-icon>navigate_next</mat-icon></p>
+                        <p>Строительное оборудование <mat-icon>navigate_next</mat-icon></p>
+                        <p>Спецтехника и грузоперевозки <mat-icon>navigate_next</mat-icon></p>
+                        <p>Прочие работы и услуги <mat-icon>navigate_next</mat-icon></p>
+                        <p>Готовые проекты <mat-icon>navigate_next</mat-icon></p>
+                        <p>Поддержка бизнеса <mat-icon>navigate_next</mat-icon></p>
+                        <p>Сопутствующие товары и услуги <mat-icon>navigate_next</mat-icon></p>
+                        <p>Програмное обеспечение <mat-icon>navigate_next</mat-icon></p>
+                        <p>Реставрационные работы <mat-icon>navigate_next</mat-icon></p>
+                    </div>
+
+                    <div class="navigate-specific">
+                        <p class="main-links-title">Архитектура и проектирование</p>
+                        <div class="navigate-specific-main-links">
+                            <div class="main-links-column">
+                                <p>Архитектурное проектирование</p>
+                                <p>Визуализация интерьера</p>
+                                <p>3D проектирование</p>
+                                <p>Дизайн интерьера</p>
+                            </div>
+
+                            <div class="main-links-column">
+                                <p>Архитектурное проектирование</p>
+                                <p>Визуализация интерьера</p>
+                                <p>3D проектирование</p>
+                                <p>Дизайн интерьера</p>
+                            </div>
+                        </div>
+
+                        <div class="navigate-specific-sub-links">
+                            <div class="sub-links-column">
+                                <p class="sub-links-title">Архитектура многоэтажных домов</p>
+
+                                <p class="sub-links">Архитектурное проектирование</p>
+                                <p class="sub-links">Визуализация интерьера</p>
+                                <p class="sub-links">3D проектирование</p>
+                                <p class="sub-links">Дизайн интерьера</p>
+                            </div>
+
+                            <div class="sub-links-column">
+                                <p class="sub-links-title">Проектирование садов</p>
+
+                                <p class="sub-links">Архитектурное проектирование</p>
+                                <p class="sub-links">Визуализация интерьера</p>
+                                <p class="sub-links">3D проектирование</p>
+                                <p class="sub-links">Дизайн интерьера</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="menu">
+                <div class="menu-list-title" (click)="openCloseBurgerMenu($event)">
+                    <span>Меню</span>
+                    <mat-icon>clear</mat-icon>
+                </div>
+
+                <div class="menu-list-services"></div>
+
+                <div class="menu-link menu-link-without-border" (click)="openCloseBurgerMenu($event)">Главная</div>
+                <div class="menu-link" (click)="openCloseBurgerMenu($event)">Заявки</div>
+                <div routerLink="performers" class="menu-link" (click)="openCloseBurgerMenu($event)">Исполнители</div>
+                <div routerLink="services" class="menu-link" (click)="openCloseBurgerMenu($event)">Галерея работ</div>
+                <div class="menu-link" (click)="openCloseBurgerMenu($event)">Калькулятор</div>
+                <div class="menu-link" (click)="openCloseBurgerMenu($event)">Документы</div>
+                <div class="menu-link" (click)="openCloseBurgerMenu($event)">База знаний</div>
+            </div>
+
+            <button class="button-sign-in">
+                <span>Войти</span>
+                <mat-icon>input</mat-icon>
+            </button>
+
+            <div class="profile">
+                <mat-icon>chat_bubble_outlined</mat-icon>
+                <mat-icon>notifications_none_outlined</mat-icon>
+                <mat-icon>bookmark_border</mat-icon>
+
+                <img class="profile-avatar" src="../../../assets/images/avatar-profile.png" (click)="profileToogle = !profileToogle">
+
+                <div [ngStyle]="{display: profileToogle ? 'block' : 'none'}" class="profile-module-window">
+                    <div class="profile-title" (click)="profileToogle = !profileToogle">
+                        <p>Профиль</p>
+                        <mat-icon>clear</mat-icon>
+                    </div>
+                    
+                    <svg  class="triangle" width="24" height="10" viewBox="0 0 24 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.7196 1.06697L0 10H24L13.2804 1.06697C12.5387 0.448897 11.4613 0.448897 10.7196 1.06697Z" fill="white"/>
+                    </svg>
+
+                    <div class="profile-name">
+                        <div class="name-and-avatar">
+                            <img src="../../../assets/images/avatar-profile.png">
+
+                            <div>
+                                <p class="name" routerLink="/profile/GXZKsNFVTOol2nZgPl84" (click)="profileToogle = !profileToogle">Дмитрий Иванов</p>
+                                <p class="name-link" routerLink="/profile/GXZKsNFVTOol2nZgPl84" (click)="profileToogle = !profileToogle">Перейти в личный кабинет</p>
+                            </div>
+                        </div>
+
+                        <div class="nav">
+                            <p>Сообщения <span>15</span></p>
+                            <p>Уведомления</p>
+                            <p>Избранное</p>
+                        </div>
+                    </div>
+
+                    <div class="compony">
+                        <img src="../../../assets/images/profile-logo-compony.png">
+                        <p>ООО "Стройинвест"</p>
+                    </div>
+
+                    <div class="compony">
+                        <img src="../../../assets/images/profile-logo-compony.png">
+                        <p>ЗАО "Стройкомпани"</p>
+                    </div>
+
+                    <div class="logout-from-all-accounts">
+                        <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 15V12H6V8H13V5L18 10L13 15ZM11 0C11.5304 0 12.0391 0.210714 12.4142 0.585786C12.7893 0.960859 13 1.46957 13 2V4H11V2H2V18H11V16H13V18C13 18.5304 12.7893 19.0391 12.4142 19.4142C12.0391 19.7893 11.5304 20 11 20H2C1.46957 20 0.960859 19.7893 0.585786 19.4142C0.210714 19.0391 0 18.5304 0 18V2C0 1.46957 0.210714 0.960859 0.585786 0.585786C0.960859 0.210714 1.46957 0 2 0H11Z" fill="#EA4545"/>
+                        </svg>
+
+                        <p>Выйти из всех аккаунтов</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

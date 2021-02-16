@@ -2,7 +2,6 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { RouterModule } from "@angular/router";
 import { LeafletModule } from "@asymmetrik/ngx-leaflet";
 import { SharedModule } from "../../shared/shared.module";
 import { AboutPerformer } from "./components/about-performer/about-performer.component";
@@ -22,9 +21,6 @@ import { PerformerComponent } from "./performer.component";
 import { ReviewComponent } from './components/review/review.component';
 import { ServiceComponent } from './components/service/service.component';
 
-const routes = [
-  {path: 'performer/:id', component: PerformerComponent}
-]
 
 @NgModule({
     declarations: [
@@ -48,7 +44,6 @@ const routes = [
     imports: [
         CommonModule,
         SharedModule,
-        RouterModule.forRoot(routes),
         LeafletModule,
         FormsModule,
         ReactiveFormsModule,

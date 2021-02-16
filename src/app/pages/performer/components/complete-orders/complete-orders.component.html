@@ -42,28 +42,55 @@
             </select>
         </fieldset>
     
-        <div class="applications">
-            <div *ngFor="let order of orders" class="application">
-    
-                <div *ngIf="order.images" class="images">
-                    <img *ngFor="let image of order.images" [src]="image">
+        <div class="applications-columns">
+            <div class="applications">
+                <div *ngFor="let order of leftColumn" class="application">
+        
+                    <div *ngIf="order.images" class="images">
+                        <img *ngFor="let image of order.images" [src]="image">
+                    </div>
+        
+                    <div class="title-and-price">
+                        <p class="title">{{ order.title }}</p>
+                        <p class="price">{{ order.getPrice() }}</p>
+                    </div>
+        
+                    <p class="date">Завершен {{ order.createdAt | date : 'dd MMMM yyyy' }}</p>
+        
+                    <hr>
+        
+                    <div class="rating-and-segment">
+                        <p class="rating"><app-rating-stars [stars]="order.rating"></app-rating-stars></p>
+        
+                        <p [ngStyle]="{'color': getColor(order.segment[0])}" class="segment">{{ order.segment[0] }}</p>
+                    </div>
+        
                 </div>
-    
-                <div class="title-and-price">
-                    <p class="title">{{ order.title }}</p>
-                    <p class="price">{{ order.getPrice() }}</p>
+            </div>
+
+            <div class="applications">
+                <div *ngFor="let order of rightColumn" class="application">
+        
+                    <div *ngIf="order.images" class="images">
+                        <img *ngFor="let image of order.images" [src]="image">
+                    </div>
+        
+                    <div class="title-and-price">
+                        <p class="title">{{ order.title }}</p>
+                        <p class="price">{{ order.getPrice() }}</p>
+                    </div>
+        
+                    <p class="date">Завершен {{ order.createdAt | date : 'dd MMMM yyyy' }}</p>
+        
+                    <hr>
+        
+                    <div class="rating-and-segment">
+                        <p class="rating"><app-rating-stars [stars]="order.rating"></app-rating-stars></p>
+        
+                        <p [ngStyle]="{'color': getColor(order.segment[0])}" class="segment">{{ order.segment[0] }}</p>
+                    </div>
+        
                 </div>
-    
-                <p class="date">Завершен {{ order.createdAt | date : 'dd MMMM yyyy' }}</p>
-    
-                <hr>
-    
-                <div class="rating-and-segment">
-                    <p class="rating"><app-rating-stars [stars]="order.rating"></app-rating-stars></p>
-    
-                    <p [ngStyle]="{'color': getColor(order.segment[0])}" class="segment">{{ order.segment[0] }}</p>
-                </div>
-    
             </div>
         </div>
     

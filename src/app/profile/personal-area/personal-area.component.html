@@ -1,0 +1,23 @@
+<div class="container" *ngIf="card">
+
+    <div class="left-column">
+        <app-profile [performer]="card"></app-profile>
+        <app-requisites></app-requisites>
+    </div>
+
+    <div class="right-column">
+        <app-basicInfo [performer]="card"></app-basicInfo>
+        <app-gallery></app-gallery>
+        <app-services></app-services>
+
+        <ng-container *ngIf="reviews">
+            <app-reviews [reviews]="reviews"></app-reviews>
+        </ng-container>
+
+        <app-acceptedOrders [orders]="card.orders"></app-acceptedOrders>
+        <app-posted-orders [orders]="card.orders"></app-posted-orders>
+        <app-documents></app-documents>
+        <app-certificates></app-certificates>
+    </div>
+
+</div>

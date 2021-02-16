@@ -1,0 +1,66 @@
+.container{
+    position: relative;
+    width: 276px;
+    padding: 21px 24px 23px 23px;
+    margin-top: 24px;
+    background-color: #FFFFFF;
+    border: 1px solid #E3E9F2;
+    border-radius: 4px;
+
+    .edit{
+        position: absolute;
+        top: 21px;
+        right: 21px;
+        color: #8594A8;
+        z-index: 1;
+        cursor: pointer;
+    }
+
+    .header{
+        margin-bottom: 19px;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 28px;
+        color: #334D6E;
+    }
+
+    .requisite{
+        margin-top: 13px;
+
+        .requisite-title{
+            margin-bottom: 7px;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 20px;
+            color: #334D6E;
+        }
+
+        .requisite-description{
+            font-size: 14px;
+            line-height: 20px;
+            color: #8594A8;
+        }
+    }
+}
+
+@media screen and (max-width: 1275px) {
+    .container{
+        width: 230px;
+        height: 100%;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container{
+        width: 100%;
+        height: auto;
+        padding: 13px 15px 15px 15px;
+        margin-top: 24px;
+
+        .edit{
+            top: 13px;
+            right: 13px;
+        }
+    }
+}

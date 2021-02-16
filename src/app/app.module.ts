@@ -11,8 +11,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { MainComponent } from './pages/main/main.component';
 import { SearcherComponent } from './pages/main/components/searcher/searcher.component';
 import { CategoriesComponent } from './pages/main/components/categories/categories.component';
@@ -21,8 +19,6 @@ import { FormRegistrationPageComponent } from './pages/formRegistrationPage/form
 import { RegistrBasicInfoComponent } from './pages/formRegistrationPage/components/registrBasicInfo/registrBasicInfo.component';
 import { RegistrRequisitesComponent } from './pages/formRegistrationPage/components/registrRequisites/registrRequisites.component';
 
-import { PerformersModule } from './pages/performers/performers.module';
-import { PerformerModule } from './pages/performer/performer.module';
 import { SharedModule } from "./shared/shared.module";
 import { MaterialModule } from "./shared/material.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,14 +27,20 @@ import { ServiceSpecificComponent } from './pages/servicesPage/components/servic
 
 import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
-import { PersonalAreaModule } from './pages/personal-area/personal-area.module';
+import { PagesModule } from './pages/pages.module';
+import { PagesComponent } from './pages/pages.component';
+import { FooterComponent } from './pages/components/footer/footer.component';
+import { HeaderComponent } from './pages/components/header/header.component';
+import { ProfileModule } from './profile/profile.module';
+
+
+
 
 registerLocaleData(localeRu, 'ru');
 
 @NgModule({
   declarations: [
     AppComponent,
-
     HeaderComponent,
     FooterComponent,
 
@@ -51,6 +53,7 @@ registerLocaleData(localeRu, 'ru');
     RegistrBasicInfoComponent,
     RegistrRequisitesComponent,
     ServiceSpecificComponent,
+    PagesComponent
   ],
   imports: [
     CommonModule,
@@ -62,12 +65,11 @@ registerLocaleData(localeRu, 'ru');
     SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    PerformersModule,
-    PerformerModule,
     MaterialModule,
     BrowserAnimationsModule,
     ServicesPageModule,
-    PersonalAreaModule
+    PagesModule,
+    ProfileModule
   ],
   providers: [AngularFirestore, { provide: LOCALE_ID, useValue: 'ru' }],
   bootstrap: [AppComponent],

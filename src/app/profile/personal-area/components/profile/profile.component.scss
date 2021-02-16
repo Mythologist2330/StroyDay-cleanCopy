@@ -1,0 +1,262 @@
+.container{
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 276px;
+    padding: 31px 0 22px 0;
+    background-color: #FFFFFF;
+    border: 1px solid #E3E9F2;
+    border-radius: 4px;
+
+    .edit{
+        position: absolute;
+        top: 21px;
+        right: 21px;
+        color: #8594A8;
+        z-index: 1;
+        cursor: pointer;
+    }
+
+    .logo-and-title-and-rating-and-statistics{
+        width: 100%;
+
+        .logo-and-title-and-rating{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .logo{
+                position: relative;
+        
+                img{
+                    width: 140px;
+                    height: 140px;
+                    border-radius: 50%;
+                }
+        
+                .add-photo{
+                    position: absolute;
+                    bottom: 5px;
+                    right: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 44px;
+                    height: 44px;
+                    border: 6px solid #fff;
+                    border-radius: 50%;
+                    background-color: #0D6FE3;
+                    cursor: pointer;
+        
+                    mat-icon{
+                        width: 18px;
+                        height: 17px;
+                        font-size: 18px;
+                        color: #fff;
+                    }
+                }
+            }
+
+            .title{
+                margin: 17px 25px 0 25px;
+                text-align: center;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 24px;
+                color: #334D6E;
+            }
+
+            app-rating-stars{
+                margin: 6px -1px 6px 0;
+            }
+        }
+
+        .statistics{
+            width: 100%;
+
+            .statistic{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                height: 44px;
+                padding: 0 24px;
+                border-top: 1px solid #E3E9F2;
+
+                p{
+                    font-size: 14px;
+                    line-height: 20px;
+                    color: #334D6E;
+    
+                    &.statistic-count{
+                        font-weight: bold;
+                    }
+                }
+
+                .likes-and-dislikes{
+                    display: flex;
+    
+                    p{
+                        display: flex;
+                        align-items: center;
+                        margin-left: 12px;
+                        font-weight: bold;
+    
+                        mat-icon{
+                            width: 16px;
+                            height: 16px;
+                            margin-right: 5px;
+                            font-size: 16px;
+    
+                            &.likes{
+                                color: #46AA32;
+                            }
+    
+                            &.dislikes{
+                                color: #EA4545;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .buttons{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .button-go-to-public-page{
+            width: 228px;
+            height: 48px;
+            margin: 13px 0 17px 0;
+            background-color: #0D6FE3;
+            border-radius: 3px;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 18px;
+            color: #FFFFFF;
+        }
+    
+        .share-link{
+            font-size: 14px;
+            line-height: 20px;
+            color: #334D6E;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+}
+
+@media screen and (max-width: 1275px) {
+    .container{
+        width: 474px;
+        padding: 23px 23px 23px 23px;
+
+        .logo-and-title-and-rating-and-statistics{
+            display: flex;
+            border-bottom: 1px solid #E3E9F2;
+
+            .logo-and-title-and-rating{
+                width: 228px;
+
+                .title{
+                    max-width: 212px;
+                    margin: 17px 25px 0 25px;
+                }
+
+                app-rating-stars{
+                    margin: 6px -2px -2px 0;
+                }
+            }
+
+            .statistics{
+                width: 182px;
+                margin: 27px 0 0 16px;
+
+                .statistic{
+                    padding: 0;
+
+                    &:first-child{
+                        padding-top: 1px;
+                        border: none;
+                    }
+                }
+            }
+        }
+
+        .buttons{
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+
+            .button-go-to-public-page{
+                width: 262px;
+                margin: 16px 0 0 0;
+            }
+
+            .share-link{
+                margin: 10px 1px 0 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container{
+        width: 100%;
+        padding: 31px 0 22px 0;
+
+        .logo-and-title-and-rating-and-statistics{
+            display: block;
+            border: none;
+
+            .logo-and-title-and-rating{
+                width: auto;
+
+                .title{
+                    width: auto;
+                    max-width: none;
+                    margin: 17px 31px 0 31px;
+                }
+    
+                app-rating-stars{
+                    margin: 11px -1px 22px 0;
+                }
+            }
+
+            .statistics{
+                width: 100%;
+                margin: 0;
+
+                .statistic{
+                    padding: 0 24px;
+
+                    &:first-child{
+                        padding-top: 0;
+                        border-top: 1px solid #E3E9F2;
+                    }
+                }
+            }
+        }
+
+        .buttons{
+            flex-direction: column;
+            align-items: center;
+            justify-content: unset;
+            width: auto;
+
+            .button-go-to-public-page{
+                width: 240px;
+                margin: 13px 0 17px 0;
+            }
+
+            .share-link{
+                margin: 0;
+            }
+        }
+    }
+}

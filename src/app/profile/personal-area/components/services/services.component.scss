@@ -1,0 +1,194 @@
+.container{
+    position: relative;
+    width: 676px;
+    padding: 29px 30px 31px 31px;
+    margin-top: 24px;
+    background-color: #FFFFFF;
+    border: 1px solid #E3E9F2;
+    border-radius: 4px;
+
+    .edit{
+        position: absolute;
+        top: 21px;
+        right: 21px;
+        color: #8594A8;
+        cursor: pointer;
+    }
+
+    .header{
+        margin-bottom: 24px;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 28px;
+        color: #334D6E;
+    }
+
+    .sort-by{
+        display: flex;
+        align-items: center;
+
+        label{
+            display: flex;
+            align-items: center;
+            margin-right: 24px;
+            cursor: pointer;
+
+            input{
+                display: none;
+            }
+
+            p{
+                font-size: 16px;
+                line-height: 24px;
+                color: #334D6E;
+            }
+
+            span{
+                margin-left: 4px;
+                padding: 0 12px;
+                border-radius: 60px;
+                font-weight: bold;
+                font-size: 12px;
+                line-height: 24px;
+
+                &.amount-all{
+                    color: #334D6E;
+                    background-color: rgba(51, 77, 110, 0.1);
+                }
+
+                &.amount-economy{
+                    color: #F8601F;
+                    border: 2px solid #F8601F;
+                }
+
+                &.amount-standard{
+                    color: #0D6FE3;
+                    border: 2px solid #0D6FE3;
+                }
+
+                &.amount-premium{
+                    color: #9F8C66;
+                    border: 2px solid #9F8C66;
+                }
+            }
+
+            input:checked + p{
+                font-weight: 600;
+                border-bottom: 1px dashed #334D6E;
+            }
+        }
+    }
+
+    .sort-by-mobile{
+        display: none;
+    }
+
+    .services{
+        width: 100%;
+        margin-top: 14px;
+
+        .service{
+            width: 100%;
+            min-height: 60px;
+            padding-top: 14px;        
+            border-top: 1px solid #C3CBD6;
+
+            &:first-child{
+                border: none;
+            }
+        }
+    }
+
+    .button-show-all-services{
+        width: 100%;
+        height: 48px;
+        margin-top: 9px;
+        background-color: #FFFFFF;
+        border: 1px solid #C3CBD6;
+        border-radius: 3px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        color: #334D6E;
+    }
+}
+
+@media screen and (max-width: 1275px) {
+    .container{
+        width: 720px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container{
+        width: 100%;
+        padding: 13px 15px 15px 15px;
+
+        .edit{
+            top: 13px;
+            right: 13px;
+        }
+
+        .header{
+            margin-bottom: 18px;
+        }
+
+        .sort-by{
+            display: none;
+        }
+
+        .sort-by-mobile{
+            display: block;
+            width: -webkit-fill-available;
+            height: 52px;
+            margin-top: 12px;
+            border: 1px solid #C3CBD6;
+            border-radius: 4px;
+
+            legend{
+                margin-left: 8px;
+                padding: 0 4px;
+                font-size: 12px;
+                line-height: 18px;
+                color: #8594A8;
+            }
+
+            select{
+                width: 100%;
+                height: 26px;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 20px;
+                color: #334D6E;
+                border: none;
+                padding: 0 12px;
+                background-color: #fff;
+                background-image: url(../../../../../assets/images/select-arrow.performersPage.png);
+                background-repeat: no-repeat;
+                background-position: right;
+                background-position-x: calc(100% - 18px);
+
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+
+                &:focus{
+                    outline: none;
+                }
+            }
+        }
+
+        .services{
+            margin: 0;
+
+            .service{
+                min-height: auto;
+                padding: 14px 0 15px 0;
+            }
+        }
+
+        .button-show-all-services{
+            margin-top: -1px;
+        }
+    }
+}
