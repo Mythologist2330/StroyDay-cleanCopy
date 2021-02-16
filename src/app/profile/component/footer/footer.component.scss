@@ -26,6 +26,20 @@
     }
 }
 
+@media screen and (max-width: 1450px) {
+    .container{
+        justify-content: center;
+        padding: 0 4px;
+
+        .navigation{
+
+            p{
+                margin-right: 7px;
+            }
+        }
+    }
+}
+
 @media screen and (max-width: 1275px) {
     .container{
         flex-direction: column;
