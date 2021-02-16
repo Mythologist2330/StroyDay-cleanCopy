@@ -1,7 +1,7 @@
 <div class="container">
 
     <div class="button-burger-and-logo">
-        <button class="button-burger" (click)="openBurgerMenu = !openBurgerMenu">
+        <button class="button-burger" (click)="openBurgerMenu = !openBurgerMenu; openMainSectionsMenu = false; onOffScroll($event)">
             <mat-icon *ngIf="!openBurgerMenu; else clear">menu</mat-icon>
             <ng-template #clear>
                 <mat-icon>clear</mat-icon>
@@ -42,7 +42,7 @@
         <p class="main-section-modal">Избранное</p>
     </div>
 
-    <div class="navigation" *ngIf="openBurgerMenu">
+    <div class="navigation" [ngStyle]="{left: openBurgerMenu ? '0' : '-100%'}">
 
         <div class="section first-section">
             <mat-icon>person</mat-icon>
@@ -129,24 +129,23 @@
             <p class="section-title">Блог</p>
         </div>
 
+    </div>
 
-        <div class="main-sections" [ngStyle]="{right: openMainSectionsMenu ? '0' : '-100%'}">
-            <div class="main-sections-back" (click)="openMainSectionsMenu = false">
-                <mat-icon>keyboard_arrow_left</mat-icon>
-                <p>Основные разделы</p>
-            </div>
-
-            <p class="main-section">Главная</p>
-            <p class="main-section">Услуги</p>
-            <p class="main-section">Заявки</p>
-            <p class="main-section">Исполнители</p>
-            <p class="main-section">Галерея работ</p>
-            <p class="main-section">Калькулятор</p>
-            <p class="main-section">Документы</p>
-            <p class="main-section">База знаний</p>
-            <p class="main-section">Избранное</p>
+    <div class="main-sections" [ngStyle]="{right: openMainSectionsMenu ? '0' : '-100%'}">
+        <div class="main-sections-back" (click)="openMainSectionsMenu = false">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+            <p>Основные разделы</p>
         </div>
 
+        <p class="main-section" (click)="openMainSectionsMenu = false">Главная</p>
+        <p class="main-section" (click)="openMainSectionsMenu = false">Услуги</p>
+        <p class="main-section" (click)="openMainSectionsMenu = false">Заявки</p>
+        <p class="main-section" (click)="openMainSectionsMenu = false">Исполнители</p>
+        <p class="main-section" (click)="openMainSectionsMenu = false">Галерея работ</p>
+        <p class="main-section" (click)="openMainSectionsMenu = false">Калькулятор</p>
+        <p class="main-section" (click)="openMainSectionsMenu = false">Документы</p>
+        <p class="main-section" (click)="openMainSectionsMenu = false">База знаний</p>
+        <p class="main-section" (click)="openMainSectionsMenu = false">Избранное</p>
     </div>
 
 </div>
