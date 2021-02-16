@@ -87,11 +87,10 @@ export class SliderComponent implements OnInit{
     }
 
     ngOnInit() {
-        console.log(window.innerWidth)
         if (window.innerWidth > 1275) {
-            this.sliderState = 'start'; console.log(window.innerWidth)
+            this.sliderState = 'start';
         } else {
-            this.sliderState = 'startTablet'; console.log(window.innerWidth)
+            this.sliderState = 'startTablet';
         }
         
     }
