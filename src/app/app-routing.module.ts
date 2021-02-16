@@ -14,6 +14,8 @@ import { PersonalAreaComponent } from './profile/personal-area/personal-area.com
 import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
+  {path: '**', redirectTo: 'pages'},
+
   {path: 'pages', component: PagesComponent, children: [
     {path: 'services', component: ServicesPageComponent, children: [
       {path: '', component: ServicesComponent},
