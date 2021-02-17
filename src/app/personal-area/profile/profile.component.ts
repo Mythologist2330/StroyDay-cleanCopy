@@ -33,7 +33,6 @@ export class ProfileComponent implements OnInit{
 
     ngOnInit() {
         this.id = this.activatedRoute.snapshot.parent.params.id
-        console.log(this.activatedRoute)
         this.performersSrv.getPerformersCardById(this.id)
         .pipe(
             tap(card => {
