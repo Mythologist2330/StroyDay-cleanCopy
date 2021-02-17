@@ -10,12 +10,12 @@ import { PerformersCardService } from 'src/app/services/performers-card.service'
 import { ReviewService } from 'src/app/services/review.service';
 
 @Component({
-    selector: 'app-personalArea',
-    templateUrl: './personal-area.component.html',
-    styleUrls: ['./personal-area.component.scss']
+    selector: 'app-profile',
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.scss']
 })
 
-export class PersonalAreaComponent implements OnInit{
+export class ProfileComponent implements OnInit{
 
     public id: string;
     public card: Performer;
@@ -32,7 +32,8 @@ export class PersonalAreaComponent implements OnInit{
     ) {}
 
     ngOnInit() {
-        this.id = this.activatedRoute.snapshot.params.id
+        this.id = this.activatedRoute.snapshot.parent.params.id
+        console.log(this.activatedRoute)
         this.performersSrv.getPerformersCardById(this.id)
         .pipe(
             tap(card => {

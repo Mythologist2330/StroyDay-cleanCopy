@@ -10,8 +10,8 @@ import { ServiceSpecificComponent } from './pages/servicesPage/components/servic
 import { ServiceCatalogComponent } from './pages/servicesPage/components/serviceCatalog/serviceСatalog.component';
 import { ServicesComponent } from './pages/servicesPage/components/services/services.component';
 import { ServicesPageComponent } from './pages/servicesPage/servicesPage.component';
-import { PersonalAreaComponent } from './profile/personal-area/personal-area.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './personal-area/profile/profile.component';
+import { PersonalAreaComponent } from './personal-area/personal-area.component';
 
 const routes: Routes = [
   {path: 'pages', component: PagesComponent, children: [
@@ -25,8 +25,9 @@ const routes: Routes = [
     {path: 'performer/:id', component: PerformerComponent}
   ]},
 
-  {path: 'profile', component: ProfileComponent, children: [
-    {path: ':id', component: PersonalAreaComponent}
+  {path: 'personalArea/:id', component: PersonalAreaComponent, children: [
+    {path: '', redirectTo: 'profile', pathMatch: 'full'},
+    {path: 'profile', component: ProfileComponent}
   ]},
 
   {path: 'formRegistrationPage', component: FormRegistrationPageComponent, children: [

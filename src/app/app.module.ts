@@ -31,7 +31,7 @@ import { PagesModule } from './pages/pages.module';
 import { PagesComponent } from './pages/pages.component';
 import { FooterComponent } from './pages/components/footer/footer.component';
 import { HeaderComponent } from './pages/components/header/header.component';
-import { ProfileModule } from './profile/profile.module';
+import { PersonalAreaModule } from './personal-area/personal-area.module';
 
 
 
@@ -69,7 +69,7 @@ registerLocaleData(localeRu, 'ru');
     BrowserAnimationsModule,
     ServicesPageModule,
     PagesModule,
-    ProfileModule
+    PersonalAreaModule
   ],
   providers: [AngularFirestore, { provide: LOCALE_ID, useValue: 'ru' }],
   bootstrap: [AppComponent],
