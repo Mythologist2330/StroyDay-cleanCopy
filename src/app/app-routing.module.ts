@@ -12,6 +12,7 @@ import { ServicesComponent } from './pages/servicesPage/components/services/serv
 import { ServicesPageComponent } from './pages/servicesPage/servicesPage.component';
 import { ProfileComponent } from './personal-area/profile/profile.component';
 import { PersonalAreaComponent } from './personal-area/personal-area.component';
+import { BasicInfoComponent } from './personal-area/basic-info/basic-info.component';
 
 const routes: Routes = [
   {path: 'pages', component: PagesComponent, children: [
@@ -27,7 +28,8 @@ const routes: Routes = [
 
   {path: 'personalArea/:id', component: PersonalAreaComponent, children: [
     {path: '', redirectTo: 'profile', pathMatch: 'full'},
-    {path: 'profile', component: ProfileComponent}
+    {path: 'profile', component: ProfileComponent},
+    {path: 'basicInfo', component: BasicInfoComponent}
   ]},
 
   {path: 'formRegistrationPage', component: FormRegistrationPageComponent, children: [
