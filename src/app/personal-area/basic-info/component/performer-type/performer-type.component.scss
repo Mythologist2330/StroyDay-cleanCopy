@@ -1,0 +1,42 @@
+.container{
+    width: 720px;
+    padding: 21px 23px 23px 23px;
+    margin: 24px 0;
+    background-color: #FFFFFF;
+    border: 1px solid #E3E9F2;
+    border-radius: 4px;
+
+    .header{
+        margin-bottom: 14px;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 28px;
+        color: #334D6E;
+    }
+
+    .description{
+        font-size: 16px;
+        line-height: 24px;
+        color: #8594A8;
+    }
+
+    .button-add-performer-type{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 256px;
+        height: 48px;
+        margin-top: 18px;
+        background-color: rgb(156,188,221,0.2);
+        border-radius: 3px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 18px;
+        color: #334D6E;
+
+        mat-icon{
+            margin-right: 9px;
+            color: #7D8FA5;
+        }
+    }
+}

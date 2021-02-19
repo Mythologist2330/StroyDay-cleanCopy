@@ -38,7 +38,6 @@ export class CompleteOrdersComponent implements OnInit {
 
     setFilter(e) {
         const segment = e.target.value;
-        console.log(segment)
         if (segment === 'low') {
             this.orders = this.ordersLow
         } else if (segment === 'standart') {
