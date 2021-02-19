@@ -8,6 +8,10 @@ import { Component } from '@angular/core';
 
 export class DepartureAreasComponent {
 
+  departureAreas = []
 
+  addDepartureArea() {
+    this.departureAreas.push({locality: '', district: ''})
+  }
 
 }

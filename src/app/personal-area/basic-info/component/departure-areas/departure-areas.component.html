@@ -2,8 +2,28 @@
 
     <p class="header">Районы выезда</p>
 
-    <p class="description">Вы не указали районы выезда. Добавьте районы выезда, чтобы заказчикам было легче Вас найти и Вы смогли получать больше заказов из разных частей города.</p>
+    <p class="description" *ngIf="departureAreas.length === 0; else fieldIs">Вы не указали районы выезда. Добавьте районы выезда, чтобы заказчикам было легче Вас найти и Вы смогли получать больше заказов из разных частей города.</p>
 
-    <button class="button-add-departure-area"><mat-icon>add</mat-icon>Добавить район выезда</button>
+    <ng-template #fieldIs>
+        <p class="description">Добавьте районы выезда, чтобы заказчикам было легче Вас найти и Вы смогли получать больше заказов из разных частей города.</p>
+    </ng-template>
+
+    <div class="departure-area" *ngFor="let departureArea of departureAreas, let i = index">
+        <p>{{ i + 1 }}</p>
+
+        <fieldset>
+            <legend>Населенный пункт</legend>
+            <input type="text" name="">
+        </fieldset>
+
+        <fieldset>
+            <legend>Район</legend>
+            <input type="text" name="">
+        </fieldset>
+
+        <mat-icon>delete</mat-icon>
+    </div>
+
+    <button class="button-add-departure-area" (click)="addDepartureArea()" [ngStyle]="{marginTop: departureAreas.length === 0 ? '18px' : '24px'}"><mat-icon>add</mat-icon>Добавить район выезда</button>
 
 </div>
