@@ -131,3 +131,31 @@
         }
     }
 }
+
+@media screen and (max-width: 767px) {
+    .container{
+        width: 100%;
+        padding: 16px 16px 16px 16px;
+
+        .performer-type{
+
+            .fieldsets{
+
+                fieldset{
+                    flex: 0 0 100%;
+                }
+            }
+
+            label{
+
+                input{
+                    min-width: 20px;
+                }
+            }
+        }
+
+        .button-add-performer-type{
+            width: 100%;
+        }
+    }
+}
