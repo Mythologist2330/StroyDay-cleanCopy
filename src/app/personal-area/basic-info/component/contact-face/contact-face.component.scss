@@ -106,6 +106,7 @@
         justify-content: center;
         width: 256px;
         height: 48px;
+        margin-top: 24px;
         background-color: rgb(156,188,221,0.2);
         border-radius: 3px;
         font-weight: 500;
@@ -123,5 +124,35 @@
 @media screen and (max-width: 1275px) {
     .container{
         margin: 0 0 24px 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container{
+        width: 100%;
+        margin: 0 0 16px 0;
+        padding: 15px;
+
+        .contact-face{
+
+            .fieldsets{
+    
+                fieldset{
+                    flex: 0 0 100%;
+                }
+            }
+        }
+
+        label{
+
+            input{
+                min-width: 20px;
+            }
+        }
+
+        .button-add-contact-face{
+            width: 100%;
+            margin-top: 16px;
+        }
     }
 }
