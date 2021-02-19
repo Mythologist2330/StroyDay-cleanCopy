@@ -8,6 +8,10 @@ import { Component } from '@angular/core';
 
 export class ContactFaceComponent {
 
+  contactFace = []
 
+  addContactFace() {
+    this.contactFace.push({lastName: '', firstName: '', tel: '', email: ''})
+  }
 
 }
