@@ -78,6 +78,7 @@
         justify-content: center;
         width: 256px;
         height: 48px;
+        margin-top: 24px;
         background-color: rgb(156,188,221,0.2);
         border-radius: 3px;
         font-weight: 500;
@@ -88,6 +89,52 @@
         mat-icon{
             margin-right: 9px;
             color: #7D8FA5;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container{
+        width: 100%;
+        padding: 15px;
+
+        .metro{
+            position: relative;
+            display: block;
+            padding: 16px;
+            margin-bottom: 16px;
+            background: #F7F9FB;
+            border: 1px solid #E3E9F2;
+            border-radius: 4px;
+
+            .title{
+                display: none;
+            }
+
+            .title-mobile{
+                display: block;
+                margin: 0 5px 0 0;
+            }
+
+            fieldset{
+                width: 100%;
+                margin: 15px 0 0 0;
+
+                input{
+                    background: #F7F9FB;
+                }
+            }
+
+            mat-icon{
+                position: absolute;
+                top: 3px;
+                right: 15px;
+            }
+        }
+
+        .button-add-metro{
+            width: 100%;
+            margin-top: 16px;
         }
     }
 }

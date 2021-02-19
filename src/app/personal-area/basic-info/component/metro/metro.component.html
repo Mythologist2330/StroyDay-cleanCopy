@@ -9,7 +9,8 @@
     </ng-template>
 
     <div class="metro" *ngFor="let oneMetro of metro, let i = index">
-        <p>{{ i + 1 }}</p>
+        <p class="title">{{ i + 1 }}.</p>
+        <p class="title-mobile">Район выезда {{ i + 1 }}</p>
 
         <fieldset>
             <legend>Станция метро</legend>
@@ -19,6 +20,6 @@
         <mat-icon>delete</mat-icon>
     </div>
 
-    <button class="button-add-metro" (click)="addMetro()" [ngStyle]="{marginTop: metro.length === 0 ? '18px' : '24px'}"><mat-icon>add</mat-icon>Добавить метро</button>
+    <button class="button-add-metro" (click)="addMetro()" [ngStyle]="{marginTop: metro.length === 0 ? '18px' : ''}"><mat-icon>add</mat-icon>Добавить метро</button>
 
 </div>
