@@ -2,8 +2,43 @@
 
     <p class="header">Тип исполнителя</p>
 
-    <p class="description">Вы не выбрали тип исполнителя. Выберите тип исполнителя, чтобы пользователи понимали с кем они будут работать.</p>
+    <p class="description" *ngIf="performerType.length === 0; else fieldIs">Вы не выбрали тип исполнителя. Выберите тип исполнителя, чтобы пользователи понимали с кем они будут работать.</p>
 
-    <button class="button-add-performer-type"><mat-icon>add</mat-icon>Добавить тип исполнителя</button>
+    <ng-template #fieldIs>
+        <p class="description">Выберите тип исполнителя, чтобы пользователи понимали с кем они будут работать.</p>
+    </ng-template>
+
+    <div class="performer-type" *ngFor="let OnePerformerType of performerType, let i = index">
+        <p>Исполнитель {{ i + 1 }}</p>
+
+        <div class="fieldsets">
+            <fieldset>
+                <legend>Тип исполнителя</legend>
+                <select>
+                    <option>Не выбран</option>
+                    <option value="юридическое лицо">Юридическое лицо</option>
+                    <option value="индивидуальный предприниматель">Индивидуальный предприниматель</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend>Реквизиты</legend>
+                <select>
+                    <option>Не выбран</option>
+                    <option value="ООО “Строитель-исполнитель”">ООО “Строитель-исполнитель”</option>
+                    <option value="ИП Иванов">ИП Иванов</option>
+                </select>
+            </fieldset>
+        </div>
+
+        <label>
+            <input type="checkbox" name="" id="">
+            <p>Использовать в качестве основного исполнителя</p>
+        </label>
+
+        <mat-icon>delete</mat-icon>
+    </div>
+
+    <button class="button-add-performer-type" (click)="addPerformerType()" [ngStyle]="{marginTop: performerType.length === 0 ? '18px' : '16px'}"><mat-icon>add</mat-icon>Добавить тип исполнителя</button>
 
 </div>
