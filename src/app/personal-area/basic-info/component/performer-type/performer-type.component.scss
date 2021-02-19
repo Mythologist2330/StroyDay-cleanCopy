@@ -135,7 +135,17 @@
 @media screen and (max-width: 767px) {
     .container{
         width: 100%;
-        padding: 16px 16px 16px 16px;
+        margin: 0 0 16px 0;
+        padding: 15px;
+
+        .header{
+            margin-bottom: 7px;
+        }
+
+        .description{
+            font-size: 14px;
+            line-height: 20px;
+        }
 
         .performer-type{
 

@@ -42,3 +42,24 @@
         }
     }
 }
+
+@media screen and (max-width: 767px) {
+    .container{
+        width: 100%;
+        margin: 0 0 16px 0;
+        padding: 15px;
+
+        .header{
+            margin-bottom: 7px;
+        }
+
+        .description{
+            font-size: 14px;
+            line-height: 20px;
+        }
+
+        .button-go-to-service-section{
+            width: 100%;
+        }
+    }
+}
