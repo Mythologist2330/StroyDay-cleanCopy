@@ -1,11 +1,8 @@
 <div (click)="showService = !showService" class="service-header">
-    <div class="title-and-segments">
-        <p class="title">{{ service.title }}</p>
-
-        <div class="segments">
-            <p [ngStyle]="{'background': getBackground(segment), 'color': getColor(segment)}" *ngFor="let segment of service.getSegments()">{{ segment }}</p>
-        </div>
-    </div>
+    <p class="title-and-segments">
+        <span class="title">{{ service.title }}</span>
+        <span class="segment" [ngStyle]="{'background': getBackground(segment), 'color': getColor(segment)}" *ngFor="let segment of service.getSegments()">{{ segment }}</span>
+    </p>
 
     <div class="price-and-toggle">
         <p class="price">{{ service.getMinPrice() }}</p>
