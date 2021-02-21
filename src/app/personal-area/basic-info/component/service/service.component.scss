@@ -1,0 +1,208 @@
+.service-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 14px;
+    cursor: pointer;
+
+    .title-and-segments{
+        margin-right: 8px;
+
+        .title{
+            margin-right: 4px;
+            font-size: 20px;
+            line-height: 28px;
+            color: #334D6E;
+        }
+
+        .segment{
+            position: relative;
+            top: -2px;        
+            margin-left: 4px;
+            padding: 5px 12px 6px 12px;
+            border-radius: 60px;
+            font-weight: bold;
+            font-size: 10px;
+            line-height: 24px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+    }
+
+    .price-and-toggle{
+        display: flex;
+        align-items: center;
+        margin-right: 7px;
+
+        .price{
+            min-width: max-content;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 28px;
+            color: #334D6E;
+        }
+
+        .toggle{
+            display: flex;
+            align-items: center;
+            width: 24px;
+            height: 18px;
+            margin-left: 28px;
+        }
+    }
+}
+
+.service-header-mobile{
+    display: none;
+}
+
+.subServices{
+    width: 100%;
+    padding: 12px 52px 0 24px;
+
+    .subService{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+
+        .subService-header-and-subService-segment{
+            display: flex;
+            align-items: center;
+
+            .subService-header{
+                width: max-content;
+                font-size: 16px;
+                line-height: 24px;
+                color: #334D6E;
+            }
+
+            .subService-segment{
+                margin-left: 8px;
+                padding: 0 12px;
+                border-radius: 60px;
+                font-weight: bold;
+                font-size: 10px;
+                line-height: 24px;
+                letter-spacing: 0.5px;
+                text-transform: uppercase;
+            }
+        }
+
+        .border-dash{
+            width: 100%;
+            height: 12px;
+            margin: 0 11px 0 14px;
+            border-bottom: 1px dashed #C3CBD6;
+        }
+
+        .subService-price{
+            min-width: max-content;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            color: #334D6E;
+        }
+    }
+}
+
+.subServices-mobile{
+    display: none;
+}
+
+@media screen and (max-width: 767px) {
+    .service-header{
+        display: none;
+    }
+
+    .service-header-mobile{
+        display: flex;
+        justify-content: space-between;
+
+        .title-segments-mobile{
+            display: inline-block;
+            flex: 0 0 62%;
+            margin-right: 8px;
+            font-size: 16px;
+            line-height: 24px;
+            color: #334D6E;
+
+            .title-mobile{
+                margin-right: 6px;
+            }
+
+            .segment-mobile{
+                display: inline-block;
+                width: max-content;
+                padding: 3px 8px;
+                margin: 5px 9px 0 0;
+                text-transform: uppercase;
+                border-radius: 60px;
+                font-weight: bold;
+                font-size: 8px;
+                line-height: 12px;
+                letter-spacing: 0.5px;
+            }
+        }
+
+        .price-mobile{
+            display: inline-table;
+            min-width: max-content;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 21px;
+            color: #334D6E;
+            border-bottom: 1px dashed #334D6E;
+        }
+    }
+
+    .subServices{
+        display: none;
+    }
+
+    .subServices-mobile{
+        display: block;
+        margin: 18px 5px 0 24px;
+
+        .subService-mobile{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+
+            .subService-header-subService-segment-mobile{
+                display: inline-block;
+                flex: 0 0 63%;
+                margin-right: 7px;
+                font-size: 14px;
+                line-height: 20px;
+                color: #334D6E;
+
+                .subService-header-mobile{
+                    margin-right: 7px;
+                }
+
+                .subService-segment-mobile{
+                    position: relative;
+                    top: -2px;
+                    display: inline-block;
+                    font-weight: bold;
+                    padding: 3px 8px;
+                    text-transform: uppercase;
+                    border-radius: 60px;
+                    font-size: 8px;
+                    line-height: 12px;
+                    letter-spacing: 0.5px;
+                }
+            }
+
+            .subService-price-mobile{
+                display: inline-block;
+                min-width: max-content;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 20px;
+                color: #334D6E;
+            }
+        }
+    }
+}

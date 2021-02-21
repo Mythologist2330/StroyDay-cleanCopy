@@ -8,11 +8,13 @@ import { LocationComponent } from "./component/location/location.component";
 import { MetroComponent } from "./component/metro/metro.component";
 import { PerformerTypeComponent } from "./component/performer-type/performer-type.component";
 import { ServiceCategoriesComponent } from "./component/service-categories/service-categories.component";
+import { ServiceComponent } from "./component/service/service.component";
 
 @NgModule({
   declarations: [
     BasicInfoComponent,
     ServiceCategoriesComponent,
+    ServiceComponent,
     DepartureAreasComponent,
     MetroComponent,
     ContactFaceComponent,

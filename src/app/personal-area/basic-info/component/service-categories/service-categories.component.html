@@ -2,8 +2,24 @@
 
     <p class="header">Категории услуг</p>
 
-    <p class="description">Вы не выбрали никаких категорий услуг. Перейдите в раздел Услуги и добавьте свою специализацию. Вы можете выбрать до 25 направлений деятельности.</p>
+    <p class="description" *ngIf="services.length === 0; else fieldIs">Вы не выбрали никаких категорий услуг. Перейдите в раздел Услуги и добавьте свою специализацию. Вы можете выбрать до 25 направлений деятельности.</p>
 
-    <button class="button-go-to-service-section">Перейти в раздел услуг <mat-icon>launch</mat-icon></button>
+    <ng-template #fieldIs>
+        <p class="description" [ngStyle]="{marginBottom: services.length === 0 ? '' : '-4px'}">Перейдите в раздел Услуги и добавьте или измените свою специализацию. Вы можете выбрать до 25 направлений деятельности.</p>
+    </ng-template>
+
+    <div class="services">
+        <ng-container *ngFor="let service of services">
+            <div *ngIf="service.subServices.length" class="service">
+                <app-service [service]='service'></app-service>
+            </div>
+        </ng-container>
+    </div>
+
+    <button class="button-go-to-service-section" *ngIf="services.length === 0; else buttonIs">Перейти в раздел услуг <mat-icon>launch</mat-icon></button>
+
+    <ng-template #buttonIs>
+        <button class="button-go-to-service-section" [style.marginTop]="0">Посмотреть еще 25 услуг <mat-icon>launch</mat-icon></button>
+    </ng-template>
 
 </div>
