@@ -8,6 +8,10 @@ import { Component } from '@angular/core';
 
 export class PerformerTypeComponent {
 
+  performerType = []
 
+  addPerformerType() {
+    this.performerType.push({lastName: '', firstName: '', tel: '', email: ''})
+  }
 
 }

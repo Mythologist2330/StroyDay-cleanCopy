@@ -1,0 +1,25 @@
+<div class="container">
+
+    <p class="header">Метро</p>
+
+    <p class="description" *ngIf="metro.length === 0; else fieldIs">Вы не указали станции метро. Добавьте станции метро, чтобы заказчикам было легче Вас найти и Вы смогли получать больше заказов из разных частей города.</p>
+
+    <ng-template #fieldIs>
+        <p class="description">Добавьте станции метро, чтобы заказчикам было легче Вас найти и Вы смогли получать больше заказов из разных частей города.</p>
+    </ng-template>
+
+    <div class="metro" *ngFor="let oneMetro of metro, let i = index">
+        <p class="title">{{ i + 1 }}.</p>
+        <p class="title-mobile">Район выезда {{ i + 1 }}</p>
+
+        <fieldset>
+            <legend>Станция метро</legend>
+            <input type="text" name="">
+        </fieldset>
+
+        <mat-icon>delete</mat-icon>
+    </div>
+
+    <button class="button-add-metro" (click)="addMetro()" [ngStyle]="{marginTop: metro.length === 0 ? '18px' : ''}"><mat-icon>add</mat-icon>Добавить метро</button>
+
+</div>

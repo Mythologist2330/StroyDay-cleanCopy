@@ -8,6 +8,10 @@ import { Component } from '@angular/core';
 
 export class MetroComponent {
 
+  metro = []
 
+  addMetro() {
+    this.metro.push({subwayStation: ''})
+  }
 
 }
