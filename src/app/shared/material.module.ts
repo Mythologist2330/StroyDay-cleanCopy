@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { CdkTreeModule } from '@angular/cdk/tree';
 
 const materialComponent = [
-    MatIconModule
+    MatIconModule,
+    CdkTreeModule
 ]
 
 @NgModule({

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { IComment } from '../interfaces/IComment';
 import { Review } from '../models/Review';
 

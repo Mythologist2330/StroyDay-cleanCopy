@@ -23,5 +23,9 @@
       "@pages/*": ["/app/pages/*"],
       "@interfaces/*": ["/app/interfaces/*"]
     }
+  },  
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "preserveWhitespaces": true
   }
 }

@@ -29,6 +29,7 @@ export class FilterCategoriesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.categories)
     
   }
 

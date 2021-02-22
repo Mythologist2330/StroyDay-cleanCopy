@@ -9,6 +9,7 @@ import { BreadcrumbsComponent } from '../components/breadcrumbs/breadcrumbs.comp
 import { TagsComponent } from '../components/tags/tags.component';
 import { RatingStarsComponent } from '../components/rating-stars/rating-stars.component';
 import { PaginationComponent } from '../components/pagination/pagination.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [            
@@ -24,7 +25,9 @@ import { PaginationComponent } from '../components/pagination/pagination.compone
         MaterialModule,
         LeafletModule,
         NgxLeafletFullscreenModule,
-        RouterModule
+        RouterModule,
+        FormsModule,
+        ReactiveFormsModule,
     ],
   exports: [
         MaterialModule,
@@ -36,6 +39,8 @@ import { PaginationComponent } from '../components/pagination/pagination.compone
         RatingStarsComponent,
         PaginationComponent,
         RouterModule,
+        FormsModule,
+        ReactiveFormsModule,
     ],
 })
 export class SharedModule { }

@@ -13,6 +13,10 @@ import { ServicesPageComponent } from './pages/servicesPage/servicesPage.compone
 import { ProfileComponent } from './personal-area/profile/profile.component';
 import { PersonalAreaComponent } from './personal-area/personal-area.component';
 import { BasicInfoComponent } from './personal-area/basic-info/basic-info.component';
+import { AdminComponent } from './admin/admin.component';
+import { TreeComponent } from './admin/tree/tree.component';
+import { EditCategoryComponent } from './admin/edit-category/edit-category.component';
+import { EditServiceComponent } from './admin/edit-service/edit-service.component';
 
 const routes: Routes = [
   {path: 'pages', component: PagesComponent, children: [
@@ -37,7 +41,13 @@ const routes: Routes = [
     {path: 'registrRequisites', component: RegistrRequisitesComponent}
   ]},
 
-  {path: '**', redirectTo: 'pages'}
+  {path: 'admin', component: AdminComponent, children: [
+    {path: 'tree' , component: TreeComponent},
+    {path: 'edit-category/:id', component: EditCategoryComponent},
+    {path: 'edit-service/:id', component: EditServiceComponent},
+  ]},
+
+  // {path: '**', redirectTo: 'pages'},
 ]
 
 @NgModule({

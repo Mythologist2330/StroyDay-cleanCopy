@@ -1,0 +1,15 @@
+<div class='container'>
+    <h1>Дерево категорий/услуг</h1>
+    <ng-container *ngFor='let category of catSrv.getNodeCategory() | async'>
+        <app-node [category]='category'></app-node>
+    </ng-container>
+        
+
+    <div class='btn'>
+        <button class='add' (click)='goToCreateCategory()'><mat-icon>add</mat-icon> Добавить категорию</button>
+        <button class='add' (click)='goToCreateService()'><mat-icon>add</mat-icon> Добавить услугу</button>
+    </div>
+</div>
+
+
+

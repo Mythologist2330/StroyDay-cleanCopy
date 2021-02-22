@@ -1,0 +1,87 @@
+.container {
+    padding: 1rem;    
+    h1 {
+      padding: 1rem 0;
+      font-size: 1.3rem;
+      line-height: 1.5rem;
+    }
+    .btn {
+      display: flex;
+      button.add {
+        display: flex;
+        align-items: center;
+        margin: 1rem 1rem 1rem 0;
+        padding: .5rem 1rem;
+        background: blue;
+        color: white;
+        font-weight: bold;
+        .mat-icon {
+          color: white;
+          margin-right: .5rem;
+        }
+      }
+    }    
+  }
+  
+  .root {  
+    margin: 1rem 1.5rem;
+  }
+  
+  .header {
+    display:flex;
+    align-items: center;
+    button {
+      margin-left: 0.5rem;
+      background: transparent;
+      .mat-icon {
+        color: #666;
+        font-size: 16px;
+        width: 16px;
+        height: 16px;
+        &:hover {
+          color: #630000;
+        }
+      }
+    }
+  }
+  
+  p.no-active {
+    font-size: .7rem;
+    font-style: italic;
+    opacity: .6;
+  }
+
+  .sub, .text {
+    font-size: .8rem;
+    line-height: 1rem;
+  }
+  
+  .level1 {
+    margin-top: 0.5rem;
+    margin-left: 2rem;
+  }
+
+  .services {
+    background: #fffdb9;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.5rem;
+    margin-top: 0.5rem;
+    .title {
+      font-weight: bold;
+    }
+  }
+
+  .toggle {
+    cursor: pointer;
+    transition: all 0.3s linear;
+    &.show {
+      transform: rotate(90deg);
+    }
+  }
+
+  .expanded {
+    display: none;
+    &.show {
+      display: block;
+    }
+  }

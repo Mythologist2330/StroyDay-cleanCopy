@@ -1,0 +1,45 @@
+:host {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+h1 {
+    padding: 1rem 0;
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+
+    input, select {
+        margin: .3rem 0;
+        width: auto;
+        padding: .3rem;
+    }
+     label {
+        display: flex;
+        font-size: .8rem;
+        input {
+            margin-right: .5rem;
+        }
+     }
+
+    .btn {
+        display: flex;
+        flex-direction: row;
+        button {
+            margin: 0 1rem 0 0;
+            padding: 0.3rem .6rem;
+            &.save {
+                background: blue;
+                color: #fff
+            }
+            &.delete {
+                background: rgb(107, 0, 0);
+                color: #fff
+            }
+        }
+    }
+}

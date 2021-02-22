@@ -3,12 +3,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { PerformersCardService } from '../../services/performers-card.service';
 import { FilterService } from '../../services/filter.service';
 import { ServicesService } from '../../services/services.service';
+import { CategoryService } from '../../services/category.service';
 import { MapService } from '../../services/map.service';
 import { Marker } from 'leaflet';
 import { Performer } from '../../models/Performer';
 import { IFilter } from '../../interfaces/IFilter';
 import { ITag } from 'src/app/interfaces/ITag';
 import { first, switchMap, tap } from 'rxjs/operators';
+import { Category } from 'src/app/models/category';
 
 @Component({
     selector: 'app-performersPage',
@@ -39,7 +41,7 @@ export class PerformersListComponent implements OnInit {
     public shrinkHeader = false;
     public decreaseFieldClick = false;
 
-    public categories = [];
+    public categories: Category[] = [];
     public categoryFilter: IFilter;
     public params: any;
 
@@ -47,6 +49,7 @@ export class PerformersListComponent implements OnInit {
         private cardSrv: PerformersCardService,
         private filterSrv: FilterService,
         private servicesSrv: ServicesService,
+        private categorySrv: CategoryService,
         private mapSrv: MapService,
         private router: Router,
         private activatedRoute: ActivatedRoute) {}
@@ -116,7 +119,7 @@ export class PerformersListComponent implements OnInit {
     }
 
     getCategories() {
-        this.servicesSrv.getCategories().subscribe(categories => {
+        this.categorySrv.categories$.subscribe(categories => {
             console.log(categories)
             this.categories = categories;
             this.updateQueryParams();
@@ -144,7 +147,7 @@ export class PerformersListComponent implements OnInit {
             }
             queryParams.orderBy = this.orderBy;
         });
-        this.router.navigate(['/performers'], {
+        this.router.navigate(['pages/performers'], {
             queryParams
         })
     }
@@ -201,12 +204,12 @@ export class PerformersListComponent implements OnInit {
                     this.sendRequest(params);
                     this.initFilters(params);
                 }),
-                switchMap(() => this.servicesSrv.getCategories()),
-                tap(categories => {
+                switchMap(() => this.categorySrv.categories$),
+                tap((categories: Category[]) => {
                     this.categories = categories;
                     this.initCategoryFilterWithSelectors(this.categories);                    
                     this.initTags(this.params)
-                }),
+                })
             )
             .subscribe()         
     }

@@ -26,7 +26,7 @@
 
                     <div class="checkboxes-list-header" [ngClass]="number === i ? 'open' : ''" (click)="number = number === i ? null : i">
                         <mat-icon>keyboard_arrow_right</mat-icon>
-                        <p>{{category.title}} ({{category.subServices.length}})</p>
+                        <p>{{category.title}} ({{category.services.length}})</p>
                     </div>
                     
                     <div class="checkboxes" [@toggleTree]="number === i ? 'open' : 'close'" *ngFor='let sub of category.subServices'>

@@ -7,8 +7,17 @@ export interface ServicePoint {
 }
 
 export class Service {
+    id?: string;
     title: string;
-    subServices: ServicePoint[];
+    text?: string;
+    parent: string;    
+    cost?: {
+        low: string;
+        standart: string;
+        premium: string;
+    };
+    subServices?: ServicePoint[];
+    isActive: boolean;
 
     constructor(source: Partial<Service>) {
         Object.assign(this, source);

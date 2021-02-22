@@ -10,7 +10,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainComponent } from './pages/main/main.component';
 import { SearcherComponent } from './pages/main/components/searcher/searcher.component';
 import { CategoriesComponent } from './pages/main/components/categories/categories.component';
@@ -33,6 +32,8 @@ import { FooterComponent } from './pages/components/footer/footer.component';
 import { HeaderComponent } from './pages/components/header/header.component';
 import { PersonalAreaModule } from './personal-area/personal-area.module';
 
+import { AdminModule } from './admin/admin.module';
+
 
 
 
@@ -53,14 +54,12 @@ registerLocaleData(localeRu, 'ru');
     RegistrBasicInfoComponent,
     RegistrRequisitesComponent,
     ServiceSpecificComponent,
-    PagesComponent
+    PagesComponent,
   ],
   imports: [
     CommonModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -69,7 +68,8 @@ registerLocaleData(localeRu, 'ru');
     BrowserAnimationsModule,
     ServicesPageModule,
     PagesModule,
-    PersonalAreaModule
+    PersonalAreaModule,
+    AdminModule,
   ],
   providers: [AngularFirestore, { provide: LOCALE_ID, useValue: 'ru' }],
   bootstrap: [AppComponent],

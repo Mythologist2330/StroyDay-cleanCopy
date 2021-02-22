@@ -1,0 +1,23 @@
+<h1>{{title}}</h1>
+<form>
+    <input placeholder='Название' name="title" [(ngModel)]="currentService.title">
+    <input placeholder='Описание' name="text" [(ngModel)]="currentService.text">
+    <select name='parent' [(ngModel)]='currentService.parent'>
+        <option>Отсутствует</option>
+        <ng-container *ngFor='let category of categories$ | async'>
+            <option [value]='category.id'>{{category.title}}</option>
+        </ng-container>
+    </select>
+    
+    <input placeholder='Эконом, руб.' name="low" [(ngModel)]="currentService.cost.low">
+    <input placeholder='Стандарт, руб.' name="standart" [(ngModel)]="currentService.cost.standart">
+    <input placeholder='Премиум, руб.' name="standart" [(ngModel)]="currentService.cost.premium">
+
+    <label><input type='checkbox' name="isActive" [(ngModel)]='currentService.isActive'>Активно</label>
+    
+    <div class='btn'>
+        <button type='submit' class='save' (click)='saveForm($event)'>Сохранить</button>
+        <button (click)='cancel($event)'>Отмена</button>
+        <button class='delete' (click)='deleteService(id)'>Удалить</button>
+    </div>
+</form>

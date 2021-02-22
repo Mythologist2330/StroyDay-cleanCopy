@@ -1,0 +1,18 @@
+<h1>{{title}}</h1>
+<form>
+    <input placeholder='Название' name="title" [(ngModel)]="currentCategory.title">
+    <input type='' placeholder='Описание' name="text" [(ngModel)]="currentCategory.text">
+    <select name='parent' [(ngModel)]='currentCategory.parent'>
+        <option>Отсутствует</option>
+        <ng-container *ngFor='let category of getCategoriesBesidesYouself() | async'>
+            <option [value]='category.id'>{{category.title}}</option>
+        </ng-container>
+    </select>
+    <label><input type='checkbox' name="isActive" [(ngModel)]='currentCategory.isActive'>Активно</label>
+    
+    <div class='btn'>
+        <button type='submit' class='save' (click)='saveForm($event)'>Сохранить</button>
+        <button (click)='cancel($event)'>Отмена</button>
+        <button class='delete' (click)='deleteCategory(id)'>Удалить</button>
+    </div>
+</form>

@@ -22,10 +22,7 @@ export class ServiceCategoriesComponent {
   }
 
   ngOnInit(): void {
-      this.serviceSrv.getAllServices()
-          .pipe(
-              map(services => services.map(service => new Service(service)))                
-          )
+      this.serviceSrv.services$
           .subscribe(services => {
               this.services = services;
               this.servicesAll = services;

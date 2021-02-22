@@ -1,0 +1,24 @@
+.container {
+  padding: 1rem;    
+  h1 {
+    padding: 1rem 0;
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+  }
+  .btn {
+    display: flex;
+    button.add {
+      display: flex;
+      align-items: center;
+      margin: 1rem 1rem 1rem 0;
+      padding: .5rem 1rem;
+      background: blue;
+      color: white;
+      font-weight: bold;
+      .mat-icon {
+        color: white;
+        margin-right: .5rem;
+      }
+    }
+  }    
+}
