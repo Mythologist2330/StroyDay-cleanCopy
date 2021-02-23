@@ -32,7 +32,48 @@ export class Performer {
         radius: number;
         departureArea?: string;
         metro?: string;    
-    }
+    };
+
+    basicInfo: {
+		departureAreas: [
+			{
+				locality: string
+				district: string
+			}
+		],
+		
+		metro: [
+            {
+                subwayStation: string
+            }
+		],
+		
+		contactFace: [
+			{
+				lastName: string,
+				firstName: string,
+				tel: string,
+				email: string
+			}
+		],
+		
+		location: {
+			locality: string,
+			house: string,
+			typographicLiterature: string,
+
+			street: string,
+			housing: string,
+			apartment: string
+		}
+		
+		performerType: [
+			{
+				performerType: string,
+				requisites: string
+			}
+		]
+	}
 
     constructor(source: Partial<Performer>) {
         Object.assign(this, source);
