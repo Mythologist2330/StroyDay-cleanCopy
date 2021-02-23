@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-
-export interface IServiceCatalog{
-    title: string
-    amountOfPerformers: number
-}
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from "rxjs";
+import { Category } from "src/app/models/category";
+import { ServicesService } from 'src/app/services/services.service';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
     selector: 'app-serviceCatalog',
@@ -11,20 +11,24 @@ export interface IServiceCatalog{
     styleUrls: ['./serviceCatalog.component.scss']
 })
 
-export class ServiceCatalogComponent{
+export class ServiceCatalogComponent implements OnInit {
 
-    serviceCatalog: IServiceCatalog[] = [
-        {title: 'Архитектурное проектирование', amountOfPerformers: 380},
-        {title: 'Визуализация интерьера', amountOfPerformers: 380},
-        {title: '3D-проектирование', amountOfPerformers: 380},
-        {title: 'Готовые проекты', amountOfPerformers: 380},
-        {title: 'Визуализация интерьера', amountOfPerformers: 380},
-        {title: '3D-проектирование', amountOfPerformers: 380},
-        {title: 'Архитектурное проектирование', amountOfPerformers: 380},
-        {title: 'Визуализация интерьера', amountOfPerformers: 380},
-        {title: '3D-проектирование', amountOfPerformers: 380},
-        {title: 'Архитектурное проектирование', amountOfPerformers: 380},
-        {title: 'Визуализация интерьера', amountOfPerformers: 380},
-        {title: '3D-проектирование', amountOfPerformers: 380}
-    ]
+    public id: string;
+    public category$: Observable<Category>;
+
+    constructor(private activatedRoute: ActivatedRoute,
+                private router: Router,
+                public catSrv: CategoryService,
+                public srvSrv: ServicesService) {}
+
+    ngOnInit() {
+        this.activatedRoute.params.subscribe(data => {
+            this.id = data.id;
+            this.category$ = this.catSrv.getCategoryById(data.id)
+        })
+    }
+
+    goToCategory(id: string) {
+        this.router.navigate(['pages/services/service-catalog/' + id]);
+    }
 }

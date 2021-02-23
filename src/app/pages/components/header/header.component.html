@@ -49,48 +49,32 @@
                     </div>
                 </div>
 
-                <div class="navigation-module-window-navigate">
+                <div class="navigation-module-window-navigate" *ngIf='catSrv.getNodeCategory() | async as categories'>                    
                     <div class="navigate-basic">
-                        <p>Архитектура и проектирование <mat-icon>navigate_next</mat-icon></p>
-                        <p>Оформление и дизайн <mat-icon>navigate_next</mat-icon></p>
-                        <p>Строительство <mat-icon>navigate_next</mat-icon></p>
-                        <p>Ремонт и отделка <mat-icon>navigate_next</mat-icon></p>
-                        <p>Инженерные системы <mat-icon>navigate_next</mat-icon></p>
-                        <p>Бытовые услуги <mat-icon>navigate_next</mat-icon></p>
-                        <p>Загородное строительство и ремонт, ландшафтный дизайн <mat-icon>navigate_next</mat-icon></p>
-                        <p>Стройматериалы <mat-icon>navigate_next</mat-icon></p>
-                        <p>Строительное оборудование <mat-icon>navigate_next</mat-icon></p>
-                        <p>Спецтехника и грузоперевозки <mat-icon>navigate_next</mat-icon></p>
-                        <p>Прочие работы и услуги <mat-icon>navigate_next</mat-icon></p>
-                        <p>Готовые проекты <mat-icon>navigate_next</mat-icon></p>
-                        <p>Поддержка бизнеса <mat-icon>navigate_next</mat-icon></p>
-                        <p>Сопутствующие товары и услуги <mat-icon>navigate_next</mat-icon></p>
-                        <p>Програмное обеспечение <mat-icon>navigate_next</mat-icon></p>
-                        <p>Реставрационные работы <mat-icon>navigate_next</mat-icon></p>
+                        <ng-container *ngFor='let category of categories'>
+                            <p (click)='chooseCategory(category)'>{{category.title}} <mat-icon>navigate_next</mat-icon></p>
+                        </ng-container>                        
                     </div>
 
-                    <div class="navigate-specific">
-                        <p class="main-links-title">Архитектура и проектирование</p>
-                        <div class="navigate-specific-main-links">
+                    <div class="navigate-specific" *ngIf='currentCategory'>
+                        <p class="main-links-title">{{currentCategory.title}}</p>
+                        <div class="navigate-specific-main-links" *ngIf='catSrv.getNodeCategory(currentCategory.id) | async as subcategories'>
                             <div class="main-links-column">
-                                <p>Архитектурное проектирование</p>
-                                <p>Визуализация интерьера</p>
-                                <p>3D проектирование</p>
-                                <p>Дизайн интерьера</p>
+                                <ng-container *ngFor='let sub of getEven(subcategories)'>
+                                    <p (click)='goToCategory(sub.id)'>{{sub.title}}</p>
+                                </ng-container>
                             </div>
 
                             <div class="main-links-column">
-                                <p>Архитектурное проектирование</p>
-                                <p>Визуализация интерьера</p>
-                                <p>3D проектирование</p>
-                                <p>Дизайн интерьера</p>
+                                <ng-container *ngFor='let sub of getOdd(subcategories)'>
+                                    <p (click)='goToCategory(sub.id)'>{{sub.title}}</p>
+                                </ng-container>
                             </div>
                         </div>
 
-                        <div class="navigate-specific-sub-links">
+                        <!-- <div class="navigate-specific-sub-links">
                             <div class="sub-links-column">
                                 <p class="sub-links-title">Архитектура многоэтажных домов</p>
-
                                 <p class="sub-links">Архитектурное проектирование</p>
                                 <p class="sub-links">Визуализация интерьера</p>
                                 <p class="sub-links">3D проектирование</p>
@@ -99,16 +83,14 @@
 
                             <div class="sub-links-column">
                                 <p class="sub-links-title">Проектирование садов</p>
-
                                 <p class="sub-links">Архитектурное проектирование</p>
                                 <p class="sub-links">Визуализация интерьера</p>
                                 <p class="sub-links">3D проектирование</p>
                                 <p class="sub-links">Дизайн интерьера</p>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
-
             </div>
 
             <div class="menu">

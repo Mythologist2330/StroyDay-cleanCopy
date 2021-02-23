@@ -22,9 +22,10 @@ const routes: Routes = [
   {path: 'pages', component: PagesComponent, children: [
     {path: 'services', component: ServicesPageComponent, children: [
       {path: '', component: ServicesComponent},
-      {path: 'serviceСatalog', component: ServiceCatalogComponent}
+      {path: 'service-catalog', component: ServiceCatalogComponent},
+      {path: 'service-catalog/:id', component: ServiceCatalogComponent},
     ]},
-    {path: 'serviceSpecific', component: ServiceSpecificComponent},
+    {path: 'service/:id', component: ServiceSpecificComponent},
 
     {path: 'performers', component: PerformersListComponent},
     {path: 'performer/:id', component: PerformerComponent}
@@ -47,7 +48,7 @@ const routes: Routes = [
     {path: 'edit-service/:id', component: EditServiceComponent},
   ]},
 
-  // {path: '**', redirectTo: 'pages'},
+  {path: '', redirectTo: 'pages', pathMatch: 'full'},
 ]
 
 @NgModule({
