@@ -8,10 +8,7 @@ import { Observable } from 'rxjs';
 })
 
 export class FilterService {
-
-  public filters: IFilter[] = []
-  public locationFilters: IFilter[] = [];
-  public categories: IFilter;
+  
   constructor(private afs: AngularFirestore) {
   }
 

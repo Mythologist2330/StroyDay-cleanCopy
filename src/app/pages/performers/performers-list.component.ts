@@ -244,8 +244,8 @@ export class PerformersListComponent implements OnInit {
     initCategoryFilterWithSelectors(categories) {
         this.categoryFilter = this.filters.find(filter => filter.field === 'categories');
         categories.map(cat => {
-            cat.subServices.map(sub => {
-                    this.categoryFilter.selector.push({value: sub.title, text: sub.title})
+            cat.services.map(sub => {
+                this.categoryFilter.selector.push({value: sub.title, text: sub.title})
             })
         });
     }

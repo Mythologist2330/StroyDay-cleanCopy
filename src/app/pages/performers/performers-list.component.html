@@ -20,7 +20,6 @@
 
         <ng-container *ngIf='categories.length'>
             <app-filter-categories 
-                [categories]='categories'
                 [checked]='categoryFilter.checked'
                 (setChecked)='setCategoriesFilter($event)'
                 ></app-filter-categories>

@@ -1,5 +1,7 @@
 import { state, style, trigger } from '@angular/animations';
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Category } from 'src/app/models/category';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-filter-categories',
@@ -18,18 +20,18 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 })
 export class FilterCategoriesComponent implements OnInit {
 
-  @Input() categories: [];
   @Input() checked: string[];
-  @Output() setChecked = new EventEmitter()
+  @Output() setChecked = new EventEmitter();
+  public categories: Category[];
   public toggle = false;
   public number: number;
   public searchText = ''
   public popup = []
 
-  constructor() { }
+  constructor(public catSrv: CategoryService) { }
 
   ngOnInit(): void {
-    console.log(this.categories)
+    this.catSrv.categories$.subscribe(data => this.categories = data)
     
   }
 
@@ -38,17 +40,14 @@ export class FilterCategoriesComponent implements OnInit {
     if (value.length < 2) {
       return
     }
-    this.categories.map((cat: any) => {
-      const sub = cat.subServices.filter(sub => {
-        if (sub.title.toLowerCase().includes(value.toLowerCase())) {
-          this.popup.push(sub.title);
-        }
-      })      
+    this.categories.filter(cat => {
+        if (cat.title.toLowerCase().includes(value.toLowerCase())) {
+          this.popup.push(cat.title);
+        }  
     })
     if (!this.popup.length) {
       this.popup.push('Ничего не найдено')
     }
-    console.log(this.popup)
   }
 
   addCheck(value) {
@@ -58,7 +57,6 @@ export class FilterCategoriesComponent implements OnInit {
     }    
     if (!this.checked.includes(value)) {
       this.setCategories(value);
-      console.log('!')
     }    
     this.searchText = value;
   }

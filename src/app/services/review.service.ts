@@ -9,11 +9,8 @@ import { Review } from '../models/Review';
   providedIn: 'root'
 })
 
-
 export class ReviewService {
-    constructor(private afs: AngularFirestore) {
-
-    }
+    constructor(private afs: AngularFirestore) {}
 
     getAllReview(performerId: string, sortBy = 'createdAt'): Observable<Review[]> {
         return this.afs.collection<Review>('reviews', ref => {

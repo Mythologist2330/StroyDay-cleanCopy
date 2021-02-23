@@ -22,14 +22,14 @@
             </div>
 
             <div class="checkboxes-lists">
-                <div class="checkboxes-list" *ngFor='let category of categories; let i = index'>
+                <div class="checkboxes-list" *ngFor='let category of catSrv.getNodeCategory() | async; let i = index'>
 
                     <div class="checkboxes-list-header" [ngClass]="number === i ? 'open' : ''" (click)="number = number === i ? null : i">
                         <mat-icon>keyboard_arrow_right</mat-icon>
-                        <p>{{category.title}} ({{category.services.length}})</p>
+                        <p>{{category.title}} ({{(catSrv.getNodeCategory(category.id) | async).length}})</p>
                     </div>
                     
-                    <div class="checkboxes" [@toggleTree]="number === i ? 'open' : 'close'" *ngFor='let sub of category.subServices'>
+                    <div class="checkboxes" [@toggleTree]="number === i ? 'open' : 'close'" *ngFor='let sub of catSrv.getNodeCategory(category.id) | async'>
                         <label>
                             <input type="checkbox" [checked]='isChecked(sub.title)' [value]="sub.title" (change)='setCategories($event.target.value)'>
                             <p>{{sub.title}}</p>
