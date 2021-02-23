@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Category } from 'src/app/models/category';
+import { CategoryService } from 'src/app/services/category.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +11,29 @@ import { Component } from '@angular/core';
 
 export class HeaderComponent {
 
-  profileToogle: boolean = false
-  buttonServicesIconToggle: boolean = false
+  public profileToogle = false
+  public buttonServicesIconToggle = false;
+  public currentCategory: Category;
 
+  constructor(public catSrv: CategoryService,
+              private router: Router) {}
 
+  chooseCategory(cat: Category) {
+    this.currentCategory = cat;
+  }
+
+  getEven(subcat: Category[]) {
+    return subcat.filter(item => subcat.indexOf(item) % 2 === 0)
+  }
+
+  getOdd(subcat: Category[]) {  
+    return subcat.filter(item => subcat.indexOf(item) % 2 !== 0)
+  }
+
+  goToCategory(id: string) {
+    // this.router.navigate([])
+    console.log(id)
+  }
 
   openCloseBurgerMenu(event) {
     if (event.view.innerWidth <= 767) {

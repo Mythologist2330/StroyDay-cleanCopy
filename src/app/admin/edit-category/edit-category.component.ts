@@ -48,6 +48,7 @@ export class EditCategoryComponent implements OnInit {
 
   saveForm(e: Event) {
     e.preventDefault();
+    this.checkParent();
     this.checkCreateOrUpdate(this.id)
       .then(() => this.router.navigate(['admin/tree']))
   }
@@ -57,6 +58,12 @@ export class EditCategoryComponent implements OnInit {
       return this.catSrv.createCategory(this.currentCategory)
     } else {
       return this.catSrv.updateCategory(this.id, this.currentCategory)
+    }
+  }
+
+  checkParent() {
+    if (!this.currentCategory.parent) {
+      this.currentCategory.parent = 'Отсутствует';
     }
   }
 

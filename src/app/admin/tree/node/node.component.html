@@ -2,12 +2,14 @@
     <div class='root'>
         <div class='header'>
             <mat-icon class='toggle' [ngClass]="toggle ? 'show' : ''" (click)='toggle = !toggle'>arrow_right</mat-icon>
-            <p class='title'>{{category.title}}</p>
+            <div>
+                <p class='title'>{{category.title}} ({{(catSrv.getNodeCategory(category.id) | async).length }})</p>
+                <p class='no-active' *ngIf='!category.isActive'>(не опубликовано)</p>
+            </div>
             <button (click)='goToEditCategory(category.id)'><mat-icon>edit</mat-icon></button>
         </div>
         <div class='expanded' [ngClass]="toggle ? 'show' : ''">
             <p class='text'>{{category.text}}</p>
-            <p class='no-active' *ngIf='!category.isActive'>(не опубликовано)</p>
             <ng-container *ngIf='(servicesSrv.getServicesByParentId(category.id) | async) as services'>
                 <div *ngIf='services.length' class='services'>
                     <ng-container *ngFor='let srv of services'>

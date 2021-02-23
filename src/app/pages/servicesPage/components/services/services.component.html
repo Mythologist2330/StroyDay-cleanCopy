@@ -1,23 +1,19 @@
 <div class="container">
-
     <h1 class="services-header">Услуги</h1>
-
     <div class="services-cards">
 
-        <div *ngFor="let service of services" class="services-card">
+        <div *ngFor="let category of catSrv.getNodeCategory() | async" class="services-card">
             <div class="service-container-alignment">
-                <p routerLink="serviceСatalog" class="service-title">{{ service.title }}</p>
+                <p [routerLink]='"service-catalog/" + category.id' class="service-title">{{ category.title }}</p>
     
-                <div class="some-of-services">
-                    <p>{{ service.someOfServices.service1 }}</p>
-                    <p>{{ service.someOfServices.service2 }}</p>
-                    <p>{{ service.someOfServices.service3 }}</p>
-                    <p>{{ service.someOfServices.service4 }}</p>
-                </div>
+                <div class="some-of-services" *ngIf='catSrv.getNodeCategory(category.id) | async as subcat'>
+                    <ng-container *ngFor='let sub of subcat'>
+                        <p [routerLink]='"service-catalog/" + sub.id'>{{ sub.title }}</p>
+                    </ng-container>
+                </div>                
             </div>
 
-            <p routerLink="serviceСatalog" class="showAllServices">Показать все услуги ({{ service.showAllServices }})</p>
+            <p [routerLink]='"service-catalog/" + category.id' class="showAllServices">Показать все услуги ({{ (catSrv.getNodeCategory(category.id) | async).length}})</p>
         </div>
     </div>
-
 </div>
