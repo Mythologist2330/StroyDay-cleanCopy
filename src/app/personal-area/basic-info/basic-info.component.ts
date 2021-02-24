@@ -10,15 +10,9 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 export class BasicInfoComponent implements OnInit {
 
   public infoForm: FormGroup;
-
-  departureAreas = []
-  metro = []
-  contactFace = []
-  performerType = []
-
-
-
-
+  metro = [];
+  contactFace = [];
+  performerType = [];
   constructor(public fb: FormBuilder) {}
 
 
@@ -31,8 +25,8 @@ export class BasicInfoComponent implements OnInit {
     this.infoForm = this.fb.group({
       departureAreas: this.fb.array([
         this.fb.group({
-          locality: this.fb.control('Чик'),
-          district: this.fb.control('Чирик')
+          locality: ['Чик'],
+          district: ['Чирик']
         })
       ]),
 
@@ -62,8 +56,7 @@ export class BasicInfoComponent implements OnInit {
       })
     })
 
-    console.log(this.infoForm)
-    console.log(this.infoForm.controls.departureAreas.value)
+    console.log(this.array)
   }
 
 
@@ -72,30 +65,19 @@ export class BasicInfoComponent implements OnInit {
     // console.log(this.infoForm, 'ddsas')
   }
 
-  get array() {
-    return this.infoForm.controls['departureAreas'].value
+  get array(): FormArray {
+    return this.infoForm.get('departureAreas')['controls']
   }
-
-  addElement() {
-    this.array.push(this.fb.control(''));
-  }
-
-  addControls() {
-    (<FormArray>this.infoForm.controls['departureAreas']).push(this.fb.group({
-      locality: this.fb.control('pine'),
-      district: this.fb.control('apple')
-    }))
-  }
-
-
-
 
   addDepartureArea() {
-    this.departureAreas.push({locality: '', district: ''})
+    this.array.push(this.fb.group({
+      locality: [''],
+      district: ['']
+    }));
   }
 
   deleteDepartureArea(i: number) {
-    this.departureAreas.splice(i, 1)
+    this.array.value.splice(i, 1)
   }
 
   addMetro() {
