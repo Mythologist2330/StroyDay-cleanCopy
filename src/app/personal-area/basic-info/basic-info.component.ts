@@ -29,10 +29,12 @@ export class BasicInfoComponent implements OnInit {
 
   initForm() {
     this.infoForm = this.fb.group({
-      departureAreas: this.fb.group({
-        locality: this.fb.control(''),
-        district: this.fb.control('')
-      }),
+      departureAreas: this.fb.array([
+        this.fb.group({
+          locality: this.fb.control('Чик'),
+          district: this.fb.control('Чирик')
+        })
+      ]),
 
       metro: this.fb.group({
         subwayStation: this.fb.control('')
@@ -59,20 +61,30 @@ export class BasicInfoComponent implements OnInit {
         requisites: this.fb.control('')
       })
     })
+
+    console.log(this.infoForm)
+    console.log(this.infoForm.controls.departureAreas.value)
   }
 
 
 
   submit() {
-    console.log(this.infoForm)
-  };
+    // console.log(this.infoForm, 'ddsas')
+  }
 
   get array() {
-    return this.infoForm.get('array') as FormArray;
+    return this.infoForm.controls['departureAreas'].value
   }
 
   addElement() {
     this.array.push(this.fb.control(''));
+  }
+
+  addControls() {
+    (<FormArray>this.infoForm.controls['departureAreas']).push(this.fb.group({
+      locality: this.fb.control('pine'),
+      district: this.fb.control('apple')
+    }))
   }
 
 
@@ -80,6 +92,10 @@ export class BasicInfoComponent implements OnInit {
 
   addDepartureArea() {
     this.departureAreas.push({locality: '', district: ''})
+  }
+
+  deleteDepartureArea(i: number) {
+    this.departureAreas.splice(i, 1)
   }
 
   addMetro() {

@@ -14,25 +14,27 @@
             <ng-template #fieldIs>
                 <p class="description">Добавьте районы выезда, чтобы заказчикам было легче Вас найти и Вы смогли получать больше заказов из разных частей города.</p>
             </ng-template>
-        
-            <div class="departure-area" *ngFor="let departureArea of departureAreas, let i = index" formGroupName="departureAreas">
-                <p class="title">{{ i + 1 }}.</p>
-                <p class="title-mobile">Район выезда {{ i + 1 }}</p>
-        
-                <fieldset>
-                    <legend>Населенный пункт</legend>
-                    <input type="text" formControlName="locality">
-                </fieldset>
-        
-                <fieldset>
-                    <legend>Район</legend>
-                    <input type="text" formControlName="district">
-                </fieldset>
-        
-                <mat-icon>delete</mat-icon>
-            </div>
 
-            <button class="button-add-departure-area" (click)="addDepartureArea()" [ngStyle]="{marginTop: departureAreas.length === 0 ? '18px' : ''}"><mat-icon>add</mat-icon>Добавить район выезда</button>
+            <ng-container *ngFor="let departureArea of this.infoForm.controls.departureAreas.value; let i = index" formArrayName="departureAreas">
+                <div class="departure-area" [formGroupName]="departureArea">
+                    <p class="title">{{ i + 1 }}.</p>
+                    <p class="title-mobile">Район выезда {{ i + 1 }}</p>
+            
+                    <fieldset>
+                        <legend>Населенный пункт</legend>
+                        <input type="text" [formControlName]="departureArea.controls.locality">
+                    </fieldset>
+            
+                    <fieldset>
+                        <legend>Район</legend>
+                        <input type="text" [formControlName]="departureArea.controls.district">
+                    </fieldset>
+            
+                    <mat-icon (click)="deleteDepartureArea(i)">delete</mat-icon>
+                </div>
+            </ng-container>
+
+            <button class="button-add-departure-area" (click)="addControls(); addDepartureArea()" [ngStyle]="{marginTop: departureAreas.length === 0 ? '18px' : ''}"><mat-icon>add</mat-icon>Добавить район выезда</button>
         
         </div>
 
