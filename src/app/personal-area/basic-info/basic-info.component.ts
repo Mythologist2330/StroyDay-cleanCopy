@@ -23,16 +23,9 @@ export class BasicInfoComponent implements OnInit {
 
   initForm() {
     this.infoForm = this.fb.group({
-      departureAreas: this.fb.array([
-        this.fb.group({
-          locality: ['Чик'],
-          district: ['Чирик']
-        })
-      ]),
+      departureAreas: this.fb.array([]),
 
-      metro: this.fb.group({
-        subwayStation: this.fb.control('')
-      }),
+      metro: this.fb.array([]),
 
       contactFace: this.fb.group({
         lastName: this.fb.control(''),
@@ -55,8 +48,6 @@ export class BasicInfoComponent implements OnInit {
         requisites: this.fb.control('')
       })
     })
-
-    console.log(this.array)
   }
 
 
@@ -69,6 +60,16 @@ export class BasicInfoComponent implements OnInit {
     return this.infoForm.get('departureAreas')['controls']
   }
 
+  get arrayMetro(): FormArray {
+    return this.infoForm.get('metro')['controls']
+  }
+
+  deleteElement(array, i: number) {
+    console.log(array[i]) // не забыть удалить
+    array.splice(i, 1)
+  }
+
+
   addDepartureArea() {
     this.array.push(this.fb.group({
       locality: [''],
@@ -76,13 +77,20 @@ export class BasicInfoComponent implements OnInit {
     }));
   }
 
-  deleteDepartureArea(i: number) {
-    this.array.value.splice(i, 1)
+  addMetro() {
+    this.arrayMetro.push(this.fb.group({
+      subwayStation: ['']
+    }))
   }
 
-  addMetro() {
-    this.metro.push({subwayStation: ''})
-  }
+
+
+
+
+
+
+
+
 
   addContactFace() {
     this.contactFace.push({lastName: '', firstName: '', tel: '', email: ''})
