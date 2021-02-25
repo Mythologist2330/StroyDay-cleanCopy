@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-breadcrumbs',
@@ -6,11 +7,15 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./breadcrumbs.component.scss']
 })
 export class BreadcrumbsComponent implements OnInit {
-  @Input() page: string;
+  @Input() categories: string[];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  goTo(link: string) {
+    this.router.navigate([link])
   }
 
 }

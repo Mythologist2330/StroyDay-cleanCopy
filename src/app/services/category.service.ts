@@ -20,16 +20,16 @@ export class CategoryService {
     }
 
     getAllCategories() {
-      return this.firestore.collection<Category>('categories')
+      return this.firestore.collection<Category>('categories', ref => ref.orderBy('title'))
         .snapshotChanges()
-        .pipe(
+        .pipe(            
             first()
           )
     }
 
     getCategoryById(id: string): Observable<Category> {
-        return this.firestore.doc('categories/' + id).get().pipe(
-          map(cat => cat.data() ? new Category(cat.data()) : null)
+        return this.firestore.doc<Partial<Category>>('categories/' + id).get().pipe(
+          map(cat => cat.data() ? new Category({...cat.data(), id}) : null)
         )
     }    
 

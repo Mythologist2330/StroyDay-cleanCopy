@@ -1,4 +1,5 @@
-<div class="container" *ngIf='category$ | async as category'>
+
+    <app-breadcrumbs [categories]='breadcrumbs'></app-breadcrumbs><div class="container" *ngIf='category$ | async as category'>
     <h1 class="service-catalog-header">{{category.title}}</h1>
 
     <div class="service-catalog-cards">

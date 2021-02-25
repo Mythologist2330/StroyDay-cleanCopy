@@ -1,5 +1,9 @@
 <p class="path">
     <a routerLink="/">Главная</a>
-    <mat-icon>keyboard_arrow_right</mat-icon>
-    <span>{{page}}</span>
+    <ng-container *ngIf='categories'>
+        <ng-container *ngFor='let cat of categories'>
+            <mat-icon>keyboard_arrow_right</mat-icon>
+            <span (click)='goTo(cat.link)'>{{cat.title}}</span>
+        </ng-container>
+    </ng-container>
 </p>

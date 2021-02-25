@@ -3,7 +3,11 @@
         <div class='header'>
             <mat-icon class='toggle' [ngClass]="toggle ? 'show' : ''" (click)='toggle = !toggle'>arrow_right</mat-icon>
             <div>
-                <p class='title'>{{category.title}} ({{(catSrv.getNodeCategory(category.id) | async).length }})</p>
+                <p class='title'>
+                    {{category.title}} 
+                    (Категорий: {{(catSrv.getNodeCategory(category.id) | async).length }}) 
+                    (Услуг: {{(getServices(category.id) | async).length}})</p>
+                    
                 <p class='no-active' *ngIf='!category.isActive'>(не опубликовано)</p>
             </div>
             <button (click)='goToEditCategory(category.id)'><mat-icon>edit</mat-icon></button>

@@ -37,7 +37,7 @@
 
     <div class="lds-dual-ring" *ngIf="isLoading"></div>
     <div #target class="performers" [ngClass]="isLoading ? 'loading' : ''">
-        <app-breadcrumbs [page]='page'></app-breadcrumbs>
+        <app-breadcrumbs [categories]='getBreadcrumbs()'></app-breadcrumbs>
 
         <p class="count">Найдено {{performersCards.length}} исполнителей</p>
         <app-tags [tags]='tags' (changeTags)='removeTag($event)' class="tags-search"></app-tags>

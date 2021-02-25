@@ -10,6 +10,7 @@ import { TagsComponent } from '../components/tags/tags.component';
 import { RatingStarsComponent } from '../components/rating-stars/rating-stars.component';
 import { PaginationComponent } from '../components/pagination/pagination.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SearchPipe } from '../pipes/search.pipe';
 
 @NgModule({
     declarations: [            
@@ -18,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         TagsComponent,
         RatingStarsComponent,
         PaginationComponent,
+        SearchPipe,
         
     ],
   imports: [
@@ -41,6 +43,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         RouterModule,
         FormsModule,
         ReactiveFormsModule,
+        SearchPipe,
     ],
 })
 export class SharedModule { }

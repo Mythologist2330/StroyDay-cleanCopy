@@ -187,6 +187,13 @@ export class PerformersListComponent implements OnInit {
         el.scrollIntoView();
     }
 
+    getBreadcrumbs() {
+        return [{
+            title: 'Список исполнителей',
+            link: '/pages/performers-list'
+        }]
+    }
+
     ngOnInit(): void {
         this.isLoading = true;
         this.animateHeader();

@@ -14,7 +14,6 @@ import { Router } from '@angular/router';
 export class NodeComponent implements OnInit {
 
   @Input() category: Category;
-  public services$: Observable<Service[]>;
   public categories$: Observable<Category[]>;
   public toggle = false;
 
@@ -23,10 +22,12 @@ export class NodeComponent implements OnInit {
               private router: Router) {}
 
   ngOnInit(): void {
-    this.services$ = this.servicesSrv.services$;
     this.categories$ = this.catSrv.categories$;
   }
 
+  getServices(id: string): Observable<Service[]> {
+    return this.servicesSrv.getServicesByParentId(id)
+  }
   goToEditCategory(id: string) {
     this.router.navigate(['admin/edit-category', id]);
   }

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
 import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map, tap } from 'rxjs/operators';
+import { Observable, fromEvent } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -14,32 +14,34 @@ import { debounceTime, distinctUntilChanged, map, tap } from 'rxjs/operators';
 export class HeaderComponent implements OnInit {
 
   public profileToogle = false
-  public buttonServicesIconToggle = false;
+  public menuToggle = false;
   public currentCategory: Category;
   public searchText = '';
-  public searchSub$ = new Subject<string>();
+  @ViewChild('input') input: ElementRef;
 
   constructor(public catSrv: CategoryService,
               private router: Router) {}
 
   ngOnInit(): void {
-    this.searchSub$.pipe(
-      debounceTime(400),
-      distinctUntilChanged()
-    ).subscribe();
   }
+
+  ngAfterViewInit(): void {
+    fromEvent(this.input.nativeElement,'keyup')
+      .pipe(
+          filter(Boolean),
+          debounceTime(400),
+          distinctUntilChanged(),
+          tap(() => this.searchText = this.input.nativeElement.value)
+      )
+      .subscribe();
+    }
 
   getResult(): Observable<any[]> {
     return this.catSrv.categories$.pipe(
       map(categories => {
         return categories
           .filter(cat => cat.title.toLowerCase().includes(this.searchText.toLowerCase()))
-          // .map((elem: Category) => {
-          //   return { id: elem.id , title: elem.title.replace(new RegExp(`(${this.searchText})`, 'gi'), "<b>" + this.searchText + "</b>") }
-            
-          // })
-      }),
-      tap(console.log)
+      })
     )
   }
 
@@ -56,8 +58,10 @@ export class HeaderComponent implements OnInit {
   }
 
   goToCategory(id: string) {
-    // this.router.navigate([])
-    console.log(id)
+    this.router.navigate(['pages/services/service-catalog/' + id]);
+    this.menuToggle = false;
+    this.searchText = null;
+    this.input.nativeElement.value = null;
   }
 
   openCloseBurgerMenu(event) {
@@ -110,6 +114,7 @@ export class HeaderComponent implements OnInit {
 
 
   navigationModuleToggleMobile(event) {
+
     if (event.view.innerWidth <= 767) {
 
       event.path.filter((navigationModuleContainer) => {
@@ -118,29 +123,24 @@ export class HeaderComponent implements OnInit {
           for (let navigationModule of navigationModuleContainer.children) {
             if (navigationModule.className === 'navigation-module-window') {
 
-              this.buttonServicesIconToggle = true
+              this.menuToggle = true
 
               if (navigationModule.style.right === '-16px') {
                 navigationModule.style.right = 'calc(-100% - 48px)'
 
                 setTimeout(() => {
-                  this.buttonServicesIconToggle = false
+                  this.menuToggle = false
                 }, 200);
 
               } else {
-
                 setTimeout(() => {
                   navigationModule.style.right = '-16px'
                 }, 0);
               }
-
             }
           }
         }
-
       })
-
     }
   }
-
 }
