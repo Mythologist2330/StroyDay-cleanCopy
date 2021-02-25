@@ -44,53 +44,50 @@
 
                 <div class="navigation-module-window-search">
                     <div class="navigate-search">
-                        <input type="text" placeholder="Быстрый поиск по услугам">
+                        <input type="text" placeholder="Быстрый поиск по услугам" (ngModelChange)='searchSub$.next($event)' [(ngModel)]='searchText'>
                         <button><mat-icon>search</mat-icon></button>
                     </div>
                 </div>
 
-                <div class="navigation-module-window-navigate" *ngIf='catSrv.getNodeCategory() | async as categories'>                    
-                    <div class="navigate-basic">
-                        <ng-container *ngFor='let category of categories'>
-                            <p (click)='chooseCategory(category)'>{{category.title}} <mat-icon>navigate_next</mat-icon></p>
-                        </ng-container>                        
-                    </div>
-
-                    <div class="navigate-specific" *ngIf='currentCategory'>
-                        <p class="main-links-title">{{currentCategory.title}}</p>
-                        <div class="navigate-specific-main-links" *ngIf='catSrv.getNodeCategory(currentCategory.id) | async as subcategories'>
-                            <div class="main-links-column">
-                                <ng-container *ngFor='let sub of getEven(subcategories)'>
-                                    <p (click)='goToCategory(sub.id)'>{{sub.title}}</p>
-                                </ng-container>
-                            </div>
-
-                            <div class="main-links-column">
-                                <ng-container *ngFor='let sub of getOdd(subcategories)'>
-                                    <p (click)='goToCategory(sub.id)'>{{sub.title}}</p>
-                                </ng-container>
-                            </div>
+                <ng-container *ngIf='!searchText; else searchResult'>
+                    <div class="navigation-module-window-navigate" *ngIf='catSrv.getNodeCategory() | async as categories'>                    
+                        <div class="navigate-basic">
+                            <ng-container *ngFor='let category of categories'>
+                                <p (click)='chooseCategory(category)'>{{category.title}} <mat-icon>navigate_next</mat-icon></p>
+                            </ng-container>                        
                         </div>
 
-                        <!-- <div class="navigate-specific-sub-links">
-                            <div class="sub-links-column">
-                                <p class="sub-links-title">Архитектура многоэтажных домов</p>
-                                <p class="sub-links">Архитектурное проектирование</p>
-                                <p class="sub-links">Визуализация интерьера</p>
-                                <p class="sub-links">3D проектирование</p>
-                                <p class="sub-links">Дизайн интерьера</p>
-                            </div>
+                        <div class="navigate-specific" *ngIf='currentCategory'>
+                            <p class="main-links-title">{{currentCategory.title}}</p>
+                            <div class="navigate-specific-main-links" *ngIf='catSrv.getNodeCategory(currentCategory.id) | async as subcategories'>
+                                <div class="main-links-column">
+                                    <ng-container *ngFor='let sub of getEven(subcategories)'>
+                                        <p (click)='goToCategory(sub.id)'>{{sub.title}}</p>
+                                    </ng-container>
+                                </div>
 
-                            <div class="sub-links-column">
-                                <p class="sub-links-title">Проектирование садов</p>
-                                <p class="sub-links">Архитектурное проектирование</p>
-                                <p class="sub-links">Визуализация интерьера</p>
-                                <p class="sub-links">3D проектирование</p>
-                                <p class="sub-links">Дизайн интерьера</p>
+                                <div class="main-links-column">
+                                    <ng-container *ngFor='let sub of getOdd(subcategories)'>
+                                        <p (click)='goToCategory(sub.id)'>{{sub.title}}</p>
+                                    </ng-container>
+                                </div>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
-                </div>
+                </ng-container>
+                <ng-template #searchResult>
+                    <div class='search-result' *ngIf='(getResult() | async).length; else noResult'>
+                        <ng-container *ngFor='let cat of getResult() | async'>
+                            <p>{{cat.title}}</p>
+                        </ng-container> 
+                    </div>
+                    
+                </ng-template> 
+                <ng-template #noResult>
+                    <div class='search-result'>
+                        <p>По Вашему запросу ничего не найдено</p>
+                    </div>                    
+                </ng-template>                            
             </div>
 
             <div class="menu">

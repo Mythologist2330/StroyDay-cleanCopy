@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
 import { Router } from '@angular/router';
+import { Observable, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -9,14 +11,37 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
   public profileToogle = false
   public buttonServicesIconToggle = false;
   public currentCategory: Category;
+  public searchText = '';
+  public searchSub$ = new Subject<string>();
 
   constructor(public catSrv: CategoryService,
               private router: Router) {}
+
+  ngOnInit(): void {
+    this.searchSub$.pipe(
+      debounceTime(400),
+      distinctUntilChanged()
+    ).subscribe();
+  }
+
+  getResult(): Observable<any[]> {
+    return this.catSrv.categories$.pipe(
+      map(categories => {
+        return categories
+          .filter(cat => cat.title.toLowerCase().includes(this.searchText.toLowerCase()))
+          // .map((elem: Category) => {
+          //   return { id: elem.id , title: elem.title.replace(new RegExp(`(${this.searchText})`, 'gi'), "<b>" + this.searchText + "</b>") }
+            
+          // })
+      }),
+      tap(console.log)
+    )
+  }
 
   chooseCategory(cat: Category) {
     this.currentCategory = cat;

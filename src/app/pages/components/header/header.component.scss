@@ -3,6 +3,24 @@
     box-shadow: 0px 4px 40px rgba(226, 232, 239, 0.6);
     position: relative;
 
+    .search-result {
+        margin: 0 116px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 28px;
+        color: #334D6E;
+        p {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #D9D9D9;
+            cursor: pointer;
+            &:hover {
+                background: #F1F5F9;
+            }
+        }
+    }
+
     .city-and-phone-and-button{
         display: flex;
         align-items: center;
@@ -139,7 +157,7 @@
                         align-items: center;
                         width: 100%;
                         max-width: 1176px;
-                        margin: 12px 131px 24px 116px;
+                        margin: 12px 116px 24px;
                         border-bottom: 1px solid #D9D9D9;
 
                         input{
