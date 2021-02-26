@@ -10,9 +10,6 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 export class BasicInfoComponent implements OnInit {
 
   public infoForm: FormGroup;
-  metro = [];
-  contactFace = [];
-  performerType = [];
   constructor(public fb: FormBuilder) {}
 
 
@@ -23,16 +20,12 @@ export class BasicInfoComponent implements OnInit {
 
   initForm() {
     this.infoForm = this.fb.group({
+
       departureAreas: this.fb.array([]),
 
       metro: this.fb.array([]),
 
-      contactFace: this.fb.group({
-        lastName: this.fb.control(''),
-        firstName: this.fb.control(''),
-        tel: this.fb.control(''),
-        email: this.fb.control('')
-      }),
+      contactFace: this.fb.array([]),
 
       location: this.fb.group({
         locality: this.fb.control(''),
@@ -43,61 +36,52 @@ export class BasicInfoComponent implements OnInit {
         apartment: this.fb.control('')
       }),
 
-      performerType: this.fb.group({
-        performerType: this.fb.control(''),
-        requisites: this.fb.control('')
-      })
+      performerType: this.fb.array([])
+
     })
   }
 
 
 
   submit() {
-    // console.log(this.infoForm, 'ddsas')
+    console.log(this.infoForm)
   }
 
-  get array(): FormArray {
-    return this.infoForm.get('departureAreas')['controls']
-  }
-
-  get arrayMetro(): FormArray {
-    return this.infoForm.get('metro')['controls']
+  array(title: string): FormArray {
+    return this.infoForm.get(title)['controls']
   }
 
   deleteElement(array, i: number) {
-    console.log(array[i]) // не забыть удалить
     array.splice(i, 1)
   }
 
-
   addDepartureArea() {
-    this.array.push(this.fb.group({
+    this.array('departureAreas').push(this.fb.group({
       locality: [''],
       district: ['']
     }));
   }
 
   addMetro() {
-    this.arrayMetro.push(this.fb.group({
+    this.array('metro').push(this.fb.group({
       subwayStation: ['']
     }))
   }
 
-
-
-
-
-
-
-
-
-
   addContactFace() {
-    this.contactFace.push({lastName: '', firstName: '', tel: '', email: ''})
+    this.array('contactFace').push(this.fb.group({
+      lastName: [''],
+      firstName: [''],
+      tel: [''],
+      email: ['']
+    }))
   }
 
   addPerformerType() {
-    this.performerType.push({performerType: '', requisites: ''})
+    this.array('performerType').push(this.fb.group({
+      performerType: [''],
+      requisites: ['']
+    }))
   }
 
 }
