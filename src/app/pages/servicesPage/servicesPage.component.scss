@@ -293,7 +293,8 @@
         .services{
             margin: auto;
             padding: 32px 15px 55px 15px;
-            width: 720px;
+            width: 100%;
+            max-width: 720px;
         }
     }
 }

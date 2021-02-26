@@ -73,7 +73,8 @@
 @media screen and (max-width: 1275px) {
 
     .container{
-        width: 720px;
+        width: 100%;
+        max-width: 720px;
 
         .service-catalog-cards{
             width: 100%;

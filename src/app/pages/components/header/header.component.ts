@@ -11,7 +11,7 @@ import { debounceTime, distinctUntilChanged, filter, map, tap } from 'rxjs/opera
   styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
 
   public profileToogle = false
   public menuToggle = false;
@@ -92,22 +92,13 @@ export class HeaderComponent implements OnInit {
           }
         }
 
-        if (containerBurgerMenu.localName === 'html') {
+        if (containerBurgerMenu.localName === ('html' || 'body')) {
           if (containerBurgerMenu.style.overflow === 'hidden') {
             containerBurgerMenu.style.overflow = 'auto';
           } else {
             containerBurgerMenu.style.overflow = 'hidden';
           }
         }
-  
-        if (containerBurgerMenu.localName === 'body') {
-          if (containerBurgerMenu.style.overflow === 'hidden') {
-            containerBurgerMenu.style.overflow = 'auto';
-          } else {
-            containerBurgerMenu.style.overflow = 'hidden';
-          }
-        }
-
       })
     }
   }

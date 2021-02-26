@@ -4,12 +4,11 @@
     position: relative;
 
     .search-result {
-        margin: 0 116px;
+        margin: 0 auto;
         font-family: Roboto;
-        font-style: normal;
-        font-weight: normal;
         font-size: 24px;
         line-height: 28px;
+        max-width: 720px;
         color: #334D6E;
         p {
             padding: 1rem 1.5rem;
@@ -34,16 +33,11 @@
 
         .city{
             display: flex;
-
-            &:hover{
-                cursor: pointer;
-            }
-
+            cursor: pointer;
             mat-icon{
                 margin-right: 4px;
             }
-
-            p{
+            p {
                 display: flex;
                 align-items: center;
                 text-decoration: underline;
@@ -59,13 +53,10 @@
             .phone{
                 border-bottom: 1px dashed #FFFFFF;
                 margin-right: 32px;
-
-                &:hover{
-                    cursor: pointer;
-                }
+                cursor: pointer;
             }
 
-            button{
+            button {
                 width: 202px;
                 height: 100%;
                 background-color: #0D6FE3;
@@ -92,11 +83,8 @@
             align-items: center;
             justify-content: center;
         
-            .main-logo{
-    
-                &:hover{
-                    cursor: pointer;
-                }
+            .main-logo {
+                cursor: pointer;
             }
 
             .button-burger-menu{
@@ -156,8 +144,8 @@
                         display: flex;
                         align-items: center;
                         width: 100%;
-                        max-width: 1176px;
-                        margin: 12px 116px 24px;
+                        max-width: 720px;
+                        margin: 12px auto 24px;
                         border-bottom: 1px solid #D9D9D9;
 
                         input{
@@ -188,7 +176,6 @@
 
                 .navigation-module-window-navigate{
                     display: flex;
-                    // justify-content: center;
                     padding: 40px 0;
 
                     .navigate-basic{
@@ -203,11 +190,7 @@
                             font-weight: 500;
                             line-height: 24px;
                             color: #334D6E;
-
-                            &:hover{
-                                cursor: pointer;
-                            }
-
+                            cursor: pointer;
                             mat-icon{
                                 color: #90A0B7;
                                 margin-left: 40px;
@@ -239,9 +222,8 @@
                                 p{
                                     line-height: 24px;
                                     margin-bottom: 16px;
-
+                                    cursor: pointer;
                                     &:hover{
-                                        cursor: pointer;
                                         text-decoration: underline;
                                     }
                                 }
@@ -263,9 +245,8 @@
 
                                 .sub-links{
                                     margin-top: 20px;
-
+                                    cursor: pointer;
                                     &:hover{
-                                        cursor: pointer;
                                         text-decoration: underline;
                                     }
                                 }
@@ -282,11 +263,7 @@
                 align-items: center;
                 justify-content: space-between;
                 
-                .menu-list-services{
-                    display: none;
-                }
-
-                .menu-list-title{
+                .menu-list-services, .menu-list-title{
                     display: none;
                 }
     
@@ -297,17 +274,14 @@
                     font-weight: 500;
                     font-size: 14px;
                     color: #334D6E;
-    
+                    cursor: pointer;    
                     &:hover{
-                        cursor: pointer;
                         border-bottom: 4px solid #0D6FE3;
                         font-weight: 600;
                     }
-
                     &:active{
                         border-bottom: 4px solid #0D6FE3;
                     }
-
                     &:focus{
                         outline: none;
                     }
@@ -316,7 +290,6 @@
     
             .button-sign-in{
                 display: none;
-
                 width: 130px;
                 height: 48px;
                 margin: 0 15px 0 114px;
@@ -329,7 +302,6 @@
                 border: 1px solid #C3CBD6;
                 border-radius: 3px;
                 background-color: #fff;
-
                 mat-icon{
                     display: none;
                 }
@@ -354,10 +326,7 @@
                     border-radius: 50%;
                     border: 1px solid #C3CBD6;
                     z-index: 6;
-
-                    &:hover{
-                        cursor: pointer;
-                    }
+                    cursor: pointer;
                 }
 
                 .profile-module-window{
@@ -386,11 +355,8 @@
                         .name-and-avatar{
                             display: flex;
                             align-items: center;
-                        }
-
-                        &:hover{
                             cursor: pointer;
-                        }
+                        }                           
 
                         img{
                             width: 40px;
@@ -401,7 +367,6 @@
                         }
 
                         div{
-
                             .name{
                                 margin: 1px 0 0 12px;
                                 font-weight: 500;
@@ -416,8 +381,7 @@
                                 color: #8594A8;
                                 outline: none;
                             }
-                        }
-                        
+                        }                        
                         .nav{
                             display: none;
                         }
@@ -427,43 +391,32 @@
                         display: flex;
                         align-items: center;
                         margin-bottom: 12px;
-
-                        &:hover{
-                            cursor: pointer;
-                        }
-
+                        cursor: pointer;
                         img{
                             width: 32px;
                             height: 32px;
                             border-radius: 50%;
                             border: 1px solid #C3CBD6;
                         }
-
-                        p{
+                        p {
                             margin-left: 12px;
                             font-weight: 500;
                             font-size: 14px;
                             color: #334D6E;
                         }
-                    }
-                    
+                    }                    
                     .logout-from-all-accounts{
                         display: flex;
                         align-items: center;
                         margin: 17px 0 0 3px;
-
-                        &:hover{
-                            cursor: pointer;
-                        }
-
-                        p{
+                        cursor: pointer;
+                        p {
                             margin: 0 0 -1px 15px;
                             font-weight: 500;
                             font-size: 14px;
                             color: #EA4545;
                         }
                     }
-
                     .profile-title{
                         display: none;
                     }
@@ -475,16 +428,8 @@
 
 
 @media screen and (min-width: 1441px) {
-    .container{
-        .header{
-            .header-devide-top{
-                .profile{
-                    .profile-module-window{
-                        right: 1.6%;
-                    }
-                }
-            }
-        }
+    .profile-module-window{
+        right: 1.6%;
     }
 }
 
@@ -492,18 +437,14 @@
 @media screen and (max-width:1275px) {
     .container{
         height: 148px;
-
         .city-and-phone-and-button{
             padding: 0 0 0 24px;
-
             .phone-and-button{
-
                 button{
                     width: 186px;
                 }
             }
-        }
-        
+        }        
         .header{
             position: relative;
             padding: 0 24px;
@@ -612,6 +553,9 @@
                 }
 
                 .button-services{
+                    position: absolute;
+                    top: 60px;
+                    left: -120%;
                     display: flex;
                     justify-content: space-between;
                     width: 100vw;
@@ -623,26 +567,16 @@
                     line-height: 18px;
                     background-color: #0D6FE3;
                     color: #fff;
-                    position: absolute;
-                    top: 60px;
-                    left: -120%;
                     z-index: 2001;
                     border-radius: 0;
                     transition: all .2s;
 
                     .button-services-navigate-next{
                         display: block;
-
-                        &:hover{
-                            cursor: pointer;
-                        }
+                        cursor: pointer;
                     }
 
-                    svg{
-                        display: none !important;
-                    }
-
-                    .button-services-clear{
+                    svg, .button-services-clear{
                         display: none !important;
                     }
                 }
@@ -708,15 +642,13 @@
                                 line-height: 20px;
                                 border-radius: 4px;
                                 background-color: #FFFFFF;
-                            }
-                            
+                            }                            
                             button{
                                 width: 44px;
                                 min-width: 44px;
                                 height: 42px;
                                 border-radius: 4px;
-                                background-color: #FFFFFF;
-    
+                                background-color: #FFFFFF;    
                                 mat-icon{
                                     font-size: 24px;
                                     margin: 0;
@@ -727,29 +659,25 @@
     
                     .navigation-module-window-navigate{
                         padding: 0;
-                        background-color: #F7F9FB;
-    
+                        background-color: #F7F9FB;    
                         .navigate-basic{
                             max-width: none;
                             width: 100%;
                             max-height: calc(100vh - 168px);
                             padding: 0 16px;
                             border: none;
-                            overflow-y: auto;
-    
+                            overflow-y: auto;    
                             p{
                                 display: flex;
                                 align-items: center;
                                 justify-content: space-between;
                                 padding: 15px 0 16px 0;
-                                border-bottom: 1px solid #C3CBD6;
-    
+                                border-bottom: 1px solid #C3CBD6;    
                                 mat-icon{
                                     margin: 0;
                                 }
                             }
-                        }
-    
+                        }    
                         .navigate-specific{
                             display: none;
                         }
@@ -797,10 +725,7 @@
                             margin: 6px -4px 0 0;
                             font-size: 16px;
                             color: #8594A8;
-
-                            &:hover{
-                                cursor: pointer;
-                            }
+                            cursor: pointer;
                         }
                     }
 
@@ -825,7 +750,6 @@
                     margin: 0 0 0 0;
                     border-radius: 3px;
                     order: 2;
-
                     span{
                         display: none;
                     }
@@ -866,10 +790,7 @@
                             justify-content: space-between;
                             align-items: center;
                             padding: 0 16px;
-
-                            &:hover{
-                                cursor: pointer;
-                            }
+                            cursor: pointer;
 
                             p{
                                 font-weight: bold;
@@ -906,7 +827,6 @@
                                 }
 
                                 div{
-
                                     .name{
                                         margin: 1px 0 0 18px;
                                     }
