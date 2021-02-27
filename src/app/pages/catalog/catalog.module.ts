@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from "../../shared/shared.module";
 import { ServicesComponent } from './components/services/services.component';
-import { ServicesPageComponent } from './servicesPage.component';
-import { ServiceCatalogComponent } from './components/serviceCatalog/serviceСatalog.component';
+import { CatalogComponent } from './catalog.component';
+import { ServiceCatalogComponent } from './components/service-catalog/service-catalog.component';
 
 @NgModule({
     declarations: [
-        ServicesPageComponent,
+        CatalogComponent,
         ServicesComponent,
         ServiceCatalogComponent
     ],
@@ -16,4 +16,4 @@ import { ServiceCatalogComponent } from './components/serviceCatalog/serviceСat
         SharedModule
     ],
 })
-export class ServicesPageModule {}
+export class CatalogModule {}

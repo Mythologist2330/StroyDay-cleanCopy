@@ -8,9 +8,9 @@ import { ServicesService } from 'src/app/services/services.service';
 import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
-    selector: 'app-serviceCatalog',
-    templateUrl: './serviceCatalog.component.html',
-    styleUrls: ['./serviceCatalog.component.scss']
+    selector: 'app-service-catalog',
+    templateUrl: './service-catalog.component.html',
+    styleUrls: ['./service-catalog.component.scss']
 })
 
 export class ServiceCatalogComponent implements OnInit {

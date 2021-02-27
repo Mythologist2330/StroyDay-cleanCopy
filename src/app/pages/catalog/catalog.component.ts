@@ -5,12 +5,12 @@ import { debounceTime, distinctUntilChanged, filter, map, tap } from 'rxjs/opera
 import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
-    selector: 'app-servicesPage',
-    templateUrl: './servicesPage.component.html',
-    styleUrls: ['./servicesPage.component.scss']
+    selector: 'app-catalog',
+    templateUrl: './catalog.component.html',
+    styleUrls: ['./catalog.component.scss']
 })
 
-export class ServicesPageComponent implements OnInit{
+export class CatalogComponent implements OnInit{
 
     public toggle = false;
     public page = 'Услуги';

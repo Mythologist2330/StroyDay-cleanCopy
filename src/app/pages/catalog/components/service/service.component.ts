@@ -70,12 +70,6 @@ export class ServiceSpecificComponent implements OnInit {
         })
     }
 
-    foundServicesSegment: IFoundServicesSegment[] = [
-        {priceFrom: '8392', typeOfSegment: 'эконом', foundPerformers: '1844 исполнителя', color: '#F8601F', backgroundColor: 'rgba(248, 96, 31, 0.05)'},
-        {priceFrom: '13 392', typeOfSegment: 'стандарт', foundPerformers: '620 исполнителей', color: '#0D6FE3', backgroundColor: 'rgba(13, 111, 227, 0.05)'},
-        {priceFrom: '24 392', typeOfSegment: 'премиум', foundPerformers: '245 исполнителей', color: '#9F8C66', backgroundColor: 'rgba(159, 140, 102, 0.05)'}
-    ]
-
     galleryLastWorks: IGalleryLastWorks[] = [
         {
             logo: '../../../../../assets/images/logo.performersPage.png',

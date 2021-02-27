@@ -2,17 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-    selector: 'app-registrBasicInfo',
-    templateUrl: './registrBasicInfo.component.html',
-    styleUrls: ['./registrBasicInfo.component.scss']
+    selector: 'app-info',
+    templateUrl: './info.component.html',
+    styleUrls: ['./info.component.scss']
 })
 
-export class RegistrBasicInfoComponent implements OnInit{
+export class InfoComponent implements OnInit {
 
-    form: FormGroup
-    contactData: FormGroup
-    kindOfProfile: FormGroup
-
+    form: FormGroup;
+    contactData: FormGroup;
+    kindOfProfile: FormGroup;
 
     ngOnInit() {
         this.form = new FormGroup({
@@ -20,11 +19,9 @@ export class RegistrBasicInfoComponent implements OnInit{
             background: new FormControl(''),
             nameOfPage: new FormControl('', Validators.required),
             aboutMyself: new FormControl('', Validators.required),
-
             contactData: new FormGroup({
                 contactDataEmail: new FormControl('', [Validators.required, Validators.email]),
                 contactDataTel: new FormControl('', Validators.required),
-
                 contactFaceName: new FormControl('', Validators.required),
                 contactFaceEmail: new FormControl('', [Validators.required, Validators.email]),
                 contactFaceTel: new FormControl('', Validators.required)
@@ -64,7 +61,6 @@ export class RegistrBasicInfoComponent implements OnInit{
             metro: new FormControl('', Validators.required)
         })
     }
-
 
     submit() {
         if (this.form.valid) {

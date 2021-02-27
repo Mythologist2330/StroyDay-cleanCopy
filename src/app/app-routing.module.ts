@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RegistrBasicInfoComponent } from './pages/formRegistrationPage/components/registrBasicInfo/registrBasicInfo.component';
-import { RegistrRequisitesComponent } from './pages/formRegistrationPage/components/registrRequisites/registrRequisites.component';
-import { FormRegistrationPageComponent } from './pages/formRegistrationPage/formRegistrationPage.component';
+import { InfoComponent } from './pages/registration/components/info/info.component';
+import { RequisitesComponent } from './pages/registration/components/requisites/requisites.component';
+import { RegistrationComponent } from './pages/registration/registration.component';
 import { PagesComponent } from './pages/pages.component';
 import { PerformerComponent } from './pages/performer/performer.component';
-import { PerformersListComponent } from './pages/performers/performers-list.component';
-import { ServiceSpecificComponent } from './pages/servicesPage/components/service/service.component';
-import { ServiceCatalogComponent } from './pages/servicesPage/components/serviceCatalog/serviceСatalog.component';
-import { ServicesComponent } from './pages/servicesPage/components/services/services.component';
-import { ServicesPageComponent } from './pages/servicesPage/servicesPage.component';
+import { PerformersListComponent } from './pages/performer-list/performers-list.component';
+import { ServiceSpecificComponent } from './pages/catalog/components/service/service.component';
+import { ServiceCatalogComponent } from './pages/catalog/components/service-catalog/service-catalog.component';
+import { ServicesComponent } from './pages/catalog/components/services/services.component';
+import { CatalogComponent } from './pages/catalog/catalog.component';
 import { ProfileComponent } from './personal-area/profile/profile.component';
 import { PersonalAreaComponent } from './personal-area/personal-area.component';
 import { BasicInfoComponent } from './personal-area/basic-info/basic-info.component';
@@ -20,7 +20,7 @@ import { EditServiceComponent } from './admin/edit-service/edit-service.componen
 
 const routes: Routes = [
   {path: 'pages', component: PagesComponent, children: [
-    {path: 'services', component: ServicesPageComponent, children: [
+    {path: 'services', component: CatalogComponent, children: [
       {path: '', component: ServicesComponent},
       {path: 'service-catalog', component: ServiceCatalogComponent},
       {path: 'service-catalog/:id', component: ServiceCatalogComponent},
@@ -37,9 +37,9 @@ const routes: Routes = [
     {path: 'basicInfo', component: BasicInfoComponent}
   ]},
 
-  {path: 'formRegistrationPage', component: FormRegistrationPageComponent, children: [
-    {path: 'registrBasicInfo', component: RegistrBasicInfoComponent},
-    {path: 'registrRequisites', component: RegistrRequisitesComponent}
+  {path: 'registration', component: RegistrationComponent, children: [
+    {path: 'info', component: InfoComponent},
+    {path: 'requisites', component: RequisitesComponent}
   ]},
 
   {path: 'admin', component: AdminComponent, children: [
