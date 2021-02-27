@@ -39,6 +39,15 @@ export class CategoryService {
       )
     }
 
+    async getChainCategoryById(id: string, chain: Category[] = []): Promise<Category[]> {
+      let category = await this.getCategoryById(id).toPromise();
+      chain.unshift(category);
+      if (category.parent !== 'Отсутствует') {
+        return await this.getChainCategoryById(category.parent, chain);
+      }
+      return chain;
+    }
+
     async createCategory(category: Category): Promise<void> {
       await this.firestore.collection('categories').add({...category});
       this.renderCategoriesSub();

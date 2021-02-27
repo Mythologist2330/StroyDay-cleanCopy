@@ -1,9 +1,11 @@
-<p class="path">
-    <a routerLink="/">Главная</a>
-    <ng-container *ngIf='categories'>
-        <ng-container *ngFor='let cat of categories'>
+<div class="path">
+    <div class='crumb'>
+        <a routerLink="/">Главная</a>
+    </div>    
+    <ng-container *ngIf='breadcrumbs'>
+        <div class='crumb' *ngFor='let cat of breadcrumbs'>
             <mat-icon>keyboard_arrow_right</mat-icon>
             <span (click)='goTo(cat.link)'>{{cat.title}}</span>
-        </ng-container>
+        </div>
     </ng-container>
-</p>
+</div>

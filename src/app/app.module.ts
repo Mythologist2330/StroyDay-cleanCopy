@@ -9,30 +9,33 @@ import { environment } from '../environments/environment';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { MainComponent } from './pages/main/main.component';
 import { SearcherComponent } from './pages/main/components/searcher/searcher.component';
 import { CategoriesComponent } from './pages/main/components/categories/categories.component';
 import { ApplicationsComponent } from './pages/main/components/applications/applications.component';
-import { FormRegistrationPageComponent } from './pages/formRegistrationPage/formRegistrationPage.component';
-import { RegistrBasicInfoComponent } from './pages/formRegistrationPage/components/registrBasicInfo/registrBasicInfo.component';
-import { RegistrRequisitesComponent } from './pages/formRegistrationPage/components/registrRequisites/registrRequisites.component';
+import { RegistrationComponent } from './pages/registration/registration.component';
+import { InfoComponent } from './pages/registration/components/info/info.component';
+import { RequisitesComponent } from './pages/registration/components/requisites/requisites.component';
 
 import { SharedModule } from "./shared/shared.module";
 import { MaterialModule } from "./shared/material.module";
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ServicesPageModule } from './pages/servicesPage/servicesPage.module';
-import { ServiceSpecificComponent } from './pages/servicesPage/components/service/service.component';
+import { CatalogModule } from './pages/catalog/catalog.module';
+import { ServiceSpecificComponent } from './pages/catalog/components/service/service.component';
 
 import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
-import { PagesModule } from './pages/pages.module';
+
 import { PagesComponent } from './pages/pages.component';
 import { FooterComponent } from './pages/components/footer/footer.component';
 import { HeaderComponent } from './pages/components/header/header.component';
-import { PersonalAreaModule } from './personal-area/personal-area.module';
 
 import { AdminModule } from './admin/admin.module';
+import { PagesModule } from './pages/pages.module';
+import { PersonalAreaModule } from './personal-area/personal-area.module';
 
 
 
@@ -50,9 +53,9 @@ registerLocaleData(localeRu, 'ru');
     CategoriesComponent,
     ApplicationsComponent,
 
-    FormRegistrationPageComponent,
-    RegistrBasicInfoComponent,
-    RegistrRequisitesComponent,
+    RegistrationComponent,
+    InfoComponent,
+    RequisitesComponent,
     ServiceSpecificComponent,
     PagesComponent,
   ],
@@ -66,7 +69,7 @@ registerLocaleData(localeRu, 'ru');
     AngularFireDatabaseModule,
     MaterialModule,
     BrowserAnimationsModule,
-    ServicesPageModule,
+    CatalogModule,
     PagesModule,
     PersonalAreaModule,
     AdminModule,
