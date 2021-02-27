@@ -11,6 +11,7 @@ import { IFilter } from '../../interfaces/IFilter';
 import { ITag } from 'src/app/interfaces/ITag';
 import { first, switchMap, tap } from 'rxjs/operators';
 import { Category } from 'src/app/models/category';
+import { IBreadcrumb } from 'src/app/interfaces/IBreadcrumb';
 
 @Component({
     selector: 'app-performersPage',
@@ -187,7 +188,7 @@ export class PerformersListComponent implements OnInit {
         el.scrollIntoView();
     }
 
-    getBreadcrumbs() {
+    getBreadcrumbs(): IBreadcrumb[] {
         return [{
             title: 'Список исполнителей',
             link: '/pages/performers-list'

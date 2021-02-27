@@ -1,10 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from "rxjs";
+import { switchMap, tap } from "rxjs/operators";
 import { Category } from "src/app/models/category";
+import { IBreadcrumb } from "src/app/interfaces/IBreadcrumb";
 import { ServicesService } from 'src/app/services/services.service';
 import { CategoryService } from 'src/app/services/category.service';
-import { switchMap, tap } from "rxjs/operators";
 
 @Component({
     selector: 'app-serviceCatalog',
@@ -16,7 +17,7 @@ export class ServiceCatalogComponent implements OnInit {
 
     public id: string;
     public category$: Observable<Category>;
-    public breadcrumbs: {title: string, link: string}[] = [];
+    public breadcrumbs: IBreadcrumb[] = [];
 
     constructor(private activatedRoute: ActivatedRoute,
                 private router: Router,
@@ -25,26 +26,33 @@ export class ServiceCatalogComponent implements OnInit {
 
     ngOnInit() {
         this.category$ = this.activatedRoute.params.pipe(
-            tap(data => this.id = data.id),
+            tap(data => {
+                this.id = data.id;
+                this.initBreadcrumbs(data.id)
+            }),
             switchMap((data) => this.catSrv.getCategoryById(data.id)),
-            tap(cat => this.getBreadcrumbs(cat))
         )
     }
     
-  getBreadcrumbs(category: Category) {
-      this.breadcrumbs = [];
-      this.breadcrumbs.push({
-          title: category.title,
-          link: 'pages/services/service-catalog/' + category.id
-      })
+    initBreadcrumbs(id: string): void {
+        this.catSrv.getChainCategoryById(id)
+            .then(data => {
+                this.breadcrumbs = this.getFromCategoryToBreadcrumbs(data);
+                this.breadcrumbs.unshift({
+                    title: 'Услуги',
+                    link: 'pages/services'
+                });
+            });
+    }
 
-      this.breadcrumbs.unshift({
-          title: 'Услуги',
-          link: 'pages/services'
-      });
-
-      console.log(category)
-  }
+    getFromCategoryToBreadcrumbs(categories: Category[]): IBreadcrumb[] {
+        return categories.map(cat => {
+            return {
+                title: cat.title,
+                link: 'pages/services/service-catalog/' + cat.id
+            }
+        })
+    }
 
     goToCategory(id: string) {
         this.router.navigate(['pages/services/service-catalog/' + id]);

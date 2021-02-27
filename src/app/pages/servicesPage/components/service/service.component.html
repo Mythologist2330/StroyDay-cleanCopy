@@ -1,6 +1,6 @@
 <div class="container" *ngIf='srv$ | async as srv'>
     <div class="service">
-        <app-breadcrumbs></app-breadcrumbs>    
+        <app-breadcrumbs [breadcrumbs]='breadcrumbs'></app-breadcrumbs>
         <h1 class="service-header">{{srv.title}}</h1>    
         <p class="service-description">{{srv.text}}</p>
     </div>
@@ -9,19 +9,37 @@
         <p class="segments-title">Найдено 2356 исполнителей в 3 ценовых сегментах</p>
         
         <div class="segment-cards">
-            <div *ngFor="let serviceSegment of foundServicesSegment" class="segment-card" [style]="{borderColor: serviceSegment.color, backgroundColor: serviceSegment.backgroundColor}">
-
-                <div [style]="{color: serviceSegment.color}">
+            <div class="card low">
+                <div>
                     <div class="price-from-and-found-performers">
-                        <p class="price-from">от {{ serviceSegment.priceFrom }} ₽</p>
-                        <p class="found-performers">Найдено {{ serviceSegment.foundPerformers }}</p>
+                        <p class="price-from">от {{srv.cost.low}} ₽</p>
+                        <p class="found-performers">Найдено 104 исполнителей</p>
                     </div>
-
-                    <p class="type-of-sergemt">{{ serviceSegment.typeOfSegment }}</p>
+                    <p class="type-of-sergemt">Эконом</p>
                 </div>
-
-                <button [style]="{backgroundColor: serviceSegment.color}">Подобрать исполнителя</button>
-
+                <button>Подобрать исполнителя</button>
+            </div>
+            
+            <div class="card standart">
+                <div>
+                    <div class="price-from-and-found-performers">
+                        <p class="price-from">от {{srv.cost.standart}} ₽</p>
+                        <p class="found-performers">Найдено 104 исполнителей</p>
+                    </div>
+                    <p class="type-of-sergemt">Стандарт</p>
+                </div>
+                <button>Подобрать исполнителя</button>
+            </div>
+            
+            <div class="card premium">
+                <div>
+                    <div class="price-from-and-found-performers">
+                        <p class="price-from">от {{srv.cost.premium}} ₽</p>
+                        <p class="found-performers">Найдено 104 исполнителей</p>
+                    </div>
+                    <p class="type-of-sergemt">Премиум</p>
+                </div>
+                <button>Подобрать исполнителя</button>
             </div>
         </div>
     </div>
@@ -77,7 +95,7 @@
         </div>
 
         <div class="gallery-arrow">
-            <mat-icon>arrow_forward</mat-icon>
+            <!-- <mat-icon>arrow_forward</mat-icon> -->
         </div>
     </div>
 

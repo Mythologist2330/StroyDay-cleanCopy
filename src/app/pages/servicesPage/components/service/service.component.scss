@@ -45,7 +45,7 @@
             display: flex;
             justify-content: space-between;
 
-            .segment-card{
+            .card{
                 width: 376px;
                 height: 178px;
                 padding: 24px;
@@ -55,9 +55,43 @@
                 border-radius: 8px;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
+                justify-content: space-between;                
+                &.low {
+                    color: #F8601F;
+                    background: rgba(248, 96, 31, 0.05);
+                    button {
+                        background: #F8601F;
+                    }
+                }
+                &.standart {
+                    color: #0D6FE3;
+                    background: rgba(13, 111, 227, 0.05);
+                    button {
+                        background: #0D6FE3;
+                    }
+                }
+                &.premium {
+                    color: #9F8C66;
+                    background: rgba(159, 140, 102, 0.05);
+                    button {
+                        background: #9F8C66;
+                    }  
+                }      
 
-                div{
+                button {
+                    width: 328px;
+                    height: 48px;
+                    margin: 0 0 -2px -2px;
+                    border-radius: 3px;
+                    color: #fff;
+                    font-family: Roboto;
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 18px;
+                    letter-spacing: 0.013em;
+                }            
+
+                div {
                     display: flex;
 
                     .price-from-and-found-performers{
@@ -88,18 +122,6 @@
                         text-transform: uppercase;
                         margin: -2px -2px 0 0;
                     }
-                }
-
-                button{
-                    width: 328px;
-                    height: 48px;
-                    margin: 0 0 -2px -2px;
-                    border-radius: 3px;
-                    color: #fff;
-                    font-weight: 500;
-                    font-size: 14px;
-                    line-height: 18px;
-                    letter-spacing: 0.013em;
                 }
             }
         }
@@ -288,20 +310,19 @@
                 height: 564px;
                 margin-top: 26px;
 
-                .segment-card{
-                    width: 100%;
-    
-                    button{
+                .card {
+                    width: 100%;    
+                    button {
                         width: 100%;
                         margin: 0 0 -2px 0px;
-                    }
+                    }  
                 }
             }
         }
 
         .consultant-assistance{
             width: auto;
-            height: 104px;
+            height: auto;
             padding: 24px;
             margin: 50px 24px 0 24px;
 

@@ -2,21 +2,19 @@
     font-size: 14px;
     display: flex;
     align-items: center;
-
-    a {
-        color: #334D6E;
+    flex-wrap: wrap;
+    .crumb {
+        display: flex;
+        align-items: center;
     }
-
-    svg {
-        margin: 0 8px;
-    }
-
+    a { color: #334D6E }
+    svg { margin: 0 8px }
     span {
         color: #8594A8;
         cursor: pointer;
+        white-space: nowrap;
     }
 }
-
 .mat-icon {
     color: rgb(133, 148, 168);
     transition: all 200ms linear;
