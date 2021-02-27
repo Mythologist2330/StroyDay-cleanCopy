@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { PerformersCardService } from '../../services/performers-card.service';
 import { FilterService } from '../../services/filter.service';
 import { ServicesService } from '../../services/services.service';
@@ -198,6 +198,12 @@ export class PerformersListComponent implements OnInit {
     ngOnInit(): void {
         this.isLoading = true;
         this.animateHeader();
+        this.router.events.subscribe((evt) => {
+          if (!(evt instanceof NavigationEnd)) {
+            return;
+          }
+          window.scrollTo(0, 0)
+        });
         
         this.filterSrv.getAllFilters()
             .pipe(
