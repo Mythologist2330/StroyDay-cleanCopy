@@ -1,0 +1,18 @@
+<div class="container">
+
+    <app-notification></app-notification>
+
+    <p class="header">Галерея работ</p>
+
+    <p class="description">Фотографии из <span class="link">общего альбома</span> отображаются на вашей публичной странице в шапке профиля</p>
+
+    <div class="gallery-albums">
+        <div class="create-new-album">
+            <div><mat-icon>add</mat-icon></div>
+            <p>Создать новый альбом</p>
+        </div>
+
+        <app-gallery-album *ngFor="let galleryAlbum of galleryAlbums" [galleryAlbum]="galleryAlbum"></app-gallery-album>
+    </div>
+
+</div>

@@ -5,6 +5,7 @@ import { BasicInfoModule } from "./basic-info/basic-info.module";
 import { FooterComponent } from "./components/footer/footer.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { NavigationComponent } from "./components/navigation/navigation.component";
+import { GalleryModule } from "./gallery/gallery.module";
 import { PersonalAreaComponent } from "./personal-area.component";
 import { ProfileModule } from "./profile/profile.module";
 
@@ -19,7 +20,8 @@ import { ProfileModule } from "./profile/profile.module";
     CommonModule,
     SharedModule,
     ProfileModule,
-    BasicInfoModule
+    BasicInfoModule,
+    GalleryModule
   ]
 })
 export class PersonalAreaModule { }

@@ -17,6 +17,7 @@ import { AdminComponent } from './admin/admin.component';
 import { TreeComponent } from './admin/tree/tree.component';
 import { EditCategoryComponent } from './admin/edit-category/edit-category.component';
 import { EditServiceComponent } from './admin/edit-service/edit-service.component';
+import { GalleryComponent } from './personal-area/gallery/gallery.component';
 
 const routes: Routes = [
   {path: 'pages', component: PagesComponent, children: [
@@ -34,7 +35,8 @@ const routes: Routes = [
   {path: 'personalArea/:id', component: PersonalAreaComponent, children: [
     {path: '', redirectTo: 'profile', pathMatch: 'full'},
     {path: 'profile', component: ProfileComponent},
-    {path: 'basicInfo', component: BasicInfoComponent}
+    {path: 'basicInfo', component: BasicInfoComponent},
+    {path: 'gallery', component: GalleryComponent}
   ]},
 
   {path: 'formRegistrationPage', component: FormRegistrationPageComponent, children: [
