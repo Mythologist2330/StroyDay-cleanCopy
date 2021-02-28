@@ -23,9 +23,6 @@
         color: #FFFFFF;
     }
 
-
-
-
     .container-departure-areas{
         width: 720px;
         padding: 21px 23px 23px 23px;
@@ -565,23 +562,7 @@
             width: 720px;
         }
 
-        .container-departure-areas{
-            margin: 0 0 24px 0;
-        }
-
-        .container-metro{
-            margin: 0 0 24px 0;
-        }
-
-        .container-contact-face{
-            margin: 0 0 24px 0;
-        }
-
-        .container-location{
-            margin: 0 0 24px 0;
-        }
-
-        .container-performer-type{
+        .container-departure-areas, .container-location, .container-contact-face, .container-metro, .container-performer-type{
             margin: 0 0 24px 0;
         }
     }
