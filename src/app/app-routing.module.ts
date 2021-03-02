@@ -18,6 +18,7 @@ import { EditCategoryComponent } from './admin/edit-category/edit-category.compo
 import { EditServiceComponent } from './admin/edit-service/edit-service.component';
 import { GalleryComponent } from './personal-area/gallery/gallery.component';
 import { ServiceCategoriesComponent } from './pages/catalog/components/service-categories/service-categories.component';
+import { ServicesComponent } from './personal-area/services/services.component';
 
 const routes: Routes = [
   {path: 'pages', component: PagesComponent, children: [
@@ -37,7 +38,8 @@ const routes: Routes = [
     {path: '', redirectTo: 'profile', pathMatch: 'full'},
     {path: 'profile', component: ProfileComponent},
     {path: 'basicInfo', component: BasicInfoComponent},
-    {path: 'gallery', component: GalleryComponent}
+    {path: 'gallery', component: GalleryComponent},
+    {path: 'services', component: ServicesComponent}
   ]},
 
   {path: 'registration', component: RegistrationComponent, children: [

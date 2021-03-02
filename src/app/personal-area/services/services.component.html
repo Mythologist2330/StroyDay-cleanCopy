@@ -1,0 +1,82 @@
+<div class="container">
+
+    <p class="header">Услуги <span>3/25</span></p>
+
+    <p class="description">Выберите услуги, которые сможете предоставлять заказчикам. Первые 5 услуг будут отображаться в качестве ваших основных услуг. Максимальное количество — 25 услуг.</p>
+
+    <form [formGroup]="servicesForm" (ngSubmit)="submit()">
+        <ng-container *ngFor="let service of arrayService('services'), let i = index" formArrayName="services">
+            <div class="service" [formGroupName]="i">
+                <mat-icon class="drag">drag_indicator</mat-icon>
+    
+                <div class="choose-service">
+                    <p class="title">{{ i + 1 }}.</p>
+        
+                    <div class="title-mobile">
+                        <p class="title-mobile-header">Услуга {{ i + 1 }}</p>
+        
+                        <div class="replace-and-delete">
+                            <p>
+                                Порядок
+                                <mat-icon>keyboard_arrow_down</mat-icon>
+                                <mat-icon>keyboard_arrow_up</mat-icon>
+                            </p>
+        
+                            <mat-icon class="delete-mobile" (click)="deleteElement(arrayService('services'), i)">delete</mat-icon>
+                        </div>
+                    </div>
+        
+                    <fieldset>
+                        <legend>Выберите услугу</legend>
+                        <select name="" formControlName="service">
+                            <option value="Не выбрано">Не выбрано</option>
+                            <option value="Дизайн проект детской комнаты">Дизайн проект детской комнаты</option>
+                            <option value="Строительство частных домов и коттеджей">Строительство частных домов и коттеджей</option>
+                            <option value="Отделочные работы ванных комнат">Отделочные работы ванных комнат</option>
+                        </select>
+                    </fieldset>
+        
+                    <mat-icon class="delete" (click)="deleteElement(arrayService('services'), i)">delete</mat-icon>
+                </div>
+    
+                <div class="price-level">
+                    <p class="title-price-level">Уровень цен</p>
+        
+                    <div class="fieldsets">
+                        <fieldset>
+                            <legend>Эконом</legend>
+                            <select name="" formControlName="low">
+                                <option value="Нет">Нет</option>
+                                <option value="Да">Да</option>
+                            </select>
+                        </fieldset>
+        
+                        <fieldset>
+                            <legend>Стандарт</legend>
+                            <select name="" formControlName="standard">
+                                <option value="Нет">Нет</option>
+                                <option value="Да">Да</option>
+                            </select>
+                        </fieldset>
+        
+                        <fieldset>
+                            <legend>Премиум</legend>
+                            <select name="" formControlName="premium">
+                                <option value="Нет">Нет</option>
+                                <option value="Да">Да</option>
+                            </select>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+        <button class="button-add-service" (click)="addService()"><mat-icon>add</mat-icon>Добавить услугу</button>
+
+        <div class="buttons-save-and-look">
+            <button class="button-save" type="submit">Сохранить изменения</button>
+            <button class="button-look">Посмотреть на странице исполнителя<mat-icon>launch</mat-icon></button>
+        </div>
+    </form>
+
+</div>

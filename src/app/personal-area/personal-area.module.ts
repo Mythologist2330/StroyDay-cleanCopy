@@ -8,13 +8,15 @@ import { NavigationComponent } from "./components/navigation/navigation.componen
 import { GalleryModule } from "./gallery/gallery.module";
 import { PersonalAreaComponent } from "./personal-area.component";
 import { ProfileModule } from "./profile/profile.module";
+import { ServicesComponent } from "./services/services.component";
 
 @NgModule({
   declarations: [
     PersonalAreaComponent,
     HeaderComponent,
     FooterComponent,
-    NavigationComponent
+    NavigationComponent,
+    ServicesComponent
   ],
   imports: [
     CommonModule,
