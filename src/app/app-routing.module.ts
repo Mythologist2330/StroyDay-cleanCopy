@@ -20,6 +20,7 @@ import { GalleryComponent } from './personal-area/gallery/gallery.component';
 import { ServiceCategoriesComponent } from './pages/catalog/components/service-categories/service-categories.component';
 import { ServicesComponent } from './personal-area/services/services.component';
 import { GalleryAlbumsComponent } from './personal-area/gallery/gallery-albums/gallery-albums.component';
+import { GalleryAlbumComponent } from './personal-area/gallery/gallery-album/gallery-album.component';
 
 const routes: Routes = [
   {path: 'pages', component: PagesComponent, children: [
@@ -41,7 +42,8 @@ const routes: Routes = [
     {path: 'basicInfo', component: BasicInfoComponent},
     {path: 'gallery', component: GalleryComponent, children: [
       {path: '', redirectTo: 'albums', pathMatch: 'full'},
-      {path: 'albums', component: GalleryAlbumsComponent}
+      {path: 'albums', component: GalleryAlbumsComponent},
+      {path: 'album', component: GalleryAlbumComponent}
     ]},
     {path: 'services', component: ServicesComponent}
   ]},

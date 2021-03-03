@@ -1,0 +1,154 @@
+.container{
+    width: 976px;
+    padding: 23px 23px 23px 23px;
+    margin-bottom: 16px;
+    background-color: #FFFFFF;
+    border: 1px solid #E3E9F2;
+    border-radius: 4px;
+
+    .header{
+        display: flex;
+        justify-content: space-between;
+
+        .title-and-description{
+            max-width: 576px;
+
+            .title{
+                margin-bottom: 6px;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 28px;
+                color: #334D6E;
+
+                span{
+                    color: #8594A8;
+                }
+            }
+
+            .description{
+                font-size: 16px;
+                line-height: 24px;
+                color: #8594A8;
+            }
+        }
+
+        .buttons{
+            display: flex;
+
+            .button-change-album{
+                width: 144px;
+                height: 33px;
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 18px;
+                color: #334D6E;
+                background: #FFFFFF;
+                border: 1px solid #C3CBD6;
+                border-radius: 3px;
+            }
+
+            .button-add-photo{
+                width: 111px;
+                height: 32px;
+                margin-left: 11px;
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 18px;
+                color: #FFFFFF;
+                background: #0D6FE3;
+                border-radius: 3px;
+            }
+        }
+    }
+
+    .gallery-album{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 928px;
+        margin-top: 10px;
+
+        .photo{
+            width: 220px;
+            height: 166px;
+            margin-top: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    }
+}
+
+@media screen and (max-width: 1275px) {
+    .container{
+        width: 720px;
+        margin: -8px auto 16px auto;
+
+        .header{
+
+            .title-and-description{
+                max-width: 389px;
+            }
+        }
+
+        .gallery-album{
+            width: 672px;
+
+            .photo{
+                width: 213px;
+                height: 161px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container{
+        width: 100%;
+        padding: 15px;
+
+        .header{
+            display: block;
+
+            .title-and-description{
+                max-width: none;
+
+                .title{
+                    margin-bottom: 7px;
+
+                    span{
+                        display: inline-block;
+                    }
+                }
+
+                .description{
+                    font-size: 14px;
+                    line-height: 20px;
+                }
+            }
+
+            .buttons{
+                justify-content: space-between;
+                margin-top: 17px;
+
+                .button-change-album{
+                    flex: 0 0 55%;
+                }
+
+                .button-add-photo{
+                    flex: 0 0 42%;
+                    margin: 0;
+                }
+            }
+        }
+
+        .gallery-album{
+            width: auto;
+            margin-top: -1px;
+
+            .photo{
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}

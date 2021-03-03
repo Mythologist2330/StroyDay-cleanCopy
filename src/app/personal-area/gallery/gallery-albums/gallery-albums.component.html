@@ -15,7 +15,8 @@
             <p>Создать новый альбом</p>
         </div>
 
-        <div class="gallery-album" *ngFor="let galleryAlbum of galleryAlbums" [ngStyle]="{background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, #000000 100%), url' + '(' + galleryAlbum.image + ')'}">
+        <!-- Поправить routerLink, нужно провести к нему id -->
+        <div class="gallery-album" routerLink="/personalArea/:id/gallery/album" *ngFor="let galleryAlbum of galleryAlbums" [ngStyle]="{background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, #000000 100%), url' + '(' + galleryAlbum.image + ')'}">
 
             <div class="edit"><mat-icon>edit</mat-icon></div>
         
