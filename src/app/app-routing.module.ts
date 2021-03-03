@@ -19,6 +19,7 @@ import { EditServiceComponent } from './admin/edit-service/edit-service.componen
 import { GalleryComponent } from './personal-area/gallery/gallery.component';
 import { ServiceCategoriesComponent } from './pages/catalog/components/service-categories/service-categories.component';
 import { ServicesComponent } from './personal-area/services/services.component';
+import { GalleryAlbumsComponent } from './personal-area/gallery/gallery-albums/gallery-albums.component';
 
 const routes: Routes = [
   {path: 'pages', component: PagesComponent, children: [
@@ -38,7 +39,10 @@ const routes: Routes = [
     {path: '', redirectTo: 'profile', pathMatch: 'full'},
     {path: 'profile', component: ProfileComponent},
     {path: 'basicInfo', component: BasicInfoComponent},
-    {path: 'gallery', component: GalleryComponent},
+    {path: 'gallery', component: GalleryComponent, children: [
+      {path: '', redirectTo: 'albums', pathMatch: 'full'},
+      {path: 'albums', component: GalleryAlbumsComponent}
+    ]},
     {path: 'services', component: ServicesComponent}
   ]},
 
