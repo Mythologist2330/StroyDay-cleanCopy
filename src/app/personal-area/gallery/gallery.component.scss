@@ -73,8 +73,54 @@
             }
         }
 
-        app-gallery-album{
+        .gallery-album{
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
             flex: 0 0 314px;
+            height: 236px;
+            padding: 16px;
+            margin-bottom: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        
+            &:hover{
+        
+                .edit{
+                    opacity: 1;
+                }
+            }
+        
+            .edit{
+                position: absolute;
+                top: 16px;
+                right: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 32px;
+                height: 32px;
+                background-color: rgba(0, 0, 0, 0.8);
+                border-radius: 4px;
+                color: #fff;
+                transition: .2s;
+                opacity: 0;
+            }
+        
+            p{
+                font-size: 14px;
+                line-height: 20px;
+                color: #FFFFFF;
+        
+                &.title{
+                    font-weight: 500;
+                }
+        
+                &.count{
+                    margin-right: 16px;
+                }
+            }
         }
     }
 }
@@ -103,8 +149,9 @@
                 height: 264px;
             }
 
-            app-gallery-album{
+            .gallery-album{
                 flex: 0 0 352px;
+                height: 264px;
             }
         }
     }
@@ -134,8 +181,9 @@
                 height: 216px;
             }
 
-            app-gallery-album{
+            .gallery-album{
                 flex: 0 0 100%;
+                height: 216px;
             }
         }
     }
