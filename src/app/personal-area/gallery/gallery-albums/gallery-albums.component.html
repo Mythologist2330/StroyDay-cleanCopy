@@ -1,0 +1,29 @@
+<div class="container">
+
+    <div class="notification">
+        <p class="title-notification">Ваши альбомы на модерации</p>
+        <p class="description-notification">В течении 24 часов мы проверим Ваши альбомы и они будут опубликованы на Вашей странице исполнителя.</p>
+    </div>
+
+    <p class="header">Галерея работ</p>
+
+    <p class="description">Фотографии из <span class="link">общего альбома</span> отображаются на вашей публичной странице в шапке профиля</p>
+
+    <div class="gallery-albums">
+        <div class="create-new-album">
+            <div><mat-icon>add</mat-icon></div>
+            <p>Создать новый альбом</p>
+        </div>
+
+        <!-- Поправить routerLink, нужно провести к нему id -->
+        <div class="gallery-album" routerLink="/personalArea/:id/gallery/album" *ngFor="let galleryAlbum of galleryAlbums" [ngStyle]="{background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, #000000 100%), url' + '(' + galleryAlbum.image + ')'}">
+
+            <div class="edit"><mat-icon>edit</mat-icon></div>
+        
+            <p class="title">{{ galleryAlbum.title }}</p>
+            <p class="count">{{ galleryAlbum.count }}</p>
+        
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,19 @@
+<div class="container">
+
+    <div class="header">
+        <div class="title-and-description">
+            <p class="title">Ремонт кухни <span>25 фотографий</span></p>
+            <p class="description">Краткое описание альбома будет располагаться здесь и иметь ширину 576 пикселей на десктопе.</p>
+        </div>
+
+        <div class="buttons">
+            <button class="button-change-album">Изменить альбом</button>
+            <button class="button-add-photo">Добавить фото</button>
+        </div>
+    </div>
+
+    <div class="gallery-album">
+        <img [src]="photo" class="photo" *ngFor="let photo of photos">
+    </div>
+
+</div>

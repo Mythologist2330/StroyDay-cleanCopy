@@ -44,22 +44,22 @@
 
     <div class="navigation" [ngStyle]="{left: openBurgerMenu ? '0' : '-100%'}">
 
-        <div class="section first-section" routerLink="profile" (click)="openBurgerMenu = false">
+        <div class="section first-section" routerLink="profile" (click)="openBurgerMenu = false; onOffScroll($event)">
             <mat-icon>person</mat-icon>
             <p class="section-title">Профиль</p>
         </div>
     
-        <div class="section" routerLink="basicInfo" (click)="openBurgerMenu = false">
+        <div class="section" routerLink="basicInfo" (click)="openBurgerMenu = false; onOffScroll($event)">
             <mat-icon>info</mat-icon>
             <p class="section-title">Основная информация</p>
         </div>
     
-        <div class="section">
+        <div class="section" routerLink="gallery" (click)="openBurgerMenu = false; onOffScroll($event)">
             <mat-icon>work</mat-icon>
             <p class="section-title">Галерея работ</p>
         </div>
     
-        <div class="section">
+        <div class="section" routerLink="services" (click)="openBurgerMenu = false; onOffScroll($event)">
             <mat-icon>construction</mat-icon>
             <p class="section-title">Услуги</p>
         </div>

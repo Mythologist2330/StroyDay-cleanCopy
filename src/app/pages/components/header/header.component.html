@@ -49,11 +49,11 @@
                 </div>
 
                 <ng-container *ngIf='!searchText; else searchResult'>
-                    <div class="navigation-module-window-navigate" *ngIf='catSrv.getNodeCategory() | async as categories'>                    
+                    <div class="navigation-module-window-navigate" *ngIf='catSrv.getNodeCategory() | async as categories'>
                         <div class="navigate-basic">
                             <ng-container *ngFor='let category of categories'>
-                                <p (click)='chooseCategory(category)'>{{category.title}} <mat-icon>navigate_next</mat-icon></p>
-                            </ng-container>                        
+                                <p [routerLink]="'/pages/services/service-catalog/' + category.id" (click)='chooseCategory(category); openCloseBurgerMenu($event); navigationModuleToggleMobile($event)'>{{category.title}} <mat-icon>navigate_next</mat-icon></p>
+                            </ng-container>
                         </div>
 
                         <div class="navigate-specific" *ngIf='currentCategory'>

@@ -1,6 +1,6 @@
-import { Component, OnInit, ElementRef, AfterViewInit, ViewChild } from "@angular/core";
-import { Router } from "@angular/router";
+import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { Observable, fromEvent, combineLatest } from 'rxjs';
+import { NavigationEnd, Router } from "@angular/router";
 import { debounceTime, distinctUntilChanged, filter, map, tap } from 'rxjs/operators';
 import { Category } from "src/app/models/category";
 import { Service } from "src/app/models/Service";
@@ -40,6 +40,12 @@ export class CatalogComponent implements OnInit{
 
   ngOnInit() {
       this.animateHeader();
+      this.router.events.subscribe((evt) => {
+        if (!(evt instanceof NavigationEnd)) {
+          return;
+        }
+        window.scrollTo(0, 0)
+    });
   }
     
   getSearchResult(): Observable<any[]> {

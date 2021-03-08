@@ -4,12 +4,12 @@ import { CategoryService } from 'src/app/services/category.service';
 import { ServicesService } from 'src/app/services/services.service';
 
 @Component({
-    selector: 'app-services',
-    templateUrl: './services.component.html',
-    styleUrls: ['./services.component.scss']
+    selector: 'app-service-categories',
+    templateUrl: './service-categories.component.html',
+    styleUrls: ['./service-categories.component.scss']
 })
 
-export class ServicesComponent {
+export class ServiceCategoriesComponent {
 
     public breadcrumbs: IBreadcrumb[] = [{
         title: 'Услуги',
