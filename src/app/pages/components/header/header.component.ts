@@ -2,8 +2,10 @@ import { Component, OnInit, ElementRef, AfterViewInit, ViewChild } from '@angula
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
 import { Router } from '@angular/router';
-import { Observable, fromEvent } from 'rxjs';
+import { Observable, fromEvent, combineLatest } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map, tap } from 'rxjs/operators';
+import { ServicesService } from 'src/app/services/services.service';
+import { Service } from 'src/app/models/Service';
 
 @Component({
   selector: 'app-header',
@@ -20,6 +22,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   @ViewChild('input') input: ElementRef;
 
   constructor(public catSrv: CategoryService,
+              private srvSrv: ServicesService,
               private router: Router) {}
 
   ngOnInit(): void {
@@ -37,12 +40,12 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     }
 
   getResult(): Observable<any[]> {
-    return this.catSrv.categories$.pipe(
-      map(categories => {
-        return categories
-          .filter(cat => cat.title.toLowerCase().includes(this.searchText.toLowerCase()))
-      })
-    )
+    return combineLatest([this.catSrv.categories$, this.srvSrv.services$], (categories, services) => {
+      return [
+        ...categories.filter(cat => cat.title.toLowerCase().includes(this.searchText.toLowerCase())),
+        ...services.filter(srv => srv.title.toLowerCase().includes(this.searchText.toLowerCase()))
+      ] 
+    });
   }
 
   chooseCategory(cat: Category) {
@@ -57,8 +60,12 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     return subcat.filter(item => subcat.indexOf(item) % 2 !== 0)
   }
 
-  goToCategory(id: string) {
-    this.router.navigate(['pages/services/service-catalog/' + id]);
+  goToCategory(point: Category | Service) {
+    if (point instanceof Category) {
+      this.router.navigate(['pages/services/service-catalog/' + point.id]);
+    } else {      
+      this.router.navigate(['pages/service/' + point.id]);
+    }
     this.menuToggle = false;
     this.searchText = null;
     this.input.nativeElement.value = null;

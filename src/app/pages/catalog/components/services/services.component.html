@@ -14,7 +14,7 @@
                 </div>                
             </div>
 
-            <p [routerLink]='"service-catalog/" + category.id' class="showAllServices">Показать все услуги ({{ (catSrv.getNodeCategory(category.id) | async).length}})</p>
+            <p [routerLink]='"service-catalog/" + category.id' class="showAllServices">Показать все ({{ (catSrv.getNodeCategory(category.id) | async).length}})</p>
         </div>
     </div>
 </div>
