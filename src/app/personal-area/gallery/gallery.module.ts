@@ -12,7 +12,8 @@ import { RedactionAlbumModule } from "./redaction-album/redaction-album.module";
     GalleryComponent,
     GalleryAlbumsComponent,
     GalleryAlbumComponent,
-    CreationAlbumComponent
+    CreationAlbumComponent,
+    GalleryAlbumComponent
   ],
   imports: [
     CommonModule,

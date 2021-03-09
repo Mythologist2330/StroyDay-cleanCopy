@@ -73,7 +73,7 @@
         <ng-container *ngIf='searchText'>
             <div class='search-result' *ngIf='(getSearchResult() | async).length && searchText.length; else noResult'>
                 <ng-container *ngFor='let cat of getSearchResult() | async'>
-                    <p (click)='goToCategory(cat.id)' [innerHTML]='cat.title | search:searchText'></p>
+                    <p (click)='goToCategory(cat)' [innerHTML]='cat.title | search:searchText'></p>
                 </ng-container> 
             </div> 
             <ng-template #noResult>

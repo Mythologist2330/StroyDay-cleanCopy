@@ -1,8 +1,11 @@
-import { Component, OnInit, ElementRef, AfterViewInit, ViewChild } from "@angular/core";
 import { NavigationEnd, Router } from "@angular/router";
-import { Observable, fromEvent } from 'rxjs';
-import { debounceTime, distinctUntilChanged, filter, map, tap } from 'rxjs/operators';
+import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
+import { Observable, fromEvent, combineLatest } from 'rxjs';
+import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
+import { Category } from "src/app/models/category";
+import { Service } from "src/app/models/Service";
 import { CategoryService } from 'src/app/services/category.service';
+import { ServicesService } from "src/app/services/services.service";
 
 @Component({
     selector: 'app-catalog',
@@ -21,6 +24,7 @@ export class CatalogComponent implements OnInit{
     public searchText = null;
 
     constructor(public catSrv: CategoryService,
+                private srvSrv: ServicesService,
                 private router: Router) {}
 
     ngAfterViewInit(): void {
@@ -45,16 +49,20 @@ export class CatalogComponent implements OnInit{
   }
     
   getSearchResult(): Observable<any[]> {
-    return this.catSrv.categories$.pipe(
-      map(categories => {
-        return categories
-          .filter(cat => cat.title.toLowerCase().includes(this.searchText.toLowerCase()))
-      })
-    )
+    return combineLatest([this.catSrv.categories$, this.srvSrv.services$], (categories, services) => {
+      return [
+        ...categories.filter(cat => cat.title.toLowerCase().includes(this.searchText.toLowerCase())),
+        ...services.filter(srv => srv.title.toLowerCase().includes(this.searchText.toLowerCase()))
+      ] 
+    });
   }
   
-  goToCategory(id: string) {
-    this.router.navigate(['pages/services/service-catalog/' + id]);
+  goToCategory(point: Category | Service) {
+    if (point instanceof Category) {
+      this.router.navigate(['pages/services/service-catalog/' + point.id]);
+    } else {      
+      this.router.navigate(['pages/service/' + point.id]);
+    }
     this.searchText = null;
     this.input.nativeElement.value = null;
   }
