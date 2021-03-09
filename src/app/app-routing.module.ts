@@ -21,6 +21,8 @@ import { ServiceCategoriesComponent } from './pages/catalog/components/service-c
 import { ServicesComponent } from './personal-area/services/services.component';
 import { GalleryAlbumsComponent } from './personal-area/gallery/gallery-albums/gallery-albums.component';
 import { GalleryAlbumComponent } from './personal-area/gallery/gallery-album/gallery-album.component';
+import { RedactionAlbumComponent } from './personal-area/gallery/redaction-album/redaction-album.component';
+import { CreationAlbumComponent } from './personal-area/gallery/creation-album/creation-album.component';
 
 const routes: Routes = [
   {path: 'pages', component: PagesComponent, children: [
@@ -43,7 +45,9 @@ const routes: Routes = [
     {path: 'gallery', component: GalleryComponent, children: [
       {path: '', redirectTo: 'albums', pathMatch: 'full'},
       {path: 'albums', component: GalleryAlbumsComponent},
-      {path: 'album', component: GalleryAlbumComponent}
+      {path: 'album', component: GalleryAlbumComponent},
+      {path: 'editAlbum', component: RedactionAlbumComponent},
+      {path: 'createAlbum', component: CreationAlbumComponent}
     ]},
     {path: 'services', component: ServicesComponent}
   ]},

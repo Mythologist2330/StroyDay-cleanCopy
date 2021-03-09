@@ -1,0 +1,160 @@
+.photo-from-album{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 220px;
+    height: 210px;
+    margin-top: 16px;
+    border-radius: 4px;
+    overflow: hidden;
+
+    .replace-photo{
+        display: none;
+    }
+
+    .img-and-overlay{
+        position: relative;
+        height: 166px;
+
+        &:hover{
+    
+            .delete{
+                opacity: 1;
+            }
+        }
+
+        .delete{
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 4px;
+            color: #fff;
+            transition: .2s;
+            opacity: 0;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        img{
+            width: 220px;
+            height: 166px;
+            cursor: pointer;
+        }
+
+        .overlay{
+            position: absolute;
+            top: 0;
+            left: 0;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+            z-index: 2;
+
+            p{
+                margin-top: 2px;
+                font-size: 14px;
+                line-height: 20px;
+                color: #FFFFFF;
+                text-align: center;
+
+                span{
+                    display: inline-block;
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    input{
+        width: 100%;
+        height: 44px;
+        padding: 0 12px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        color: #334D6E;
+        border-radius: 0 0 4px 4px;
+        border: 1px solid #E3E9F2
+    }
+}
+
+@media screen and (max-width: 1275px) {
+    .photo-from-album{
+        flex: 0 0 324px;
+        height: 310px;
+        margin-top: 24px;
+
+        .img-and-overlay{
+            height: 266px;
+
+            .delete{
+                opacity: 1;
+            }
+
+            img{
+                width: 324px;
+                height: 266px;
+            }
+
+            .overlay{
+                justify-content: center;
+
+                p{
+
+                    span{
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .photo-from-album{
+        flex: 0 0 100%;
+        height: auto;
+        margin-top: 16px;
+
+        .replace-photo{
+            position: absolute;
+            top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 4px;
+            color: #fff;
+            transition: .2s;
+            z-index: 1;
+            cursor: pointer;
+
+            &.up{
+                right: 92px;
+            }
+
+            &.down{
+                right: 52px;
+            }
+        }
+
+        .img-and-overlay{
+            display: flex;
+            height: auto;
+
+            img{
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}
