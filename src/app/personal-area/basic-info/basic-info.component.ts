@@ -20,31 +20,23 @@ export class BasicInfoComponent implements OnInit {
 
   initForm() {
     this.infoForm = this.fb.group({
-
       departureAreas: this.fb.array([]),
-
       metro: this.fb.array([]),
-
       contactFace: this.fb.array([]),
-
       location: this.fb.group({
-        locality: this.fb.control(''),
-        house: this.fb.control(''),
-        typographicLiterature: this.fb.control(''),
-        street: this.fb.control(''),
-        housing: this.fb.control(''),
-        apartment: this.fb.control('')
+        locality: '',
+        house: '',
+        typographicLiterature: '',
+        street: '',
+        housing: '',
+        apartment: ''
       }),
-
       performerType: this.fb.array([])
-
     })
   }
-
-
-
-  submit() {
-    console.log(this.infoForm)
+  
+  submitInfo() {
+    console.log(this.infoForm.value)
   }
 
   array(title: string): FormArray {

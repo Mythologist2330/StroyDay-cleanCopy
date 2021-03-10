@@ -18,6 +18,12 @@ export class Performer {
     };
     gallery: string[];
     serviceList: Service[];
+    services?: {
+        id: string;
+        low: string;
+        standart: string;
+        premium: string
+    }[];
     price: string;
     likes: number;
     dislikes: number;

@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { Performer } from 'src/app/models/Performer';
+import { Service } from 'src/app/models/Service';
+import { PerformersCardService } from 'src/app/services/performers-card.service';
+import { ServicesService } from 'src/app/services/services.service';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-services',
@@ -10,36 +16,67 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 export class ServicesComponent implements OnInit {
 
   public servicesForm: FormGroup;
-  constructor(public fb: FormBuilder) {}
+  public services$: Observable<Service[]>;
+  public card: Performer;
+  public isChanged = false;
 
+  constructor(public fb: FormBuilder,
+              private srvSrv: ServicesService,
+              private cardSrv: PerformersCardService) {}
 
   ngOnInit(): void {
-    this.initForm();
+    this.services$ = this.srvSrv.services$;
+    this.cardSrv.getPerformersCardById('7wx8WNLYh66KXGGSIl9N')
+      .subscribe(data => {
+        this.card = data;
+        this.initForm(this.card.services)
+      });
+
   }
 
-  initForm() {
+  initForm(srv: any[]) {
     this.servicesForm = this.fb.group({
       services: this.fb.array([])
-    })
+    });
+    srv.map(data => this.addService(data.id, data.low, data.standart, data.premium));    
+    this.isChanged = false;
   }
 
-  submit() {}
+  submit() {
+    let currentServices = this.arrayService.map(srv => {
+      return {
+        id: srv.get('service').value,
+        low: srv.get('low').value,
+        standart: srv.get('standard').value,
+        premium: srv.get('premium').value
+      }
+    });
+    let currentCard = new Performer({ ...this.card, services: currentServices});
+    this.cardSrv.updatePerformersCard(currentCard);
+  }
 
-  arrayService(title: string): FormArray {
-    return this.servicesForm.get(title)['controls']
+  get arrayService(): any {
+    return this.servicesForm.get('services')['controls']
   }
 
   deleteElement(array, i: number) {
-    array.splice(i, 1)
+    array.splice(i, 1);
+    this.isChanged = true;
   }
 
-  addService() {
-    this.arrayService('services').push(this.fb.group({
-      service: [''],
-      low: [''],
-      standard: [''],
-      premium: ['']
+  addService(service = '', low = '', standard = '', premium = '') {
+    this.arrayService.push(this.fb.group({
+      service: [service],
+      low: [low],
+      standard: [standard],
+      premium: [premium]
     }));
+    this.isChanged = true;
+  }
+  
+  drop(event: CdkDragDrop<string[]>) {   
+    moveItemInArray(this.arrayService, event.previousIndex, event.currentIndex); 
+    this.isChanged = true;
   }
 
 }

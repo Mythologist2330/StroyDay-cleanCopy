@@ -2,7 +2,7 @@
 
     <p class="header">Основная информация</p>
 
-    <form [formGroup]="infoForm" (ngSubmit)="submit()">
+    <form [formGroup]="infoForm">
         <!-- <app-service-categories></app-service-categories> -->
 
         <div class="container-departure-areas">
@@ -210,7 +210,7 @@
         
         </div>
 
-        <button class="button-save-changes" type="submit">Сохранить изменения</button>
+        <button class="button-save-changes" (click)="submitInfo()">Сохранить изменения</button>
     </form>
 
 </div>

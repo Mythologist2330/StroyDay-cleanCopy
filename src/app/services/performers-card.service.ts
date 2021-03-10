@@ -39,30 +39,24 @@ export class PerformersCardService {
     );
   }
 
-  getPerformersCardById(cardId: string): Observable<Performer> {
-    return this.firestore.collection<Partial<Performer>>('performers')
-      .valueChanges()
-      .pipe(        
-        map(cards => {
-          return cards.filter(card => {
-            return card.id === cardId
-          })
-        }),
-        map(cards => new Performer(cards[0]))
+  getPerformersCardById(id: string): Observable<Performer> {
+    return this.firestore.doc<Partial<Performer>>('performers/' + id)
+      .get().pipe(
+        map(card => card.data() ? new Performer({...card.data(), id}) : null),
       )
   }
 
   createPerformersCard(card: Performer): Promise<any> {
     const id = this.firestore.createId();
-    return this.firestore.collection('performersCard').add({...card, id});
+    return this.firestore.collection('performers').add({...card, id});
   }
 
   deletePerformersCard(cardId: string): Promise<void> {
-    return this.firestore.doc('performersCard/' + cardId).delete();
+    return this.firestore.doc('performers/' + cardId).delete();
   }
 
   updatePerformersCard(card: Performer): Promise<void> {
-    return this.firestore.doc('performersCard/' + card.id).update(card);
+    return this.firestore.doc('performers/' + card.id).update({...card});
   }
 
 }
