@@ -7,13 +7,31 @@
         </div>
 
         <div class="buttons">
-            <button class="button-change-album">Изменить альбом</button>
+            <!-- Поправить routerLink, нужно провести к нему id -->
+            <button class="button-change-album" routerLink="/personalArea/:id/gallery/editAlbum">Изменить альбом</button>
             <button class="button-add-photo">Добавить фото</button>
         </div>
     </div>
 
     <div class="gallery-album">
-        <img [src]="photo" class="photo" *ngFor="let photo of photos">
+        <img [src]="photo" class="photo" *ngFor="let photo of photos" (click)="toggleSlideShow = true">
+    </div>
+
+    <div class="overlay" [ngStyle]="{display: toggleSlideShow ? 'flex' : 'none'}">
+        <mat-icon class="arrows arrow-left">keyboard_arrow_left</mat-icon>
+
+        <div class="slide-show">
+            <mat-icon class="slide-show-delete" (click)="toggleSlideShow = false">clear</mat-icon>
+
+            <img src="assets/images/personal-area/gallery/photo-for-slide-show.png">
+
+            <div class="slide-show-info">
+                <p class="slide-show-title">Ремонт кухни<span>12 из 48 фотографий</span></p>
+                <p class="slide-show-description">Краткое описание к фотографии будет отображаться тут</p>
+            </div>
+        </div>
+
+        <mat-icon class="arrows arrow-right">keyboard_arrow_right</mat-icon>
     </div>
 
 </div>

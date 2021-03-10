@@ -1,0 +1,58 @@
+<div class="container">
+
+    <div class="bread-crumbs">
+        <p class="name-album">Ремонт кухни</p>
+        <mat-icon>keyboard_arrow_right</mat-icon>
+        <p class="current-page">Редактировать альбом</p>
+    </div>
+
+    <div class="basic-data">
+        <p class="title">Обложка альбома</p>
+
+        <div class="cover-and-album-info">
+            <div class="cover">
+                <img src="assets/images/personal-area/gallery/cover.png">
+                <button class="button-change-cover"><mat-icon>photo_camera</mat-icon>Изменить обложку</button>
+            </div>
+
+            <div class="album-info">
+                <fieldset class="album-name">
+                    <legend>Название альбома</legend>
+                    <input type="text">
+                </fieldset>
+
+                <fieldset class="album-description">
+                    <legend>Описание</legend>
+                    <textarea></textarea>
+                </fieldset>
+
+                <div class="button-save-and-delete-album">
+                    <button class="button-save">Сохранить изменения</button>
+                    <p class="delete-album" (click)="toggleDeleteAlbum = true">Удалить альбом</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <p class="count-photos">25 фотографий</p>
+
+    <div class="photos-from-album">
+        <app-photo-from-album *ngFor="let photo of photosFromAlbum" [photo]="photo"></app-photo-from-album>
+    </div>
+
+    <div class="overlay" [ngStyle]="{display: toggleDeleteAlbum ? 'flex' : 'none'}">
+        <div class="delete-album-modal-window">
+            <mat-icon (click)="toggleDeleteAlbum = false">clear</mat-icon>
+            <p class="title-modal-window">Удалить альбом?</p>
+            <p class="description-modal-window">Вы действительно хотите удалить альбом из галереи работ?</p>
+
+            <div class="buttons-cancel-and-delete">
+                <button class="button-cancel" (click)="toggleDeleteAlbum = false">Отмена</button>
+                <button class="button-delete" (click)="toggleDeleteAlbum = false">Удалить</button>
+            </div>
+        </div>
+    </div>
+
+</div>

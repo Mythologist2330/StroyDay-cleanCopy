@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
 
 export class GalleryAlbumComponent {
 
+  toggleSlideShow = false
+
   photos = [
     'assets/images/personal-area/gallery/photo-from-album.png',
     'assets/images/personal-area/gallery/photo-from-album.png',

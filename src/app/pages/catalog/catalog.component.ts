@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
 import { Observable, fromEvent, combineLatest } from 'rxjs';
 import { NavigationEnd, Router } from "@angular/router";
-import { debounceTime, distinctUntilChanged, filter, map, tap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 import { Category } from "src/app/models/category";
 import { Service } from "src/app/models/Service";
 import { CategoryService } from 'src/app/services/category.service';

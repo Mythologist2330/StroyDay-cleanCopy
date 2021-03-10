@@ -1,0 +1,18 @@
+<div class="photo-from-album">
+
+    <div class="up replace-photo"><mat-icon>keyboard_arrow_up</mat-icon></div>
+    <div class="down replace-photo"><mat-icon>keyboard_arrow_down
+    </mat-icon></div>
+
+    <div class="img-and-overlay">
+        <div class="delete" (click)="toggle = true" [ngStyle]="{display: toggle ? 'none' : 'flex'}"><mat-icon>delete</mat-icon></div>
+
+        <img [src]="photo">
+
+        <div class="overlay" [ngStyle]="{display: toggle ? 'flex' : 'none'}">
+            <p>Это фото было удалено.<span (click)="toggle = false">Восстановить</span></p>
+        </div>
+    </div>
+
+    <input type="text" placeholder="Добавьте описание...">
+</div>
