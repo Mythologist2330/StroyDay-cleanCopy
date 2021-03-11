@@ -23,7 +23,7 @@ export class Service {
         Object.assign(this, source);
     }
 
-    getMinPrice() {
+    getMinPrice(): string {
         let minPrice = this.subServices[0].price;
         this.subServices.map(point => {
             !minPrice ? minPrice = point.price : minPrice = Math.min(minPrice, point.price)
@@ -31,12 +31,12 @@ export class Service {
         return 'От ' + minPrice + ' ₽';
     }
 
-    getSegments(): any[] {
+    getSegments(): string[] {
         let segments = new Set();
         this.subServices.map(sub => {
             segments.add(sub.segment)
         });
-        return Array.from(segments);
+        return Array.from(segments) as string[];
     }
 
     getServiceBySegment(segment: Segment) {

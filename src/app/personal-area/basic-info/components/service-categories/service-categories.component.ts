@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { Segment } from 'src/app/models/Order';
+import { Component, Input } from '@angular/core';
+import { OwnService } from 'src/app/models/OwnService';
 import { Service } from 'src/app/models/Service';
 import { ServicesService } from 'src/app/services/services.service';
 
@@ -12,52 +11,35 @@ import { ServicesService } from 'src/app/services/services.service';
 
 export class ServiceCategoriesComponent {
 
-  public services: Service[] = [];
-  public servicesAll: Service[] = [];
-  public servicesLow: Service[] = [];
-  public servicesStandart: Service[] = [];
-  public servicesPremium: Service[] = [];
+    @Input() srv: {id: string, low: boolean, standart: boolean, premium: boolean}[];
+    public services: OwnService[] = [];
 
-  constructor(private serviceSrv: ServicesService) {
-  }
+    constructor(private serviceSrv: ServicesService) {
+    }
 
-  ngOnInit(): void {
-      this.serviceSrv.services$
-          .subscribe(services => {
-              this.services = services;
-              this.servicesAll = services;
+    ngOnInit(): void {
+        this.serviceSrv.services$
+            .subscribe(services => {
+                this.services = this.getOwnServices(services);
+                console.log(this.services);
+        })
+    }
 
-              this.servicesLow = services.map((service) => {
-                  return new Service({...service, subServices: service.getServiceBySegment(Segment.low)})
-              });
+    getOwnServices(services: Service[]): OwnService[]  {
+        return <OwnService[]>this.srv.map(v => {
+            return new OwnService({
+                ...services.find(service => service.id === v.id),
+                low: v.low,
+                standart: v.standart,
+                premium: v.premium
+            })
+        })
+    }
 
-              this.servicesStandart = services.map((service) => {
-                  return new Service({...service, subServices: service.getServiceBySegment(Segment.standart)})
-              });
-
-              this.servicesPremium = services.map((service) => {
-                  return new Service({...service, subServices: service.getServiceBySegment(Segment.premium)})
-              });
-      })
-  }
-
-  getServiceCountBySegment(services: Service[]): number {
-      let count = 0;
-      services.map(service => count += service.subServices.length);
-      return count;
-  }
-
-  setFilter(e) {
-      const segment = e.target.value;
-      if (segment === 'эконом') {
-          this.services = this.servicesLow
-      } else if (segment === 'стандарт') {
-          this.services = this.servicesStandart
-      } else if (segment === 'премиум') {
-          this.services = this.servicesPremium
-      } else {
-          this.services = this.servicesAll
-      }
-  }
+    getServiceCountBySegment(services: Service[]): number {
+        let count = 0;
+        services.map(service => count += service.subServices.length);
+        return count;
+    }
 
 }

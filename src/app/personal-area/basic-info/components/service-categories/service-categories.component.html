@@ -1,25 +1,23 @@
 <div class="container">
-
     <p class="header">Категории услуг</p>
-
-    <p class="description" *ngIf="services.length === 0; else fieldIs">Вы не выбрали никаких категорий услуг. Перейдите в раздел Услуги и добавьте свою специализацию. Вы можете выбрать до 25 направлений деятельности.</p>
+    <p class="description" *ngIf="!services.length; else fieldIs">Вы не выбрали никаких категорий услуг. Перейдите в раздел Услуги и добавьте свою специализацию. Вы можете выбрать до 25 направлений деятельности.</p>
 
     <ng-template #fieldIs>
-        <p class="description" [ngStyle]="{marginBottom: services.length === 0 ? '' : '-4px'}">Перейдите в раздел Услуги и добавьте или измените свою специализацию. Вы можете выбрать до 25 направлений деятельности.</p>
+        <p class="description" [ngStyle]="{marginBottom: !services.length? '' : '-4px'}">Перейдите в раздел Услуги и добавьте или измените свою специализацию. Вы можете выбрать до 25 направлений деятельности.</p>
     </ng-template>
 
     <div class="services">
         <ng-container *ngFor="let service of services">
-            <div *ngIf="service.subServices.length" class="service">
+            <div *ngIf="service" class="service">
                 <app-service [service]='service'></app-service>
             </div>
         </ng-container>
     </div>
 
-    <button class="button-go-to-service-section" *ngIf="services.length === 0; else buttonIs">Перейти в раздел услуг <mat-icon>launch</mat-icon></button>
+    <button [routerLink]="'/personalArea/7wx8WNLYh66KXGGSIl9N/services'" *ngIf="!services.length; else buttonIs">Перейти в раздел услуг <mat-icon>launch</mat-icon></button>
 
     <ng-template #buttonIs>
-        <button class="button-go-to-service-section" [style.marginTop]="0">Посмотреть еще 25 услуг <mat-icon>launch</mat-icon></button>
+        <button [routerLink]="'/personalArea/7wx8WNLYh66KXGGSIl9N/services'" class='mt0'>Посмотреть все услуги <mat-icon>launch</mat-icon></button>
     </ng-template>
 
 </div>

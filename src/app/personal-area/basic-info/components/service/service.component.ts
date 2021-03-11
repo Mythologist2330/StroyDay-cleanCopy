@@ -9,8 +9,9 @@ import { Service } from 'src/app/models/Service';
 export class ServiceComponent implements OnInit {
 
   @Input() service: Service;
-  public showService: boolean = false;
-  constructor() { }
+  public showService = false;
+
+  constructor() {}
 
   ngOnInit(): void {
   }

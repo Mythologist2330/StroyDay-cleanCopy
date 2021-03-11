@@ -1,15 +1,11 @@
-<div class="container">
-
+<div class="container" *ngIf='infoForm'>
     <p class="header">Основная информация</p>
-
     <form [formGroup]="infoForm">
-        <!-- <app-service-categories></app-service-categories> -->
+        <app-service-categories [srv]='card.services'></app-service-categories>
 
         <div class="container-departure-areas">
-
-            <p class="header">Районы выезда</p>
-        
-            <p class="description" *ngIf="array('departureAreas').length === 0; else fieldIs">Вы не указали районы выезда. Добавьте районы выезда, чтобы заказчикам было легче Вас найти и Вы смогли получать больше заказов из разных частей города.</p>
+            <p class="header">Районы выезда</p>        
+            <p class="description" *ngIf="!array('departureAreas').length; else fieldIs">Вы не указали районы выезда. Добавьте районы выезда, чтобы заказчикам было легче Вас найти и Вы смогли получать больше заказов из разных частей города.</p>
         
             <ng-template #fieldIs>
                 <p class="description">Добавьте районы выезда, чтобы заказчикам было легче Вас найти и Вы смогли получать больше заказов из разных частей города.</p>
@@ -34,15 +30,17 @@
                 </div>
             </ng-container>
 
-            <button class="button-add-departure-area" (click)="addDepartureArea()" [ngStyle]="{marginTop: array('departureAreas').length === 0 ? '18px' : ''}"><mat-icon>add</mat-icon>Добавить район выезда</button>
+            <button class="button-add-departure-area"
+                    (click)="addDepartureArea()"
+                    [ngStyle]="{marginTop: array('departureAreas').length === 0 ? '18px' : ''}">
+                    <mat-icon>add</mat-icon>Добавить район выезда
+            </button>
         
         </div>
 
         <div class="container-metro">
-
-            <p class="header">Метро</p>
-        
-            <p class="description" *ngIf="array('metro').length === 0; else fieldIs">Вы не указали станции метро. Добавьте станции метро, чтобы заказчикам было легче Вас найти и Вы смогли получать больше заказов из разных частей города.</p>
+            <p class="header">Метро</p>        
+            <p class="description" *ngIf="!array('metro').length; else fieldIs">Вы не указали станции метро. Добавьте станции метро, чтобы заказчикам было легче Вас найти и Вы смогли получать больше заказов из разных частей города.</p>
         
             <ng-template #fieldIs>
                 <p class="description">Добавьте станции метро, чтобы заказчикам было легче Вас найти и Вы смогли получать больше заказов из разных частей города.</p>
@@ -62,15 +60,16 @@
                 </div>
             </ng-container>
         
-            <button class="button-add-metro" (click)="addMetro()" [ngStyle]="{marginTop: array('metro').length === 0 ? '18px' : ''}"><mat-icon>add</mat-icon>Добавить метро</button>
-        
+            <button class="button-add-metro"
+                    (click)="addMetro()"
+                    [ngStyle]="{marginTop: !array('metro').length ? '18px' : ''}">
+                    <mat-icon>add</mat-icon>Добавить метро
+            </button>        
         </div>
 
         <div class="container-contact-face">
-
-            <p class="header">Контактное лицо</p>
-        
-            <p class="description" *ngIf="array('contactFace').length === 0; else fieldIs">Вы не добавили контактное лицо. Добавьте контактное лицо, чтобы заказчики могли оставлять заявки конкретному человеку.</p>
+            <p class="header">Контактное лицо</p>        
+            <p class="description" *ngIf="!array('contactFace').length; else fieldIs">Вы не добавили контактное лицо. Добавьте контактное лицо, чтобы заказчики могли оставлять заявки конкретному человеку.</p>
         
             <ng-template #fieldIs>
                 <p class="description">Добавьте контактное лицо, чтобы заказчики могли оставлять заявки конкретному человеку.</p>
@@ -79,61 +78,55 @@
             <ng-container *ngFor="let OneContactFace of array('contactFace'), let i = index" formArrayName="contactFace">
                 <div class="contact-face" [formGroupName]="i">
                     <p>Контактное лицо {{ i + 1 }}</p>
-
-                        <div class="fieldsets">
-                            <fieldset>
-                                <legend>Фамилия</legend>
-                                <input type="text" formControlName="lastName">
-                            </fieldset>
-                
-                            <fieldset>
-                                <legend>Имя</legend>
-                                <input type="text" formControlName="firstName">
-                            </fieldset>
-                
-                            <fieldset>
-                                <legend>Телефон</legend>
-                                <input type="text" formControlName="tel">
-                            </fieldset>
-                
-                            <fieldset>
-                                <legend>E-mail</legend>
-                                <input type="text" formControlName="email">
-                            </fieldset>
-                        </div>
+                    <div class="fieldsets">
+                        <fieldset>
+                            <legend>Фамилия</legend>
+                            <input type="text" formControlName="lastName">
+                        </fieldset>
             
+                        <fieldset>
+                            <legend>Имя</legend>
+                            <input type="text" formControlName="firstName">
+                        </fieldset>
+            
+                        <fieldset>
+                            <legend>Телефон</legend>
+                            <input type="text" formControlName="tel">
+                        </fieldset>
+            
+                        <fieldset>
+                            <legend>E-mail</legend>
+                            <input type="text" formControlName="email">
+                        </fieldset>
+                    </div>            
                     <label>
                         <input type="checkbox" name="" id="">
                         <p>Использовать в качестве основного контактного лица</p>
-                    </label>
-            
+                    </label>            
                     <mat-icon (click)="deleteElement(array('contactFace'), i)">delete</mat-icon>
                 </div>
-            </ng-container>
-        
-            <button class="button-add-contact-face" (click)="addContactFace()" [ngStyle]="{marginTop: array('contactFace').length === 0 ? '18px' : ''}"><mat-icon>add</mat-icon>Добавить контактное лицо</button>
-        
+            </ng-container>        
+            <button class="button-add-contact-face"
+                    (click)="addContactFace()"
+                    [ngStyle]="{marginTop: !array('contactFace').length ? '18px' : ''}">
+                    <mat-icon>add</mat-icon>Добавить контактное лицо
+            </button>        
         </div>
 
         <div class="container-location">
-
-            <p class="header">Местоположение</p>
-        
+            <p class="header">Местоположение</p>        
             <p class="description">Добавьте местоположение, чтобы заказчики могли посещать Ваш офис.</p>
-
             <div class="fieldsets" formGroupName="location">
                 <div class="house-and-apartment">
                     <fieldset>
                         <legend>Населенный пункт</legend>
                         <input type="text" placeholder="Введите название" formControlName="locality">
-                    </fieldset>
-        
+                    </fieldset>        
                     <div class="mini-fieldsets">
                         <fieldset>
                             <legend>Дом</legend>
                             <input type="text" placeholder="Введите номер" formControlName="house">
-                        </fieldset>
-            
+                        </fieldset>            
                         <fieldset>
                             <legend>Литера</legend>
                             <input type="text" placeholder="Введите номер" formControlName="typographicLiterature">
@@ -145,29 +138,24 @@
                     <fieldset>
                         <legend>Улица</legend>
                         <input type="text" placeholder="Введите название" formControlName="street">
-                    </fieldset>
-        
+                    </fieldset>        
                     <div class="mini-fieldsets">
                         <fieldset>
                             <legend>Корпус</legend>
                             <input type="text" placeholder="Введите номер" formControlName="housing">
                         </fieldset>
-            
                         <fieldset>
                             <legend>Офис/квартира</legend>
                             <input type="text" placeholder="Введите номер" formControlName="apartment">
                         </fieldset>
                     </div>
                 </div>
-            </div>
-        
+            </div>        
         </div>
 
         <div class="container-performer-type">
-
-            <p class="header">Тип исполнителя</p>
-        
-            <p class="description" *ngIf="array('performerType').length === 0; else fieldIs">Вы не выбрали тип исполнителя. Выберите тип исполнителя, чтобы пользователи понимали с кем они будут работать.</p>
+            <p class="header">Тип исполнителя</p>        
+            <p class="description" *ngIf="!array('performerType').length; else fieldIs">Вы не выбрали тип исполнителя. Выберите тип исполнителя, чтобы пользователи понимали с кем они будут работать.</p>
         
             <ng-template #fieldIs>
                 <p class="description">Выберите тип исполнителя, чтобы пользователи понимали с кем они будут работать.</p>
@@ -175,8 +163,7 @@
         
             <ng-container *ngFor="let OnePerformerType of array('performerType'), let i = index" formArrayName="performerType">
                 <div class="performer-type" [formGroupName]="i">
-                    <p>Исполнитель {{ i + 1 }}</p>
-            
+                    <p>Исполнитель {{ i + 1 }}</p>            
                     <div class="fieldsets">
                         <fieldset>
                             <legend>Тип исполнителя</legend>
@@ -195,22 +182,20 @@
                                 <option value="ИП Иванов">ИП Иванов</option>
                             </select>
                         </fieldset>
-                    </div>
-            
+                    </div>            
                     <label>
                         <input type="checkbox" name="" id="">
                         <p>Использовать в качестве основного исполнителя</p>
-                    </label>
-            
+                    </label>            
                     <mat-icon (click)="deleteElement(array('performerType'), i)">delete</mat-icon>
                 </div>
-            </ng-container>
-        
-            <button class="button-add-performer-type" (click)="addPerformerType()" [ngStyle]="{marginTop: array('performerType').length === 0 ? '18px' : ''}"><mat-icon>add</mat-icon>Добавить тип исполнителя</button>
-        
+            </ng-container>        
+            <button class="button-add-performer-type"
+                    (click)="addPerformerType()"
+                    [ngStyle]="{marginTop: !array('performerType').length ? '18px' : ''}">
+                    <mat-icon>add</mat-icon>Добавить тип исполнителя
+            </button>        
         </div>
-
         <button class="button-save-changes" (click)="submitInfo()">Сохранить изменения</button>
     </form>
-
 </div>

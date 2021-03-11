@@ -38,7 +38,7 @@ export class ServicesComponent implements OnInit {
     this.servicesForm = this.fb.group({
       services: this.fb.array([])
     });
-    srv.map(data => this.addService(data.id, data.low, data.standart, data.premium));    
+    srv.map(data => this.addService(data.id, data.low.toString(), data.standart.toString(), data.premium.toString()));    
     this.isChanged = false;
   }
 
@@ -46,9 +46,9 @@ export class ServicesComponent implements OnInit {
     let currentServices = this.arrayService.map(srv => {
       return {
         id: srv.get('service').value,
-        low: srv.get('low').value,
-        standart: srv.get('standard').value,
-        premium: srv.get('premium').value
+        low: srv.get('low').value === 'true' ? true : false,
+        standart: srv.get('standard').value === 'true' ? true : false,
+        premium: srv.get('premium').value === 'true' ? true : false
       }
     });
     let currentCard = new Performer({ ...this.card, services: currentServices});

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { Observable, Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { Performer } from 'src/app/models/Performer';
+import { PerformersCardService } from 'src/app/services/performers-card.service';
 
 @Component({
   selector: 'app-basic-info',
@@ -10,15 +14,23 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 export class BasicInfoComponent implements OnInit {
 
   public infoForm: FormGroup;
-  constructor(public fb: FormBuilder) {}
+  public card: Performer;
+  public cardSub$: Subscription;
+  
+  constructor(public fb: FormBuilder,
+              private cardSrv: PerformersCardService) {}
 
 
   ngOnInit(): void {
-    this.initForm();
+    this.cardSub$ = this.cardSrv.getPerformersCardById('7wx8WNLYh66KXGGSIl9N')
+      .pipe(
+        tap(data => this.initForm(data)),
+        tap(data => this.card = data)
+        )
+      .subscribe(console.log);
   }
 
-
-  initForm() {
+  initForm(card: Performer) {
     this.infoForm = this.fb.group({
       departureAreas: this.fb.array([]),
       metro: this.fb.array([]),

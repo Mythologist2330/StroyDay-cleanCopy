@@ -36,7 +36,7 @@
         }
     }
 
-    .button-go-to-service-section{
+    button {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -50,6 +50,9 @@
         font-size: 12px;
         line-height: 18px;
         color: #334D6E;
+        &.mt0 {
+            margin-top: 0;
+        } 
 
         mat-icon{
             margin: 4px 0 0 6px;
@@ -89,7 +92,7 @@
             }
         }
 
-        .button-go-to-service-section{
+        button {
             width: 100%;
         }
     }

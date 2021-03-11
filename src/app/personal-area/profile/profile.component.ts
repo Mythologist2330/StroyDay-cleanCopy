@@ -37,6 +37,7 @@ export class ProfileComponent implements OnInit{
         .pipe(
             tap(card => {
                 this.card = card;
+                console.log(this.card)
                 this.markers = this.mapSrv.showPerformers([card])
             }),
             switchMap(card => this.reviewSrv.getAllReview(card.id)),
