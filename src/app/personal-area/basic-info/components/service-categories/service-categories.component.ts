@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { OwnService } from 'src/app/models/OwnService';
 import { Service } from 'src/app/models/Service';
 import { ServicesService } from 'src/app/services/services.service';
@@ -12,17 +14,16 @@ import { ServicesService } from 'src/app/services/services.service';
 export class ServiceCategoriesComponent {
 
     @Input() srv: {id: string, low: boolean, standart: boolean, premium: boolean}[];
-    public services: OwnService[] = [];
+    public services$: Observable<OwnService[]>;
 
     constructor(private serviceSrv: ServicesService) {
     }
 
     ngOnInit(): void {
-        this.serviceSrv.services$
-            .subscribe(services => {
-                this.services = this.getOwnServices(services);
-                console.log(this.services);
-        })
+        this.services$ = this.serviceSrv.services$
+            .pipe(
+                map(services => this.getOwnServices(services))
+            )            
     }
 
     getOwnServices(services: Service[]): OwnService[]  {
@@ -35,11 +36,4 @@ export class ServiceCategoriesComponent {
             })
         })
     }
-
-    getServiceCountBySegment(services: Service[]): number {
-        let count = 0;
-        services.map(service => count += service.subServices.length);
-        return count;
-    }
-
 }

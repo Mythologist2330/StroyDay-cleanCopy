@@ -40,7 +40,7 @@
                     <p>Контактное лицо</p>
                 </div>
     
-                <p class="field">{{ card.description.lead }}</p>
+                <p class="field">{{ card.getContactPerson().fullname }}</p>
             </div>
     
             <hr>
@@ -53,7 +53,7 @@
                     <p>Телефон</p>
                 </div>
     
-                <p class="field">{{ card.description.phone }}</p>
+                <p class="field">{{ card.getContactPerson().phone }}</p>
             </div>
     
             <hr>

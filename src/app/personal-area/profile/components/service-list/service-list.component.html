@@ -1,0 +1,49 @@
+<ng-container *ngIf='allServices'>
+    <div class="container" *ngIf='allServices.length'>
+        <mat-icon class="edit">edit</mat-icon>
+        <p class="header">Услуги</p>
+        <div class="sort-by">
+            <label>
+                <input value='все' (change)="changeSegment('all')" type="radio" name="sortByServices" checked>
+                <p>Все</p>
+                <span class="amount-all">{{allServices.length}}</span>
+            </label>
+
+            <label>
+                <input value='эконом' (change)="changeSegment('low')" type="radio" name="sortByServices">
+                <p>эконом</p>
+                <span class="amount-economy">{{getServiceBySegment(allServices, 'low').length}}</span>
+            </label>
+
+            <label>
+                <input value='стандарт' (change)="changeSegment('standart')" type="radio" name="sortByServices">
+                <p>стандарт</p>
+                <span class="amount-standard">{{getServiceBySegment(allServices, 'standart').length}}</span>
+            </label>
+
+            <label>
+                <input value='премиум' (change)="changeSegment('premium')" type="radio" name="sortByServices">
+                <p>премиум</p>
+                <span class="amount-premium">{{getServiceBySegment(allServices, 'premium').length}}</span>
+            </label>
+        </div>
+
+        <fieldset class="sort-by-mobile">
+            <legend>Уровень цен</legend>
+
+            <select [(ngModel)]='segment' (ngModelChange)='changeSegment(segment)'>
+                <option value="все">Все</option>
+                <option value="эконом">Эконом</option>
+                <option value="стандарт">Стандарт</option>
+                <option value="премиум">Премиум</option>
+            </select>
+        </fieldset>
+
+        <div class="services">
+            <ng-container *ngFor="let service of services">
+                <app-service [service]='service' [currentSegment]='segment'></app-service>
+            </ng-container>
+        </div>
+        <button class="button-show-all-services">Показать все услуги</button>
+    </div>
+</ng-container>

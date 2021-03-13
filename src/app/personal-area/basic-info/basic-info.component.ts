@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
+import { IMetroStation } from 'src/app/interfaces/IMetro';
 import { Performer } from 'src/app/models/Performer';
+import { LocationService } from 'src/app/services/location.service';
 import { PerformersCardService } from 'src/app/services/performers-card.service';
 
 @Component({
@@ -16,12 +18,19 @@ export class BasicInfoComponent implements OnInit {
   public infoForm: FormGroup;
   public card: Performer;
   public cardSub$: Subscription;
+  public metro$: Observable<IMetroStation>
   
   constructor(public fb: FormBuilder,
-              private cardSrv: PerformersCardService) {}
+              private cardSrv: PerformersCardService,
+              private locationSrv: LocationService) {}
 
 
   ngOnInit(): void {
+    this.metro$ = this.locationSrv.getMetro('Санкт-Петербург')
+      .pipe(
+        map((metro: IMetroStation[]) => metro.find(val => val.city === 'Санкт-Петербург'))
+        );
+
     this.cardSub$ = this.cardSrv.getPerformersCardById('7wx8WNLYh66KXGGSIl9N')
       .pipe(
         tap(data => this.initForm(data)),
@@ -34,24 +43,67 @@ export class BasicInfoComponent implements OnInit {
     this.infoForm = this.fb.group({
       departureAreas: this.fb.array([]),
       metro: this.fb.array([]),
-      contactFace: this.fb.array([]),
+      contactPerson: this.fb.array([]),
       location: this.fb.group({
-        locality: '',
-        house: '',
-        typographicLiterature: '',
-        street: '',
-        housing: '',
-        apartment: ''
+        locality: card.location.locality || '',
+        house: card.location.house || '',
+        typographicLiterature: card.location.typographicLiterature || '',
+        street: card.location.street || '',
+        housing: card.location.housing || '',
+        apartment: card.location.apartment || ''
       }),
-      performerType: this.fb.array([])
-    })
+      type: this.fb.array([])
+    });
+
+    if (card.location.departureAreas) {
+      card.location.departureAreas.map(area => {
+        this.addDepartureArea({
+          locality: area.locality,
+          district: area.district
+        })
+      })
+    }
+
+    if (card.location.metro) {
+      card.location.metro.map(station => {
+        this.addMetro(station);
+      })      
+    }    
+
+    if (card.contactPerson) {
+      card.contactPerson.map(person => {
+        this.addContactPerson({
+          lastName: person.lastName,
+          firstName: person.firstName,
+          tel: person.tel,
+          email: person.email,
+          active: person.active 
+        })      
+      })      
+    }
+
+    if (card.type) {
+      card.type.map(type => {
+        this.addPerformerType({
+          title: type.title,
+          requisites: type.requisites,
+          active: type.active
+        })
+      })
+    }
   }
   
   submitInfo() {
-    console.log(this.infoForm.value)
+    this.card.location.departureAreas = this.array('departureAreas').map(data => data.value);
+    this.card.location.metro = this.array('metro').map(metro => metro.value);
+    this.card.contactPerson = this.array('contactPerson').map((person: FormGroup) => person.value);
+    this.card.location = {...this.card.location, ...this.infoForm.get('location').value};
+    this.card.type = this.array('type').map(type => type.value);
+
+    this.cardSrv.updatePerformersCard(this.card).then(console.log)
   }
 
-  array(title: string): FormArray {
+  array(title: string): Array<any> {
     return this.infoForm.get(title)['controls']
   }
 
@@ -59,33 +111,20 @@ export class BasicInfoComponent implements OnInit {
     array.splice(i, 1)
   }
 
-  addDepartureArea() {
-    this.array('departureAreas').push(this.fb.group({
-      locality: [''],
-      district: ['']
-    }));
+  addDepartureArea(area = { locality: '', district: '' }) {
+    this.infoForm.get('departureAreas')['controls'].push(this.fb.group(area));
   }
 
-  addMetro() {
-    this.array('metro').push(this.fb.group({
-      subwayStation: ['']
-    }))
+  addMetro(metro = '') {
+    this.array('metro').push(new FormControl(metro))
   }
 
-  addContactFace() {
-    this.array('contactFace').push(this.fb.group({
-      lastName: [''],
-      firstName: [''],
-      tel: [''],
-      email: ['']
-    }))
+  addContactPerson(person = {lastName: '', firstName: '', tel: '', email: '', active: false }) {
+    this.array('contactPerson').push(this.fb.group(person))
   }
 
-  addPerformerType() {
-    this.array('performerType').push(this.fb.group({
-      performerType: [''],
-      requisites: ['']
-    }))
+  addPerformerType(type = { title: '', requisites: '', active: false }) {
+    this.array('type').push(this.fb.group(type))
   }
 
 }

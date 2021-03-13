@@ -24,11 +24,8 @@ export class Service {
     }
 
     getMinPrice(): string {
-        let minPrice = this.subServices[0].price;
-        this.subServices.map(point => {
-            !minPrice ? minPrice = point.price : minPrice = Math.min(minPrice, point.price)
-        })
-        return 'От ' + minPrice + ' ₽';
+        let price =  Math.min(+this.cost.low, +this.cost.standart, +this.cost.premium);
+        return 'От ' + price + ' ₽';
     }
 
     getSegments(): string[] {

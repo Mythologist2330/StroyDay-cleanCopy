@@ -29,7 +29,7 @@
                 <p>Район выезда</p>
             </div>
 
-            <p class="field">{{ performer.getLocation() }}</p>
+            <p class="field">{{ performer.getDepartureLocality() }}</p>
         </div>
 
         <hr>
@@ -42,7 +42,7 @@
                 <p>Метро</p>
             </div>
 
-            <p class="field">{{ performer.location.metro }}</p>
+            <p class="field">{{ performer.location.metro.join(', ') }}</p>
         </div>
 
         <hr>
@@ -55,7 +55,7 @@
                 <p>Контактное лицо</p>
             </div>
 
-            <p class="field">{{ performer.description.lead }}</p>
+            <p class="field">{{ performer.getContactPerson().fullname }}</p>
         </div>
 
         <hr>
@@ -68,7 +68,7 @@
                 <p>Телефон</p>
             </div>
 
-            <p class="field">{{ performer.description.phone }}</p>
+            <p class="field">{{ performer.getContactPerson().phone }}</p>
         </div>
 
         <hr>

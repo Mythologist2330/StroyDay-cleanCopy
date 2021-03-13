@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Performer } from 'src/app/models/Performer';
 
 @Component({
-    selector: 'app-basicInfo',
+    selector: 'app-basic-info',
     templateUrl: './basic-info.component.html',
     styleUrls: ['./basic-info.component.scss']
 })

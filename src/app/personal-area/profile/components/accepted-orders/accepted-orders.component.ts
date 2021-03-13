@@ -2,7 +2,7 @@ import { Component, Input } from "@angular/core";
 import { Order } from "src/app/models/Order";
 
 @Component({
-    selector: 'app-acceptedOrders',
+    selector: 'app-accepted-orders',
     templateUrl: './accepted-orders.component.html',
     styleUrls: ['./accepted-orders.component.scss']
 })

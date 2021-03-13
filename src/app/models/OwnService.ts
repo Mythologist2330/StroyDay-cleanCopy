@@ -1,3 +1,4 @@
+import { Segment } from "./Order";
 import { Service } from "./Service";
 
 export class OwnService extends Service {
@@ -10,29 +11,37 @@ export class OwnService extends Service {
         Object.assign(this, source);
     }
 
-    getSegments(): string[] {
-        let array = [];
-        if (this.low) {
-            array.push('эконом')
+    getSegments(segment = 'all'): string[] {
+        if (segment !== 'all') {
+            return [Segment[segment]]
+        } else {
+            let array = [];
+            if (this.low) {
+                array.push('эконом')
+            }
+            if (this.standart) {
+                array.push('стандарт')
+            }
+            if (this.premium) {
+                array.push('премиум')
+            }
+            return array
         }
-        if (this.standart) {
-            array.push('стандарт')
-        }
-        if (this.premium) {
-            array.push('премиум')
-        }
-        return array
     }
 
-    getMinPrice(): string {
-        let price: string;
-        if (this.low) { 
-            price = this.cost.low
-        } else if (this.standart) {            
-            price = this.cost.standart
+    getMinPrice(segment = 'all'): string {
+        if (segment !== 'all') {
+            return this.cost[segment] + ' ₽'
         } else {
-            price = this.cost.premium
+            let price: string;
+            if (this.low) { 
+                price = this.cost.low
+            } else if (this.standart) {            
+                price = this.cost.standart
+            } else {
+                price = this.cost.premium
+            }
+            return 'От ' + price + ' ₽'
         }
-        return 'От ' + price + ' ₽'
     }
 }

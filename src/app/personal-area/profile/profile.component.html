@@ -6,15 +6,16 @@
     </div>
 
     <div class="right-column">
-        <app-basicInfo [performer]="card"></app-basicInfo>
+        <app-basic-info [performer]="card"></app-basic-info>
         <app-gallery></app-gallery>
-        <!-- <app-services></app-services> -->
+        <app-service-list [srv]='card.services'></app-service-list>
+        
 
         <ng-container *ngIf="reviews">
             <app-reviews [reviews]="reviews"></app-reviews>
         </ng-container>
 
-        <app-acceptedOrders [orders]="card.orders"></app-acceptedOrders>
+        <app-accepted-orders [orders]="card.orders"></app-accepted-orders>
         <app-posted-orders [orders]="card.orders"></app-posted-orders>
         <app-documents></app-documents>
         <app-certificates></app-certificates>

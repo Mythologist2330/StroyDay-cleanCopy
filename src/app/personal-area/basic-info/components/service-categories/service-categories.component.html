@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf='services$ | async as services'>
     <p class="header">Категории услуг</p>
     <p class="description" *ngIf="!services.length; else fieldIs">Вы не выбрали никаких категорий услуг. Перейдите в раздел Услуги и добавьте свою специализацию. Вы можете выбрать до 25 направлений деятельности.</p>
 

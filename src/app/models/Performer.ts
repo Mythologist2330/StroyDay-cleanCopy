@@ -7,22 +7,21 @@ export class Performer {
     description: {
         title: string;
         info: string;
-        lead: string;
-        phone: string;
         email?: string;
         fullInfo?: string;
-        discount: string;
-        activity: string;
-        contract: boolean;
-        legalStatus: number;
+        discount?: string;
+        activity?: string;
+        contract?: boolean;
+        legalStatus?: number;
+        requisites?: string;
     };
     gallery: string[];
-    serviceList: Service[];
+    serviceList?: Service[];
     services?: {
         id: string;
-        low: string;
-        standart: string;
-        premium: string
+        low?: string;
+        standart?: string;
+        premium?: string
     }[];
     price: string;
     likes: number;
@@ -31,58 +30,46 @@ export class Performer {
     orders: Order[];
     location: {
         city: string;
+        locality?: string;
         district?: string;
         adress?: string;
-        lat: number;
-        lng: number;
-        radius: number;
-        departureArea?: string;
-        metro?: string;    
+        house?: string,
+        typographicLiterature?: string,
+        street?: string,
+        housing?: string,
+        apartment?: string
+        lat?: number;
+        lng?: number;
+        radius?: number;
+        departureAreas?: {            
+            locality?: string,
+            district?: string
+        }[];
+        metro?: string[];    
     };
-
-    basicInfo: {
-		departureAreas: [
-			{
-				locality: string
-				district: string
-			}
-		],
-		
-		metro: [
-            {
-                subwayStation: string
-            }
-		],
-		
-		contactFace: [
-			{
-				lastName: string,
-				firstName: string,
-				tel: string,
-				email: string
-			}
-		],
-		
-		location: {
-			locality: string,
-			house: string,
-			typographicLiterature: string,
-
-			street: string,
-			housing: string,
-			apartment: string
-		}
-		
-		performerType: [
-			{
-				performerType: string,
-				requisites: string
-			}
-		]
-	}
+    contactPerson?:
+        {
+            lastName: string,
+            firstName: string,
+            tel: string,
+            email: string,
+            active?: boolean
+        }[];
+    type: {
+        title: string,
+        requisites: string,
+        active: boolean
+    }[]
 
     constructor(source: Partial<Performer>) {
         Object.assign(this, source);
+    }
+
+    getContactPerson(): { fullname: string, phone: string } {
+        let person =  this.contactPerson.find(person => person.active);
+        let fullname = person.lastName + ' ' + person.firstName;
+        let phone = person.tel;
+        return { fullname: fullname, phone: phone }
     }
 
     getLocation() {
@@ -97,6 +84,10 @@ export class Performer {
             location += this.location.adress;
         }
         return location;
+    }
+
+    getDepartureLocality(): string {
+        return this.location.departureAreas.map(area => area.locality).join(', ')
     }
 
     getCompletedOrders(): Order[] {

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Service } from 'src/app/models/Service';
+import { OwnService } from 'src/app/models/OwnService';
 
 @Component({
   selector: 'app-service',
@@ -8,8 +8,9 @@ import { Service } from 'src/app/models/Service';
 })
 export class ServiceComponent implements OnInit {
 
-  @Input() service: Service;
-  public showService: boolean = false;
+  @Input() service: OwnService;
+  @Input() currentSegment: string;
+  public showService = false;
   constructor() { }
 
   ngOnInit(): void {

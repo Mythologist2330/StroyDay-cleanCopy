@@ -1,11 +1,12 @@
 <div (click)="showService = !showService" class="service-header">
     <p class="title-and-segments">
         <span class="title">{{ service.title }}</span>
-        <span class="segment" [ngStyle]="{'background': getBackground(segment), 'color': getColor(segment)}" *ngFor="let segment of service.getSegments()">{{ segment }}</span>
+        <span class="segment" [ngStyle]="{'background': getBackground(segment), 'color': getColor(segment)}" 
+                              *ngFor="let segment of service.getSegments(currentSegment)">{{ segment }}</span>
     </p>
 
     <div class="price-and-toggle">
-        <p class="price">{{ service.getMinPrice() }}</p>
+        <p class="price">{{ service.getMinPrice(currentSegment) }}</p>
 
         <div class="toggle">
             <svg *ngIf="!showService" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +53,7 @@
             <span [ngStyle]="{'background': getBackground(subService.segment), 'color': getColor(subService.segment)}" class="subService-segment-mobile">{{ subService.segment }}</span>
         </p>
 
-        <p class="subService-price-mobile">{{ service.getMinPrice() }}</p>
+        <p class="subService-price-mobile">{{ service.getMinPrice(currentSegment) }}</p>
 
     </div>
 </div>

@@ -136,7 +136,7 @@ body{
         border: none;
     }
 
-    button:focus{
+    button:focus, select:focus{
         outline: none;
     }
 
