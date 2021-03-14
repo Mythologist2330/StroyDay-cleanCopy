@@ -20,18 +20,17 @@
         <div class="statistics">
             <div class="statistic">
                 <p>Выполнено заявок</p>
-                <p class="statistic-count">{{ performer.orders.length }}</p>
+                <p class="statistic-count">{{ getCountOrders('Выполнена') }}</p>
             </div>
     
             <div class="statistic">
                 <p>Размещенные заявки</p>
-                <p class="statistic-count">{{ performer.orders.length }}</p>
+                <p class="statistic-count">{{ getCountOrders('Размещена') }}</p>
             </div>
     
             <div class="statistic">
                 <p>Отзывов</p>
-                <!-- <p class="statistic-count" *ngIf="performer.reviews">{{ performer.reviews.length }}</p> -->
-                <!-- костыль с *ngIf="performer.reviews" -->
+                <p class="statistic-count">{{ getCountReviews() }}</p>
             </div>
     
             <div class="statistic">

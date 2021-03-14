@@ -1,6 +1,6 @@
 <div class="container" *ngIf="performer">
 
-    <mat-icon class="edit">edit</mat-icon>
+    <mat-icon class="edit" (click)='goToBasicInfo()'>edit</mat-icon>
 
     <p class="header">Основная информация</p>
 
@@ -81,7 +81,7 @@
                 <p>E-mail</p>
             </div>
 
-            <p class="field">{{ performer.description.email }}</p>
+            <p class="field">{{ performer.getContactPerson().email }}</p>
         </div>
 
         <hr>
@@ -108,8 +108,7 @@
             </div>
 
             <div class="field">
-                <p class="field-decoration">{{ performer.getLegalStatus() }}</p>
-                <p class="field-decoration">{{ performer.getLegalStatus() }}</p>
+                <p class="field-decoration">{{ performer.getTypes() }}</p>                
             </div>
         </div>
     </div>

@@ -9,14 +9,12 @@
         <app-basic-info [performer]="card"></app-basic-info>
         <app-gallery></app-gallery>
         <app-service-list [srv]='card.services'></app-service-list>
-        
-
-        <ng-container *ngIf="reviews">
+        <!-- <ng-container *ngIf="reviews">
             <app-reviews [reviews]="reviews"></app-reviews>
-        </ng-container>
+        </ng-container> -->
 
-        <app-accepted-orders [orders]="card.orders"></app-accepted-orders>
-        <app-posted-orders [orders]="card.orders"></app-posted-orders>
+        <app-accepted-orders [orders]="getOrdersByStatus('Выполнена')"></app-accepted-orders>
+        <app-posted-orders [orders]="getOrdersByStatus('Размещена')"></app-posted-orders>
         <app-documents></app-documents>
         <app-certificates></app-certificates>
     </div>

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Performer } from 'src/app/models/Performer';
 
 @Component({
@@ -10,9 +11,16 @@ import { Performer } from 'src/app/models/Performer';
 export class BasicInfoComponent{
 
     @Input() performer: Performer;
-    showFullInfo = false;
+    public showFullInfo = false;
+
+    constructor(private router: Router) {}
+
     linkFullInfo(): string {
         return this.showFullInfo ? 'Скрыть' : 'Показать полностью';
+    }
+
+    goToBasicInfo() {
+        this.router.navigate(['personalArea/' + this.performer.id + '/basicInfo'])
     }
 
 }

@@ -134,6 +134,7 @@
             margin: 13px 0 17px 0;
             background-color: #0D6FE3;
             border-radius: 3px;
+            font-family: 'Roboto';
             font-weight: 500;
             font-size: 12px;
             line-height: 18px;
@@ -153,7 +154,7 @@
 @media screen and (max-width: 1275px) {
     .container{
         width: 474px;
-        padding: 23px 23px 23px 23px;
+        padding: 23px;
 
         .logo-and-title-and-rating-and-statistics{
             display: flex;

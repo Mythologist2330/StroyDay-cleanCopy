@@ -1,6 +1,14 @@
 import { Order } from "./Order";
 import { Service } from "./Service";
 
+export interface IContactPerson {
+    lastName: string,
+    firstName: string,
+    tel: string,
+    email: string,
+    active?: boolean
+}
+
 export class Performer {
     id: string;
     logo: string;
@@ -47,14 +55,7 @@ export class Performer {
         }[];
         metro?: string[];    
     };
-    contactPerson?:
-        {
-            lastName: string,
-            firstName: string,
-            tel: string,
-            email: string,
-            active?: boolean
-        }[];
+    contactPerson?: IContactPerson[];
     type: {
         title: string,
         requisites: string,
@@ -65,11 +66,16 @@ export class Performer {
         Object.assign(this, source);
     }
 
-    getContactPerson(): { fullname: string, phone: string } {
+    getContactPerson(): { fullname: string, phone: string, email: string } {
         let person =  this.contactPerson.find(person => person.active);
         let fullname = person.lastName + ' ' + person.firstName;
         let phone = person.tel;
-        return { fullname: fullname, phone: phone }
+        let email = person.email
+        return { fullname, phone, email }
+    }
+
+    getTypes(): string {
+        return this.type.map(type => type.title).join(', ')
     }
 
     getLocation() {

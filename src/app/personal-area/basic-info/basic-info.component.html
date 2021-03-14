@@ -1,13 +1,12 @@
-<div class="container" *ngIf='infoForm'>
-    <p class="header">Основная информация</p>
+<div class="wrapper" *ngIf='infoForm'>
+    <h2>Основная информация</h2>
     <form [formGroup]="infoForm">
         <ng-container *ngIf='card.services'>
             <app-service-categories [srv]='card.services'></app-service-categories>
-        </ng-container>
-        
+        </ng-container>        
 
-        <div class="container-departure-areas" formArrayName="departureAreas">
-            <p class="header">Районы выезда</p>        
+        <div class="container" formArrayName="departureAreas">
+            <h3>Районы выезда</h3>        
             <p class="description" *ngIf="!array('departureAreas').length; else fieldIs">Вы не указали районы выезда. Добавьте районы выезда, чтобы заказчикам было легче Вас найти и Вы смогли получать больше заказов из разных частей города.</p>
         
             <ng-template #fieldIs>
@@ -15,7 +14,7 @@
             </ng-template>
 
             <ng-container *ngFor="let departureArea of array('departureAreas'), let i = index">
-                <div class="departure-area" [formGroupName]="i">
+                <div class="block" [formGroupName]="i">
                     <p class="title">{{ i + 1 }}.</p>
                     <p class="title-mobile">Район выезда {{ i + 1 }}</p>
             
@@ -29,53 +28,49 @@
                         <input type="text" formControlName="district">
                     </fieldset>
             
-                    <mat-icon (click)="deleteElement(array('departureAreas'), i)">delete</mat-icon>
+                    <mat-icon class='delete' (click)="deleteElement(array('departureAreas'), i)">delete</mat-icon>
                 </div>
             </ng-container>
 
-            <button class="button-add-departure-area"
+            <button class="add"
                     (click)="addDepartureArea()"
                     [ngStyle]="{marginTop: array('departureAreas').length === 0 ? '18px' : ''}">
                     <mat-icon>add</mat-icon>Добавить район выезда
-            </button>
-        
+            </button>       
         </div>
 
-        <div class="container-metro" formArrayName="metro">
-            <p class="header">Метро</p>        
+        <div class="container" formArrayName="metro">
+            <h3>Метро</h3>        
             <p class="description" *ngIf="!array('metro').length; else fieldIs">Вы не указали станции метро. Добавьте станции метро, чтобы заказчикам было легче Вас найти и Вы смогли получать больше заказов из разных частей города.</p>
         
             <ng-template #fieldIs>
                 <p class="description">Добавьте станции метро, чтобы заказчикам было легче Вас найти и Вы смогли получать больше заказов из разных частей города.</p>
             </ng-template>
-
-            <ng-container *ngFor="let oneMetro of array('metro'), let i = index">
-                <div class="metro">
-                    <p class="title">{{ i + 1 }}.</p>
-                    <p class="title-mobile">Район выезда {{ i + 1 }}</p>
             
-                    <fieldset *ngIf='metro$ | async as metro'>
-                        <legend>Станция метро</legend>
-                        <select type="text" formControlName="{{i}}">
-                            <option>Не выбрано</option>
-                            <ng-container *ngFor='let station of metro.stations'>
-                                <option [value]="station.title">{{station.title}}</option>
-                            </ng-container>
-                        </select>
-                    </fieldset>            
-                    <mat-icon (click)="deleteElement(array('metro'), i)">delete</mat-icon>
-                </div>
-            </ng-container>
+            <div class="block" *ngFor="let oneMetro of array('metro'), let i = index">
+                <p class="title">{{ i + 1 }}.</p>
+                <p class="title-mobile">Район выезда {{ i + 1 }}</p>        
+                <fieldset *ngIf="metro$ | async as metro">
+                    <legend>Станция метро</legend>
+                    <select type="text" formControlName="{{i}}">
+                        <option>Не выбрано</option>
+                        <ng-container *ngFor='let station of metro.stations'>
+                            <option [value]="station.title">{{station.title}}</option>
+                        </ng-container>
+                    </select>
+                </fieldset>            
+                <mat-icon class='delete' (click)="deleteElement(array('metro'), i)">delete</mat-icon>
+            </div>
         
-            <button class="button-add-metro"
+            <button class="add"
                     (click)="addMetro()"
-                    [ngStyle]="{marginTop: !array('metro').length ? '18px' : ''}">
+                    [ngClass]="array('metro').length ? '' : 'empty'">
                     <mat-icon>add</mat-icon>Добавить метро
             </button>        
         </div>
 
-        <div class="container-contact-face" formArrayName="contactPerson">
-            <p class="header">Контактное лицо</p>        
+        <div class="container" formArrayName="contactPerson">
+            <h3>Контактное лицо</h3>        
             <p class="description" *ngIf="!array('contactPerson').length; else fieldIs">Вы не добавили контактное лицо. Добавьте контактное лицо, чтобы заказчики могли оставлять заявки конкретному человеку.</p>
         
             <ng-template #fieldIs>
@@ -107,21 +102,21 @@
                         </fieldset>
                     </div>            
                     <label>
-                        <input type="checkbox" [checked]='person.active' formControlName="active">
+                        <input type="checkbox" (click)="switchActive('contactPerson', i)" [checked]='person.active' formControlName="active">
                         <p>Использовать в качестве основного контактного лица</p>
                     </label>            
-                    <mat-icon (click)="deleteElement(array('contactPerson'), i)">delete</mat-icon>
+                    <mat-icon class='delete' (click)="deleteElement(array('contactPerson'), i)">delete</mat-icon>
                 </div>
             </ng-container>        
-            <button class="button-add-contact-face"
+            <button class="add"
                     (click)="addContactPerson()"
-                    [ngStyle]="{marginTop: !array('contactPerson').length ? '18px' : ''}">
+                    [ngClass]="array('metro').length ? '' : 'empty'">
                     <mat-icon>add</mat-icon>Добавить контактное лицо
             </button>        
         </div>
 
-        <div class="container-location">
-            <p class="header">Местоположение</p>        
+        <div class="container">
+            <h3>Местоположение</h3>        
             <p class="description">Добавьте местоположение, чтобы заказчики могли посещать Ваш офис.</p>
             <div class="fieldsets" formGroupName="location">
                 <div class="house-and-apartment">
@@ -160,8 +155,8 @@
             </div>        
         </div>
 
-        <div class="container-performer-type" formArrayName="type">
-            <p class="header">Тип исполнителя</p>        
+        <div class="container" formArrayName="type">
+            <h3>Тип исполнителя</h3>        
             <p class="description" *ngIf="!array('type').length; else fieldIs">Вы не выбрали тип исполнителя. Выберите тип исполнителя, чтобы пользователи понимали с кем они будут работать.</p>
         
             <ng-template #fieldIs>
@@ -191,18 +186,20 @@
                         </fieldset>
                     </div>            
                     <label>
-                        <input type="checkbox" [checked]='type.active' formControlName="active">
+                        <input type="checkbox" (click)="switchActive('type', i)" [checked]='type.active' formControlName="active">
                         <p>Использовать в качестве основного исполнителя</p>
                     </label>            
-                    <mat-icon (click)="deleteElement(array('type'), i)">delete</mat-icon>
+                    <mat-icon class='delete' (click)="deleteElement(array('type'), i)">delete</mat-icon>
                 </div>
             </ng-container>        
-            <button class="button-add-performer-type"
+            <button class="add"
                     (click)="addPerformerType()"
-                    [ngStyle]="{marginTop: !array('type').length ? '18px' : ''}">
+                    [ngClass]="array('metro').length ? '' : 'empty'">
                     <mat-icon>add</mat-icon>Добавить тип исполнителя
             </button>        
         </div>
-        <button class="button-save-changes" (click)="submitInfo()">Сохранить изменения</button>
+        <button class="save" 
+                [disabled]='infoForm.invalid'
+                (click)="submitInfo()">Сохранить изменения</button>
     </form>
 </div>

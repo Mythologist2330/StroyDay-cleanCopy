@@ -7,7 +7,7 @@ export enum Segment {
 }
 
 export enum Status {
-    active = 'Активна',
+    active = 'Размещена',
     inProgress = 'Выполняется',
     complete = 'Выполнена'
 }
@@ -26,6 +26,11 @@ export class Order {
     images?: string[];
     views?: number;
     reviews?: Review[];
+
+    location?: string;
+    budget?: string;
+    deadline?: string;
+    type?: string;
 
     constructor(source: Partial<Order>) {
         Object.assign(this, source);

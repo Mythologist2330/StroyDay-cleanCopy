@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { IMetroStation } from 'src/app/interfaces/IMetro';
@@ -20,18 +21,19 @@ export class BasicInfoComponent implements OnInit {
   public cardSub$: Subscription;
   public metro$: Observable<IMetroStation>
   
-  constructor(public fb: FormBuilder,
+  constructor(private router: Router,
+              public fb: FormBuilder,
               private cardSrv: PerformersCardService,
               private locationSrv: LocationService) {}
 
 
   ngOnInit(): void {
-    this.metro$ = this.locationSrv.getMetro('Санкт-Петербург')
+    this.metro$ = this.locationSrv.getMetro('Санкт-Петербург') // Hardcode
       .pipe(
-        map((metro: IMetroStation[]) => metro.find(val => val.city === 'Санкт-Петербург'))
+        map((metro: IMetroStation[]) => metro.find(val => val.city === 'Санкт-Петербург')) // Hardcode
         );
 
-    this.cardSub$ = this.cardSrv.getPerformersCardById('7wx8WNLYh66KXGGSIl9N')
+    this.cardSub$ = this.cardSrv.getPerformersCardById('7wx8WNLYh66KXGGSIl9N') // Hardcode
       .pipe(
         tap(data => this.initForm(data)),
         tap(data => this.card = data)
@@ -41,11 +43,11 @@ export class BasicInfoComponent implements OnInit {
 
   initForm(card: Performer) {
     this.infoForm = this.fb.group({
-      departureAreas: this.fb.array([]),
-      metro: this.fb.array([]),
-      contactPerson: this.fb.array([]),
+      departureAreas: this.fb.array([], Validators.required),
+      metro: this.fb.array([], Validators.required),
+      contactPerson: this.fb.array([], Validators.required),
       location: this.fb.group({
-        locality: card.location.locality || '',
+        locality: [card.location.locality || '', Validators.required],
         house: card.location.house || '',
         typographicLiterature: card.location.typographicLiterature || '',
         street: card.location.street || '',
@@ -99,8 +101,10 @@ export class BasicInfoComponent implements OnInit {
     this.card.contactPerson = this.array('contactPerson').map((person: FormGroup) => person.value);
     this.card.location = {...this.card.location, ...this.infoForm.get('location').value};
     this.card.type = this.array('type').map(type => type.value);
-
-    this.cardSrv.updatePerformersCard(this.card).then(console.log)
+    
+    this.cardSrv.updatePerformersCard(this.card).then(() => {
+      this.router.navigate(['/personalArea/' + this.card.id + '/profile'])
+    })
   }
 
   array(title: string): Array<any> {
@@ -125,6 +129,14 @@ export class BasicInfoComponent implements OnInit {
 
   addPerformerType(type = { title: '', requisites: '', active: false }) {
     this.array('type').push(this.fb.group(type))
+  }
+
+  switchActive(title: string, index: number) {
+    this.array(title).forEach((type: FormGroup, i) => {
+      if (i !== index) {
+        type.controls.active.setValue(false);
+      }      
+    })
   }
 
 }

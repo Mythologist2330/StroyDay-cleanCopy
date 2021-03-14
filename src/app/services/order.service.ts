@@ -1,23 +1,31 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Order, Segment, Status } from '../models/Order';
 
 @Injectable({
   providedIn: 'root'
 })
 
-
 export class OrderService {
 
     constructor(private afs: AngularFirestore) {
     }
 
-    getAllOrders(performerId: string, filter?: string): Observable<Order[]> {
+    getAllOrders(performerId: string): Observable<Order[]> {
         return this.afs.collection<Order>('orders', ref => {
             return ref.where('performerId', '==', performerId)
-        }).valueChanges()
+        })
+        .snapshotChanges()
+        .pipe(
+          	map(snaps => snaps.map(snap => new Order({ 
+                    id: snap.payload.doc.id,
+                    ...snap.payload.doc.data()
+                	})
+            	)
+        	)
+        )
     }
 
     createOrder(order: Order): Promise<any> {

@@ -11,10 +11,10 @@
         <p class="description">{{ order.description }}</p>
 
         <div class="info">
-            <p class="info-elem"><span class="param">Вид услуг:</span></p>
-            <p class="info-elem"><span class="param">Местоположение:</span></p>
-            <p class="info-elem"><span class="param">Бюджет:</span></p>
-            <p class="info-elem"><span class="param">Срок выполнения:</span></p>
+            <p class="info-elem"><span class="param">Вид услуг:</span> {{order.type}}</p>
+            <p class="info-elem"><span class="param">Местоположение:</span> {{order.location}}</p>
+            <p class="info-elem"><span class="param">Бюджет:</span> {{order.budget}}</p>
+            <p class="info-elem"><span class="param">Срок выполнения:</span>  {{order.deadline}}</p>
             <p class="info-elem" *ngIf="order.segment">
                 <span class="param last-param">Уровень цен:</span>
                 <span class="segment" *ngFor="let segment of order.segment" [ngStyle]="{'background': getBackground(segment), 'color': getColor(segment)}">{{ segment }}</span>
@@ -31,7 +31,7 @@
         <hr>
 
         <div class="date-and-statistics">
-            <p class="date">//Тут надо вывести дату</p>
+            <p class="date">{{order.status}} {{order.createdAt | date : 'dd MMMM yyyy'}}</p>
 
             <div class="statistics">
                 <p class="statistic"><mat-icon>camera_alt</mat-icon>{{ order.amountOfPhotos }}</p>
