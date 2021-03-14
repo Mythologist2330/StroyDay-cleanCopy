@@ -1,0 +1,243 @@
+<div class="container">
+
+    <div class="filters">
+        <p class="filter-header">Фильтр</p>
+
+        <div class="filter">
+            <p class="filter-title" (click)="filterLocation = !filterLocation">Местоположение<mat-icon [ngStyle]="{transform: filterLocation ? 'rotate(180deg)' : ''}">keyboard_arrow_down</mat-icon></p>
+
+            <div class="filter-location-content" [ngStyle]="{display: filterLocation ? 'block' : 'none'}">
+                <fieldset>
+                    <legend>Населенный пункт</legend>
+                    <select>
+                        <option>Москва</option>
+                    </select>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Район</legend>
+                    <select>
+                        <option>Выберите район</option>
+                    </select>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Метро</legend>
+                    <select>
+                        <option>Выберите район</option>
+                    </select>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Радиус поиска</legend>
+                    <select>
+                        <option>Выберите радиус поиска</option>
+                    </select>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="filter">
+            <p class="filter-title" (click)="filterServices = !filterServices">Услуги<mat-icon [ngStyle]="{transform: filterServices ? 'rotate(180deg)' : ''}">keyboard_arrow_down</mat-icon></p>
+
+            <div class="filter-services-content" [ngStyle]="{display: filterServices ? 'block' : 'none'}">
+                <div class="search">
+                    <input type="search" placeholder="Поиск по услугам">
+
+                    <button>
+                        <mat-icon>search</mat-icon>
+                    </button>
+                </div>
+
+                <div class="service" *ngFor='let category of catSrv.getNodeCategory() | async; let i = index'>
+                    <div class="service-title" [ngClass]="number === i ? 'open' : ''" (click)="number = number === i ? null : i">
+                        <mat-icon>keyboard_arrow_right</mat-icon>
+                        <p>{{category.title}} ({{(catSrv.getNodeCategory(category.id) | async).length}})</p>
+                    </div>
+
+                    <div class="checkboxes">
+                        <div class="checkbox" [@toggleTree]="number === i ? 'open' : 'close'" *ngFor='let sub of catSrv.getNodeCategory(category.id) | async'>
+                            <label>
+                                <input type="checkbox" [checked]='isChecked(sub.title)' [value]="sub.title" (change)='setCategories($event.target.value)'>
+                                <p>{{sub.title}}</p>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="reset">Сбросить</p>
+            </div>
+        </div>
+
+        <div class="filter">
+            <p class="filter-title" (click)="filterPriceLevel = !filterPriceLevel">Уровень цен<mat-icon [ngStyle]="{transform: filterPriceLevel ? 'rotate(180deg)' : ''}">keyboard_arrow_down</mat-icon></p>
+
+            <div class="filter-checkbox-content" [ngStyle]="{display: filterPriceLevel ? 'block' : 'none'}">
+                <label>
+                    <input type="checkbox" name="contract">
+                    <p>Эконом</p>
+                </label>
+
+                <label>
+                    <input type="checkbox" name="contract">
+                    <p>Стандарт</p>
+                </label>
+
+                <label>
+                    <input type="checkbox" name="contract">
+                    <p>Премиум</p>
+                </label>
+
+                <p class="reset">Сбросить</p>
+            </div>
+        </div>
+
+        <div class="filter">
+            <p class="filter-title" (click)="filterContract = !filterContract">Договор<mat-icon [ngStyle]="{transform: filterContract ? 'rotate(180deg)' : ''}">keyboard_arrow_down</mat-icon></p>
+
+            <div class="filter-radio-content" [ngStyle]="{display: filterContract ? 'block' : 'none'}">
+                <label>
+                    <input type="radio" name="contract" checked>
+                    <div class="circle">
+                        <div class="circle-blue"></div>
+                    </div>
+                    <p>Не выбрано</p>
+                </label>
+
+                <label>
+                    <input type="radio" name="contract">
+                    <div class="circle">
+                        <div class="circle-blue"></div>
+                    </div>
+                    <p>Да</p>
+                </label>
+
+                <label>
+                    <input type="radio" name="contract">
+                    <div class="circle">
+                        <div class="circle-blue"></div>
+                    </div>
+                    <p>Нет</p>
+                </label>
+
+                <p class="reset">Сбросить</p>
+            </div>
+        </div>
+
+        <div class="filter">
+            <p class="filter-title" (click)="filterTypeOfPerformer = !filterTypeOfPerformer">Тип исполнителя<mat-icon [ngStyle]="{transform: filterTypeOfPerformer ? 'rotate(180deg)' : ''}">keyboard_arrow_down</mat-icon></p>
+
+            <div class="filter-checkbox-content" [ngStyle]="{display: filterTypeOfPerformer ? 'block' : 'none'}">
+                <label>
+                    <input type="checkbox" name="contract">
+                    <p>Юридическое лицо</p>
+                </label>
+
+                <label>
+                    <input type="checkbox" name="contract">
+                    <p>Индивид. предприниматель</p>
+                </label>
+
+                <label>
+                    <input type="checkbox" name="contract">
+                    <p>Физическое лицо</p>
+                </label>
+
+                <p class="reset">Сбросить</p>
+            </div>
+        </div>
+
+        <div class="filter">
+            <p class="filter-title" (click)="filterOrderSum = !filterOrderSum">Сумма заявки<mat-icon [ngStyle]="{transform: filterOrderSum ? 'rotate(180deg)' : ''}">keyboard_arrow_down</mat-icon></p>
+
+            <div class="filter-order-sum-content" [ngStyle]="{display: filterOrderSum ? 'block' : 'none'}">
+                
+
+                <p class="reset">Сбросить</p>
+            </div>
+        </div>
+
+        <div class="filter">
+            <p class="filter-title" (click)="filterOrderStatus = !filterOrderStatus">Статус заявки<mat-icon [ngStyle]="{transform: filterOrderStatus ? 'rotate(180deg)' : ''}">keyboard_arrow_down</mat-icon></p>
+
+            <div class="filter-radio-content" [ngStyle]="{display: filterOrderStatus ? 'block' : 'none'}">
+                <label>
+                    <input type="radio" name="contract" checked>
+                    <div class="circle">
+                        <div class="circle-blue"></div>
+                    </div>
+                    <p>Не выбрано</p>
+                </label>
+
+                <label>
+                    <input type="radio" name="contract">
+                    <div class="circle">
+                        <div class="circle-blue"></div>
+                    </div>
+                    <p>В работе</p>
+                </label>
+
+                <label>
+                    <input type="radio" name="contract">
+                    <div class="circle">
+                        <div class="circle-blue"></div>
+                    </div>
+                    <p>Завершено</p>
+                </label>
+
+                <p class="reset">Сбросить</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+
+        <p class="breadcrumbs">
+            <span>Главная</span>
+            <mat-icon>keyboard_arrow_right</mat-icon>
+            <span>Каталог заявок</span>
+        </p>
+
+        <p class="found-orders">Найдено 180 заявок</p>
+
+        <p class="tag">от 5000 руб. до 100 000 руб.</p>
+
+        <div class="map"></div>
+                
+        <div class="sort-by">
+            <p class="sort-by-p">Сортировать по:</p>
+            <label>
+                <input type="radio" name="sortBy" checked>
+                <p>алфавиту</p>
+            </label>
+
+            <label>
+                <input type="radio" name="sortBy">
+                <p>сначала высокая стоимость</p>
+            </label>
+
+            <label>
+                <input type="radio" name="sortBy">
+                <p>сначала низкая стоимость</p>
+            </label>
+        </div>
+
+        <div class="orders">
+            <app-order *ngFor="let order of orders" [order]="order"></app-order>
+        </div>
+
+        <div class="pagination">
+            <p class=""><mat-icon>keyboard_arrow_left</mat-icon></p>
+            <p class="active">1</p>
+            <p>2</p>
+            <p>3</p>
+            <p>4</p>
+            <p>5</p>
+            <p>...</p>
+            <p>10</p>
+            <p class=""><mat-icon>keyboard_arrow_right</mat-icon></p>
+        </div>
+
+    </div>
+
+</div>

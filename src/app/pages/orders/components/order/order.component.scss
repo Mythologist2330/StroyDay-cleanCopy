@@ -1,0 +1,188 @@
+.container{
+    width: 100%;
+    padding: 22px 24px 13px 24px;
+    margin-bottom: 24px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 40px rgba(71, 84, 101, 0.05), 0 8px 0 0 rgb(13, 111, 227, 1);
+    border-radius: 4px;
+
+    .title-and-price{
+        display: flex;
+        justify-content: space-between;
+
+        .title{
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 28px;
+            color: #334D6E;
+
+            span{
+                display: none;
+            }
+        }
+
+        .price{
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            color: #8594A8;
+        }
+    }
+
+    .description{
+        margin: 9px 0 13px 0;
+        font-size: 14px;
+        line-height: 20px;
+        color: #8594A8;
+    }
+
+    .info{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .info-columns{
+            flex: 0 0 48.7%;
+        }
+
+        .info-elem{
+            margin-top: 4px;
+            font-size: 14px;
+            line-height: 20px;
+            color: #334D6E;
+
+            .param{
+                font-weight: 500;
+
+                &.last-param{
+                    margin-right: 4px;
+                }
+            }
+
+            .segment{
+                position: relative;
+                top: -2px;
+                display: inline-block;
+                margin-right: 4px;
+                padding: 0 12px;
+                font-weight: bold;
+                font-size: 10px;
+                line-height: 20px;
+                letter-spacing: 0.5px;
+                border-radius: 60px;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    .statistics-mobile{
+        display: none;
+    }
+
+    hr{
+        width: 100%;
+        height: 1px;
+        margin: 15px 0 14px 0;
+        border: none;
+        background-color: #C3CBD6;
+    }
+
+    .date-and-statistics{
+        display: flex;
+        justify-content: space-between;
+
+        .date{
+            font-size: 14px;
+            line-height: 20px;
+            color: #8594A8;
+        }
+
+        .statistics{
+            display: flex;
+            margin: -2px 1px 0 0;
+
+            .statistic{
+                display: flex;
+                align-items: center;
+                margin-left: 12px;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 20px;
+                color: #8594A8;
+
+                mat-icon{
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container{
+        padding: 13px 15px 13px 15px;;
+
+        .title-and-price{
+
+            .title{
+                font-size: 16px;
+                line-height: 24px;
+
+                span{
+                    display: inline-block;
+                    min-width: max-content;
+                    color: #8594A8;
+                }
+            }
+
+            .price{
+                display: none;
+            }
+        }
+
+        .info{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+    
+            .info-columns{
+                flex: 0 0 100%;
+            }
+        }
+
+        .statistics-mobile{
+            display: block;
+            display: flex;
+            margin-top: 15px;
+
+            .statistic{
+                display: flex;
+                align-items: center;
+                margin-left: 8px;
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 20px;
+                color: #8594A8;
+
+                &:first-child{
+                    margin: 0;
+                }
+
+                mat-icon{
+                    margin-right: 4px;
+                }
+            }
+        }
+
+        hr{
+            margin: 6px 0 15px 0;
+        }
+
+        .date-and-statistics{
+
+            .statistics{
+                display: none;
+            }
+        }
+    }
+}
