@@ -1,0 +1,46 @@
+<div class="container">
+
+    <div class="title-and-price">
+        <p class="title">{{ order.title }} <span>{{ order.price }}</span></p>
+        <p class="price">{{ order.price }}</p>
+    </div>
+
+    <p class="description">{{ order.description }}</p>
+
+    <div class="info">
+        <div class="info-columns">
+            <p class="info-elem"><span class="param">Вид услуг:</span> <span>{{ order.service }}</span></p>
+            <p class="info-elem"><span class="param">Местоположение:</span> <span>{{ order.location }}</span></p>
+            <p class="info-elem"><span class="param">Бюджет:</span> <span>{{ order.budget }}</span></p>
+        </div>
+
+        <div class="info-columns">
+            <p class="info-elem"><span class="param">Срок выполнения:</span> <span>{{ order.periodOfExecution }}</span></p>
+            <p class="info-elem" *ngIf="order.segments">
+                <span class="param last-param">Уровень цен:</span>
+                <span class="segment" *ngFor="let segment of order.segments" [ngStyle]="{'background': getBackground(segment), 'color': getColor(segment)}">{{ segment }}</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="statistics-mobile">
+        <p class="statistic"><mat-icon>camera_alt</mat-icon>{{ order.amountOfPhotos }}</p>
+        <p class="statistic"><mat-icon>visibility</mat-icon>{{ order.views }}</p>
+        <p class="statistic" *ngIf="order.reviews"><mat-icon>chat_bubble</mat-icon>{{ order.reviews.length }} откликов</p>
+        <!-- возможный костыль *ngIf="order.reviews"-->
+    </div>
+
+    <hr>
+
+    <div class="date-and-statistics">
+        <p class="date">{{ order.date }}</p>
+
+        <div class="statistics">
+            <p class="statistic"><mat-icon>camera_alt</mat-icon>{{ order.amountOfPhotos }}</p>
+            <p class="statistic"><mat-icon>visibility</mat-icon>{{ order.views }}</p>
+            <p class="statistic" *ngIf="order.reviews"><mat-icon>chat_bubble</mat-icon>{{ order.reviews.length }} откликов</p>
+            <!-- возможный костыль *ngIf="order.reviews"-->
+        </div>
+    </div>
+
+</div>
