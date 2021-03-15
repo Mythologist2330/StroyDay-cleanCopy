@@ -79,4 +79,20 @@ export class ServicesComponent implements OnInit {
     this.isChanged = true;
   }
 
+	switchElem(array: Array<any>, i: number, path: string) {
+		if (path === 'up') {
+			if (i > 0) {
+				let temp = array[i - 1]
+				array[i - 1] = array[i]
+				array[i] = temp
+			}
+		} else {
+			if (array.length > i + 1) {
+				let temp = array[i + 1]
+				array[i + 1] = array[i]
+				array[i] = temp
+			}
+		}
+  	}
+
 }

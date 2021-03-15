@@ -17,8 +17,8 @@
                             <div class="replace-and-delete">
                                 <p>
                                     Порядок
-                                    <mat-icon>keyboard_arrow_down</mat-icon>
-                                    <mat-icon>keyboard_arrow_up</mat-icon>
+                                    <mat-icon (click)="switchElem(arrayService, i, 'down')">keyboard_arrow_down</mat-icon>
+                                    <mat-icon (click)="switchElem(arrayService, i, 'up')">keyboard_arrow_up</mat-icon>
                                 </p>
             
                                 <mat-icon class="delete-mobile" (click)="deleteElement(arrayService, i)">delete</mat-icon>
