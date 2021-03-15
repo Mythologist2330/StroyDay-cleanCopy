@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="header-filters" (click)="setToggle(toggle)">
+        <p>Фильтр</p>
+        <ng-container *ngIf='count'>
+            <p class="notifications">{{count}}</p>
+        </ng-container>
+        
+    </div>
+
+    <div class="header-sorting">
+        <p>Сортировка</p>
+    </div>
+</div>

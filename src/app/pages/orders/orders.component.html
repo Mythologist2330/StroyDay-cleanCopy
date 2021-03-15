@@ -1,7 +1,16 @@
+<div class="container-header-filters-and-sorting">
+    <app-header-filters
+        [toggle]="this.toggle"
+        [count]='this.tags.length'
+        (invertToggle)='invertToggle($event)'
+        [ngClass]="shrinkHeader ? 'fixed' : ''"
+    ></app-header-filters>
+</div>
+
 <div class="container">
 
-    <div class="filters">
-        <p class="filter-header">Фильтр</p>
+    <div class="filters" [ngClass]="toggle ? 'show' : ''">
+        <p class="filter-header" (click)="toggle = !toggle">Фильтр<mat-icon>close</mat-icon></p>
 
         <div class="filter">
             <p class="filter-title" (click)="filterLocation = !filterLocation">Местоположение<mat-icon [ngStyle]="{transform: filterLocation ? 'rotate(180deg)' : ''}">keyboard_arrow_down</mat-icon></p>
@@ -228,13 +237,13 @@
 
         <div class="pagination">
             <p class=""><mat-icon>keyboard_arrow_left</mat-icon></p>
-            <p class="active">1</p>
-            <p>2</p>
-            <p>3</p>
-            <p>4</p>
-            <p>5</p>
-            <p>...</p>
-            <p>10</p>
+            <p class="page-number active">1</p>
+            <p class="page-number">2</p>
+            <p class="page-number">3</p>
+            <p class="page-number">4</p>
+            <p class="page-number">5</p>
+            <p class="page-number">...</p>
+            <p class="page-number">10</p>
             <p class=""><mat-icon>keyboard_arrow_right</mat-icon></p>
         </div>
 

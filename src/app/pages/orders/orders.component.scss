@@ -1,3 +1,18 @@
+.container-header-filters-and-sorting{
+    width: 100%;
+    height: 48px;
+    display: none;
+
+    .fixed{
+        display: block;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 1001;
+    }
+}
+
 .container{
     display: flex;
     background-color: #F7F9FB;
@@ -18,6 +33,10 @@
             font-size: 16px;
             line-height: 24px;
             color: #8594A8;
+
+            mat-icon{
+                display: none;
+            }
         }
 
         .filter{
@@ -441,11 +460,70 @@
     }
 }
 
-@media screen and (max-width: 1275px) {
+@media screen and (max-width: 1350px) {
     .container{
 
         .filters{
-            display: none;
+            min-width: 250px;
+
+            .filter{
+                max-width: 300px;
+                padding: 15px 16px 16px 16px;
+            }
+
+            .filter-header{
+                padding: 0 16px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1275px) {
+    .container-header-filters-and-sorting{
+        display: block;
+    }
+
+    .container{
+
+        .filters{
+            max-width: 301px;
+            width: 301px;
+            position: fixed;
+            top: 0;
+            left: -301px;
+            overflow-y: auto;
+            height: 100vh;
+            background-color: #fff;
+            z-index: 10000;
+            transition: all 0.2s;
+
+            &.show {
+                left: 0;
+            }
+
+            &::-webkit-scrollbar{
+                width: 0;
+                height: 0;
+            }
+
+            .filter-header{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 35px 0 32px;
+                cursor: pointer;
+    
+                mat-icon{
+                    display: block;
+                    width: 16px;
+                    height: 16px;
+                    font-size: 16px;
+                }
+            }
+
+            .filter{
+                padding: 15px 32px 16px 32px;
+            }
         }
 
         .main-content{
@@ -470,6 +548,24 @@
 @media screen and (max-width: 767px) {
     .container{
 
+        .filters{
+            width: 100vw;
+            max-width: 100%;
+            left: -100%;
+
+            &.show {
+                left: 0;
+            }
+
+            .filter {
+                max-width: 100vw;
+
+                .field-click{
+                    width: 100%;
+                }
+            }            
+        }
+
         .main-content{
             padding: 16px;
 
@@ -479,6 +575,14 @@
 
             .orders{
                 width: 100%;
+            }
+
+            .pagination{
+                width: 112px;
+
+                .page-number{
+                    display: none;
+                }
             }
         }
     }

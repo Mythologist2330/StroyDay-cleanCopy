@@ -1,5 +1,6 @@
 import { state, style, trigger } from '@angular/animations';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ITag } from 'src/app/interfaces/ITag';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
 
@@ -28,6 +29,8 @@ export class OrdersComponent implements OnInit {
   public number: number;
   public searchText = ''
   public popup = []
+  public shrinkHeader = false;
+  public tags: ITag[] = [];
 
   filterLocation = false;
   filterServices = false;
@@ -85,7 +88,16 @@ export class OrdersComponent implements OnInit {
   constructor(public catSrv: CategoryService) { }
 
   ngOnInit(): void {
-    this.catSrv.categories$.subscribe(data => this.categories = data)
+    this.catSrv.categories$.subscribe(data => this.categories = data);
+    this.animateHeader();
+  }
+
+  animateHeader(): void {
+    window.onscroll = () => this.shrinkHeader = (window.pageYOffset > 100) ? true : false;
+  };
+
+  invertToggle(e) {
+    this.toggle = e;
   }
 
   setSearch(value) {
