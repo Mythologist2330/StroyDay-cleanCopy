@@ -15,21 +15,25 @@ import { ServicesService } from 'src/app/services/services.service';
 export class ServiceListComponent implements OnInit, OnDestroy {
 
     @Input() srv: {id: string, low: boolean, standart: boolean, premium: boolean}[];
+    @Input() id: string;
     public allServices: OwnService[];
-    public services: OwnService[];
+    public servicesBySegment: OwnService[];
     public servicesSub$: Subscription;
     public segment = 'all';
+    public linkTo = '';
 
     constructor(private serviceSrv: ServicesService) {
     }
 
-    ngOnInit(): void {
+    ngOnInit(): void {        
+        this.linkTo = '/personalArea/' + this.id + '/services';
+
         this.servicesSub$ = this.serviceSrv.services$
             .pipe(
                 map(services => services.length ? this.getOwnServices(services) : []),
                 tap(data => this.allServices = data),
                 map(services => services.filter(srv => this.segment !== 'all' ? srv[this.segment] : true)),
-                tap(data => this.services = data),
+                tap(data => this.servicesBySegment = data),
             )
             .subscribe()
     }

@@ -6,16 +6,17 @@ import { OwnService } from 'src/app/models/OwnService';
   templateUrl: './service.component.html',
   styleUrls: ['./service.component.scss']
 })
-export class ServiceComponent implements OnInit {
+export class ServiceComponent {
 
   @Input() service: OwnService;
   @Input() currentSegment: string;
   public showService = false;
-  constructor() { }
+  isMobile: boolean;
 
-  ngOnInit(): void {
+  constructor() {
+      this.isMobile = window.innerWidth <= 767 ? true : false
   }
-
+  
   getColor(segment) {
     if (segment === 'эконом') {
         return '#F8601F'

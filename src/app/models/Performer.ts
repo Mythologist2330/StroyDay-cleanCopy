@@ -83,11 +83,17 @@ export class Performer {
         if (this.location.city) {
             location += this.location.city + ', ';
         }
-        if (this.location.district) {
-            location += this.location.district + ', ';
-        }
-        if (this.location.adress) {
+        if (this.location.house) {
             location += this.location.adress;
+        }
+        if (this.location.typographicLiterature) {
+            location += this.location.typographicLiterature;
+        }
+        if (this.location.apartment) {
+            location += ', подъезд ' + this.location.housing;
+        }
+        if (this.location.housing) {
+            location += ', подъезд ' + this.location.apartment;
         }
         return location;
     }
