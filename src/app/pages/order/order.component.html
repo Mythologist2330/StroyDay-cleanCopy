@@ -71,37 +71,41 @@
     </div>
 
     <div class="profile">
-        <div class="avatar"></div>
-
-        <p class="name">ООО “Вектор и партнеры”</p>
-
-        <p class="was-online">Был на сайте два дня назад</p>
-
-        <div class="info">
-            <p>Контактное лицо</p>
-            <p class="info-value">Константинов Иван Алексеевич</p>
-        </div>
-        
-        <div class="info">
-            <p>Телефон</p>
-            <p class="info-value">8 987 234-22-31</p>
-        </div>
-        
-        <div class="info">
-            <p>Email</p>
-            <p class="info-value">konstantinovivan@gmail.com</p>
+        <div class="left-column">
+            <div class="avatar"></div>
+    
+            <p class="name">ООО “Вектор и партнеры”</p>
+    
+            <p class="was-online">Был на сайте два дня назад</p>
         </div>
 
-        <div class="buttons">
-            <button class="write-message">
-                <mat-icon>email</mat-icon>Ответить на заявку
-            </button>
-
-            <button class="add-to-favorites" (click)="isFavorite = !isFavorite">
-                <img [src]="!isFavorite ? '/assets/images/performers/bookmark-disabled.png' : '/assets/images/performers/bookmark-enabled.png'">
-            </button>
+        <div class="right-column">
+            <div class="info">
+                <p>Контактное лицо</p>
+                <p class="info-value">Константинов Иван Алексеевич</p>
+            </div>
+            
+            <div class="info">
+                <p>Телефон</p>
+                <p class="info-value">8 987 234-22-31</p>
+            </div>
+            
+            <div class="info">
+                <p>Email</p>
+                <p class="info-value">konstantinovivan@gmail.com</p>
+            </div>
+    
+            <div class="buttons">
+                <button class="write-message">
+                    <mat-icon>email</mat-icon>Ответить на заявку
+                </button>
+    
+                <button class="add-to-favorites" (click)="isFavorite = !isFavorite">
+                    <img [src]="!isFavorite ? '/assets/images/performers/bookmark-disabled.png' : '/assets/images/performers/bookmark-enabled.png'">
+                </button>
+            </div>
+    
+            <p class="save-order">Сохранить заявку как PDF</p>
         </div>
-
-        <p class="save-order">Сохранить заявку как PDF</p>
     </div>
 </div>
