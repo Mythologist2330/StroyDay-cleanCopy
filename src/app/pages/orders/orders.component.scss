@@ -475,6 +475,10 @@
                 padding: 0 16px;
             }
         }
+
+        .main-content{
+            padding: 33px 16px;
+        }
     }
 }
 
@@ -568,6 +572,11 @@
 
         .main-content{
             padding: 16px;
+
+            .found-orders{
+                font-size: 24px;
+                line-height: 28px;
+            }
 
             .map{
                 width: 100%;
