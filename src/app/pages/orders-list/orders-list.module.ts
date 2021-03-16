@@ -2,13 +2,13 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { SharedModule } from "src/app/shared/shared.module";
 import { HeaderFiltersComponent } from "./components/header-filters/header-filters.component";
-import { OrderComponent } from "./components/order/order.component";
-import { OrdersComponent } from "./orders.component";
+import { OrderCardComponent } from "./components/order-card/order-card.component";
+import { OrdersListComponent } from "./orders-list.component";
 
 @NgModule({
     declarations: [
-        OrdersComponent,
-        OrderComponent,
+        OrdersListComponent,
+        OrderCardComponent,
         HeaderFiltersComponent
     ],
     imports: [
@@ -16,4 +16,4 @@ import { OrdersComponent } from "./orders.component";
         SharedModule
     ]
 })
-export class OrdersModule { }
+export class OrdersListModule { }

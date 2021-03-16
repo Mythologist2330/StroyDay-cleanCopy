@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { SharedModule } from "src/app/shared/shared.module";
-import { OrdersModule } from "./orders/orders.module";
+import { OrdersListModule } from "./orders-list/orders-list.module";
 import { PerformersModule } from './performer-list/performers.module';
 import { PerformerModule } from './performer/performer.module';
 
@@ -15,7 +15,7 @@ import { PerformerModule } from './performer/performer.module';
         SharedModule,
         PerformersModule,
         PerformerModule,
-        OrdersModule
+        OrdersListModule
     ]
 })
 export class PagesModule { }

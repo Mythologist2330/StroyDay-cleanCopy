@@ -23,7 +23,7 @@ import { GalleryAlbumsComponent } from './personal-area/gallery/gallery-albums/g
 import { GalleryAlbumComponent } from './personal-area/gallery/gallery-album/gallery-album.component';
 import { RedactionAlbumComponent } from './personal-area/gallery/redaction-album/redaction-album.component';
 import { CreationAlbumComponent } from './personal-area/gallery/creation-album/creation-album.component';
-import { OrdersComponent } from './pages/orders/orders.component';
+import { OrdersListComponent } from './pages/orders-list/orders-list.component';
 
 const routes: Routes = [
   {path: 'pages', component: PagesComponent, children: [
@@ -38,7 +38,7 @@ const routes: Routes = [
     {path: 'performers', component: PerformersListComponent},
     {path: 'performer/:id', component: PerformerComponent},
 
-    {path: 'orders', component: OrdersComponent}
+    {path: 'orders', component: OrdersListComponent}
   ]},
 
   {path: 'personalArea/:id', component: PersonalAreaComponent, children: [

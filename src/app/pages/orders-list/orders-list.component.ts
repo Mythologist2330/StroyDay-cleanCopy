@@ -5,9 +5,9 @@ import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
-  selector: 'app-orders',
-  templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.scss'],
+  selector: 'app-orders-list',
+  templateUrl: './orders-list.component.html',
+  styleUrls: ['./orders-list.component.scss'],
   animations: [
     trigger('toggleTree', [
       state('open', style({
@@ -20,7 +20,7 @@ import { CategoryService } from 'src/app/services/category.service';
   ]
 })
 
-export class OrdersComponent implements OnInit {
+export class OrdersListComponent implements OnInit {
 
   @Input() checked: string[];
   @Output() setChecked = new EventEmitter();
