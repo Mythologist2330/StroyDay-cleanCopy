@@ -1,0 +1,107 @@
+<div class="container">
+    <div class="main-content">
+        <p class="breadcrumbs">
+            <span>Главная</span>
+            <mat-icon>keyboard_arrow_right</mat-icon>
+            <span>Каталог заявок</span>
+            <mat-icon>keyboard_arrow_right</mat-icon>
+            <span>Дизайн-проект частного дома</span>
+        </p>
+
+        <p class="title">Дизайн-проект частного дома<span>250 000 ₽</span></p>
+
+        <p class="description">В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту нужны качественные и интересные тексты, которые смогут заставить. В рамках кворка, напишу 6000 символов для вашего сайта. Если вашему сайту.</p>
+
+        <div class="content-info basic-info-margin">
+            <div class="info-elem">
+                <p>Вид услуг</p>
+                <p class="info-elem-value">Монтаж электрики</p>
+            </div>
+
+            <div class="info-elem">
+                <p>Местоположение</p>
+                <p class="info-elem-value">г. Москва, Центральный р-он, ул. Новая, д. 15</p>
+            </div>
+
+            <div class="info-elem">
+                <p>Срок выполнения</p>
+                <p class="info-elem-value">до 25 сентября 2021 года</p>
+            </div>
+
+            <div class="info-elem">
+                <p>Уровень цен</p>
+                <p class="info-elem-value"><span class="segment" [ngStyle]="{'background': getBackground(segment), 'color': getColor(segment)}" *ngFor="let segment of segments">{{ segment }}</span></p>
+            </div>
+
+            <div class="info-elem">
+                <p>Тип исполнителя</p>
+                <p class="info-elem-value">Физическое лицо</p>
+            </div>
+
+            <div class="info-elem">
+                <p>Статус заявки</p>
+                <p class="info-elem-value">Активна</p>
+            </div>
+        </div>
+
+        <p class="additional-info-title">Дополнительная информация по услуге “монтаж электрики”</p>
+
+        <div class="content-info additional-info-margin">
+            <div class="info-elem">
+                <p>Работа по договору</p>
+                <p class="info-elem-value">Да</p>
+            </div>
+
+            <div class="info-elem">
+                <p>Материалы</p>
+                <p class="info-elem-value">Предоставляет исполнитель</p>
+            </div>
+
+            <div class="info-elem">
+                <p>Проживание на объекте</p>
+                <p class="info-elem-value">Да</p>
+            </div>
+        </div>
+
+        <div class="photos">
+            <img class="photo" [src]="photo" *ngFor="let photo of photos">
+        </div>
+
+        <p class="published-on">Заявка опубликована 25.09.2020, 20:28 <span>[последние изменения: 07.03.2021, 20:33]</span></p>
+    </div>
+
+    <div class="profile">
+        <div class="avatar"></div>
+
+        <p class="name">ООО “Вектор и партнеры”</p>
+
+        <p class="was-online">Был на сайте два дня назад</p>
+
+        <div class="info">
+            <p>Контактное лицо</p>
+            <p class="info-value">Константинов Иван Алексеевич</p>
+        </div>
+        
+        <div class="info">
+            <p>Телефон</p>
+            <p class="info-value">8 987 234-22-31</p>
+        </div>
+        
+        <div class="info">
+            <p>Email</p>
+            <p class="info-value">konstantinovivan@gmail.com</p>
+        </div>
+
+        <div class="buttons">
+            <button class="write-message">
+                <mat-icon>email</mat-icon>Ответить на заявку
+            </button>
+
+            <button class="add-to-favorites" (click)="isFavorite = !isFavorite">
+                <img [src]="!isFavorite ? '/assets/images/performers/bookmark-disabled.png' : '/assets/images/performers/bookmark-enabled.png'">
+            </button>
+        </div>
+
+        <p class="save-order">Сохранить заявку как PDF</p>
+    </div>
+</div>
