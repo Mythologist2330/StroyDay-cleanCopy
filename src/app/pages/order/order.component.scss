@@ -11,7 +11,7 @@
             display: flex;
             align-items: center;
 
-            span{
+            p{
                 font-size: 14px;
                 line-height: 20px;
                 color: #334D6E;
@@ -299,6 +299,143 @@
 
                     .add-to-favorites{
                         flex: 0 0 48px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container{
+        padding: 33px 16px;
+        overflow-x: hidden;
+
+        .main-content{
+            width: 100%;
+
+            .breadcrumbs{
+                display: inline-block;
+
+                p{
+                    position: relative;
+                    top: -8px;
+                    display: inline-block;
+                    min-width: max-content;
+                    margin-bottom: 3px;
+                }
+            }
+
+            .title{
+                display: block;
+                margin: 6px 0 14px 0;
+                font-size: 24px;
+                line-height: 28px;
+
+                span{
+                    display: inline-block;
+                    min-width: max-content;
+                }
+            }
+
+            .content-info{
+
+                &.basic-info-margin{
+                    margin: 14px 0 10px 0;
+                }
+
+                &.additional-info-margin{
+                    margin: 7px 0 0 0;
+                }
+
+                .info-elem{
+                    display: block;
+                    padding: 11px 0 12px 0;
+                    font-size: 16px;
+                    line-height: 24px;
+
+                    .info-elem-value{
+                        margin-top: 4px;
+
+                        .segment{
+                            padding: 3px 8px;
+                            margin-left: 5px;
+                            font-size: 8px;
+                            line-height: 12px;
+                        }
+                    }
+                }
+            }
+
+            .additional-info-title{
+                font-size: 20px;
+                line-height: 28px;
+            }
+
+            .photos{
+                display: flex;
+                flex-wrap: unset;
+                margin-top: 12px;
+                overflow-y: scroll;
+
+                .photo{
+                    flex: 0 0 251px;
+                    height: 188px;
+                    margin: 0 18px 0 0;
+                }
+            }
+
+            .published-on{
+                margin: 22px 0 42px 0;
+            }
+        }
+
+        .profile{
+            display: block;
+            width: 100%;
+            padding: 40px 0 23px 0;
+            margin: 39px auto 0 auto;
+
+            .left-column{
+
+                .avatar{
+                    margin: auto;
+                }
+
+                .name{
+                    margin: 24px auto 8px auto;
+                }
+
+                .was-online{
+                    margin: 0 auto 23px auto;
+                }
+            }
+
+            .right-column{
+                width: auto;
+
+                .info{
+                    padding: 13px 16px 10px 16px;
+
+                    &:first-child{
+                        padding: 13px 16px 10px 16px;
+                        border-top: 1px solid #E3E9F2;
+                    }
+
+                    .info-value{
+                        min-width: auto;
+                    }
+                }
+
+                .buttons{
+                    margin: 13px 16px 9px 16px;
+
+                    .write-message{
+                        flex: 0 0 78.2%;
+                    }
+
+                    .add-to-favorites{
+                        flex: 0 0 18.6%;
                     }
                 }
             }
