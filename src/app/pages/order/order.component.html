@@ -1,3 +1,35 @@
+<ng-container *ngIf="isTablet">
+    <div class="container-reply-to-order" [ngClass]="shrinkHeader ? 'fixed' : ''">
+        <div class="block">
+            <div class="account">
+                <div class="avatar"></div>
+    
+                <div>
+                    <p class="name">ООО “Вектор и партнеры”</p>
+                    <p class="was-online">Был на сайте два дня назад</p>
+                </div>
+            </div>
+        
+            <div class="buttons">
+                <button class="write-message">
+                    <mat-icon>email</mat-icon>Ответить на заявку
+                </button>
+    
+                <button class="add-to-favorites" (click)="isFavorite = !isFavorite">
+                    <img [src]="!isFavorite ? '/assets/images/performers/bookmark-disabled.png' : '/assets/images/performers/bookmark-enabled.png'">
+                </button>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="isMobile">
+    <div class="container-reply-to-order-mobile" [ngClass]="shrinkHeader ? 'fixed' : ''">
+        <button class="write-message"><mat-icon>email</mat-icon>Ответить</button>
+        <button class="add-to-favorites" (click)="isFavorite = !isFavorite">Добавить в избранное</button>
+    </div>
+</ng-container>
+
 <div class="container">
     <div class="main-content">
         <div class="breadcrumbs">

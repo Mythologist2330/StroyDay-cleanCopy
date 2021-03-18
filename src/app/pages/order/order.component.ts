@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
 	selector: 'app-order',
@@ -6,9 +6,12 @@ import { Component } from '@angular/core';
 	styleUrls: ['./order.component.scss']
 })
 
-export class OrderComponent {
+export class OrderComponent implements OnInit{
 
 	isFavorite = false;
+	isTablet: boolean;
+	isMobile: boolean;
+	public shrinkHeader = false;
 
 	segments = ['эконом', 'стандарт']
 
@@ -20,6 +23,23 @@ export class OrderComponent {
 		'assets/images/order/photo-for-order.png',
 		'assets/images/order/photo-for-order.png'
 	]
+
+	ngOnInit() {
+		if (window.innerWidth < 1276) {
+			this.isTablet = true
+		}
+
+		if (window.innerWidth < 768) {
+			this.isTablet = false
+			this.isMobile = true
+		}
+
+		this.animateHeader();
+	}
+
+	animateHeader(): void {
+	  window.onscroll = () => this.shrinkHeader = (window.pageYOffset > 100) ? true : false;
+	};
 
 	getColor(segment) {
 		if (segment === 'эконом') {
