@@ -163,19 +163,22 @@
 
         .performers-not-found{
             margin: 206px auto;
-            // display: none;
             display: flex;
             flex-direction: column;
             align-items: center;
-            .performers-not-found-p{
-                margin: 38px 0 4px 0;
-                font-weight: bold;
-                line-height: 24px;
-                color: #8594A8;
+            p {
+                color: #8594A8;                
+                &.performers-not-found{
+                    margin: 38px 0 4px 0;
+                    font-weight: bold;
+                    line-height: 24px;
+                }
+                &.try-adjust-filter{
+                    font-size: 12px;
+                    line-height: 18px;
+                }
             }
-            .try-adjust-filter{
-                font-size: 12px;
-                line-height: 18px;
+            svg-icon-sprite {
                 color: #8594A8;
             }
         }

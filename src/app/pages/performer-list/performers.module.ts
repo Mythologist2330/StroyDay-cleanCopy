@@ -10,7 +10,6 @@ import { FilterLocationComponent } from './components/filter-location/filter-loc
 import { FilterCategoriesComponent } from './components/filter-categories/filter-categories.component';
 import { CardComponent } from './components/card/card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FilterSubCategoriesComponent } from './components/filter-sub-categories/filter-sub-categories.component';
 
 
 @NgModule({
@@ -21,7 +20,6 @@ import { FilterSubCategoriesComponent } from './components/filter-sub-categories
         FilterLocationComponent,
         FilterCategoriesComponent,
         CardComponent,
-        FilterSubCategoriesComponent
     ],
     imports: [
         CommonModule,

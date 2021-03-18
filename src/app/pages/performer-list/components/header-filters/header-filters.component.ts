@@ -16,5 +16,4 @@ export class HeaderFiltersComponent {
         toggle = !toggle;
         this.invertToggle.emit(toggle)
     }
-
 }
