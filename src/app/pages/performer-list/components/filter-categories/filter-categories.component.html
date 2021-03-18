@@ -29,15 +29,20 @@
                         <p>{{category.title}} ({{(catSrv.getNodeCategory(category.id) | async).length}})</p>
                     </div>
                     
-                    <div class="checkboxes" [@toggleTree]="number === i ? 'open' : 'close'" *ngFor='let sub of catSrv.getNodeCategory(category.id) | async'>
+                    <div class="checkboxes" 
+                        [@toggleTree]="number === i ? 'open' : 'close'"
+                        *ngFor='let sub of catSrv.getNodeCategory(category.id) | async'>
+
                         <label>
-                            <input type="checkbox" [checked]='isChecked(sub.title)' [value]="sub.title" (change)='setCategories($event.target.value)'>
+                            <input type="checkbox" 
+                                [checked]='isChecked(sub.title)'
+                                [value]="sub.title"
+                                (change)='setCategories($event.target.value)'>
+                                
                             <p>{{sub.title}}</p>
                         </label>
                     </div>
-                </div>
-
-                
+                </div>                
                 <p class="checkboxes-reset" (click)='resetCheckboxes()'>Сбросить</p>
             </div>
         </div>

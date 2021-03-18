@@ -102,7 +102,10 @@
                         </fieldset>
                     </div>            
                     <label>
-                        <input type="checkbox" (click)="switchActive('contactPerson', i)" [checked]='person.active' formControlName="active">
+                        <input type="checkbox" 
+                            (click)="switchActive('contactPerson', i)"
+                            [checked]='person.active' 
+                            formControlName="active">
                         <p>Использовать в качестве основного контактного лица</p>
                     </label>            
                     <mat-icon class='delete' (click)="deleteElement(array('contactPerson'), i)">delete</mat-icon>
@@ -171,6 +174,7 @@
                             <legend>Тип исполнителя</legend>
                             <select formControlName="title">
                                 <option>Не выбран</option>
+                                <option value="ООО">ООО</option>
                                 <option value="юридическое лицо">Юридическое лицо</option>
                                 <option value="физическое лицо">Физическое лицо</option>
                                 <option value="индивидуальный предприниматель">Индивидуальный предприниматель</option>

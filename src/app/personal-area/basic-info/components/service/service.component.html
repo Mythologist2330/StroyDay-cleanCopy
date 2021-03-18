@@ -2,7 +2,10 @@
     <div class="service-header">
         <p class="title-and-segments">
             <span class="title">{{ service.title }}</span>
-            <span class="segment" [ngStyle]="{'background': getBackground(segment), 'color': getColor(segment)}" *ngFor="let segment of service.getSegments()">{{ segment }}</span>
+            <span class="segment"
+                [ngStyle]="{'background': getBackground(segment), 'color': getColor(segment)}"
+                *ngFor="let segment of service.getSegments()">{{ segment }}
+            </span>
         </p>
 
         <p class="price">{{ service.getMinPrice() }}</p>
@@ -11,7 +14,10 @@
     <div class="service-header-mobile">
         <p class="title-segments-mobile">
             <span class="title-mobile">{{ service.title }}</span>
-            <span class="segment-mobile" [ngStyle]="{'background': getBackground(segment), 'color': getColor(segment)}" *ngFor="let segment of service.getSegments()">{{ segment }}</span>
+            <span class="segment-mobile" 
+                [ngStyle]="{'background': getBackground(segment), 'color': getColor(segment)}" 
+                *ngFor="let segment of service.getSegments()">{{ segment }}
+            </span>
         </p>
 
         <p class="price-mobile">{{ service.getMinPrice() }}</p>

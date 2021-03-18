@@ -2,9 +2,9 @@
   "name": "stroy-day",
   "version": "0.0.1",
   "scripts": {
-    "ng": "ng",
     "start": "ng s",
     "build": "ng build --prod",
+    "generate:svg-sprite": "svg2sprite ./src/assets/icons ./src/assets/sprites/sprite.svg --stripAttrs fill --stripAttrs stroke --stripAttrs id",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -28,7 +28,9 @@
     "firebase": "^8.1.2",
     "leaflet": "^1.7.1",
     "leaflet.fullscreen": "^1.6.0",
+    "ng-svg-icon-sprite": "^1.9.1",
     "rxjs": "~6.6.0",
+    "svg2sprite-cli": "^2.0.1",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },

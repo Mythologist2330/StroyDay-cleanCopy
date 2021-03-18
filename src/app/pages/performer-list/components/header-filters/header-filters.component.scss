@@ -27,12 +27,10 @@
     .header-filters{
         border-right: 1px solid #C3CBD6;
         margin: 0 0 2px -3px;
-
         .notifications{
             display: none;
         }
     }
-
     .header-sorting{
         margin: 0 0 2px 8px;
     }
@@ -41,35 +39,26 @@
 
 
 @media screen and (max-width:1275px) {
-
     .container{
-        display: flex;
-        
+        display: flex;        
 
         .header-filters{
             margin: 0;
             padding: 0 0px 2px 4px;
-        }
-    
+        }    
         .header-sorting{
             margin: 0;
             padding: 0 0 2px 2px;
         }
     }
-
 }
 
-
-
-
 @media screen and (max-width:767px) {
-    .container{
-    
+    .container{    
         .header-filters{
             display: flex;
             margin: 0;
             padding: 0px 0px 2px 3px;
-
             .notifications{
                 display: flex;
                 align-items: center;
