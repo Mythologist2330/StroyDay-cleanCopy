@@ -11,6 +11,7 @@ import { RatingStarsComponent } from '../components/rating-stars/rating-stars.co
 import { PaginationComponent } from '../components/pagination/pagination.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchPipe } from '../pipes/search.pipe';
+import { IconSpriteModule } from 'ng-svg-icon-sprite';
 
 @NgModule({
     declarations: [            
@@ -30,6 +31,7 @@ import { SearchPipe } from '../pipes/search.pipe';
         RouterModule,
         FormsModule,
         ReactiveFormsModule,
+        IconSpriteModule.forRoot({ path: 'assets/sprites/sprite.svg' }),
     ],
   exports: [
         MaterialModule,
@@ -44,6 +46,7 @@ import { SearchPipe } from '../pipes/search.pipe';
         FormsModule,
         ReactiveFormsModule,
         SearchPipe,
+        IconSpriteModule,
     ],
 })
 export class SharedModule { }

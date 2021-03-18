@@ -102,7 +102,10 @@
                         </fieldset>
                     </div>            
                     <label>
-                        <input type="checkbox" (click)="switchActive('contactPerson', i)" [checked]='person.active' formControlName="active">
+                        <input type="checkbox" 
+                            (click)="switchActive('contactPerson', i)"
+                            [checked]='person.active' 
+                            formControlName="active">
                         <p>Использовать в качестве основного контактного лица</p>
                     </label>            
                     <mat-icon class='delete' (click)="deleteElement(array('contactPerson'), i)">delete</mat-icon>
