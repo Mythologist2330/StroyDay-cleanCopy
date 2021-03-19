@@ -11,7 +11,9 @@ export class OrderComponent implements OnInit{
 	isFavorite = false;
 	isTablet: boolean;
 	isMobile: boolean;
-	public shrinkHeader = false;
+	shrinkHeader = false;
+	toggleOverlay = false;
+	isSuccessfullySent = false;
 
 	segments = ['эконом', 'стандарт']
 

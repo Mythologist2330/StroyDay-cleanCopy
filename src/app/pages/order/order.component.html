@@ -11,7 +11,7 @@
             </div>
         
             <div class="buttons">
-                <button class="write-message">
+                <button class="write-message" (click)="toggleOverlay = true">
                     <mat-icon>email</mat-icon>Ответить на заявку
                 </button>
     
@@ -25,7 +25,7 @@
 
 <ng-container *ngIf="isMobile">
     <div class="container-reply-to-order-mobile" [ngClass]="shrinkHeader ? 'fixed' : ''">
-        <button class="write-message"><mat-icon>email</mat-icon>Ответить</button>
+        <button class="write-message" (click)="toggleOverlay = true"><mat-icon>email</mat-icon>Ответить</button>
         <button class="add-to-favorites" (click)="isFavorite = !isFavorite">Добавить в избранное</button>
     </div>
 </ng-container>
@@ -128,7 +128,7 @@
             </div>
     
             <div class="buttons">
-                <button class="write-message">
+                <button class="write-message" (click)="toggleOverlay = true">
                     <mat-icon>email</mat-icon>Ответить на заявку
                 </button>
     
@@ -140,4 +140,39 @@
             <p class="save-order">Сохранить заявку как PDF</p>
         </div>
     </div>
+</div>
+
+<div class="overlay" [ngStyle]="{display: toggleOverlay ? 'flex' : 'none'}">
+    <ng-container *ngIf="!isSuccessfullySent; else successfullySent">
+        <div class="modal-reply">
+            <mat-icon class="close" (click)="toggleOverlay = false">clear</mat-icon>
+
+            <p class="title">Ответить на заявку</p>
+
+            <p class="description">Пользователь увидит Ваш ответ на заявку. Вы можете добавить сопроводительное сообщение для пользователя.</p>
+
+            <fieldset>
+                <legend>Ваше сообщение</legend>
+                <textarea placeholder="Введите сообщение"></textarea>
+            </fieldset>
+
+            <button class="write-message" (click)="isSuccessfullySent = true"><mat-icon>email</mat-icon>Ответить на заявку</button>
+        </div>
+    </ng-container>
+
+    <ng-template #successfullySent>
+        <div class="successfully-sent">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="40" cy="40" r="40" fill="#46AA32"/>
+                <circle cx="40" cy="40" r="29.2683" fill="white" fill-opacity="0.3"/>
+                <path d="M35.122 53.6909L25.0244 43.5934L29.626 38.9918L35.122 44.504L51.187 28.4227L55.7886 33.0243L35.122 53.6909Z" fill="white"/>
+            </svg>
+
+            <p class="title">Ваш ответ отправлен</p>
+
+            <p class="description">Пользователь увидит Ваш ответ на заявку.</p>
+
+            <button class="back-to-order" (click)="isSuccessfullySent = false; toggleOverlay = false">Вернуться к заявке</button>
+        </div>
+    </ng-template>
 </div>
