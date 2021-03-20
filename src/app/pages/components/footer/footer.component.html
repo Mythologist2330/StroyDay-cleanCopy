@@ -50,19 +50,11 @@
 
             <div class="navigation-column-container">
                 <div class="navigation-column">
-                    <p class="navigation-column-list">Проектирование</p>
-                    <p class="navigation-column-list">Строительство</p>
-                    <p class="navigation-column-list">Ремонт и отделка</p>
-                    <p class="navigation-column-list">Инженерные сети</p>
-                    <p class="navigation-column-list">Загородное строительство</p>
+                    <p class="navigation-column-list" *ngFor="let category of categories.slice(0, 7)">{{ getOneLineTitle(category) }}</p>
                 </div>
 
                 <div class="navigation-column column-services-relative">
-                    <p class="navigation-column-list">Банковские гарантии</p>
-                    <p class="navigation-column-list">Юридические услуги</p>
-                    <p class="navigation-column-list">Бухгалтерские услуги</p>
-                    <p class="navigation-column-list">Строительная техника</p>
-                    <p class="navigation-column-list">Строительные материалы</p>
+                    <p class="navigation-column-list" *ngFor="let category of categories.slice(7, 13)">{{ getOneLineTitle(category) }}</p>
                 </div>
             </div>
         </div>

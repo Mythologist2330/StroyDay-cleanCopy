@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Category } from 'src/app/models/category';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
     selector: 'app-footer',
@@ -6,6 +8,25 @@ import { Component } from '@angular/core';
     styleUrls: ['./footer.component.scss']
 })
 
-export class FooterComponent{
+export class FooterComponent implements OnInit{
+
+    categories: Array<Category>
+
+    constructor(
+        public catSrv: CategoryService
+    ) {}
+
+    ngOnInit() {
+        this.catSrv.categories$.subscribe((data) => {
+                this.categories = data
+            }
+        )
+    }
+
+    getOneLineTitle(cat) {
+        if (cat.title.length < 27) {
+            return cat.title
+        }
+    }
 
 }
