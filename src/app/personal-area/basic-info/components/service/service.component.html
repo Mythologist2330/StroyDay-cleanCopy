@@ -4,7 +4,7 @@
             <p class="title-and-segments">
                 <span class="title">{{ service.title }}</span>
                 <span class="segment"
-                    [ngStyle]="{'background': getBackground(segment), 'color': getColor(segment)}"
+                    [ngStyle]="{'background': service.getBackground(segment), 'color': service.getColor(segment)}"
                     *ngFor="let segment of service.getSegments()">{{ segment }}
                 </span>
             </p>
@@ -18,7 +18,7 @@
             <p class="title-segments-mobile">
                 <span class="title-mobile">{{ service.title }}</span>
                 <span class="segment-mobile" 
-                    [ngStyle]="{'background': getBackground(segment), 'color': getColor(segment)}" 
+                    [ngStyle]="{'background': service.getBackground(segment), 'color': service.getColor(segment)}" 
                     *ngFor="let segment of service.getSegments()">{{ segment }}
                 </span>
             </p>
