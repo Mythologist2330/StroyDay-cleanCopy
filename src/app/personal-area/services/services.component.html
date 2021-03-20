@@ -8,7 +8,7 @@
         <div formArrayName="services" class='list' cdkDropList (cdkDropListDropped)="drop($event)">            
             <ng-container *ngFor="let ownService of arrayService, let i = index">
                 <div class="service" [formGroupName]="i" cdkDrag>
-                    <mat-icon class="drag">drag_indicator</mat-icon>    
+                    <mat-icon class="drag" cdkDragHandle>drag_indicator</mat-icon>    
                     <div class="choose-service">
                         <p class="title">{{ i + 1 }}.</p>        
                         <div class="title-mobile">
