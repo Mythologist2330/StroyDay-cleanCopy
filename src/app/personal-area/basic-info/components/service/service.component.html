@@ -1,25 +1,29 @@
 <ng-container *ngIf='service && service.title'>
-    <div class="service-header">
-        <p class="title-and-segments">
-            <span class="title">{{ service.title }}</span>
-            <span class="segment"
-                [ngStyle]="{'background': getBackground(segment), 'color': getColor(segment)}"
-                *ngFor="let segment of service.getSegments()">{{ segment }}
-            </span>
-        </p>
+    <ng-container *ngIf="!isMobile; else mobile">
+        <div class="service-header">
+            <p class="title-and-segments">
+                <span class="title">{{ service.title }}</span>
+                <span class="segment"
+                    [ngStyle]="{'background': getBackground(segment), 'color': getColor(segment)}"
+                    *ngFor="let segment of service.getSegments()">{{ segment }}
+                </span>
+            </p>
+    
+            <p class="price">{{ service.getMinPrice() }}</p>
+        </div>
+    </ng-container>
 
-        <p class="price">{{ service.getMinPrice() }}</p>
-    </div>
-
-    <div class="service-header-mobile">
-        <p class="title-segments-mobile">
-            <span class="title-mobile">{{ service.title }}</span>
-            <span class="segment-mobile" 
-                [ngStyle]="{'background': getBackground(segment), 'color': getColor(segment)}" 
-                *ngFor="let segment of service.getSegments()">{{ segment }}
-            </span>
-        </p>
-
-        <p class="price-mobile">{{ service.getMinPrice() }}</p>
-    </div>
+    <ng-template #mobile>
+        <div class="service-header-mobile">
+            <p class="title-segments-mobile">
+                <span class="title-mobile">{{ service.title }}</span>
+                <span class="segment-mobile" 
+                    [ngStyle]="{'background': getBackground(segment), 'color': getColor(segment)}" 
+                    *ngFor="let segment of service.getSegments()">{{ segment }}
+                </span>
+            </p>
+    
+            <p class="price-mobile">{{ service.getMinPrice() }}</p>
+        </div>
+    </ng-template>
 </ng-container>

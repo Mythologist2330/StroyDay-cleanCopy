@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Service } from 'src/app/models/Service';
 
 @Component({
@@ -6,9 +6,19 @@ import { Service } from 'src/app/models/Service';
   templateUrl: './service.component.html',
   styleUrls: ['./service.component.scss']
 })
-export class ServiceComponent {
+
+export class ServiceComponent implements OnInit{
 
     @Input() service: Service;
+    isMobile: boolean;
+
+    ngOnInit() {
+		if (window.innerWidth < 768) {
+			this.isMobile = true
+		} else {
+            this.isMobile = false
+        }
+    }
 
     getColor(segment) {
         if (segment === 'эконом') {
