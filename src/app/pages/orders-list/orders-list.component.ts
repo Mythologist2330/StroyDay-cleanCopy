@@ -1,8 +1,6 @@
 import { state, style, trigger } from '@angular/animations';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ITag } from 'src/app/interfaces/ITag';
-import { Category } from 'src/app/models/category';
-import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-orders-list',
@@ -22,23 +20,9 @@ import { CategoryService } from 'src/app/services/category.service';
 
 export class OrdersListComponent implements OnInit {
 
-  @Input() checked: string[];
-  @Output() setChecked = new EventEmitter();
-  public categories: Category[];
   public toggle = false;
-  public number: number;
-  public searchText = ''
-  public popup = []
   public shrinkHeader = false;
   public tags: ITag[] = [];
-
-  filterLocation = false;
-  filterServices = false;
-  filterPriceLevel = false;
-  filterContract = false;
-  filterTypeOfPerformer = false;
-  filterOrderSum = false;
-  filterOrderStatus = false;
 
   orders = [
     {
@@ -85,10 +69,7 @@ export class OrdersListComponent implements OnInit {
     }
   ]
 
-  constructor(public catSrv: CategoryService) { }
-
   ngOnInit(): void {
-    this.catSrv.categories$.subscribe(data => this.categories = data);
     this.animateHeader();
   }
 
@@ -100,54 +81,8 @@ export class OrdersListComponent implements OnInit {
     this.toggle = e;
   }
 
-  setSearch(value) {
-    this.popup = [];
-    if (value.length < 2) {
-      return
-    }
-    this.categories.filter(cat => {
-        if (cat.title.toLowerCase().includes(value.toLowerCase())) {
-          this.popup.push(cat.title);
-        }  
-    })
-    if (!this.popup.length) {
-      this.popup.push('Ничего не найдено')
-    }
-  }
-
-  addCheck(value) {
-    this.popup = [];
-    if (value === 'Ничего не найдено') {
-      return
-    }    
-    if (!this.checked.includes(value)) {
-      this.setCategories(value);
-    }    
-    this.searchText = value;
-  }
-
-  setCategories(value) {
-    if (this.checked.includes(value)) {
-      this.checked = this.checked.filter(val => val.toLowerCase() !== value.toLowerCase())
-    } else {
-      this.checked.push(value);
-    }
-    this.setChecked.emit(this.checked);
-  }
-
-  isChecked(value) {
-    if (this.checked) {
-      return this.checked.includes(value);
-    }    
-  }
-
   setToggle(i) {
     console.log(i)
-  }
-
-  resetCheckboxes() {
-    this.checked = [];
-    this.setChecked.emit(this.checked)
   }
 
 }
