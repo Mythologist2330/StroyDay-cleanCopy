@@ -686,4 +686,33 @@
             }
         }
     }
+
+    .overlay{
+
+        .modal-reply{
+            width: 100%;
+            margin: 0 16px;
+            padding: 16px;
+
+            .description{
+                font-size: 14px;
+                line-height: 20px;
+            }
+        }
+
+        .successfully-sent{
+            width: 100%;
+            margin: 0 16px;
+            padding: 16px;
+
+            .description{
+                font-size: 14px;
+                line-height: 20px;
+            }
+
+            .back-to-order{
+                width: 100%;
+            }
+        }
+    }
 }
