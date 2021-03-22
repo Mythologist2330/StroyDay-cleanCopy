@@ -27,7 +27,7 @@
                     <p>Метро</p>
                 </div>
     
-                <p class="field">{{ card.location.metro }}</p>
+                <p class="field">{{ card.location.metro.join(', ') }}</p>
             </div>
     
             <hr>
@@ -66,7 +66,7 @@
                     <p>E-mail</p>
                 </div>
     
-                <p class="field">{{ card.description.email }}</p>
+                <p class="field">{{ card.getContactPerson().email }}</p>
             </div>
         </div>
 

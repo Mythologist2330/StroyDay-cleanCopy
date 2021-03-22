@@ -10,8 +10,6 @@ import { PostedOrdersComponent } from "./components/posted-orders/posted-orders.
 import { ProfileFaceComponent } from "./components/profile/profile.component";
 import { RequisitesComponent } from "./components/requisites/requisites.component";
 import { ReviewsComponent } from "./components/reviews/reviews.component";
-import { ServiceComponent } from "./components/service/service.component";
-import { ServiceListComponent } from "./components/service-list/service-list.component";
 import { ProfileComponent } from "./profile.component";
 
 @NgModule({
@@ -21,8 +19,6 @@ import { ProfileComponent } from "./profile.component";
         RequisitesComponent,
         BasicInfoComponent,
         GalleryComponent,
-        ServiceListComponent,
-        ServiceComponent,
         ReviewsComponent,
         AcceptedOrdersComponent,
         PostedOrdersComponent,
