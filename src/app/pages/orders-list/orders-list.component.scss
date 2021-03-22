@@ -225,6 +225,97 @@
 
             .filter-order-sum-content{
 
+                .from-to{
+                    display: flex;
+                    width: 236px;
+                    height: 44px;
+                    margin-top: 12px;
+                    border: 1px solid #C3CBD6;
+                    border-radius: 4px 4px 0px 0px;
+
+                    label{
+                        display: flex;
+                        align-items: center;
+                        width: 50%;
+                        padding: 0 12px;
+                        border-radius: 4px 4px 0px 0px;
+                        cursor: pointer;
+
+                        p{
+                            font-size: 14px;
+                            line-height: 20px;
+                            color: #8594A8;
+                        }
+
+                        input{
+                            width: 100%;
+                            margin-left: 3px;
+                            border: none;
+                            border-radius: 4px 4px 0px 0px;
+                            font-size: 14px;
+                            line-height: 20px;
+                            color: #334D6E;
+                        }
+                    }
+
+                    hr{
+                        width: 1px;
+                        height: 100%;
+                        border: none;
+                        background-color: #C3CBD6;
+                    }
+                }
+
+                .double-slider{
+                    position: relative;
+                    z-index: 1;
+                    top: -2px;
+
+                    .range{
+                        height: 4px;
+                        background-color: #0D6FE3;
+                    }
+
+                    .thumb{
+                        position: absolute;
+                        z-index: 3;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        background: #FFFFFF;
+                        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+
+                        span{
+                            display: block;
+                            width: 12px;
+                            height: 12px;
+                            background: #0D6DDF;
+                            border-radius: 50%;
+                        }
+                    }
+
+                    .thumb.left{
+                        left: 0;
+                        transform: translate(-9px, -12px);
+                    }
+
+                    .thumb.right{
+                        right: 0;
+                        transform: translate(9px, -12px);
+                    }
+
+                    .thumb.hover{
+                        box-shadow: 0 0 0 20px rgba(98,0,238,.1);
+                    }
+
+                    .thumb.active{
+                        box-shadow: 0 0 0 40px rgba(98,0,238,.2);
+                    }
+                }
+
                 .reset{
                     width: min-content;
                     margin-top: 12px;

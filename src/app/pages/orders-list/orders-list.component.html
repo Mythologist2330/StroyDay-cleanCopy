@@ -134,7 +134,7 @@
         </div>
 
         <div class="filter">
-            <p class="filter-title" (click)="filterTypeOfPerformer = !filterTypeOfPerformer">Тип исполнителя<mat-icon [ngStyle]="{transform: filterTypeOfPerformer ? 'rotate(180deg)' : ''}">keyboard_arrow_down</mat-icon></p>
+            <p class="filter-title" (click)="filterTypeOfPerformer = !filterTypeOfPerformer">Тип профиля<mat-icon [ngStyle]="{transform: filterTypeOfPerformer ? 'rotate(180deg)' : ''}">keyboard_arrow_down</mat-icon></p>
 
             <div class="filter-checkbox-content" [ngStyle]="{display: filterTypeOfPerformer ? 'block' : 'none'}">
                 <label>
@@ -160,7 +160,25 @@
             <p class="filter-title" (click)="filterOrderSum = !filterOrderSum">Сумма заявки<mat-icon [ngStyle]="{transform: filterOrderSum ? 'rotate(180deg)' : ''}">keyboard_arrow_down</mat-icon></p>
 
             <div class="filter-order-sum-content" [ngStyle]="{display: filterOrderSum ? 'block' : 'none'}">
-                
+                <div class="from-to">
+                    <label>
+                        <p>от</p>
+                        <input type="text">
+                    </label>
+
+                    <hr>
+
+                    <label>
+                        <p>до</p>
+                        <input type="text">
+                    </label>
+                </div>
+
+                <div class="double-slider">
+                    <div class="range"></div>
+                    <div class="thumb left"><span></span></div>
+                    <div class="thumb right"><span></span></div>
+                </div>
 
                 <p class="reset">Сбросить</p>
             </div>
