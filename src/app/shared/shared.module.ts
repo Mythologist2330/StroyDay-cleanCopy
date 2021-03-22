@@ -9,6 +9,8 @@ import { BreadcrumbsComponent } from '../components/breadcrumbs/breadcrumbs.comp
 import { TagsComponent } from '../components/tags/tags.component';
 import { RatingStarsComponent } from '../components/rating-stars/rating-stars.component';
 import { PaginationComponent } from '../components/pagination/pagination.component';
+import { ServiceComponent } from "../components/service/service.component";
+import { ServiceListComponent } from "../components/service-list/service-list.component";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchPipe } from '../pipes/search.pipe';
 import { IconSpriteModule } from 'ng-svg-icon-sprite';
@@ -21,6 +23,8 @@ import { IconSpriteModule } from 'ng-svg-icon-sprite';
         RatingStarsComponent,
         PaginationComponent,
         SearchPipe,
+        ServiceComponent,
+        ServiceListComponent,
         
     ],
   imports: [
@@ -42,6 +46,8 @@ import { IconSpriteModule } from 'ng-svg-icon-sprite';
         TagsComponent,
         RatingStarsComponent,
         PaginationComponent,
+        ServiceComponent,
+        ServiceListComponent,
         RouterModule,
         FormsModule,
         ReactiveFormsModule,

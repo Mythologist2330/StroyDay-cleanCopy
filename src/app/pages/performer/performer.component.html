@@ -14,7 +14,9 @@
         <app-card [card]='card' [rating]='getRating()'></app-card>
         <app-about-performer [card]='card'></app-about-performer>
         <app-map-location [markers]='markers'></app-map-location>
-        <!-- <app-services></app-services> -->
+
+        <app-service-list [srv]='card.services' [id]='card.id'></app-service-list>
+        
         <app-reviews [reviews]='reviews'></app-reviews>
         <app-submit-application></app-submit-application>
         <app-complete-orders [performerId]='card.id'></app-complete-orders>

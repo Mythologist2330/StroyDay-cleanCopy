@@ -13,13 +13,11 @@ import { DocumentsComponent } from "./components/documents/documents.component";
 import { MapLocationComponent } from "./components/map-location/map-location.component";
 import { PostedOrdersComponent } from "./components/posted-orders/posted-orders.component";
 import { ReviewsComponent } from "./components/reviews/reviews.component";
-import { ServicesComponent } from "./components/services/services.component";
 import { SliderComponent } from "./components/slider/slider.component";
 import { SubmitApplicationComponent } from "./components/submit-application/submit-application.component";
 import { WriteToPerformerComponent } from "./components/write-to-performer/write-to-performer.component";
 import { PerformerComponent } from "./performer.component";
 import { ReviewComponent } from './components/review/review.component';
-import { ServiceComponent } from './components/service/service.component';
 
 
 @NgModule({
@@ -29,7 +27,6 @@ import { ServiceComponent } from './components/service/service.component';
         CardComponent,
         AboutPerformer,
         MapLocationComponent,
-        ServicesComponent,
         ReviewsComponent,
         SubmitApplicationComponent,
         CompleteOrdersComponent,
@@ -39,7 +36,6 @@ import { ServiceComponent } from './components/service/service.component';
         CertificatesComponent,
         WriteToPerformerComponent,
         ReviewComponent,
-        ServiceComponent
     ],
     imports: [
         CommonModule,

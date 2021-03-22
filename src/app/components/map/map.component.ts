@@ -30,7 +30,9 @@ export class MapComponent implements OnInit {
   }
 
   setCenter(markers: Marker[]) {
-    if (!markers.length) {
+    if (!markers || !markers.length) {
+      let center = this.mapSrv.createLatLng(60, 30);
+      this.map.setView(center, 12);
       return
     }
     let sumLat = 0;
