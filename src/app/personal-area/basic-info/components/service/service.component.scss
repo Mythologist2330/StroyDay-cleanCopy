@@ -39,20 +39,12 @@
     }
 }
 
-.service-header-mobile{
-    display: none;
-}
-
 @media screen and (max-width: 767px) {
     .service-header{
-        display: none;
-    }
+        align-items: unset;
+        padding-bottom: 0;
 
-    .service-header-mobile{
-        display: flex;
-        justify-content: space-between;
-
-        .title-segments-mobile{
+        .title-and-segments{
             display: inline-block;
             flex: 0 0 62%;
             margin-right: 8px;
@@ -60,11 +52,13 @@
             line-height: 24px;
             color: #334D6E;
 
-            .title-mobile{
+            .title{
                 margin-right: 6px;
+                font-size: 16px;
+                line-height: 24px;
             }
 
-            .segment-mobile{
+            .segment{
                 display: inline-block;
                 width: max-content;
                 padding: 3px 8px;
@@ -78,7 +72,7 @@
             }
         }
 
-        .price-mobile{
+        .price{
             display: inline-table;
             min-width: max-content;
             font-weight: 500;

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Service } from 'src/app/models/Service';
 
 @Component({
@@ -7,17 +7,8 @@ import { Service } from 'src/app/models/Service';
   styleUrls: ['./service.component.scss']
 })
 
-export class ServiceComponent implements OnInit {
+export class ServiceComponent {
 
     @Input() service: Service;
-    isMobile: boolean;
-
-    ngOnInit() {
-		if (window.innerWidth < 768) {
-			this.isMobile = true
-		} else {
-            this.isMobile = false
-        }
-    }
 
 }
