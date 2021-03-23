@@ -1,21 +1,10 @@
-import { state, style, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { ITag } from 'src/app/interfaces/ITag';
 
 @Component({
   selector: 'app-orders-list',
   templateUrl: './orders-list.component.html',
-  styleUrls: ['./orders-list.component.scss'],
-  animations: [
-    trigger('toggleTree', [
-      state('open', style({
-        display: 'block'
-      })),
-      state('closed', style({
-        display: 'none'
-      }))
-    ])
-  ]
+  styleUrls: ['./orders-list.component.scss']
 })
 
 export class OrdersListComponent implements OnInit {

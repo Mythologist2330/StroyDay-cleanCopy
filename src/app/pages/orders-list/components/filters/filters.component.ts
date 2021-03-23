@@ -1,3 +1,4 @@
+import { state, style, trigger } from '@angular/animations';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
@@ -5,7 +6,17 @@ import { CategoryService } from 'src/app/services/category.service';
 @Component({
 	selector: 'app-filters',
 	templateUrl: './filters.component.html',
-	styleUrls: ['./filters.component.scss']
+	styleUrls: ['./filters.component.scss'],
+	animations: [
+	  trigger('toggleTree', [
+		state('open', style({
+		  display: 'block'
+		})),
+		state('closed', style({
+		  display: 'none'
+		}))
+	  ])
+	]
 })
 
 export class FiltersComponent implements OnInit {
@@ -76,6 +87,15 @@ export class FiltersComponent implements OnInit {
 	resetCheckboxes() {
 	  this.checked = [];
 	  this.setChecked.emit(this.checked)
+	}
+
+
+
+
+
+
+	setLeftValue() {
+		console.log('!')
 	}
 
 }
