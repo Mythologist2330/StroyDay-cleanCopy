@@ -7,7 +7,7 @@
 
     <div class="right-column">
         <app-basic-info [performer]="card"></app-basic-info>
-        <app-gallery></app-gallery>
+        <app-gallery [id]="card.id"></app-gallery>
         <app-service-list [srv]='card.services' [id]='card.id' ></app-service-list>
         <!-- <ng-container *ngIf="reviews">
             <app-reviews [reviews]="reviews"></app-reviews>

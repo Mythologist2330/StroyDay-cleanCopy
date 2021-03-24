@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-gallery',
@@ -6,7 +6,10 @@ import { Component } from '@angular/core';
     styleUrls: ['./gallery.component.scss']
 })
 
-export class GalleryComponent{
+export class GalleryComponent implements OnInit {
+
+    @Input() id: string;
+    public linkTo = '';
 
     albums: any = [
         {
@@ -30,5 +33,9 @@ export class GalleryComponent{
             image: '../../../../../assets/images/personal-area/bg-album.png'
         }
     ]
+
+    ngOnInit() {
+        this.linkTo = '/personalArea/' + this.id + '/gallery';
+    }
 
 }
