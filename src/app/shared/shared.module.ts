@@ -15,6 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchPipe } from '../pipes/search.pipe';
 import { IconSpriteModule } from 'ng-svg-icon-sprite';
 
+import { PhoneMaskDirective } from '../directives/phone-mask.directive';
+
 @NgModule({
     declarations: [            
         MapComponent,
@@ -25,6 +27,7 @@ import { IconSpriteModule } from 'ng-svg-icon-sprite';
         SearchPipe,
         ServiceComponent,
         ServiceListComponent,
+        PhoneMaskDirective,
         
     ],
   imports: [
@@ -53,6 +56,7 @@ import { IconSpriteModule } from 'ng-svg-icon-sprite';
         ReactiveFormsModule,
         SearchPipe,
         IconSpriteModule,
+        PhoneMaskDirective,
     ],
 })
 export class SharedModule { }

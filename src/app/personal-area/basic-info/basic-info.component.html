@@ -25,7 +25,15 @@
             
                     <fieldset>
                         <legend>Район</legend>
-                        <input type="text" formControlName="district">
+                        <select formControlName="district">
+                            <option value='Не выбрано'>Не выбрано</option>
+                            <ng-container *ngIf='(districts$ | async) as districts'>
+                                <ng-container *ngFor='let district of districts.districts'>
+                                    <option [value]='district'>{{district}}</option>
+                                </ng-container>
+                            </ng-container>
+                                                        
+                        </select>
                     </fieldset>
             
                     <mat-icon class='delete' (click)="deleteElement(array('departureAreas'), i)">delete</mat-icon>
@@ -93,7 +101,7 @@
             
                         <fieldset>
                             <legend>Телефон</legend>
-                            <input type="text" formControlName="tel">
+                            <input type="text" appPhoneMask formControlName="tel" placeholder="+7 (000) (000) 0000" (change)='changePhone($event.target.value)'>
                         </fieldset>
             
                         <fieldset>
@@ -125,7 +133,12 @@
                 <div class="house-and-apartment">
                     <fieldset>
                         <legend>Населенный пункт</legend>
-                        <input type="text" placeholder="Введите название" formControlName="locality">
+                        
+                        <select type="text" formControlName="city">
+                            <option>Не выбрано</option>
+                            <option>Москва</option>
+                            <option>Санкт-Петербург</option>
+                        </select>
                     </fieldset>        
                     <div class="mini-fieldsets">
                         <fieldset>
@@ -174,7 +187,6 @@
                             <legend>Тип исполнителя</legend>
                             <select formControlName="title">
                                 <option>Не выбран</option>
-                                <option value="ООО">ООО</option>
                                 <option value="юридическое лицо">Юридическое лицо</option>
                                 <option value="физическое лицо">Физическое лицо</option>
                                 <option value="индивидуальный предприниматель">Индивидуальный предприниматель</option>

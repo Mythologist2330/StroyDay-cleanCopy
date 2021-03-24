@@ -84,16 +84,16 @@ export class Performer {
             location += this.location.city + ', ';
         }
         if (this.location.house) {
-            location += this.location.adress;
+            location += 'ул. ' + this.location.street + ', д.' + this.location.house;
         }
         if (this.location.typographicLiterature) {
             location += this.location.typographicLiterature;
         }
         if (this.location.apartment) {
-            location += ', подъезд ' + this.location.housing;
+            location += ', к.' + this.location.housing;
         }
         if (this.location.housing) {
-            location += ', подъезд ' + this.location.apartment;
+            location += ', оф. ' + this.location.apartment;
         }
         return location;
     }

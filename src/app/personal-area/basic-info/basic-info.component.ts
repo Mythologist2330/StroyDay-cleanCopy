@@ -7,6 +7,7 @@ import { IMetroStation } from 'src/app/interfaces/IMetro';
 import { Performer } from 'src/app/models/Performer';
 import { LocationService } from 'src/app/services/location.service';
 import { PerformersCardService } from 'src/app/services/performers-card.service';
+import { IDistrict } from 'src/app/interfaces/IDistrict';
 
 @Component({
   selector: 'app-basic-info',
@@ -20,6 +21,7 @@ export class BasicInfoComponent implements OnInit {
   public card: Performer;
   public cardSub$: Subscription;
   public metro$: Observable<IMetroStation>
+  public districts$: Observable<IDistrict>
   
   constructor(private router: Router,
               public fb: FormBuilder,
@@ -32,6 +34,12 @@ export class BasicInfoComponent implements OnInit {
       .pipe(
         map((metro: IMetroStation[]) => metro.find(val => val.city === 'Санкт-Петербург')) // Hardcode
         );
+
+    this.districts$ = this.locationSrv.getDistricts('Санкт-Петербург')
+      .pipe(
+        map((district: IDistrict[]) => district.find(val => val.city === 'Санкт-Петербург')) // Hardcode
+        );
+    
 
     this.cardSub$ = this.cardSrv.getPerformersCardById('7wx8WNLYh66KXGGSIl9N') // Hardcode
       .pipe(
@@ -47,7 +55,7 @@ export class BasicInfoComponent implements OnInit {
       metro: this.fb.array([], Validators.required),
       contactPerson: this.fb.array([], Validators.required),
       location: this.fb.group({
-        locality: [card.location.locality || '', Validators.required],
+        city: [card.location.city || '', Validators.required],
         house: card.location.house || '',
         typographicLiterature: card.location.typographicLiterature || '',
         street: card.location.street || '',
@@ -137,6 +145,10 @@ export class BasicInfoComponent implements OnInit {
         type.controls.active.setValue(false);
       }      
     })
+  }
+
+  changePhone(value) {
+    console.log(value)
   }
 
 }

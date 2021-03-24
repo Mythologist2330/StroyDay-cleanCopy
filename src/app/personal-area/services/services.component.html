@@ -77,7 +77,7 @@
 
         <div class="buttons-save-and-look">
             <button [disabled]='!isChanged' class="button-save" (click)='submit()'>Сохранить изменения</button>
-            <button class="button-look">Посмотреть на странице исполнителя<mat-icon>launch</mat-icon></button>
+            <button class="button-look" [routerLink]="'/pages/performer/' + id">Посмотреть на странице исполнителя<mat-icon>launch</mat-icon></button>
         </div>
     </form>
 

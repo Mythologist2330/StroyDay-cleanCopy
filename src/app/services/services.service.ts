@@ -30,6 +30,7 @@ export class ServicesService {
 
     getServiceById(id: string): Observable<Service> {
       return this.firestore.doc('services/' + id).get().pipe(
+        first(),
         map(srv => srv.data() ? new Service(srv.data()) : null)
       )
     } 

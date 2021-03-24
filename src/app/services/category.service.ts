@@ -29,6 +29,7 @@ export class CategoryService {
 
     getCategoryById(id: string): Observable<Category> {
         return this.firestore.doc<Partial<Category>>('categories/' + id).get().pipe(
+          first(),
           map(cat => cat.data() ? new Category({...cat.data(), id}) : null)
         )
     }    

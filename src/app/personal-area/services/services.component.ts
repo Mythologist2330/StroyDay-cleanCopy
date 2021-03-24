@@ -19,6 +19,7 @@ export class ServicesComponent implements OnInit {
   public services$: Observable<Service[]>;
   public card: Performer;
   public isChanged = false;
+  public readonly id = '7wx8WNLYh66KXGGSIl9N';
 
   constructor(public fb: FormBuilder,
               private srvSrv: ServicesService,
@@ -26,7 +27,7 @@ export class ServicesComponent implements OnInit {
 
   ngOnInit(): void {
     this.services$ = this.srvSrv.services$;
-    this.cardSrv.getPerformersCardById('7wx8WNLYh66KXGGSIl9N')
+    this.cardSrv.getPerformersCardById(this.id)
       .subscribe(data => {
         this.card = data;
         this.initForm(this.card.services)

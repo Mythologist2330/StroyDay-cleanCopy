@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
+import { IDistrict } from '../interfaces/IDistrict';
 import { IMetroStation } from '../interfaces/IMetro';
 
 @Injectable({
@@ -29,8 +30,8 @@ export class LocationService {
       return this.afs.collection('district').add({...district, id})
     }
 
-    getDistricts(city: string): Observable<any[]> {
-      return this.afs.collection('district', ref => ref.where('city', '==', city))
+    getDistricts(city: string): Observable<IDistrict[]> {
+      return this.afs.collection<IDistrict>('district', ref => ref.where('city', '==', city))
           .valueChanges()
           .pipe(first())
   }
