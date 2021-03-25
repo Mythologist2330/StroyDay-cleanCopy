@@ -31,6 +31,6 @@ export class GalleryComponent {
             count: 15,
             image: '../../../../../assets/images/personal-area/bg-album.png'
         }
-    ]
+    ];
 
 }
