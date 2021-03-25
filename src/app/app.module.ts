@@ -37,6 +37,8 @@ import { AdminModule } from './admin/admin.module';
 import { PagesModule } from './pages/pages.module';
 import { PersonalAreaModule } from './personal-area/personal-area.module';
 
+import { NouisliderModule } from 'ng2-nouislider';
+
 
 
 
@@ -73,6 +75,8 @@ registerLocaleData(localeRu, 'ru');
     PagesModule,
     PersonalAreaModule,
     AdminModule,
+
+    NouisliderModule
   ],
   providers: [AngularFirestore, { provide: LOCALE_ID, useValue: 'ru' }],
   bootstrap: [AppComponent],
