@@ -70,19 +70,35 @@
     <div class="filter">
         <p class="filter-title" (click)="filterPriceLevel = !filterPriceLevel">Уровень цен<mat-icon [ngStyle]="{transform: filterPriceLevel ? 'rotate(180deg)' : ''}">keyboard_arrow_down</mat-icon></p>
 
-        <div class="filter-checkbox-content" [ngStyle]="{display: filterPriceLevel ? 'block' : 'none'}">
+        <div class="filter-radio-content" [ngStyle]="{display: filterPriceLevel ? 'block' : 'none'}">
             <label>
-                <input type="checkbox" name="contract">
+                <input type="radio" name="cost">
+                <div class="circle">
+                    <div class="circle-blue"></div>
+                </div>
+                <p>Не имеет значения</p>
+            </label>
+            <label>
+                <input type="radio" name="cost">
+                <div class="circle">
+                    <div class="circle-blue"></div>
+                </div>
                 <p>Эконом</p>
             </label>
 
             <label>
-                <input type="checkbox" name="contract">
+                <input type="radio" name="cost">
+                <div class="circle">
+                    <div class="circle-blue"></div>
+                </div>
                 <p>Стандарт</p>
             </label>
 
             <label>
-                <input type="checkbox" name="contract">
+                <input type="radio" name="cost">
+                <div class="circle">
+                    <div class="circle-blue"></div>
+                </div>
                 <p>Премиум</p>
             </label>
 
@@ -99,7 +115,7 @@
                 <div class="circle">
                     <div class="circle-blue"></div>
                 </div>
-                <p>Не выбрано</p>
+                <p>Не имеет значения</p>
             </label>
 
             <label>
@@ -203,5 +219,9 @@
 
             <p class="reset">Сбросить</p>
         </div>
+    </div>
+    <div class="filters-buttons">
+        <button class="reset">Сбросить</button>
+        <button class="apply">Применить</button>
     </div>
 </div>

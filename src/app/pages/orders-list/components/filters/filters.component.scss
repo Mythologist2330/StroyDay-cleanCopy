@@ -413,6 +413,25 @@
             }
         }
     }
+    
+    .filters-buttons {
+        height: 72px;
+        padding: 12px 16px;
+        display: flex;
+        button {
+            flex-grow: 1;
+            height: 48px;
+            border: 1px solid #C3CBD6;
+            border-radius: 3px;
+            background-color: #fff;
+            margin: 0 6px 0 0;
+            &.apply {
+                background-color: #0D6FE3;
+                color: #fff;
+                margin: 0 0 0 6px;
+            }
+        }            
+    }
 }
 
 @media screen and (max-width: 1350px) {

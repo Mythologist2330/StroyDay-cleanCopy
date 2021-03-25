@@ -5,10 +5,10 @@
     <p class="header">Допуски, разрешения, сертификаты</p>
 
     <div *ngFor="let certificate of certificates" class="certificate">
-        <img class="image" [src]="certificate.image">
+        <img (click)='download()' class="image" [src]="certificate.image">
 
         <div class="title-and-description">
-            <p class="title">{{ certificate.title }}</p>
+            <p (click)='download()' class="title">{{ certificate.title }}</p>
             <p class="description">{{ certificate.description }}</p>
         </div>
     </div>
