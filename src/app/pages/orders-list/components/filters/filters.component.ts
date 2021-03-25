@@ -28,23 +28,28 @@ export class FiltersComponent implements OnInit {
 	public number: number;
 	public popup = [];
 	public searchText = '';
-	someRange
+	public someRange = [1, 8];
 
 	constructor(public catSrv: CategoryService) {}
 
 	ngOnInit(): void {
 		this.catSrv.categories$.subscribe(data => this.categories = data);
-
-		let someRange = document.getElementById('slider-start');
-
-		noUiSlider.create(someRange, {
-			start: [20, 80],
-			range: {
-				'min': [0],
-				'max': [100]
-			}
-		});
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	filterLocation = false;
 	filterServices = false;

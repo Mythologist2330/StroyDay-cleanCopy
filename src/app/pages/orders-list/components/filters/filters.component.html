@@ -179,7 +179,7 @@
                 </label>
             </div>
 
-            <nouislider id="slider-start" [connect]="true" [min]="0" [max]="15" [step]="1" [(ngModel)]="someRange" ></nouislider>
+            <nouislider connect="true" min="0" max="15" step="1" [(ngModel)]="someRange"></nouislider>
 
             <div class="double-slider">
                 <div class="range"></div>
@@ -222,6 +222,7 @@
             <p class="reset">Сбросить</p>
         </div>
     </div>
+
     <div class="filters-buttons">
         <button class="reset">Сбросить</button>
         <button class="apply">Применить</button>
