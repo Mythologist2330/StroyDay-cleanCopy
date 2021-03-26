@@ -16,6 +16,7 @@ import { SearchPipe } from '../pipes/search.pipe';
 import { IconSpriteModule } from 'ng-svg-icon-sprite';
 
 import { PhoneMaskDirective } from '../directives/phone-mask.directive';
+import { NouisliderModule } from 'ng2-nouislider';
 
 @NgModule({
     declarations: [            
@@ -39,6 +40,8 @@ import { PhoneMaskDirective } from '../directives/phone-mask.directive';
         FormsModule,
         ReactiveFormsModule,
         IconSpriteModule.forRoot({ path: 'assets/sprites/sprite.svg' }),
+        NouisliderModule,
+        
     ],
   exports: [
         MaterialModule,
@@ -57,6 +60,7 @@ import { PhoneMaskDirective } from '../directives/phone-mask.directive';
         SearchPipe,
         IconSpriteModule,
         PhoneMaskDirective,
+        NouisliderModule,
     ],
 })
 export class SharedModule { }

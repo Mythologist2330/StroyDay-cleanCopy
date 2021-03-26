@@ -10,7 +10,7 @@
 # dependencies
 /node_modules
 /package-lock.json
-/.firebase
+/.firebase/*
 
 # profiling files
 chrome-profiler-events*.json
