@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { tileLayer, latLng, icon, Map, MapOptions, Marker, LatLng, Icon, Popup, Polyline } from 'leaflet';
 import { Performer } from '../models/Performer';
 
@@ -19,7 +20,7 @@ export class MapService {
   latLngArray: LatLng[] = [];
   color: string;
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   updateMap(): void {
@@ -48,7 +49,7 @@ export class MapService {
     const icon = this.createIcon('/assets/images/marker.png', [30, 36], [15, 0]);
     perf.map(card => {
       const latLng = new LatLng(card.location.lat, card.location.lng);
-      this.markers.push(this.createMarker(latLng, card.description.title, icon, card.logo, card.getLocation() ));        
+      this.markers.push(this.createMarker(latLng, card.description.title, icon, card.logo, card.getLocation(), card.id ));        
     });
     return this.markers
   }
@@ -91,26 +92,32 @@ export class MapService {
     return polyline;
   }
 
-  createMarker(latLng: LatLng, title: string , icon?: Icon, logo?: string, adress?: string): Marker {
+  createMarker(latLng: LatLng, title: string , icon?: Icon, logo?: string, adress?: string, id?: string): Marker {
     if (!icon) {
       const icon = this.createIcon('/assets/images/marker.png', [30, 36], [15, 36]);
     }
+
+	let content = 	(`<div style="display: flex;">
+						<div class="logo">
+							<img style="border-radius: 50%; border: 1px solid #ccc" src='${logo}'>
+						</div>
+						<div>
+							<a href="/pages/performer/${id}" style="margin: 5px 1rem 10px; font-weight: 500; font-size: 14px; font-family: Roboto; color: #334D6E; text-decoration: underline; cursor: pointer">${title}</a>
+							<p style="margin: 0 1rem; font-size: 12px; font-family: Roboto">${adress}</p>
+						</div>
+					</div>`)
+
     return new Marker(latLng, { title } )
       .setIcon(icon)
-      .bindPopup(`
-        <div style="display: flex;">
-          <div class="logo">
-            <img style="border-radius: 50%; border: 1px solid #ccc" src='${logo}'>
-          </div>
-          <div>
-            <p style="margin: 5px 1rem 10px; font-weight: 500; font-size: 14px; font-family: Roboto; color: #334D6E; text-decoration: underline">${title}</p>
-            <p style="margin: 0 1rem; font-size: 12px; font-family: Roboto">${adress}</p>
-          </div>
-        </div>
-        `)
+      .bindPopup(content)
   }
 
-  getMylocation(): void {
-    this.map.locate({ setView: true, enableHighAccuracy: true });
-  }
+	goTo(id: string): any {
+		console.log(id);
+		this.router.navigate(['/pages/performer/' + id])
+	}
+
+	getMylocation(): void {
+		this.map.locate({ setView: true, enableHighAccuracy: true });
+	}
 }

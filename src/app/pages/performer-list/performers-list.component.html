@@ -1,7 +1,9 @@
 <div class="container-header-filters-and-sorting">
     <app-header-filters [toggle]="this.toggle"
                         [count]='this.tags.length'
-                        (invertToggle)='invertToggle($event)' 
+                        [orderBy]='orderBy'
+                        (invertToggle)='invertToggle($event)'
+                        (switchSorting)='switchOrderBy($event)'
                         [ngClass]="shrinkHeader ? 'fixed' : ''"></app-header-filters>
 </div>
 <div class="container container-performers-page">

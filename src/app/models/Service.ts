@@ -25,7 +25,7 @@ export class Service {
 
     getMinPrice(): string {
         let price =  Math.min(+this.cost.low, +this.cost.standart, +this.cost.premium);
-        return 'От ' + price + ' ₽';
+        return 'от ' + price + ' ₽';
     }
 
     getSegments(): string[] {

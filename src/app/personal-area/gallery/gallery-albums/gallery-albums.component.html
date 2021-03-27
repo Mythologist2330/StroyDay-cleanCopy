@@ -11,20 +11,21 @@
 
     <div class="gallery-albums">
         <!-- Поправить routerLink, нужно провести к нему id -->
-        <div class="create-new-album" routerLink="/personalArea/:id/gallery/createAlbum">
+        <div class="create-new-album" routerLink="/personalArea/7wx8WNLYh66KXGGSIl9N/gallery/createAlbum">
             <div><mat-icon>add</mat-icon></div>
             <p>Создать новый альбом</p>
         </div>
 
         <!-- Поправить routerLink, нужно провести к нему id -->
-        <div class="gallery-album" routerLink="/personalArea/:id/gallery/album" *ngFor="let galleryAlbum of galleryAlbums" [ngStyle]="{background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, #000000 100%), url' + '(' + galleryAlbum.image + ')'}">
+        <div class="gallery-album" routerLink="/personalArea/7wx8WNLYh66KXGGSIl9N/gallery/album"
+            *ngFor="let galleryAlbum of galleryAlbums"
+            [ngStyle]="{
+                background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, #000000 100%), url' + '(' + galleryAlbum.image + ')'}">
 
             <div class="edit"><mat-icon>edit</mat-icon></div>
         
             <p class="title">{{ galleryAlbum.title }}</p>
-            <p class="count">{{ galleryAlbum.count }}</p>
-        
+            <p class="count">{{ galleryAlbum.count }}</p>        
         </div>
     </div>
-
 </div>

@@ -15,6 +15,10 @@ app.get('/cards', async (request, response) => {
         return cards.push(snap.data());
     })
     if (q) {
+        if (q.categories) {
+          // cards = cards.filter(card => ) ДОДЕЛАТЬ!!!
+        }
+
         if (q.stars) {
           cards = cards.filter(card => +card.stars >= +(q.stars || '0'))
         }

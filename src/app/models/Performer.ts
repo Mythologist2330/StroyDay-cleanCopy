@@ -81,7 +81,7 @@ export class Performer {
     getLocation() {
         let location = '';
         if (this.location.city) {
-            location += this.location.city + ', ';
+            location += 'г. ' + this.location.city + ', ';
         }
         if (this.location.house) {
             location += 'ул. ' + this.location.street + ', д.' + this.location.house;
@@ -117,10 +117,6 @@ export class Performer {
             case 3: return 'Индивидуальный предприниматель';
         }
     }
-    
-    getMinPrice() {
-        return 'От 1500р'
-      }
 
     setLike() {
         this.likes++

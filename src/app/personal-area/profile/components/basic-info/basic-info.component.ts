@@ -4,6 +4,7 @@ import { map, switchMap, tap } from 'rxjs/operators';
 import { Performer } from 'src/app/models/Performer';
 import { ServicesService } from 'src/app/services/services.service';
 import { CategoryService } from 'src/app/services/category.service';
+import { Service } from 'src/app/models/Service';
 
 @Component({
     selector: 'app-basic-info',
@@ -15,11 +16,10 @@ export class BasicInfoComponent implements OnInit {
 
     @Input() performer: Performer;
     public showFullInfo = false;
-    public ownCategories: string[] = [];
+    public ownServices: string[] = [];
 
     constructor(private router: Router,
-                private servicesSrv: ServicesService,
-                private catSrv: CategoryService) {}
+                private servicesSrv: ServicesService) {}
 
     ngOnInit(): void {
         this.getOwnCategories();
@@ -37,12 +37,10 @@ export class BasicInfoComponent implements OnInit {
         this.performer.services.map(service => {
             this.servicesSrv.getServiceById(service.id)
                 .pipe(
-                    switchMap(srv => this.catSrv.getCategoryById(srv.parent)),
-                    map(category => category.title),
-                    tap(title => this.ownCategories.push(title))                    
+                    map(srv => srv.title),
+                    tap(title => this.ownServices.push(title))                    
                 )
                 .subscribe()
         })
     }
-
 }

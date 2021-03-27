@@ -16,11 +16,14 @@ export class ServiceListComponent implements OnInit, OnDestroy {
 
     @Input() srv: {id: string, low: boolean, standart: boolean, premium: boolean}[];
     @Input() id: string;
+    @Input() isMy = false;
     public allServices: OwnService[];
     public servicesBySegment: OwnService[];
     public servicesSub$: Subscription;
     public segment = 'all';
-    public linkTo = '';
+    public linkTo = '';    
+    public openCloseComponent = true;
+
 
     constructor(private serviceSrv: ServicesService) {
     }

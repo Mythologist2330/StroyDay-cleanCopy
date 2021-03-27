@@ -1,6 +1,8 @@
 <div class="container" *ngIf='reviews && reviews.length'>
 
-    <mat-icon [ngStyle]="{transform: openCloseComponent ? 'rotate(180deg)' : 'none'}" class="arrow">keyboard_arrow_down</mat-icon>
+    <mat-icon class="arrow" 
+        [ngStyle]="{transform: openCloseComponent ? 'rotate(180deg)' : 'none'}"
+        (click)="openCloseComponent = !openCloseComponent">keyboard_arrow_down</mat-icon>
 
     <div class="header" (click)="openCloseComponent = !openCloseComponent">
         <p>Отзывы <span>({{reviews.length}})</span></p>

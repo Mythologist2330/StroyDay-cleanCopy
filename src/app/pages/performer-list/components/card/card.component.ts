@@ -3,6 +3,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MapService } from '../../../../services/map.service';
 import { Router } from '@angular/router';
 import { Performer } from 'src/app/models/Performer';
+import { ServicesService } from 'src/app/services/services.service';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-card',
@@ -65,8 +67,11 @@ export class CardComponent implements OnInit {
     @Input() card: Performer;
     @Output() scrollToMap = new EventEmitter<Performer>();
 
+    public ownServices: string[] = [];
+
     constructor(public mapSrv: MapService,
-                private router: Router) { }
+                private router: Router,
+                private servicesSrv: ServicesService) { }
 
   next() {
       this.sliderState = 'next';
@@ -146,6 +151,22 @@ export class CardComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        if (window.innerWidth <= 767) { this.isMobile = true }
+        if (window.innerWidth <= 767) { this.isMobile = true };
+		this.getOwnCategories();
     }
+
+    getOwnCategories() {
+		if (!this.card.services) 
+		{
+			return
+		}
+		this.card.services.map(service => {
+			this.servicesSrv.getServiceById(service.id)
+				.pipe(
+					map(srv => srv.title),
+					tap(title => this.ownServices.push(title))                    
+				)
+				.subscribe()
+		})
+  }
 }

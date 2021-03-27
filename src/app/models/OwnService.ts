@@ -41,7 +41,7 @@ export class OwnService extends Service {
             } else {
                 price = this.cost.premium
             }
-            return 'От ' + price + ' ₽'
+            return 'от ' + price + ' ₽'
         }
     }
 }

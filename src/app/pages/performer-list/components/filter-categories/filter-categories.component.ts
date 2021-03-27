@@ -1,5 +1,6 @@
 import { state, style, trigger } from '@angular/animations';
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { tap } from 'rxjs/operators';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
 
@@ -31,7 +32,9 @@ export class FilterCategoriesComponent implements OnInit {
 	constructor(public catSrv: CategoryService) { }
 
 	ngOnInit(): void {
-		this.catSrv.categories$.subscribe(data => this.categories = data)		
+		this.catSrv.categories$
+			.pipe(tap(console.log))
+			.subscribe(data => this.categories = data)		
 	}
 
 	setSearch(value) {

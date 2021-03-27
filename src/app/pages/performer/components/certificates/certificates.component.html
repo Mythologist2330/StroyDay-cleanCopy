@@ -6,7 +6,7 @@
 
     <div class="open-close-component" *ngIf="openCloseComponent">
         <div class="certificates">
-            <div *ngFor="let certificate of certificates" class="certificate">
+            <div *ngFor="let certificate of certificates" class="certificate" (click)='download()'>
     
                 <img [src]="certificate.certificate">
                 <p class="title">{{ certificate.title }}</p>
@@ -15,5 +15,4 @@
             </div>
         </div>
     </div>
-
 </div>
