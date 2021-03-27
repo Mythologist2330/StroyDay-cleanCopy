@@ -50,12 +50,12 @@
 
                 <div class="description-elem">
                     <img src='/assets/images/performers/metro.png'>        
-                    <p>{{ card.location.metro }}</p>
+                    <p>{{ card.location.metro.join(', ') }}</p>
                 </div>
 
                 <div class="description-elem">
                     <img src='/assets/images/performers/category.png'>
-                    <p>{{ card.description.activity }}</p>
+                    <p>{{ ownServices.join(', ') }}</p>
                 </div>
 
                 <div class="description-elem" *ngIf='card.description.contract'>
@@ -84,7 +84,7 @@
 
                 <div class="statistic">
                     <p>Цены</p>
-                    <p class="value">{{ card.getMinPrice() }}</p>
+                    <p class="value">от 1501р</p>
                 </div>
 
                 <hr>

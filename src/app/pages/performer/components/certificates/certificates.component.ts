@@ -25,6 +25,10 @@ export class CertificatesComponent {
             title: 'Сертификат качества',
             description: 'Выдан государственной организацией ООО “Сертификаты и права” 12 декабря 2014 года'
         }
-    ]
+    ];
+
+    download() {
+        window.open('assets/images/personal-area/bg-album.png', '_blank')
+    }
 
 }

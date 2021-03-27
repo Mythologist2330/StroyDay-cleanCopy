@@ -1,11 +1,30 @@
 .container{
     position: relative;
-    width: 676px;
-    padding: 29px 30px 31px 31px;
+    width: 776px;
     margin-top: 24px;
-    background-color: #FFFFFF;
-    border: 1px solid #E3E9F2;
-    border-radius: 4px;
+    margin: 0 auto;
+    &.admin {
+        margin-top: 24px;
+        padding: 29px 30px 31px 31px;
+        background-color: #FFFFFF;
+        border: 1px solid #E3E9F2;
+        width: 676px;
+        .header {
+            font-size: 20px;
+            cursor: none;
+        }
+    }
+    
+    .arrow{
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        top: 0;
+        right: 0;
+        font-size: 40px;
+        color: #90A0B7;
+        transition: all .2s;
+    }
 
     .edit{
         position: absolute;
@@ -18,9 +37,13 @@
     .header{
         margin-bottom: 24px;
         font-weight: 500;
-        font-size: 20px;
+        font-size: 32px;
         line-height: 28px;
         color: #334D6E;
+        cursor: pointer;
+        span {
+            color: #90A0B7;
+        }
     }
 
     .sort-by{
@@ -115,7 +138,6 @@
 
 @media screen and (max-width: 1275px) {
     .container{
-        margin: 0 auto;
         width: 720px;
     }
 }
@@ -123,7 +145,38 @@
 @media screen and (max-width: 767px) {
     .container{
         width: 100%;
-        padding: 13px 15px 15px 15px;
+        padding: 0 15px 15px 15px;
+        &.admin {
+            padding-top: 13px;
+            .arrow{
+                width: 28px;
+                height: 28px;
+                right: 16px;
+                font-size: 28px;
+            }
+    
+            .header{    
+                p{
+                    font-size: 24px;
+                    line-height: 28px;
+                }
+            }
+        }
+
+        .arrow{
+            width: 28px;
+            height: 28px;
+            right: 16px;
+            font-size: 28px;
+        }
+
+        .header{
+
+            p{
+                font-size: 24px;
+                line-height: 28px;
+            }
+        }
 
         .edit{
             top: 13px;
@@ -142,7 +195,7 @@
             display: block;
             width: -webkit-fill-available;
             height: 52px;
-            margin-top: 12px;
+            margin: 12px 0;
             border: 1px solid #C3CBD6;
             border-radius: 4px;
 
@@ -180,7 +233,7 @@
         }
 
         .list{
-            margin: 0;
+            margin: 1rem 0;
 
             .service{
                 min-height: auto;

@@ -10,10 +10,19 @@ export class HeaderFiltersComponent {
 
     @Input() toggle: boolean;
     @Input() count: number;
+    @Input() orderBy: string;
     @Output() invertToggle = new EventEmitter();
+    @Output() switchSorting = new EventEmitter();
+
+    public openModal = false;
 
     setToggle(toggle: boolean): void {
         toggle = !toggle;
         this.invertToggle.emit(toggle)
+    }
+
+    setSort(sortBy: string): void {
+        this.switchSorting.emit(sortBy);
+        this.openModal = false;
     }
 }

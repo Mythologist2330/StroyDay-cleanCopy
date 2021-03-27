@@ -7,7 +7,27 @@
         
     </div>
 
-    <div class="header-sorting">
+    <div class="header-sorting" (click)='openModal = !openModal'>
         <p>Сортировка</p>
+    </div>
+</div>
+
+<div class='modal' *ngIf='openModal'>
+    <div class='content'>
+        <p class="sort-by-p">Сортировать по:</p>
+        <div>
+            <label>
+                <input (change)="setSort('abc')"
+                        [checked]='orderBy === "abc"'  type="radio" name="sortBy">
+                <p>алфавиту</p>
+            </label>
+
+            <label>
+                <input (change)="setSort('rating')"
+                        [checked]='orderBy === "rating"' type="radio" name="sortBy">
+                <p>рейтингу</p>
+            </label>
+        </div>
+        <mat-icon (click)='openModal = false'>cancel</mat-icon>
     </div>
 </div>
