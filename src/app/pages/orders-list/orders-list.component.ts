@@ -9,7 +9,8 @@ import { ITag } from 'src/app/interfaces/ITag';
 
 export class OrdersListComponent implements OnInit {
 
-  public toggle = false;
+  public toggleFilters = false;
+  public toggleOverlay = false;
   public shrinkHeader = false;
   public tags: ITag[] = [];
 
@@ -66,12 +67,15 @@ export class OrdersListComponent implements OnInit {
     window.onscroll = () => this.shrinkHeader = (window.pageYOffset > 100) ? true : false;
   };
 
-  invertToggle(e) {
-    this.toggle = e;
+
+  ////////// Одинаковые функции
+  invertToggleFilters(e) {
+    this.toggleFilters = e;
   }
 
-  setToggle(i) {
-    console.log(i)
+  invertToggleOverlay(e) {
+    this.toggleOverlay = e;
   }
+  /////////
 
 }

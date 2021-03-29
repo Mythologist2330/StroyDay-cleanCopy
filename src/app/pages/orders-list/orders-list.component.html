@@ -1,15 +1,22 @@
 <div class="container-header-filters-and-sorting">
     <app-header-filters
-        [toggle]="this.toggle"
+        [toggleFilters]="this.toggleFilters"
+        [toggleOverlay]="this.toggleOverlay"
+        (invertToggleFilters)="invertToggleFilters($event)"
+        (invertToggleOverlay)="invertToggleOverlay($event)"
         [count]='this.tags.length'
-        (invertToggle)='invertToggle($event)'
         [ngClass]="shrinkHeader ? 'fixed' : ''"
     ></app-header-filters>
 </div>
 
 <div class="container">
 
-    <app-filters [toggle]="toggle"></app-filters>
+    <app-filters
+        [toggleFilters]="toggleFilters"
+        [toggleOverlay]="toggleOverlay"
+        (invertToggleFilters)="invertToggleFilters($event)"
+        (invertToggleOverlay)="invertToggleOverlay($event)"
+    ></app-filters>
 
     <div class="main-content">
 
@@ -67,3 +74,5 @@
     </div>
 
 </div>
+
+<div class="overlay" [ngStyle]="{display: toggleOverlay ? 'block' : 'none'}"></div>

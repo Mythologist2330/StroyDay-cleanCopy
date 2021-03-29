@@ -21,35 +21,18 @@ import { CategoryService } from 'src/app/services/category.service';
 
 export class FiltersComponent implements OnInit {
 
-	@Output() setChecked = new EventEmitter();
 	@Input() checked: string[];
-	@Input() toggle;
+	@Input() toggleFilters: boolean;
+    @Input() toggleOverlay: boolean;
+    @Output() invertToggleFilters = new EventEmitter();
+    @Output() invertToggleOverlay = new EventEmitter();
+	@Output() setChecked = new EventEmitter();
+
 	public categories: Category[];
 	public number: number;
 	public popup = [];
 	public searchText = '';
 	public someRange = [1, 8];
-
-	constructor(public catSrv: CategoryService) {}
-
-	ngOnInit(): void {
-		this.catSrv.categories$.subscribe(data => this.categories = data);
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	filterLocation = false;
 	filterServices = false;
@@ -58,6 +41,22 @@ export class FiltersComponent implements OnInit {
 	filterTypeOfPerformer = false;
 	filterOrderSum = false;
 	filterOrderStatus = false;
+
+	constructor(public catSrv: CategoryService) {}
+
+	ngOnInit(): void {
+		this.catSrv.categories$.subscribe(data => this.categories = data);
+	}
+
+    setToggles(): void {
+        this.toggleFilters = false;
+        this.invertToggleFilters.emit(this.toggleFilters)
+
+		if (window.innerWidth < 1276) {
+			this.toggleOverlay = false;
+			this.invertToggleOverlay.emit(this.toggleOverlay)
+		}
+    }
 
 	setCategories(value) {
 	  if (this.checked.includes(value)) {
@@ -105,13 +104,25 @@ export class FiltersComponent implements OnInit {
 	  this.setChecked.emit(this.checked)
 	}
 
-
-
-
-
-
 	setLeftValue() {
 		console.log('!')
 	}
+
+    onOffScroll(event) {
+        let html = event.path.filter(pathElem => pathElem.localName === 'html')
+        let body = event.path.filter(pathElem => pathElem.localName === 'body')
+
+        if (html[0].style.overflow === 'hidden') {
+            html[0].style.overflow = 'auto'
+        } else {
+            html[0].style.overflow = 'hidden'
+        }
+
+        if (body[0].style.overflow === 'hidden') {
+            body[0].style.overflow = 'auto'
+        } else {
+            body[0].style.overflow = 'hidden'
+        }
+    }
 
 }

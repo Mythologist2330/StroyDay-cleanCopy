@@ -1,5 +1,5 @@
-<div class="filters" [ngClass]="toggle ? 'show' : ''">
-    <p class="filter-header" (click)="toggle = !toggle">Фильтр<mat-icon>close</mat-icon></p>
+<div class="filters" [ngClass]="toggleFilters ? 'show' : ''">
+    <p class="filter-header" (click)="setToggles(); onOffScroll($event)">Фильтр<mat-icon>close</mat-icon></p>
 
     <div class="filter">
         <p class="filter-title" (click)="filterLocation = !filterLocation">Местоположение<mat-icon [ngStyle]="{transform: filterLocation ? 'rotate(180deg)' : ''}">keyboard_arrow_down</mat-icon></p>

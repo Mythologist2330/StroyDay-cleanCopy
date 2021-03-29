@@ -157,6 +157,16 @@
     }
 }
 
+.overlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgb(27,47,84,0.6);
+    z-index: 1002;
+}
+
 @media screen and (max-width: 1350px) {
     .container{
 
