@@ -25,6 +25,8 @@ import { RedactionAlbumComponent } from './personal-area/gallery/redaction-album
 import { CreationAlbumComponent } from './personal-area/gallery/creation-album/creation-album.component';
 import { OrdersListComponent } from './pages/orders-list/orders-list.component';
 import { OrderComponent } from './pages/order/order.component';
+import { AuthorizationComponent } from './pages/authorization/authorization.component';
+import { LoginComponent } from './pages/authorization/components/login/login.component';
 
 const routes: Routes = [
   {path: 'pages', component: PagesComponent, children: [
@@ -40,7 +42,12 @@ const routes: Routes = [
     {path: 'performer/:id', component: PerformerComponent},
 
     {path: 'orders', component: OrdersListComponent},
-    {path: 'order', component: OrderComponent}
+    {path: 'order', component: OrderComponent},
+
+    {path: 'authorization', component: AuthorizationComponent, children: [
+      {path: '', redirectTo: 'login', pathMatch: 'full'},
+      {path: 'login', component: LoginComponent}
+    ]}
   ]},
 
   {path: 'personalArea/:id', component: PersonalAreaComponent, children: [
