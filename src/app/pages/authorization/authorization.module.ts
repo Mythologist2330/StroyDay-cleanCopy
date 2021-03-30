@@ -3,12 +3,14 @@ import { NgModule } from "@angular/core";
 import { SharedModule } from "src/app/shared/shared.module";
 import { AuthorizationComponent } from "./authorization.component";
 import { LoginComponent } from "./components/login/login.component";
+import { PasswordComponent } from "./components/password/password.component";
 
 
 @NgModule({
     declarations: [
         AuthorizationComponent,
-        LoginComponent
+        LoginComponent,
+        PasswordComponent
     ],
     imports: [
         CommonModule,

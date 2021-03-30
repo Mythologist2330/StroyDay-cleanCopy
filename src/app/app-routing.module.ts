@@ -27,6 +27,7 @@ import { OrdersListComponent } from './pages/orders-list/orders-list.component';
 import { OrderComponent } from './pages/order/order.component';
 import { AuthorizationComponent } from './pages/authorization/authorization.component';
 import { LoginComponent } from './pages/authorization/components/login/login.component';
+import { PasswordComponent } from './pages/authorization/components/password/password.component';
 
 const routes: Routes = [
   {path: 'pages', component: PagesComponent, children: [
@@ -46,7 +47,8 @@ const routes: Routes = [
 
     {path: 'authorization', component: AuthorizationComponent, children: [
       {path: '', redirectTo: 'login', pathMatch: 'full'},
-      {path: 'login', component: LoginComponent}
+      {path: 'login', component: LoginComponent},
+      {path: 'password', component: PasswordComponent}
     ]}
   ]},
 
