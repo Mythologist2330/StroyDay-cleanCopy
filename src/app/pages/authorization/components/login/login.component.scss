@@ -54,6 +54,7 @@
                 margin: 17px 0 16px 0;
 
                 fieldset{
+                    position: relative;
                     width: 344px;
                     height: 53px;
                     border: 1px solid #C3CBD6;
@@ -79,10 +80,35 @@
                         border: none;
                         position: relative;
                         padding: 0 11px;
+
+                        &.input-password{
+                            padding: 0 45px 0 11px;
+                        }
     
                         &:focus{
                             outline: none;
                         }
+                    }
+
+                    mat-icon{
+                        position: absolute;
+                        top: 1px;
+                        right: 11px;
+                        color: #8594A8;
+                        cursor: pointer;
+                    }
+
+                    .forgot-password{
+                        position: absolute;
+                        top: -17px;
+                        right: 7px;
+                        padding: 0 5px 0 4px;
+                        font-size: 12px;
+                        line-height: 18px;
+                        text-decoration-line: underline;
+                        background-color: #fff;
+                        color: #334D6E;
+                        cursor: pointer;
                     }
                 }
             }
