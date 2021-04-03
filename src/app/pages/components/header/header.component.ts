@@ -15,18 +15,21 @@ import { Service } from 'src/app/models/Service';
 
 export class HeaderComponent implements OnInit, AfterViewInit {
 
-  public profileToogle = false
+  burgerMenuToggle = false;
+  navigationModuleWindowToggle = false;
+  public profileToogle = false;
   public menuToggle = false;
   public currentCategory: Category;
   public searchText = '';
   @ViewChild('input') input: ElementRef;
 
-  constructor(public catSrv: CategoryService,
-              private srvSrv: ServicesService,
-              private router: Router) {}
+  constructor(
+    public catSrv: CategoryService,
+    private srvSrv: ServicesService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     fromEvent(this.input.nativeElement,'keyup')
@@ -73,72 +76,44 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   openCloseBurgerMenu(event) {
     if (event.view.innerWidth <= 767) {
-
-      event.path.filter((containerBurgerMenu) => {
-        if (containerBurgerMenu.className === 'header-devide-top') {
-          for (let burgerMenu of containerBurgerMenu.children) {
-            if (burgerMenu.className === 'menu') {
-
-              if (burgerMenu.style.left === '0%') {
-                burgerMenu.style.left = '-120%'
-              } else {
-                burgerMenu.style.left = '0%'
-              }
-
-            }
-
-            if(burgerMenu.className === 'button-services') {
-
-              if (burgerMenu.style.left === 'calc(0% - 16px)') {
-                burgerMenu.style.left = '-120%'
-              } else {
-                burgerMenu.style.left = 'calc(0% - 16px)'
-              }
-
-            }
-          }
-        }
-
-        if (containerBurgerMenu.localName === ('html' || 'body')) {
-          if (containerBurgerMenu.style.overflow === 'hidden') {
-            containerBurgerMenu.style.overflow = 'auto';
-          } else {
-            containerBurgerMenu.style.overflow = 'hidden';
-          }
-        }
-      })
+      this.burgerMenuToggle = !this.burgerMenuToggle
+      this.onOffScroll(event);
     }
   }
 
-
   navigationModuleToggleMobile(event) {
-
     if (event.view.innerWidth <= 767) {
 
-      event.path.filter((navigationModuleContainer) => {
+      let modalWindow = document.getElementById('navigationModuleWindow')
+      this.menuToggle = true
 
-        if (navigationModuleContainer.className === 'header-devide-top') {
-          for (let navigationModule of navigationModuleContainer.children) {
-            if (navigationModule.className === 'navigation-module-window') {
+      if (modalWindow.style.right === '-16px') {
+        modalWindow.style.right = 'calc(-100% - 48px)'
 
-              this.menuToggle = true
+        setTimeout(() => {
+          this.menuToggle = false
+        }, 200);
 
-              if (navigationModule.style.right === '-16px') {
-                navigationModule.style.right = 'calc(-100% - 48px)'
+      } else {
+        setTimeout(() => {
+          modalWindow.style.right = '-16px'
+        }, 0);
+      }
 
-                setTimeout(() => {
-                  this.menuToggle = false
-                }, 200);
-
-              } else {
-                setTimeout(() => {
-                  navigationModule.style.right = '-16px'
-                }, 0);
-              }
-            }
-          }
-        }
-      })
     }
+  }
+
+  onOffScroll(event) {
+    event.path.filter((elem) => {
+      if (elem.localName === ('html' || 'body')) {
+
+        if (elem.style.overflow === 'hidden') {
+          elem.style.overflow = 'auto';
+        } else {
+          elem.style.overflow = 'hidden';
+        }
+
+      }
+    })
   }
 }
