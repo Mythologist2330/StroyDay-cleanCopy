@@ -58,7 +58,7 @@
                 align-items: center;
                 justify-content: center;
                 position: absolute;
-                right: 0;
+                right: 15px;
                 &:hover{
                     cursor: pointer;
                 }
@@ -75,6 +75,11 @@
                 border-radius: 3px;
                 background-color: #fff;
                 margin: 0 6px 0 0;
+
+                &.reset{
+                    color: #334D6E;
+                }
+
                 &.apply {
                     background-color: #0D6FE3;
                     color: #fff;
@@ -283,6 +288,10 @@
             &::-webkit-scrollbar{
                 width: 0;
                 height: 0;
+            }
+
+            .filter{
+                padding: 15px 32px 16px 32px;
             }
 
             .filter-header{

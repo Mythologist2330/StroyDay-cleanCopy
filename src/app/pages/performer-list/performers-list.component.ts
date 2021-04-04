@@ -269,81 +269,30 @@ export class PerformersListComponent implements OnInit {
         this.updateQueryParams();
     }
 
+    closeFilters() {
+        if (window.innerWidth < 1276) {
+            this.toggle = false
+        }
+    }
+
     ngOnDestroy(): void {
-    }    
-
-    openLocationMap(event) {        
-        event.path.filter((htmlAndBody) => {
-            if (htmlAndBody.localName === 'html') {
-                if (htmlAndBody.style.overflow === 'hidden') {
-                    htmlAndBody.style.overflow = 'auto'
-                } else {
-                    htmlAndBody.style.overflow = 'hidden'
-                }
-            }
-            if (htmlAndBody.localName === 'body') {
-                if (htmlAndBody.style.overflow === 'hidden') {
-                    htmlAndBody.style.overflow = 'auto'
-                } else {
-                    htmlAndBody.style.overflow = 'hidden'
-                }
-            }
-        })
-    }
-    openCloseFilter(event): void {
-        event.path.filter((filter) => {
-            if (filter.className === 'filter') {
-                for (let child of filter.children) {
-                    if (child.className === 'filter-inner') {
-
-                        if (child.style.display === 'block') {
-                            child.style.display = 'none';
-
-                            for (let fieldClick of filter.children) {
-                                if (fieldClick.className === 'field-click') {
-                                    fieldClick.style.height = '56px';
-                                }
-                            }
-
-                        } else {
-                            child.style.display = 'block';
-
-                            for (let fieldClick of filter.children) {
-                                if (fieldClick.className === 'field-click') {
-                                    fieldClick.style.height = '52px';
-                                }
-                            }
-                        }
-                    }
-                }
-                for (let arrow of filter.children) {
-                    if (arrow.className === 'filter-title') {
-                        if (arrow.children[1].style.transform === 'rotate(-180deg)') {
-                            arrow.children[1].style.transform = 'none';
-                        } else {
-                            arrow.children[1].style.transform = 'rotate(-180deg)';
-                        }
-                    }
-                }
-            }
-        });
-    }
-
-    openCloseCheckboxes(event): void {
-        event.path.filter((checkboxesList) => {
-            if (checkboxesList.className === 'checkboxes-list') {
-                if (checkboxesList.children[1].style.display === 'block') {
-                    checkboxesList.children[1].style.display = 'none';
-                    checkboxesList.children[0].children[0].style.transform = 'rotate(0deg)';
-                } else {
-                    checkboxesList.children[1].style.display = 'block';
-                    checkboxesList.children[0].children[0].style.transform = 'rotate(90deg)';
-                }
-            }
-        });
     }
 
     animateHeader(): void {
         window.onscroll = () => this.shrinkHeader = (window.pageYOffset > 100) ? true : false;
     };
+
+    onOffScroll(event) {
+        event.path.filter((elem) => {
+			if (elem.localName === ('html' || 'body')) {
+
+				if (elem.style.overflow === 'hidden') {
+					elem.style.overflow = 'auto';
+				} else {
+					elem.style.overflow = 'hidden';
+				}
+
+			}
+        })
+    }
 }

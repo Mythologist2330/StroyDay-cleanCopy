@@ -8,9 +8,9 @@
 </div>
 <div class="container container-performers-page">
     <div class="filters" [ngClass]="toggle ? 'show' : ''">
-        <div class="filter filter-header">
+        <div class="filter filter-header" (click)="closeFilters()">
             <p>Фильтр</p>
-            <div class="filter-header-close-filter" (click)="toggle = !toggle">
+            <div class="filter-header-close-filter">
                 <mat-icon class='close'>close</mat-icon>
             </div>
         </div>
@@ -94,7 +94,7 @@
         <div class="module-window-map-location-map"></div>
         <svg-icon-sprite src='cancel' width="10" height="10" viewBox="0 0 10 10"  
             (click)="moduleWindowMapLocation = false;
-            openLocationMap($event)"> 
+            onOffScroll($event)"> 
         </svg-icon-sprite>
     </div>
     <div class="overlay" [ngStyle]="{display: moduleWindowMapLocation ? 'block' : 'none'}"></div>
