@@ -188,21 +188,6 @@
                     }
                 }
             }
-
-            .reset{
-                width: min-content;
-                margin-top: 12px;
-                font-size: 14px;
-                font-weight: 600;
-                line-height: 24px;
-                color: #0D6FE3;
-                border-bottom: 1px dashed #0D6FE3;
-                cursor: pointer;
-
-                &:active{
-                    opacity: 0.8;
-                }
-            }
         }
 
         .filter-order-sum-content{
@@ -297,21 +282,6 @@
                     box-shadow: 0 0 0 40px rgba(98,0,238,.2);
                 }
             }
-
-            .reset{
-                width: min-content;
-                margin-top: 12px;
-                font-size: 14px;
-                font-weight: 600;
-                line-height: 24px;
-                color: #0D6FE3;
-                border-bottom: 1px dashed #0D6FE3;
-                cursor: pointer;
-
-                &:active{
-                    opacity: 0.8;
-                }
-            }
         }
 
         .filter-checkbox-content{
@@ -335,21 +305,6 @@
                     font-size: 14px;
                     line-height: 20px;
                     color: #334D6E;
-                }
-            }
-
-            .reset{
-                width: min-content;
-                margin-top: 12px;
-                font-size: 14px;
-                font-weight: 600;
-                line-height: 24px;
-                color: #0D6FE3;
-                border-bottom: 1px dashed #0D6FE3;
-                cursor: pointer;
-
-                &:active{
-                    opacity: 0.8;
                 }
             }
         }
@@ -396,36 +351,42 @@
                     color: #334D6E;
                 }
             }
+        }
 
-            .reset{
-                width: min-content;
-                margin-top: 12px;
-                font-size: 14px;
-                font-weight: 600;
-                line-height: 24px;
-                color: #0D6FE3;
-                border-bottom: 1px dashed #0D6FE3;
-                cursor: pointer;
+        .reset{
+            width: min-content;
+            margin-top: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 24px;
+            color: #0D6FE3;
+            border-bottom: 1px dashed #0D6FE3;
+            cursor: pointer;
 
-                &:active{
-                    opacity: 0.8;
-                }
+            &:active{
+                opacity: 0.8;
             }
         }
     }
     
-    .filters-buttons {
+    .filters-buttons{
         height: 72px;
         padding: 12px 16px;
         display: flex;
-        button {
+
+        button{
             flex-grow: 1;
             height: 48px;
             border: 1px solid #C3CBD6;
             border-radius: 3px;
             background-color: #fff;
             margin: 0 6px 0 0;
-            &.apply {
+
+            &.reset{
+                color: #334D6E;
+            }
+
+            &.apply{
                 background-color: #0D6FE3;
                 color: #fff;
                 margin: 0 0 0 6px;
