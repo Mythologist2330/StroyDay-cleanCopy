@@ -63,4 +63,18 @@ export class OrderComponent implements OnInit{
 		}
 	}
 
+    onOffScroll(event) {
+        event.path.filter((elem) => {
+			if (elem.localName === ('html' || 'body')) {
+
+				if (elem.style.overflow === 'hidden') {
+					elem.style.overflow = 'auto';
+				} else {
+					elem.style.overflow = 'hidden';
+				}
+
+			}
+        })
+    }
+
 }
