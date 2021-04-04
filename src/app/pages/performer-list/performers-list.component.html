@@ -1,14 +1,16 @@
 <div class="container-header-filters-and-sorting">
     <app-header-filters [toggle]="this.toggle"
                         [count]='this.tags.length'
+                        [toggleOverlay]="toggleOverlay"
                         [orderBy]='orderBy'
                         (invertToggle)='invertToggle($event)'
                         (switchSorting)='switchOrderBy($event)'
+                        (invertToggleOverlay)="invertToggleOverlay($event)"
                         [ngClass]="shrinkHeader ? 'fixed' : ''"></app-header-filters>
 </div>
 <div class="container container-performers-page">
     <div class="filters" [ngClass]="toggle ? 'show' : ''">
-        <div class="filter filter-header" (click)="closeFilters()">
+        <div class="filter filter-header" (click)="closeFilters(); onOffScroll($event); toggleOverlay = !toggleOverlay">
             <p>Фильтр</p>
             <div class="filter-header-close-filter">
                 <mat-icon class='close'>close</mat-icon>
@@ -97,5 +99,5 @@
             onOffScroll($event)"> 
         </svg-icon-sprite>
     </div>
-    <div class="overlay" [ngStyle]="{display: moduleWindowMapLocation ? 'block' : 'none'}"></div>
+    <div class="overlay" [ngStyle]="{display: toggleOverlay ? 'block' : 'none'}"></div>
 </div>

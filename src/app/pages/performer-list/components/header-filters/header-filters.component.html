@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="header-filters" (click)="setToggle(toggle)">
+    <div class="header-filters" (click)="setToggle(toggle); setToggleOverlay(toggleOverlay); onOffScroll($event);">
         <p>Фильтр</p>
         <ng-container *ngIf='count'>
             <p class="notifications">{{count}}</p>

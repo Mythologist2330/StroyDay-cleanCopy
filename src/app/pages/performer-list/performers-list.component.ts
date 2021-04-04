@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { PerformersCardService } from '../../services/performers-card.service';
 import { FilterService } from '../../services/filter.service';
-import { ServicesService } from '../../services/services.service';
 import { CategoryService } from '../../services/category.service';
 import { MapService } from '../../services/map.service';
 import { Marker } from 'leaflet';
@@ -24,6 +23,7 @@ export class PerformersListComponent implements OnInit {
     // Дохрена флажков!
 
     public toggle = false;
+    public toggleOverlay = false;
     public toggleMap = false;
     public page = 'Исполнители';
     public performersCards: Performer[] = [];
@@ -49,11 +49,11 @@ export class PerformersListComponent implements OnInit {
     constructor(
         private cardSrv: PerformersCardService,
         private filterSrv: FilterService,
-        private servicesSrv: ServicesService,
         private categorySrv: CategoryService,
         private mapSrv: MapService,
         private router: Router,
-        private activatedRoute: ActivatedRoute) {}
+        private activatedRoute: ActivatedRoute
+    ) {}
 
     setLocation(e) {
         console.log(e);
@@ -155,6 +155,10 @@ export class PerformersListComponent implements OnInit {
 
     invertToggle(e) {
         this.toggle = e;
+    }
+
+    invertToggleOverlay(e) {
+        this.toggleOverlay = e;
     }
 
     initTags(params) {

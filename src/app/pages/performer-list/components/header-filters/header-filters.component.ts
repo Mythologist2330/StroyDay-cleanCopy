@@ -10,8 +10,10 @@ export class HeaderFiltersComponent {
 
     @Input() toggle: boolean;
     @Input() count: number;
+    @Input() toggleOverlay: boolean;
     @Input() orderBy: string;
     @Output() invertToggle = new EventEmitter();
+    @Output() invertToggleOverlay = new EventEmitter();
     @Output() switchSorting = new EventEmitter();
 
     public openModal = false;
@@ -21,8 +23,27 @@ export class HeaderFiltersComponent {
         this.invertToggle.emit(toggle)
     }
 
+    setToggleOverlay(toggleOverlay: boolean): void {
+        toggleOverlay = true;
+        this.invertToggleOverlay.emit(toggleOverlay)
+    }
+
     setSort(sortBy: string): void {
         this.switchSorting.emit(sortBy);
         this.openModal = false;
+    }
+
+    onOffScroll(event) {
+        event.path.filter((elem) => {
+			if (elem.localName === ('html' || 'body')) {
+
+				if (elem.style.overflow === 'hidden') {
+					elem.style.overflow = 'auto';
+				} else {
+					elem.style.overflow = 'hidden';
+				}
+
+			}
+        })
     }
 }
