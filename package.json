@@ -16,7 +16,7 @@
     "@angular/common": "^12.2.15",
     "@angular/compiler": "^12.2.15",
     "@angular/core": "^12.2.15",
-    "@angular/fire": "^6.1.4",
+    "@angular/fire": "^7.2.0",
     "@angular/forms": "^12.2.15",
     "@angular/material": "^12.2.13",
     "@angular/platform-browser": "^12.2.15",
@@ -26,7 +26,7 @@
     "@runette/ngx-leaflet-fullscreen": "^1.0.4",
     "@types/nouislider": "^9.0.10",
     "angular-leaflet": "0.0.17",
-    "firebase": "^8.1.2",
+    "firebase": "^9.4.0",
     "leaflet": "^1.7.1",
     "leaflet.fullscreen": "^1.6.0",
     "ng-svg-icon-sprite": "^1.9.1",
@@ -35,7 +35,8 @@
     "rxjs": "~6.6.0",
     "svg2sprite-cli": "^2.0.1",
     "tslib": "^2.0.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "rxfire": "^6.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.2.15",
