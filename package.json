@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "start": "ng s",
-    "build": "ng build --prod",
+    "build": "ng build --configuration production",
     "generate:svg-sprite": "svg2sprite ./src/assets/icons ./src/assets/sprites/sprite.svg --stripAttrs fill --stripAttrs stroke --stripAttrs id",
     "test": "ng test",
     "lint": "ng lint",
@@ -11,17 +11,17 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^11.2.2",
+    "@angular/animations": "^12.2.15",
     "@angular/cdk": "^11.2.1",
-    "@angular/common": "^11.2.2",
-    "@angular/compiler": "^11.2.2",
-    "@angular/core": "^11.2.2",
+    "@angular/common": "^12.2.15",
+    "@angular/compiler": "^12.2.15",
+    "@angular/core": "^12.2.15",
     "@angular/fire": "^6.1.4",
-    "@angular/forms": "^11.2.2",
+    "@angular/forms": "^12.2.15",
     "@angular/material": "^11.1.1",
-    "@angular/platform-browser": "^11.2.2",
-    "@angular/platform-browser-dynamic": "^11.2.2",
-    "@angular/router": "^11.2.2",
+    "@angular/platform-browser": "^12.2.15",
+    "@angular/platform-browser-dynamic": "^12.2.15",
+    "@angular/router": "^12.2.15",
     "@asymmetrik/ngx-leaflet": "^8.1.0",
     "@runette/ngx-leaflet-fullscreen": "^1.0.4",
     "@types/nouislider": "^9.0.10",
@@ -35,12 +35,12 @@
     "rxjs": "~6.6.0",
     "svg2sprite-cli": "^2.0.1",
     "tslib": "^2.0.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1102.1",
-    "@angular/cli": "~11.2.1",
-    "@angular/compiler-cli": "~11.2.2",
+    "@angular-devkit/build-angular": "~12.2.15",
+    "@angular/cli": "~12.2.15",
+    "@angular/compiler-cli": "~12.2.15",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/leaflet": "^1.5.21",
@@ -57,6 +57,6 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.0.2"
+    "typescript": "~4.3.5"
   }
 }
